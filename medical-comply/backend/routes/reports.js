@@ -3,6 +3,8 @@ const { query } = require('../config/database');
 const { authMiddleware } = require('../middlewares/auth');
 const { crawlWebsite } = require('../services/crawler');
 const { analyzeViolations } = require('../services/analyzer');
+const { generatePDFReport, getPDFBuffer, deletePDF } = require('../services/pdf-generator');
+const { sendReportEmail } = require('../services/email-sender');
 
 const router = express.Router();
 
@@ -181,6 +183,114 @@ router.get('/:id', authMiddleware, async (req, res) => {
   } catch (error) {
     console.error('리포트 상세 조회 오류:', error);
     res.status(500).json({ error: '리포트 조회 중 오류가 발생했습니다.' });
+  }
+});
+
+// PDF 리포트 다운로드
+router.get('/:id/pdf', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // 리포트 조회
+    const reportResult = await query(
+      `SELECT * FROM reports WHERE id = $1 AND user_id = $2`,
+      [id, req.user.userId]
+    );
+
+    if (reportResult.rows.length === 0) {
+      return res.status(404).json({ error: '리포트를 찾을 수 없습니다.' });
+    }
+
+    const report = reportResult.rows[0];
+
+    if (report.status !== 'completed') {
+      return res.status(400).json({ error: '완료된 리포트만 PDF로 다운로드할 수 있습니다.' });
+    }
+
+    // 위반 사항 조회
+    const violationsResult = await query(
+      'SELECT * FROM violations WHERE report_id = $1',
+      [id]
+    );
+
+    report.violations = violationsResult.rows;
+
+    // PDF 생성
+    const pdfPath = await generatePDFReport(report);
+    const pdfBuffer = getPDFBuffer(pdfPath);
+
+    // 응답 후 임시 파일 삭제
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="report-${id}.pdf"`);
+    res.send(pdfBuffer);
+
+    // 임시 파일 삭제 (응답 후)
+    setTimeout(() => deletePDF(pdfPath), 5000);
+
+  } catch (error) {
+    console.error('PDF 생성 오류:', error);
+    res.status(500).json({ error: 'PDF 생성 중 오류가 발생했습니다.' });
+  }
+});
+
+// 리포트 이메일 발송
+router.post('/:id/send-email', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: '이메일 주소를 입력해주세요.' });
+    }
+
+    // 리포트 조회
+    const reportResult = await query(
+      `SELECT * FROM reports WHERE id = $1 AND user_id = $2`,
+      [id, req.user.userId]
+    );
+
+    if (reportResult.rows.length === 0) {
+      return res.status(404).json({ error: '리포트를 찾을 수 없습니다.' });
+    }
+
+    const report = reportResult.rows[0];
+
+    if (report.status !== 'completed') {
+      return res.status(400).json({ error: '완료된 리포트만 이메일로 발송할 수 있습니다.' });
+    }
+
+    // 위반 사항 조회
+    const violationsResult = await query(
+      'SELECT * FROM violations WHERE report_id = $1',
+      [id]
+    );
+
+    report.violations = violationsResult.rows;
+
+    // PDF 생성
+    const pdfPath = await generatePDFReport(report);
+    const pdfBuffer = getPDFBuffer(pdfPath);
+
+    // 이메일 발송
+    const result = await sendReportEmail({
+      to: email,
+      report,
+      pdfBuffer,
+      pdfFilename: `medicalcomply-report-${id}.pdf`
+    });
+
+    // 임시 파일 삭제
+    deletePDF(pdfPath);
+
+    if (result.success) {
+      res.json({ message: '이메일이 발송되었습니다.', messageId: result.messageId });
+    } else {
+      res.status(500).json({ error: '이메일 발송에 실패했습니다.', details: result.error });
+    }
+
+  } catch (error) {
+    console.error('이메일 발송 오류:', error);
+    res.status(500).json({ error: '이메일 발송 중 오류가 발생했습니다.' });
   }
 });
 

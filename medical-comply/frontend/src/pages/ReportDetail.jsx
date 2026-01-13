@@ -8,6 +8,10 @@ function ReportDetail() {
   const [violations, setViolations] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [emailModal, setEmailModal] = useState(false)
+  const [email, setEmail] = useState('')
+  const [sending, setSending] = useState(false)
+  const [sendResult, setSendResult] = useState(null)
 
   useEffect(() => {
     loadReport()
@@ -44,6 +48,65 @@ function ReportDetail() {
       info: { class: 'badge-success', text: '정보' }
     }
     return badges[severity] || badges.info
+  }
+
+  const handleDownloadPDF = async () => {
+    try {
+      const response = await fetch(`/api/reports/${id}/pdf`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      if (!response.ok) throw new Error('PDF 다운로드 실패')
+
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `medicalcomply-report-${id}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      window.URL.revokeObjectURL(url)
+      a.remove()
+    } catch (err) {
+      alert('PDF 다운로드에 실패했습니다.')
+    }
+  }
+
+  const handleSendEmail = async (e) => {
+    e.preventDefault()
+    if (!email) return
+
+    setSending(true)
+    setSendResult(null)
+
+    try {
+      const response = await fetch(`/api/reports/${id}/send-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ email })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSendResult({ success: true, message: '이메일이 발송되었습니다!' })
+        setTimeout(() => {
+          setEmailModal(false)
+          setSendResult(null)
+          setEmail('')
+        }, 2000)
+      } else {
+        setSendResult({ success: false, message: data.error || '발송 실패' })
+      }
+    } catch (err) {
+      setSendResult({ success: false, message: '이메일 발송에 실패했습니다.' })
+    } finally {
+      setSending(false)
+    }
   }
 
   if (loading) {
@@ -122,6 +185,15 @@ function ReportDetail() {
             <p style={{ color: 'var(--gray-500)' }}>/ 100</p>
           </div>
         </div>
+        {/* 액션 버튼 */}
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+          <button className="btn btn-primary" onClick={handleDownloadPDF}>
+            PDF 다운로드
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEmailModal(true)}>
+            이메일로 보내기
+          </button>
+        </div>
       </div>
 
       {/* 요약 */}
@@ -197,6 +269,46 @@ function ReportDetail() {
           </div>
         )}
       </div>
+
+      {/* 이메일 모달 */}
+      {emailModal && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div className="card" style={{ maxWidth: '400px', width: '90%' }}>
+            <h3 style={{ marginBottom: '1rem' }}>리포트 이메일 발송</h3>
+            <form onSubmit={handleSendEmail}>
+              <input
+                type="email"
+                className="input"
+                placeholder="이메일 주소 입력"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                style={{ marginBottom: '1rem' }}
+              />
+              {sendResult && (
+                <p style={{
+                  color: sendResult.success ? 'var(--secondary)' : 'var(--danger)',
+                  marginBottom: '1rem', fontSize: '0.875rem'
+                }}>
+                  {sendResult.message}
+                </p>
+              )}
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <button type="submit" className="btn btn-primary" disabled={sending} style={{ flex: 1 }}>
+                  {sending ? '발송 중...' : '발송하기'}
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={() => setEmailModal(false)}>
+                  취소
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
