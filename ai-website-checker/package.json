@@ -1,0 +1,14 @@
+{
+  "name": "ai-website-checker",
+  "version": "1.0.0",
+  "description": "AI-friendly website verification service",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "dev-backend": "cd backend && npm run dev"
+  },
+  "keywords": ["ai", "website", "verification", "checker"],
+  "author": "",
+  "license": "ISC"
+}
