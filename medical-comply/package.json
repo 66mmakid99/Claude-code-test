@@ -1,0 +1,16 @@
+{
+  "name": "medical-comply",
+  "version": "1.0.0",
+  "description": "의료법 준수 검사 서비스",
+  "scripts": {
+    "install:backend": "cd backend && PUPPETEER_SKIP_DOWNLOAD=true npm install",
+    "install:frontend": "cd frontend && npm install",
+    "build:frontend": "cd frontend && npm run build",
+    "copy:frontend": "mkdir -p backend/public && cp -r frontend/dist/* backend/public/",
+    "build": "npm run install:backend && npm run install:frontend && npm run build:frontend && npm run copy:frontend",
+    "start": "cd backend && NODE_ENV=production node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
-const { pool } = require('./config/database');
+const { pool, isMockMode } = require('./config/database');
 
 // 라우터 임포트
 const authRoutes = require('./routes/auth');
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 5000;
 
 // 미들웨어
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL || '*',
   credentials: true
 }));
 app.use(express.json());
@@ -36,11 +37,14 @@ app.use('/api/dealers', dealerRoutes);
 // 헬스 체크
 app.get('/api/health', async (req, res) => {
   try {
-    await pool.query('SELECT 1');
+    if (!isMockMode && pool) {
+      await pool.query('SELECT 1');
+    }
     res.json({
       status: 'ok',
       message: 'MedicalComply API 서버 정상 작동 중',
-      database: 'connected',
+      database: isMockMode ? 'mock' : 'connected',
+      mode: isMockMode ? 'mock' : 'production',
       timestamp: new Date().toISOString()
     });
   } catch (error) {
@@ -51,6 +55,19 @@ app.get('/api/health', async (req, res) => {
     });
   }
 });
+
+// 프론트엔드 정적 파일 서빙 (프로덕션)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  // SPA 라우팅 지원
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+}
 
 // 404 핸들러
 app.use((req, res) => {

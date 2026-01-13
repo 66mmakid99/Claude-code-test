@@ -4,7 +4,7 @@
   "description": "의료법 준수 검사 서비스 백엔드",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "NODE_ENV=production node server.js",
     "dev": "nodemon server.js",
     "db:migrate": "node migrations/run.js"
   },
