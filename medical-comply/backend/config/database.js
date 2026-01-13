@@ -69,15 +69,17 @@ function processMockQuery(text, params = []) {
       return { rows: user ? [user] : [] };
     }
     if (query.includes('where id')) {
-      const user = mockData.users.find(u => u.id === params[0]);
+      const userId = parseInt(params[0]);
+      const user = mockData.users.find(u => u.id === userId);
       return { rows: user ? [user] : [] };
     }
     if (query.includes('where coupon_code')) {
-      const user = mockData.users.find(u => u.coupon_code === params[0] && u.role === params[1]);
+      const user = mockData.users.find(u => u.coupon_code === params[0]);
       return { rows: user ? [user] : [] };
     }
     if (query.includes('where referred_by')) {
-      const users = mockData.users.filter(u => u.referred_by === params[0]);
+      const refId = parseInt(params[0]);
+      const users = mockData.users.filter(u => u.referred_by === refId);
       return { rows: users };
     }
     return { rows: mockData.users };
