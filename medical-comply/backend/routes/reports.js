@@ -33,6 +33,14 @@ router.post('/scan', authMiddleware, async (req, res) => {
 
     const user = userResult.rows[0];
 
+    // 사용자가 없으면 (서버 재시작 후 Mock DB 초기화)
+    if (!user) {
+      return res.status(401).json({
+        error: '세션이 만료되었습니다. 다시 로그인해주세요.',
+        code: 'SESSION_EXPIRED'
+      });
+    }
+
     // 무료 사용자는 일일 1회 제한 (간단한 체크)
     if (user.subscription_status === 'free') {
       const todayReports = await query(

@@ -39,6 +39,13 @@ function Dashboard({ user }) {
       const response = await reportsAPI.scan(url)
       navigate(`/report/${response.data.report.id}`)
     } catch (err) {
+      // 세션 만료시 로그아웃 처리
+      if (err.response?.data?.code === 'SESSION_EXPIRED') {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        window.location.href = '/login'
+        return
+      }
       const errorMsg = err.response?.data?.error || '검사 요청 중 오류가 발생했습니다.'
       const errorDetail = err.response?.data?.detail
       setError(errorDetail ? `${errorMsg} (${errorDetail})` : errorMsg)
