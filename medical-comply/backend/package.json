@@ -9,16 +9,17 @@
     "db:migrate": "node migrations/run.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "@anthropic-ai/sdk": "^0.14.1",
+    "axios": "^1.13.2",
+    "bcryptjs": "^2.4.3",
+    "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "pg": "^8.11.3",
-    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "puppeteer": "^21.6.1",
-    "cheerio": "^1.0.0-rc.12",
-    "@anthropic-ai/sdk": "^0.14.1",
     "pdfkit": "^0.14.0",
+    "pg": "^8.11.3",
+    "puppeteer": "^21.6.1",
     "resend": "^2.1.0",
     "uuid": "^9.0.0"
   },

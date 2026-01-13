@@ -1,5 +1,16 @@
-const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
+const axios = require('axios');
+
+// Puppeteer 사용 가능 여부 확인
+let puppeteer = null;
+let usePuppeteer = false;
+
+try {
+  puppeteer = require('puppeteer');
+  usePuppeteer = true;
+} catch (e) {
+  console.log('⚠️  Puppeteer를 사용할 수 없습니다. Axios로 대체합니다.');
+}
 
 /**
  * 웹사이트를 크롤링하여 HTML, 텍스트, 이미지 정보를 추출
@@ -7,6 +18,11 @@ const cheerio = require('cheerio');
  * @returns {Object} 크롤링 결과
  */
 async function crawlWebsite(url) {
+  // Puppeteer가 없거나 실패하면 Axios 사용
+  if (!usePuppeteer) {
+    return crawlWithAxios(url);
+  }
+
   let browser = null;
 
   try {
@@ -74,12 +90,58 @@ async function crawlWebsite(url) {
       crawledAt: new Date().toISOString()
     };
   } catch (error) {
-    console.error('크롤링 오류:', error);
-    throw new Error(`웹사이트 크롤링 실패: ${error.message}`);
+    console.error('Puppeteer 크롤링 오류, Axios로 대체:', error.message);
+    // Puppeteer 실패 시 Axios로 대체
+    return crawlWithAxios(url);
   } finally {
     if (browser) {
       await browser.close();
     }
+  }
+}
+
+/**
+ * Axios를 사용한 간단한 크롤링 (Puppeteer 대체)
+ */
+async function crawlWithAxios(url) {
+  try {
+    const response = await axios.get(url, {
+      timeout: 30000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+      }
+    });
+
+    const html = response.data;
+    const $ = cheerio.load(html);
+
+    // 텍스트 추출
+    const textContent = extractText($);
+
+    // 이미지 추출
+    const images = extractImages($, url);
+
+    // 링크 추출
+    const links = extractLinks($, url);
+
+    // 메타 정보 추출
+    const metadata = extractMetadata($);
+
+    return {
+      url,
+      html,
+      textContent,
+      images,
+      links,
+      metadata,
+      screenshot: null, // Axios에서는 스크린샷 불가
+      crawledAt: new Date().toISOString()
+    };
+  } catch (error) {
+    console.error('Axios 크롤링 오류:', error.message);
+    throw new Error(`웹사이트 크롤링 실패: ${error.message}`);
   }
 }
 
