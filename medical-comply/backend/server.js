@@ -100,10 +100,17 @@ app.listen(PORT, () => {
 ║                                                   ║
 ║   포트: ${PORT}                                      ║
 ║   환경: ${process.env.NODE_ENV || 'development'}                          ║
+║   DB: ${isMockMode ? '❌ Mock 모드 (데이터 휘발성)' : '✅ PostgreSQL 연결됨'}     ║
 ║   시작: ${new Date().toLocaleString('ko-KR')}             ║
 ║                                                   ║
 ╚═══════════════════════════════════════════════════╝
   `);
+
+  if (isMockMode) {
+    console.log('⚠️  경고: DATABASE_URL이 설정되지 않아 Mock 모드로 실행 중입니다.');
+    console.log('⚠️  서버 재시작 시 모든 데이터가 초기화됩니다.');
+    console.log('⚠️  Railway에서 DATABASE_URL 환경변수를 설정해주세요.');
+  }
 });
 
 module.exports = app;
