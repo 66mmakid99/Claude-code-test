@@ -3,6 +3,12 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
+// JWT_SECRET 기본값 설정 (Mock 모드용)
+if (!process.env.JWT_SECRET) {
+  process.env.JWT_SECRET = 'medical-comply-dev-secret-key-2024';
+  console.log('⚠️  JWT_SECRET 환경변수 없음 - 기본값 사용 중');
+}
+
 const { pool, isMockMode } = require('./config/database');
 
 // 라우터 임포트

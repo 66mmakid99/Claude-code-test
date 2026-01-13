@@ -87,7 +87,8 @@ function Register({ onLogin }) {
       navigate('/dashboard')
     } catch (err) {
       const errorMessage = err.response?.data?.error || '회원가입 중 오류가 발생했습니다.'
-      setServerError(errorMessage)
+      const errorDetail = err.response?.data?.detail
+      setServerError(errorDetail ? `${errorMessage} (${errorDetail})` : errorMessage)
     } finally {
       setLoading(false)
     }
