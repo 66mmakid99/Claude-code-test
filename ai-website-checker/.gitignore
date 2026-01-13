@@ -28,3 +28,14 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
+# Database
+*.db
+*.sqlite
+
+# Generated reports
+/backend/reports/
+
+# Package locks (optional, include if you want reproducible builds)
+package-lock.json
+**/package-lock.json

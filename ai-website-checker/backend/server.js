@@ -2,7 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
+
+const { saveReport, getReport, getAllReports, getReportsByUrl, saveEmailReport } = require('./database');
+const { generatePDFReport } = require('./pdf-generator');
+const { sendReportEmail } = require('./email-sender');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,9 +16,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Website verification endpoint
+// Create reports directory if it doesn't exist
+const reportsDir = path.join(__dirname, 'reports');
+if (!fs.existsSync(reportsDir)) {
+  fs.mkdirSync(reportsDir);
+}
+
+// Website verification endpoint (with database save)
 app.post('/api/verify', async (req, res) => {
-  const { url } = req.body;
+  const { url, saveToDb = true } = req.body;
 
   if (!url) {
     return res.status(400).json({ error: 'URL is required' });
@@ -20,6 +32,13 @@ app.post('/api/verify', async (req, res) => {
 
   try {
     const results = await analyzeWebsite(url);
+
+    // Save to database if requested
+    if (saveToDb) {
+      const reportId = saveReport(results.url, results.score, results.checks);
+      results.reportId = reportId;
+    }
+
     res.json(results);
   } catch (error) {
     console.error('Error analyzing website:', error);
@@ -30,9 +49,179 @@ app.post('/api/verify', async (req, res) => {
   }
 });
 
+// Bulk URL verification endpoint
+app.post('/api/verify-bulk', async (req, res) => {
+  const { urls } = req.body;
+
+  if (!urls || !Array.isArray(urls) || urls.length === 0) {
+    return res.status(400).json({ error: 'URLs array is required' });
+  }
+
+  if (urls.length > 10) {
+    return res.status(400).json({ error: 'Maximum 10 URLs allowed per request' });
+  }
+
+  try {
+    const results = [];
+
+    for (const url of urls) {
+      try {
+        const result = await analyzeWebsite(url);
+        const reportId = saveReport(result.url, result.score, result.checks);
+        result.reportId = reportId;
+        results.push({
+          success: true,
+          ...result
+        });
+      } catch (error) {
+        results.push({
+          success: false,
+          url,
+          error: error.message
+        });
+      }
+    }
+
+    res.json({
+      total: urls.length,
+      successful: results.filter(r => r.success).length,
+      failed: results.filter(r => !r.success).length,
+      results
+    });
+
+  } catch (error) {
+    console.error('Error in bulk verification:', error);
+    res.status(500).json({
+      error: 'Failed to process bulk verification',
+      message: error.message
+    });
+  }
+});
+
+// Generate PDF and send email
+app.post('/api/send-report', async (req, res) => {
+  const { url, email } = req.body;
+
+  if (!url || !email) {
+    return res.status(400).json({ error: 'URL and email are required' });
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
+
+  try {
+    // Analyze website
+    const results = await analyzeWebsite(url);
+
+    // Save to database
+    const reportId = saveReport(results.url, results.score, results.checks);
+    results.reportId = reportId;
+
+    // Generate PDF
+    const pdfPath = path.join(reportsDir, `report-${reportId}-${Date.now()}.pdf`);
+    await generatePDFReport(results, pdfPath);
+
+    // Send email
+    const emailResult = await sendReportEmail(email, results, pdfPath);
+
+    // Save email record
+    saveEmailReport(reportId, email);
+
+    // Delete PDF after sending (optional)
+    fs.unlinkSync(pdfPath);
+
+    res.json({
+      success: true,
+      message: 'Report sent successfully',
+      reportId,
+      emailSent: emailResult.success
+    });
+
+  } catch (error) {
+    console.error('Error sending report:', error);
+    res.status(500).json({
+      error: 'Failed to send report',
+      message: error.message,
+      details: error.code === 'EAUTH' ? 'Email authentication failed. Please check SMTP credentials.' : undefined
+    });
+  }
+});
+
+// Get report by ID
+app.get('/api/reports/:id', (req, res) => {
+  try {
+    const report = getReport(req.params.id);
+
+    if (!report) {
+      return res.status(404).json({ error: 'Report not found' });
+    }
+
+    res.json(report);
+  } catch (error) {
+    console.error('Error retrieving report:', error);
+    res.status(500).json({
+      error: 'Failed to retrieve report',
+      message: error.message
+    });
+  }
+});
+
+// Get all reports (paginated)
+app.get('/api/reports', (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 50;
+    const reports = getAllReports(limit);
+
+    res.json({
+      total: reports.length,
+      reports
+    });
+  } catch (error) {
+    console.error('Error retrieving reports:', error);
+    res.status(500).json({
+      error: 'Failed to retrieve reports',
+      message: error.message
+    });
+  }
+});
+
+// Get reports by URL
+app.get('/api/reports/url/:url', (req, res) => {
+  try {
+    const url = decodeURIComponent(req.params.url);
+    const limit = parseInt(req.query.limit) || 10;
+    const reports = getReportsByUrl(url, limit);
+
+    res.json({
+      url,
+      total: reports.length,
+      reports
+    });
+  } catch (error) {
+    console.error('Error retrieving reports by URL:', error);
+    res.status(500).json({
+      error: 'Failed to retrieve reports',
+      message: error.message
+    });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'AI Website Checker API is running' });
+  res.json({
+    status: 'OK',
+    message: 'AI Website Checker API is running',
+    features: {
+      singleVerification: true,
+      bulkVerification: true,
+      pdfGeneration: true,
+      emailSending: true,
+      database: true
+    }
+  });
 });
 
 async function analyzeWebsite(url) {
@@ -279,4 +468,5 @@ function analyzePerformance($, html) {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Features: Single/Bulk verification, PDF generation, Email sending, Database storage`);
 });
