@@ -39,7 +39,9 @@ function Dashboard({ user }) {
       const response = await reportsAPI.scan(url)
       navigate(`/report/${response.data.report.id}`)
     } catch (err) {
-      setError(err.response?.data?.error || '검사 요청 중 오류가 발생했습니다.')
+      const errorMsg = err.response?.data?.error || '검사 요청 중 오류가 발생했습니다.'
+      const errorDetail = err.response?.data?.detail
+      setError(errorDetail ? `${errorMsg} (${errorDetail})` : errorMsg)
     } finally {
       setScanning(false)
     }

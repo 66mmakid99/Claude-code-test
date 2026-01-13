@@ -69,7 +69,10 @@ router.post('/scan', authMiddleware, async (req, res) => {
     });
   } catch (error) {
     console.error('검사 요청 오류:', error);
-    res.status(500).json({ error: '검사 요청 중 오류가 발생했습니다.' });
+    res.status(500).json({
+      error: '검사 요청 중 오류가 발생했습니다.',
+      detail: error.message
+    });
   }
 });
 

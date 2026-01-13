@@ -143,6 +143,16 @@ function processMockQuery(text, params = []) {
   }
 
   if (query.includes('from reports')) {
+    // COUNT 쿼리를 먼저 처리 (더 구체적인 조건)
+    if (query.includes('count(*)') && query.includes('date(created_at)')) {
+      const today = new Date().toDateString();
+      const count = mockData.reports.filter(r => r.user_id === params[0] && new Date(r.created_at).toDateString() === today).length;
+      return { rows: [{ count }] };
+    }
+    if (query.includes('count(*)') && query.includes('where user_id')) {
+      const count = mockData.reports.filter(r => r.user_id === params[0]).length;
+      return { rows: [{ count }] };
+    }
     if (query.includes('where id')) {
       const report = mockData.reports.find(r => r.id === parseInt(params[0]) && r.user_id === params[1]);
       return { rows: report ? [report] : [] };
@@ -150,11 +160,6 @@ function processMockQuery(text, params = []) {
     if (query.includes('where user_id')) {
       const reports = mockData.reports.filter(r => r.user_id === params[0]);
       return { rows: reports };
-    }
-    if (query.includes('count(*)') && query.includes('date(created_at)')) {
-      const today = new Date().toDateString();
-      const count = mockData.reports.filter(r => r.user_id === params[0] && new Date(r.created_at).toDateString() === today).length;
-      return { rows: [{ count }] };
     }
   }
 
