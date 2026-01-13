@@ -9,12 +9,11 @@ function Header({ user, onLogout }) {
         </Link>
 
         <nav className="nav-links">
-          <Link to="/pricing">요금제</Link>
-
           {user ? (
             <>
-              <Link to="/dashboard">대시보드</Link>
-              <Link to="/aeo">AEO 분석</Link>
+              <Link to="/aeo" style={{ fontWeight: '600' }}>AEO 분석</Link>
+              <Link to="/dashboard">의료광고 검사</Link>
+              <Link to="/pricing">요금제</Link>
               {(user.role === 'dealer' || user.role === 'admin') && (
                 <Link to="/dealer">딜러 관리</Link>
               )}
@@ -25,6 +24,7 @@ function Header({ user, onLogout }) {
             </>
           ) : (
             <>
+              <Link to="/pricing">요금제</Link>
               <Link to="/login">로그인</Link>
               <Link to="/register">
                 <button className="btn btn-primary">무료 시작</button>

@@ -285,4 +285,125 @@ function analyzeWithRules(url, data) {
   };
 }
 
+// 이메일 발송 API
+router.post('/send-email', authMiddleware, async (req, res) => {
+  try {
+    const { email, result } = req.body;
+
+    if (!email || !result) {
+      return res.status(400).json({ error: '이메일과 분석 결과가 필요합니다.' });
+    }
+
+    // 등급 계산
+    const getGrade = (score) => {
+      if (score >= 90) return 'A+';
+      if (score >= 80) return 'A';
+      if (score >= 70) return 'B+';
+      if (score >= 60) return 'B';
+      if (score >= 50) return 'C';
+      return 'D';
+    };
+
+    const gradeInfo = {
+      'A+': { label: '최우수', desc: 'AI 검색에 최적화됨' },
+      'A': { label: '우수', desc: 'AI 친화적 구조' },
+      'B+': { label: '양호', desc: '일부 개선 필요' },
+      'B': { label: '보통', desc: '개선 권고' },
+      'C': { label: '미흡', desc: '즉시 개선 필요' },
+      'D': { label: '매우미흡', desc: '전면 개편 필요' }
+    };
+
+    const grade = getGrade(result.overallScore);
+    const gradeData = gradeInfo[grade];
+
+    // HTML 이메일 본문 생성
+    const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: 'Malgun Gothic', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { text-align: center; padding: 20px; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border-radius: 10px; }
+    .score-box { text-align: center; padding: 30px; background: #f8fafc; border-radius: 10px; margin: 20px 0; }
+    .score { font-size: 48px; font-weight: 800; color: #2563eb; }
+    .grade { font-size: 24px; font-weight: 700; color: #059669; }
+    .category { background: #f1f5f9; padding: 15px; border-radius: 8px; margin: 10px 0; }
+    .cat-header { display: flex; justify-content: space-between; font-weight: 600; }
+    .issue { background: #fef2f2; padding: 10px; border-left: 3px solid #dc2626; margin: 5px 0; }
+    .rec { background: #eff6ff; padding: 10px; border-left: 3px solid #2563eb; margin: 5px 0; }
+    .footer { text-align: center; color: #64748b; font-size: 12px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>AEO/GEO 분석 리포트</h1>
+    <p>${result.siteName}</p>
+  </div>
+
+  <div class="score-box">
+    <div class="score">${result.overallScore}</div>
+    <div class="grade">${grade} - ${gradeData?.label}</div>
+    <p>${gradeData?.desc}</p>
+  </div>
+
+  <h3>카테고리별 점수</h3>
+  ${Object.entries(result.categories || {}).map(([key, cat]) => `
+    <div class="category">
+      <div class="cat-header">
+        <span>${{structure:'구조',content:'콘텐츠',technical:'기술',trust:'신뢰도'}[key] || key}</span>
+        <span>${cat.score}/25점</span>
+      </div>
+    </div>
+  `).join('')}
+
+  ${result.topIssues?.length > 0 ? `
+    <h3>주요 문제점</h3>
+    ${result.topIssues.map(issue => `<div class="issue">${issue}</div>`).join('')}
+  ` : ''}
+
+  <h3>개선 권고사항</h3>
+  ${(result.recommendations || []).slice(0, 5).map(rec => `
+    <div class="rec">${typeof rec === 'string' ? rec : rec.title}</div>
+  `).join('')}
+
+  <div class="footer">
+    <p>MedicalComply AEO/GEO Analyzer</p>
+    <p>${new Date().toLocaleString('ko-KR')}</p>
+  </div>
+</body>
+</html>
+    `;
+
+    // Resend API 사용 (설정되어 있으면)
+    if (process.env.RESEND_API_KEY) {
+      const { Resend } = require('resend');
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      await resend.emails.send({
+        from: process.env.EMAIL_FROM || 'MedicalComply <noreply@medicalcomply.com>',
+        to: email,
+        subject: `[AEO 분석] ${result.siteName} - ${result.overallScore}점 (${grade})`,
+        html: htmlContent
+      });
+
+      return res.json({ success: true, message: '이메일이 발송되었습니다.' });
+    }
+
+    // API 키가 없으면 테스트 모드
+    console.log('📧 이메일 발송 (테스트 모드):', email);
+    console.log('제목:', `[AEO 분석] ${result.siteName} - ${result.overallScore}점 (${grade})`);
+
+    res.json({
+      success: true,
+      message: '이메일 발송 완료 (테스트 모드)',
+      testMode: true
+    });
+
+  } catch (error) {
+    console.error('이메일 발송 오류:', error);
+    res.status(500).json({ error: '이메일 발송 중 오류가 발생했습니다.', detail: error.message });
+  }
+});
+
 module.exports = router;
