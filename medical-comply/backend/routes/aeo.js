@@ -381,7 +381,7 @@ router.post('/send-email', authMiddleware, async (req, res) => {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
       await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'MedicalComply <noreply@medicalcomply.com>',
+        from: process.env.EMAIL_FROM || 'MedicalComply <onboarding@resend.dev>',
         to: email,
         subject: `[AEO 분석] ${result.siteName} - ${result.overallScore}점 (${grade})`,
         html: htmlContent
