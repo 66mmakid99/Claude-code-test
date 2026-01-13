@@ -6,6 +6,7 @@ function Pricing({ user }) {
   const [selectedPlan, setSelectedPlan] = useState(1)
   const [couponCode, setCouponCode] = useState('')
   const [loading, setLoading] = useState(false)
+  const [testMode, setTestMode] = useState(true) // 테스트 모드
   const navigate = useNavigate()
 
   const plans = [
@@ -22,18 +23,56 @@ function Pricing({ user }) {
 
     try {
       setLoading(true)
-      const response = await paymentsAPI.request({
-        months: selectedPlan,
-        couponCode: couponCode || undefined
-      })
 
-      // 토스페이먼츠 결제 위젯 호출 (실제 구현 시 SDK 사용)
-      alert(`결제 페이지로 이동합니다.\n주문번호: ${response.data.orderId}\n금액: ${response.data.amount.toLocaleString()}원`)
+      if (testMode) {
+        // 테스트 결제 (API 키 없이 동작)
+        const response = await fetch('/api/payments/test-payment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({
+            months: selectedPlan,
+            couponCode: couponCode || undefined
+          })
+        })
 
-      // 실제로는 TossPayments SDK를 사용하여 결제 진행
-      // window.location.href = tossPaymentsWidget.requestPayment(...)
+        const data = await response.json()
+
+        if (response.ok) {
+          alert(`✅ 테스트 결제 완료!\n\n주문번호: ${data.orderId}\n금액: ${data.amount.toLocaleString()}원\n딜러 수수료: ${data.dealerCommission.toLocaleString()}원\n\n구독 만료일: ${new Date(data.subscriptionEndDate).toLocaleDateString('ko-KR')}`)
+          navigate('/dashboard')
+        } else {
+          throw new Error(data.error)
+        }
+      } else {
+        // 실제 토스페이먼츠 결제 플로우
+        const response = await paymentsAPI.request({
+          months: selectedPlan,
+          couponCode: couponCode || undefined
+        })
+
+        // 토스페이먼츠 SDK 호출 (실제 구현 시)
+        // @see https://docs.tosspayments.com/guides/payment-widget/integration
+        const { orderId, amount, orderName, successUrl, failUrl } = response.data
+
+        // TossPayments SDK가 로드되어 있다면 결제 위젯 호출
+        if (window.TossPayments) {
+          const tossPayments = window.TossPayments(process.env.REACT_APP_TOSS_CLIENT_KEY)
+          await tossPayments.requestPayment('카드', {
+            amount,
+            orderId,
+            orderName,
+            successUrl,
+            failUrl
+          })
+        } else {
+          alert(`토스페이먼츠 SDK가 로드되지 않았습니다.\n\n테스트 모드를 사용하거나 SDK를 설정해주세요.`)
+        }
+      }
     } catch (err) {
-      alert(err.response?.data?.error || '결제 요청 중 오류가 발생했습니다.')
+      alert(err.message || '결제 요청 중 오류가 발생했습니다.')
     } finally {
       setLoading(false)
     }
@@ -172,6 +211,27 @@ function Pricing({ user }) {
         <button className="btn btn-primary" onClick={handleSubscribe} disabled={loading}>
           {loading ? '처리중...' : `${plans.find(p => p.months === selectedPlan)?.price.toLocaleString()}원 결제하기`}
         </button>
+
+        {/* 테스트 모드 토글 */}
+        <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'var(--gray-100)', borderRadius: '0.5rem' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={testMode}
+              onChange={(e) => setTestMode(e.target.checked)}
+              style={{ width: '18px', height: '18px' }}
+            />
+            <span style={{ fontWeight: '500' }}>테스트 모드</span>
+            <span style={{ color: 'var(--gray-500)', fontSize: '0.875rem' }}>
+              (API 키 없이 결제 테스트)
+            </span>
+          </label>
+          {testMode && (
+            <p style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: 'var(--primary)' }}>
+              테스트 모드에서는 실제 결제 없이 구독이 활성화됩니다.
+            </p>
+          )}
+        </div>
       </div>
     </div>
   )
