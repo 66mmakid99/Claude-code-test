@@ -16,6 +16,7 @@ const authRoutes = require('./routes/auth');
 const reportRoutes = require('./routes/reports');
 const paymentRoutes = require('./routes/payments');
 const dealerRoutes = require('./routes/dealers');
+const aeoRoutes = require('./routes/aeo');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -39,6 +40,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/dealers', dealerRoutes);
+app.use('/api/aeo', aeoRoutes);
 
 // 헬스 체크
 app.get('/api/health', async (req, res) => {

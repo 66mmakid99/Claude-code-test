@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard'
 import ReportDetail from './pages/ReportDetail'
 import Pricing from './pages/Pricing'
 import DealerDashboard from './pages/DealerDashboard'
+import AEOChecker from './pages/AEOChecker'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -54,6 +55,7 @@ function App() {
           <Route path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
           <Route path="/report/:id" element={user ? <ReportDetail /> : <Navigate to="/login" />} />
           <Route path="/pricing" element={<Pricing user={user} />} />
+          <Route path="/aeo" element={user ? <AEOChecker user={user} /> : <Navigate to="/login" />} />
           <Route
             path="/dealer"
             element={user?.role === 'dealer' || user?.role === 'admin' ? <DealerDashboard /> : <Navigate to="/" />}

@@ -14,6 +14,7 @@ function Header({ user, onLogout }) {
           {user ? (
             <>
               <Link to="/dashboard">대시보드</Link>
+              <Link to="/aeo">AEO 분석</Link>
               {(user.role === 'dealer' || user.role === 'admin') && (
                 <Link to="/dealer">딜러 관리</Link>
               )}
