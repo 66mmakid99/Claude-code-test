@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
-const { saveReport, getReport, getAllReports, getReportsByUrl, saveEmailReport } = require('./database');
+const { saveReport, getReport, getAllReports, getReportsByUrl, saveEmailReport, isDatabaseAvailable } = require('./database');
 const { generatePDFReport } = require('./pdf-generator');
 const { sendReportEmail } = require('./email-sender');
 
@@ -247,17 +247,23 @@ app.get('/api/reports/url/:url', (req, res) => {
   }
 });
 
-// Health check endpoint
+// Health check endpoint (root level for Railway)
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
+// Detailed health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
     message: 'AI Website Checker API is running',
+    timestamp: new Date().toISOString(),
     features: {
       singleVerification: true,
       bulkVerification: true,
       pdfGeneration: true,
       emailSending: true,
-      database: true
+      database: isDatabaseAvailable()
     }
   });
 });
@@ -504,7 +510,29 @@ function analyzePerformance($, html) {
   };
 }
 
-app.listen(PORT, () => {
+// Serve static frontend files (for production)
+const publicDir = path.join(__dirname, 'public');
+if (fs.existsSync(publicDir)) {
+  app.use(express.static(publicDir));
+
+  // Handle React Router - serve index.html for all non-API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/') || req.path === '/health') {
+      return next();
+    }
+    res.sendFile(path.join(publicDir, 'index.html'));
+  });
+}
+
+// Start server
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Features: Single/Bulk verification, PDF generation, Email sending, Database storage`);
+  console.log(`Database: ${isDatabaseAvailable() ? 'SQLite' : 'In-Memory'}`);
+  console.log(`Features: Single/Bulk verification, PDF generation, Email sending`);
+});
+
+// Handle server errors
+server.on('error', (error) => {
+  console.error('Server error:', error);
+  process.exit(1);
 });
