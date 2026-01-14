@@ -47,26 +47,28 @@ app.get('/', (req, res) => {
   res.json({ status: 'ok', service: 'MEDCHECKER API' });
 });
 
-// 헬스 체크
+// 헬스 체크 (DB 상태와 무관하게 항상 200 반환)
 app.get('/api/health', async (req, res) => {
+  let dbStatus = 'unknown';
   try {
     if (!isMockMode && pool) {
       await pool.query('SELECT 1');
+      dbStatus = 'connected';
+    } else {
+      dbStatus = 'mock';
     }
-    res.json({
-      status: 'ok',
-      message: 'MedicalComply API 서버 정상 작동 중',
-      database: isMockMode ? 'mock' : 'connected',
-      mode: isMockMode ? 'mock' : 'production',
-      timestamp: new Date().toISOString()
-    });
   } catch (error) {
-    res.status(500).json({
-      status: 'error',
-      message: '데이터베이스 연결 실패',
-      database: 'disconnected'
-    });
+    dbStatus = 'disconnected';
+    console.log('DB 헬스체크 실패:', error.message);
   }
+
+  // 서버는 정상이므로 항상 200 반환
+  res.json({
+    status: 'ok',
+    message: 'MEDCHECKER API 서버 정상 작동 중',
+    database: dbStatus,
+    timestamp: new Date().toISOString()
+  });
 });
 
 // 프론트엔드 정적 파일 서빙 (프로덕션)
