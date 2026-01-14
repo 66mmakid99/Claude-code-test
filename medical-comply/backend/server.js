@@ -42,6 +42,11 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/dealers', dealerRoutes);
 app.use('/api/aeo', aeoRoutes);
 
+// 루트 헬스 체크 (Railway용)
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', service: 'MEDCHECKER API' });
+});
+
 // 헬스 체크
 app.get('/api/health', async (req, res) => {
   try {
