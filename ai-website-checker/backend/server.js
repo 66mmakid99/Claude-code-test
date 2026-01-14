@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
-const { saveReport, getReport, getAllReports, getReportsByUrl, saveEmailReport, isDatabaseAvailable } = require('./database');
+const { saveReport, getReport, getAllReports, getReportsByUrl, saveEmailReport } = require('./database');
 const { generatePDFReport } = require('./pdf-generator');
 const { sendReportEmail } = require('./email-sender');
 
@@ -51,20 +51,10 @@ app.post('/api/verify', async (req, res) => {
 
 // Bulk URL verification endpoint
 app.post('/api/verify-bulk', async (req, res) => {
-  const { urls, email } = req.body;
+  const { urls } = req.body;
 
   if (!urls || !Array.isArray(urls) || urls.length === 0) {
     return res.status(400).json({ error: 'URLs array is required' });
-  }
-
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
-  }
-
-  // Validate email format
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ error: 'Invalid email format' });
   }
 
   if (urls.length > 10) {
@@ -73,22 +63,12 @@ app.post('/api/verify-bulk', async (req, res) => {
 
   try {
     const results = [];
-    const pdfPaths = [];
 
     for (const url of urls) {
       try {
         const result = await analyzeWebsite(url);
         const reportId = saveReport(result.url, result.score, result.checks);
         result.reportId = reportId;
-
-        // Generate PDF for each successful result
-        const pdfPath = path.join(reportsDir, `report-${reportId}-${Date.now()}.pdf`);
-        await generatePDFReport(result, pdfPath);
-        pdfPaths.push(pdfPath);
-
-        // Save email record
-        saveEmailReport(reportId, email);
-
         results.push({
           success: true,
           ...result
@@ -102,27 +82,10 @@ app.post('/api/verify-bulk', async (req, res) => {
       }
     }
 
-    // Send email with all PDFs
-    if (pdfPaths.length > 0) {
-      const bulkSummary = {
-        url: `Bulk Analysis (${results.filter(r => r.success).length} sites)`,
-        score: Math.round(results.filter(r => r.success).reduce((sum, r) => sum + r.score, 0) / results.filter(r => r.success).length),
-        timestamp: new Date().toISOString(),
-        checks: {}
-      };
-      await sendReportEmail(email, bulkSummary, pdfPaths);
-
-      // Delete PDFs after sending
-      pdfPaths.forEach(p => {
-        try { fs.unlinkSync(p); } catch (e) {}
-      });
-    }
-
     res.json({
       total: urls.length,
       successful: results.filter(r => r.success).length,
       failed: results.filter(r => !r.success).length,
-      emailSent: pdfPaths.length > 0,
       results
     });
 
@@ -174,8 +137,7 @@ app.post('/api/send-report', async (req, res) => {
       success: true,
       message: 'Report sent successfully',
       reportId,
-      emailSent: emailResult.success,
-      results
+      emailSent: emailResult.success
     });
 
   } catch (error) {
@@ -247,23 +209,17 @@ app.get('/api/reports/url/:url', (req, res) => {
   }
 });
 
-// Health check endpoint (root level for Railway)
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
-
-// Detailed health check endpoint
+// Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
     message: 'AI Website Checker API is running',
-    timestamp: new Date().toISOString(),
     features: {
       singleVerification: true,
       bulkVerification: true,
       pdfGeneration: true,
       emailSending: true,
-      database: isDatabaseAvailable()
+      database: true
     }
   });
 });
@@ -510,29 +466,7 @@ function analyzePerformance($, html) {
   };
 }
 
-// Serve static frontend files (for production)
-const publicDir = path.join(__dirname, 'public');
-if (fs.existsSync(publicDir)) {
-  app.use(express.static(publicDir));
-
-  // Handle React Router - serve index.html for all non-API routes
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api/') || req.path === '/health') {
-      return next();
-    }
-    res.sendFile(path.join(publicDir, 'index.html'));
-  });
-}
-
-// Start server
-const server = app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Database: ${isDatabaseAvailable() ? 'SQLite' : 'In-Memory'}`);
-  console.log(`Features: Single/Bulk verification, PDF generation, Email sending`);
-});
-
-// Handle server errors
-server.on('error', (error) => {
-  console.error('Server error:', error);
-  process.exit(1);
+  console.log(`Features: Single/Bulk verification, PDF generation, Email sending, Database storage`);
 });
