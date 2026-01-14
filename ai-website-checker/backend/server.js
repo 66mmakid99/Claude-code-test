@@ -51,10 +51,20 @@ app.post('/api/verify', async (req, res) => {
 
 // Bulk URL verification endpoint
 app.post('/api/verify-bulk', async (req, res) => {
-  const { urls } = req.body;
+  const { urls, email } = req.body;
 
   if (!urls || !Array.isArray(urls) || urls.length === 0) {
     return res.status(400).json({ error: 'URLs array is required' });
+  }
+
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
   }
 
   if (urls.length > 10) {
@@ -63,12 +73,22 @@ app.post('/api/verify-bulk', async (req, res) => {
 
   try {
     const results = [];
+    const pdfPaths = [];
 
     for (const url of urls) {
       try {
         const result = await analyzeWebsite(url);
         const reportId = saveReport(result.url, result.score, result.checks);
         result.reportId = reportId;
+
+        // Generate PDF for each successful result
+        const pdfPath = path.join(reportsDir, `report-${reportId}-${Date.now()}.pdf`);
+        await generatePDFReport(result, pdfPath);
+        pdfPaths.push(pdfPath);
+
+        // Save email record
+        saveEmailReport(reportId, email);
+
         results.push({
           success: true,
           ...result
@@ -82,10 +102,27 @@ app.post('/api/verify-bulk', async (req, res) => {
       }
     }
 
+    // Send email with all PDFs
+    if (pdfPaths.length > 0) {
+      const bulkSummary = {
+        url: `Bulk Analysis (${results.filter(r => r.success).length} sites)`,
+        score: Math.round(results.filter(r => r.success).reduce((sum, r) => sum + r.score, 0) / results.filter(r => r.success).length),
+        timestamp: new Date().toISOString(),
+        checks: {}
+      };
+      await sendReportEmail(email, bulkSummary, pdfPaths);
+
+      // Delete PDFs after sending
+      pdfPaths.forEach(p => {
+        try { fs.unlinkSync(p); } catch (e) {}
+      });
+    }
+
     res.json({
       total: urls.length,
       successful: results.filter(r => r.success).length,
       failed: results.filter(r => !r.success).length,
+      emailSent: pdfPaths.length > 0,
       results
     });
 
@@ -137,7 +174,8 @@ app.post('/api/send-report', async (req, res) => {
       success: true,
       message: 'Report sent successfully',
       reportId,
-      emailSent: emailResult.success
+      emailSent: emailResult.success,
+      results
     });
 
   } catch (error) {

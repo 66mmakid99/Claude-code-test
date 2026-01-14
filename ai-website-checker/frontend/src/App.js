@@ -7,7 +7,6 @@ function App() {
   const [url, setUrl] = useState('');
   const [urls, setUrls] = useState('');
   const [email, setEmail] = useState('');
-  const [sendEmail, setSendEmail] = useState(false);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [bulkResults, setBulkResults] = useState(null);
@@ -22,22 +21,13 @@ function App() {
     setEmailSent(false);
 
     try {
-      if (sendEmail && email) {
-        // Send report via email
-        const response = await axios.post('/api/send-report', { url, email });
-        setEmailSent(true);
-        setError(`Report sent to ${email}! Check your inbox.`);
-
-        // Still fetch and display results
-        const verifyResponse = await axios.post('/api/verify', { url });
-        setResults(verifyResponse.data);
-      } else {
-        // Regular verification
-        const response = await axios.post('/api/verify', { url });
-        setResults(response.data);
-      }
+      // Send report via email (always required)
+      const response = await axios.post('/api/send-report', { url, email });
+      setEmailSent(true);
+      setResults(response.data.results);
+      setError(`PDF 리포트가 ${email}로 전송되었습니다!`);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to analyze website');
+      setError(err.response?.data?.message || '웹사이트 분석에 실패했습니다');
     } finally {
       setLoading(false);
     }
@@ -48,27 +38,30 @@ function App() {
     setLoading(true);
     setError(null);
     setBulkResults(null);
+    setEmailSent(false);
 
     try {
       // Parse URLs (one per line)
       const urlList = urls.split('\n').map(u => u.trim()).filter(u => u.length > 0);
 
       if (urlList.length === 0) {
-        setError('Please enter at least one URL');
+        setError('URL을 최소 1개 이상 입력해주세요');
         setLoading(false);
         return;
       }
 
       if (urlList.length > 10) {
-        setError('Maximum 10 URLs allowed');
+        setError('최대 10개의 URL만 분석 가능합니다');
         setLoading(false);
         return;
       }
 
-      const response = await axios.post('/api/verify-bulk', { urls: urlList });
+      const response = await axios.post('/api/verify-bulk', { urls: urlList, email });
       setBulkResults(response.data);
+      setEmailSent(true);
+      setError(`PDF 리포트가 ${email}로 전송되었습니다!`);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to analyze websites');
+      setError(err.response?.data?.message || '웹사이트 분석에 실패했습니다');
     } finally {
       setLoading(false);
     }
@@ -90,8 +83,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>🤖 AI Website Checker</h1>
-        <p>Verify how AI-friendly your website is</p>
+        <h1>AI Website Checker</h1>
+        <p>웹사이트의 AI 친화성을 분석합니다</p>
+        <p className="no-signup-notice">회원가입 없이 바로 사용 가능</p>
       </header>
 
       <main className="App-main">
@@ -104,9 +98,10 @@ function App() {
               setBulkResults(null);
               setResults(null);
               setError(null);
+              setEmailSent(false);
             }}
           >
-            Single URL
+            단일 URL
           </button>
           <button
             className={mode === 'bulk' ? 'active' : ''}
@@ -115,9 +110,10 @@ function App() {
               setBulkResults(null);
               setResults(null);
               setError(null);
+              setEmailSent(false);
             }}
           >
-            Bulk URLs
+            대량 URL
           </button>
         </div>
 
@@ -128,35 +124,26 @@ function App() {
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="Enter website URL (e.g., https://example.com)"
+              placeholder="분석할 웹사이트 URL (예: https://example.com)"
               required
               className="url-input"
             />
 
-            <div className="email-option">
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={sendEmail}
-                  onChange={(e) => setSendEmail(e.target.checked)}
-                />
-                <span>Send PDF report via email</span>
-              </label>
-
-              {sendEmail && (
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  required={sendEmail}
-                  className="email-input"
-                />
-              )}
+            <div className="email-section">
+              <label className="email-label">결과를 받을 이메일 주소</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="email-input"
+              />
+              <p className="email-hint">분석 결과가 PDF로 이메일 전송됩니다</p>
             </div>
 
             <button type="submit" disabled={loading} className="submit-button">
-              {loading ? 'Analyzing...' : 'Check Website'}
+              {loading ? '분석 중...' : '웹사이트 분석하기'}
             </button>
           </form>
         )}
@@ -167,14 +154,27 @@ function App() {
             <textarea
               value={urls}
               onChange={(e) => setUrls(e.target.value)}
-              placeholder="Enter website URLs (one per line, max 10)&#10;https://example1.com&#10;https://example2.com&#10;https://example3.com"
+              placeholder="웹사이트 URL을 한 줄에 하나씩 입력 (최대 10개)&#10;https://example1.com&#10;https://example2.com&#10;https://example3.com"
               required
               className="url-textarea"
               rows="6"
             />
 
+            <div className="email-section">
+              <label className="email-label">결과를 받을 이메일 주소</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="email-input"
+              />
+              <p className="email-hint">분석 결과가 PDF로 이메일 전송됩니다</p>
+            </div>
+
             <button type="submit" disabled={loading} className="submit-button">
-              {loading ? 'Analyzing...' : 'Check All Websites'}
+              {loading ? '분석 중...' : '모든 웹사이트 분석하기'}
             </button>
           </form>
         )}
@@ -330,8 +330,8 @@ function App() {
       </main>
 
       <footer className="App-footer">
-        <p>Built with React & Express | AI Website Checker v2.0</p>
-        <p>Features: Single/Bulk verification, PDF reports, Email delivery, Database storage</p>
+        <p>AI Website Checker v2.0</p>
+        <p>회원가입 없이 이메일만으로 PDF 리포트 수신</p>
       </footer>
     </div>
   );
