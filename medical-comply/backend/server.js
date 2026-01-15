@@ -87,7 +87,7 @@ app.get('/api/health', async (req, res) => {
   // 서버는 정상이므로 항상 200 반환
   res.json({
     status: 'ok',
-    message: 'MEDCHECKER API 서버 정상 작동 중',
+    message: 'MADMEDCHECK API 서버 정상 작동 중',
     database: dbStatus,
     timestamp: new Date().toISOString()
   });

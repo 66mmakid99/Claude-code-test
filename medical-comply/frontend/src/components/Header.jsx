@@ -5,7 +5,7 @@ function Header({ user, onLogout }) {
     <header className="header">
       <div className="container header-content">
         <Link to="/" className="logo">
-          MEDCHECKER
+          MADMEDCHECK
         </Link>
 
         <nav className="nav-links">

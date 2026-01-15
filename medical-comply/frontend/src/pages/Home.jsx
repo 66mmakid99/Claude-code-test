@@ -94,7 +94,7 @@ function Home({ user }) {
       {/* 3대 서비스 카드 */}
       <section style={{ padding: '2rem 0 4rem' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '2.5rem', fontSize: '1.75rem', color: '#374151' }}>
-          MEDCHECKER 핵심 서비스
+          MADMEDCHECK 핵심 서비스
         </h2>
 
         <div style={{

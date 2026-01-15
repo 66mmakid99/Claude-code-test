@@ -81,7 +81,7 @@ function Dashboard({ user }) {
             안녕하세요, {user?.name || '사용자'}님! 👋
           </h1>
           <p style={{ opacity: 0.9 }}>
-            MEDCHECKER에서 웹사이트 최적화를 시작하세요
+            MADMEDCHECK에서 웹사이트 최적화를 시작하세요
           </p>
         </div>
         <div style={{
@@ -350,7 +350,7 @@ function Dashboard({ user }) {
       {/* 최근 검사 기록 */}
       <div className="card" style={{ borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.25rem', color: '#374151' }}>MEDCHECKER 사용기록</h2>
+          <h2 style={{ fontSize: '1.25rem', color: '#374151' }}>MADMEDCHECK 사용기록</h2>
           {reports.length > 0 && (
             <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>
               총 {reports.length}건
