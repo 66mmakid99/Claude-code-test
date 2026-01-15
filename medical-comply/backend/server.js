@@ -42,11 +42,6 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/dealers', dealerRoutes);
 app.use('/api/aeo', aeoRoutes);
 
-// 루트 헬스 체크 (Railway용)
-app.get('/', (req, res) => {
-  res.json({ status: 'ok', service: 'MEDCHECKER API' });
-});
-
 // 헬스 체크 (DB 상태와 무관하게 항상 200 반환)
 app.get('/api/health', async (req, res) => {
   let dbStatus = 'unknown';
