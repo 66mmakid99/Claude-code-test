@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-01-15T11:48:47.458043",
+  "categories": {
+    "accessibility": {
+      "name": "접근성",
+      "score": 24,
+      "max_score": 25,
+      "issues": [
+        "Home.jsx: aria-label 속성 부족",
+        "ReportDetail.jsx: aria-label 속성 부족",
+        "Login.jsx: aria-label 속성 부족",
+        "Pricing.jsx: aria-label 속성 부족",
+        "Register.jsx: aria-label 속성 부족"
+      ]
+    },
+    "consistency": {
+      "name": "일관성",
+      "score": 20,
+      "max_score": 25,
+      "issues": [
+        "인라인 스타일 과다 사용 (534개) - CSS 클래스 권장"
+      ]
+    },
+    "feedback": {
+      "name": "피드백",
+      "score": 25,
+      "max_score": 25,
+      "issues": [
+        "Home.jsx: 로딩 상태 표시 없음",
+        "Home.jsx: 에러 상태 처리 없음"
+      ]
+    },
+    "navigation": {
+      "name": "네비게이션",
+      "score": 25,
+      "max_score": 25,
+      "issues": []
+    }
+  },
+  "total_score": 94,
+  "max_score": 100,
+  "issues": [],
+  "recommendations": []
+}
