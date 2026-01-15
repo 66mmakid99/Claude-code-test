@@ -216,6 +216,62 @@ function Dashboard({ user }) {
             검사 시작하기 →
           </button>
         </div>
+
+        {/* 바이럴 모니터링 */}
+        <div
+          style={serviceCardStyle}
+          onClick={() => navigate('/viral')}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = 'translateY(-4px)'
+            e.currentTarget.style.boxShadow = '0 12px 40px rgba(139,92,246,0.15)'
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)'
+          }}
+        >
+          <div style={iconBoxStyle('#8b5cf6')}>
+            <svg width="32" height="32" fill="none" stroke="#8b5cf6" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', color: '#5b21b6' }}>
+            바이럴 모니터링
+          </h3>
+          <p style={{ color: '#6b7280', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+            네이버 블로그, 카페 등에서 병원 관련 바이럴 콘텐츠를
+            실시간으로 모니터링합니다.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <span style={{ background: '#ede9fe', color: '#5b21b6', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.75rem' }}>
+              블로그 추적
+            </span>
+            <span style={{ background: '#ede9fe', color: '#5b21b6', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.75rem' }}>
+              카페 모니터링
+            </span>
+            <span style={{ background: '#ede9fe', color: '#5b21b6', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.75rem' }}>
+              알림 설정
+            </span>
+          </div>
+          <button
+            className="btn"
+            style={{
+              width: '100%',
+              marginTop: '1.5rem',
+              background: '#8b5cf6',
+              color: 'white',
+              border: 'none',
+              padding: '1rem'
+            }}
+            onClick={(e) => {
+              e.stopPropagation()
+              navigate('/viral')
+            }}
+          >
+            모니터링 시작하기 →
+          </button>
+        </div>
       </div>
 
       {/* 빠른 액션 버튼들 */}
@@ -294,7 +350,7 @@ function Dashboard({ user }) {
       {/* 최근 검사 기록 */}
       <div className="card" style={{ borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.25rem', color: '#374151' }}>최근 의료광고 검사 기록</h2>
+          <h2 style={{ fontSize: '1.25rem', color: '#374151' }}>MEDCHECKER 사용기록</h2>
           {reports.length > 0 && (
             <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>
               총 {reports.length}건
