@@ -11,6 +11,7 @@ import DealerDashboard from './pages/DealerDashboard'
 import AEOChecker from './pages/AEOChecker'
 import Scan from './pages/Scan'
 import ViralMonitoring from './pages/ViralMonitoring'
+import OAuthCallback from './pages/OAuthCallback'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -54,6 +55,7 @@ function App() {
           <Route path="/" element={<Home user={user} />} />
           <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
           <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register onLogin={handleLogin} />} />
+          <Route path="/oauth/callback/:provider" element={<OAuthCallback onLogin={handleLogin} />} />
           <Route path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
           <Route path="/report/:id" element={user ? <ReportDetail /> : <Navigate to="/login" />} />
           <Route path="/pricing" element={<Pricing user={user} />} />

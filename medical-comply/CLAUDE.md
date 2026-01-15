@@ -176,3 +176,76 @@ python3 scripts/auto_restart.py --port 5000
 1. `python3 scripts/deploy_check.py` 실행
 2. 빌드 오류 확인
 3. 환경변수 설정 확인
+
+---
+
+## 소셜 로그인 설정 (OAuth)
+
+MEDCHECKER는 Google, 네이버, 카카오 계정 연동 로그인을 지원합니다.
+
+### 1. Google OAuth 설정
+1. [Google Cloud Console](https://console.cloud.google.com) 접속
+2. 프로젝트 생성 또는 선택
+3. **APIs & Services → Credentials → Create Credentials → OAuth client ID**
+4. Application type: **Web application**
+5. Authorized redirect URIs 추가:
+   - 로컬: `http://localhost:5173/oauth/callback/google`
+   - 프로덕션: `https://your-domain.com/oauth/callback/google`
+6. Client ID와 Client Secret 복사
+
+### 2. 네이버 OAuth 설정
+1. [네이버 개발자 센터](https://developers.naver.com) 접속
+2. **Application → 애플리케이션 등록**
+3. 사용 API: **네이버 로그인** 선택
+4. 서비스 URL 등록:
+   - 로컬: `http://localhost:5173`
+   - 프로덕션: `https://your-domain.com`
+5. Callback URL 등록:
+   - 로컬: `http://localhost:5173/oauth/callback/naver`
+   - 프로덕션: `https://your-domain.com/oauth/callback/naver`
+6. Client ID와 Client Secret 복사
+
+### 3. 카카오 OAuth 설정
+1. [카카오 개발자 센터](https://developers.kakao.com) 접속
+2. **애플리케이션 추가**
+3. **플랫폼 → Web → 사이트 도메인 등록**:
+   - 로컬: `http://localhost:5173`
+   - 프로덕션: `https://your-domain.com`
+4. **카카오 로그인 → Redirect URI** 등록:
+   - 로컬: `http://localhost:5173/oauth/callback/kakao`
+   - 프로덕션: `https://your-domain.com/oauth/callback/kakao`
+5. **앱 키 → REST API 키** 복사 (Client ID로 사용)
+6. **카카오 로그인 → 보안 → Client Secret** 생성 (선택)
+
+### 4. 환경변수 설정
+
+**백엔드 (.env)**
+```env
+# Google
+GOOGLE_CLIENT_ID=your-client-id
+GOOGLE_CLIENT_SECRET=your-client-secret
+
+# Naver
+NAVER_CLIENT_ID=your-client-id
+NAVER_CLIENT_SECRET=your-client-secret
+
+# Kakao
+KAKAO_CLIENT_ID=your-rest-api-key
+KAKAO_CLIENT_SECRET=your-client-secret
+```
+
+**프론트엔드 (.env)**
+```env
+VITE_GOOGLE_CLIENT_ID=your-client-id
+VITE_NAVER_CLIENT_ID=your-client-id
+VITE_KAKAO_CLIENT_ID=your-rest-api-key
+```
+
+### 5. Railway 환경변수 설정
+Railway 대시보드 → Variables에서 위 환경변수들을 추가합니다.
+
+### 6. DB 마이그레이션 (기존 DB 업데이트)
+```bash
+cd backend
+node scripts/migrate-oauth.js
+```

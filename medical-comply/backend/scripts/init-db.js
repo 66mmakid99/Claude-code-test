@@ -11,7 +11,7 @@ const initSQL = `
 -- 사용자 테이블
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(255) UNIQUE NOT NULL,
+  email VARCHAR(255) UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   name VARCHAR(100) NOT NULL,
   phone VARCHAR(20),
@@ -21,8 +21,14 @@ CREATE TABLE IF NOT EXISTS users (
   subscription_end_date TIMESTAMP,
   referred_by INTEGER REFERENCES users(id),
   coupon_code VARCHAR(50) UNIQUE,
+  oauth_provider VARCHAR(20),
+  oauth_id VARCHAR(255),
+  profile_image TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- OAuth 인덱스 (소셜 로그인 빠른 검색용)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_oauth ON users(oauth_provider, oauth_id) WHERE oauth_provider IS NOT NULL;
 
 -- 검사 리포트 테이블
 CREATE TABLE IF NOT EXISTS reports (
