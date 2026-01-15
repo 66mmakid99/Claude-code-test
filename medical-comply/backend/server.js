@@ -11,6 +11,33 @@ if (!process.env.JWT_SECRET) {
 
 const { pool, isMockMode } = require('./config/database');
 
+// OAuth 컬럼 자동 마이그레이션 (서버 시작 시)
+const runOAuthMigration = async () => {
+  if (isMockMode || !pool) return;
+
+  try {
+    const migrationSQL = `
+      DO $$
+      BEGIN
+        IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='oauth_provider') THEN
+          ALTER TABLE users ADD COLUMN oauth_provider VARCHAR(20);
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='oauth_id') THEN
+          ALTER TABLE users ADD COLUMN oauth_id VARCHAR(255);
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='profile_image') THEN
+          ALTER TABLE users ADD COLUMN profile_image TEXT;
+        END IF;
+      END $$;
+      CREATE UNIQUE INDEX IF NOT EXISTS idx_users_oauth ON users(oauth_provider, oauth_id) WHERE oauth_provider IS NOT NULL;
+    `;
+    await pool.query(migrationSQL);
+    console.log('✅ OAuth 컬럼 마이그레이션 완료');
+  } catch (error) {
+    console.log('⚠️  OAuth 마이그레이션 스킵:', error.message);
+  }
+};
+
 // 라우터 임포트
 const authRoutes = require('./routes/auth');
 const reportRoutes = require('./routes/reports');
@@ -94,7 +121,9 @@ app.use((err, req, res, next) => {
 });
 
 // 서버 시작
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  // OAuth 마이그레이션 실행
+  await runOAuthMigration();
   console.log(`
 ╔═══════════════════════════════════════════════════╗
 ║                                                   ║

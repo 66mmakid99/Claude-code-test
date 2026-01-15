@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { authAPI } from '../services/api'
+import SocialLoginButtons from '../components/SocialLoginButtons'
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState('')
@@ -34,6 +35,9 @@ function Login({ onLogin }) {
     <div className="container" style={{ maxWidth: '400px', paddingTop: '4rem' }}>
       <div className="card">
         <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>로그인</h1>
+
+        {/* 소셜 로그인 버튼 */}
+        <SocialLoginButtons onLogin={onLogin} disabled={loading} />
 
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '1rem' }}>

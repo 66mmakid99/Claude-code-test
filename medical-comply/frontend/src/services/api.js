@@ -34,7 +34,54 @@ export const authAPI = {
   register: (data) => api.post('/auth/register', data),
   login: (data) => api.post('/auth/login', data),
   getMe: () => api.get('/auth/me'),
-  applyDealer: () => api.post('/auth/apply-dealer')
+  applyDealer: () => api.post('/auth/apply-dealer'),
+  // OAuth 소셜 로그인
+  getOAuthProviders: () => api.get('/auth/oauth/providers'),
+  googleLogin: (data) => api.post('/auth/oauth/google', data),
+  naverLogin: (data) => api.post('/auth/oauth/naver', data),
+  kakaoLogin: (data) => api.post('/auth/oauth/kakao', data)
+}
+
+// OAuth 설정 (환경변수에서 가져오거나 기본값 사용)
+export const OAUTH_CONFIG = {
+  google: {
+    clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
+    redirectUri: `${window.location.origin}/oauth/callback/google`,
+    scope: 'email profile',
+    authUrl: 'https://accounts.google.com/o/oauth2/v2/auth'
+  },
+  naver: {
+    clientId: import.meta.env.VITE_NAVER_CLIENT_ID || '',
+    redirectUri: `${window.location.origin}/oauth/callback/naver`,
+    authUrl: 'https://nid.naver.com/oauth2.0/authorize'
+  },
+  kakao: {
+    clientId: import.meta.env.VITE_KAKAO_CLIENT_ID || '',
+    redirectUri: `${window.location.origin}/oauth/callback/kakao`,
+    authUrl: 'https://kauth.kakao.com/oauth/authorize'
+  }
+}
+
+// OAuth 인증 URL 생성 헬퍼
+export const getOAuthUrl = (provider) => {
+  const config = OAUTH_CONFIG[provider]
+  if (!config || !config.clientId) return null
+
+  const state = Math.random().toString(36).substring(7)
+  sessionStorage.setItem('oauth_state', state)
+
+  const params = new URLSearchParams({
+    client_id: config.clientId,
+    redirect_uri: config.redirectUri,
+    response_type: 'code',
+    state
+  })
+
+  if (provider === 'google') {
+    params.append('scope', config.scope)
+  }
+
+  return `${config.authUrl}?${params.toString()}`
 }
 
 // Reports API

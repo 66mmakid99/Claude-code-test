@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { authAPI } from '../services/api'
+import SocialLoginButtons from '../components/SocialLoginButtons'
 
 function Register({ onLogin }) {
   const [searchParams] = useSearchParams()
@@ -102,6 +103,9 @@ function Register({ onLogin }) {
     <div className="container" style={{ maxWidth: '450px', paddingTop: '2rem' }}>
       <div className="card">
         <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>회원가입</h1>
+
+        {/* 소셜 로그인 버튼 */}
+        <SocialLoginButtons onLogin={onLogin} disabled={loading} />
 
         {/* 가입 규정 안내 */}
         <div style={{

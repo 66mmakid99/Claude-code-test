@@ -190,7 +190,358 @@ button {
   }
 }
 
-/* 반응형 */
+/* ================================
+   Dashboard 컴포넌트 스타일
+   ================================ */
+
+/* 환영 배너 */
+.welcome-banner {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.welcome-banner h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-banner p {
+  opacity: 0.9;
+}
+
+.subscription-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.subscription-badge .label {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+.subscription-badge .status {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* 섹션 제목 */
+.section-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--gray-700);
+}
+
+/* 서비스 카드 그리드 */
+.service-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* 서비스 카드 */
+.service-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+.service-card.aeo {
+  border-color: var(--primary);
+}
+
+.service-card.aeo:hover {
+  box-shadow: 0 12px 40px rgba(59,130,246,0.2);
+}
+
+.service-card.scan {
+  border-color: transparent;
+}
+
+.service-card.scan:hover {
+  box-shadow: 0 12px 40px rgba(16,185,129,0.15);
+}
+
+.service-card.viral {
+  border-color: transparent;
+}
+
+.service-card.viral:hover {
+  box-shadow: 0 12px 40px rgba(139,92,246,0.15);
+}
+
+/* 아이콘 박스 */
+.icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon-box.blue {
+  background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.25));
+}
+
+.icon-box.green {
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.25));
+}
+
+.icon-box.purple {
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.25));
+}
+
+/* 서비스 카드 제목 */
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.service-card h3.blue { color: #1e40af; }
+.service-card h3.green { color: #065f46; }
+.service-card h3.purple { color: #5b21b6; }
+
+/* 서비스 카드 설명 */
+.service-card p {
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* 태그 컨테이너 */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+}
+
+.tag.blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.tag.green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.tag.purple {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+/* 서비스 버튼 */
+.btn-service {
+  width: 100%;
+  margin-top: 1.5rem;
+  border: none;
+  padding: 1rem;
+  color: white;
+}
+
+.btn-service.blue {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.btn-service.green {
+  background: #10b981;
+}
+
+.btn-service.purple {
+  background: #8b5cf6;
+}
+
+/* 빠른 액션 그리드 */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* 빠른 액션 카드 */
+.quick-action-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.quick-action-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.quick-action-card .label {
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+/* 사용 기록 카드 */
+.history-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.history-header h2 {
+  font-size: 1.25rem;
+  color: var(--gray-700);
+}
+
+.history-count {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+/* 빈 상태 */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+}
+
+.empty-state .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+}
+
+/* 테이블 스타일 */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 1rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.data-table th.center {
+  text-align: center;
+}
+
+.data-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.data-table td.center {
+  text-align: center;
+}
+
+.url-cell {
+  display: block;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--gray-700);
+}
+
+.score-value {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.date-cell {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+/* 더보기 링크 */
+.view-all-link {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.view-all-link a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* 업그레이드 배너 */
+.upgrade-banner {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.upgrade-banner h3 {
+  color: #92400e;
+  margin-bottom: 0.5rem;
+}
+
+.upgrade-banner p {
+  color: #a16207;
+}
+
+.btn-upgrade {
+  background: #92400e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+}
+
+/* ================================
+   반응형 디자인
+   ================================ */
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
@@ -198,5 +549,30 @@ button {
 
   .card {
     padding: 1rem;
+  }
+
+  .welcome-banner {
+    padding: 1.5rem;
+  }
+
+  .welcome-banner h1 {
+    font-size: 1.25rem;
+  }
+
+  .service-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .data-table {
+    font-size: 0.875rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 0.5rem;
   }
 }
