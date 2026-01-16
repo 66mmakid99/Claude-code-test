@@ -8,28 +8,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --border: 214.3 31.8% 91.4%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --accent: 210 40% 96.1%;
-    --destructive: 0 84.2% 60.2%;
-    --success: 142 76% 36%;
-    --warning: 38 92% 50%;
-    --radius: 0.5rem;
-  }
-
-  * {
-    @apply border-border;
+    --muted-fg: #6b7280;
   }
 
   body {
-    @apply text-foreground font-sans antialiased;
     font-family: 'Inter', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: #fafafa;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -37,41 +24,35 @@
   /* Button */
   .btn {
     @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium
-           transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
-           disabled:pointer-events-none disabled:opacity-50 h-9 px-4 py-2;
+           transition-colors disabled:pointer-events-none disabled:opacity-50 h-9 px-4 py-2;
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground shadow hover:bg-primary/90;
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
+    @apply bg-gray-900 text-white shadow hover:bg-gray-800;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80;
+    @apply bg-gray-100 text-gray-700 shadow-sm hover:bg-gray-200;
   }
 
   .btn-ghost {
-    @apply hover:bg-accent hover:text-accent-foreground;
+    @apply hover:bg-gray-100 text-gray-600 hover:text-gray-900;
   }
 
   .btn-outline {
-    @apply border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground;
+    @apply border border-gray-200 bg-white shadow-sm hover:bg-gray-50;
   }
 
   /* Input */
   .input {
-    @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm
-           transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium
-           placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1
-           focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+    @apply flex h-9 w-full rounded-md border border-gray-200 bg-transparent px-3 py-1 text-sm shadow-sm
+           transition-colors placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900
+           disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   /* Card */
   .card {
-    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
-    background: white;
-    border: 1px solid hsl(var(--border));
+    @apply rounded-lg border border-gray-200 bg-white shadow-sm;
   }
 
   /* Badge */
@@ -80,7 +61,7 @@
   }
 
   .badge-default {
-    @apply bg-primary/10 text-primary;
+    @apply bg-gray-100 text-gray-700;
   }
 
   .badge-success {
@@ -106,15 +87,15 @@
   }
 
   .linear-table thead tr {
-    @apply border-b;
+    @apply border-b border-gray-200;
   }
 
   .linear-table th {
-    @apply h-10 px-2 text-left align-middle font-medium text-muted-foreground;
+    @apply h-10 px-2 text-left align-middle font-medium text-gray-500;
   }
 
   .linear-table tbody tr {
-    @apply border-b transition-colors hover:bg-muted/50;
+    @apply border-b border-gray-100 transition-colors hover:bg-gray-50;
   }
 
   .linear-table td {
@@ -123,17 +104,24 @@
 
   /* Spinner */
   .spinner {
-    @apply h-5 w-5 animate-spin rounded-full border-2 border-muted border-t-primary;
+    @apply h-5 w-5 animate-spin rounded-full border-2 border-gray-200 border-t-gray-900;
+  }
+
+  /* Muted text helper */
+  .text-muted-foreground {
+    color: #6b7280;
   }
 }
 
 /* Header */
 .header {
-  @apply sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60;
+  @apply sticky top-0 z-50 w-full border-b border-gray-200;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
 }
 
 .header-content {
-  @apply container flex h-14 items-center justify-between;
+  @apply mx-auto max-w-5xl px-4 flex h-14 items-center justify-between;
 }
 
 .logo {
@@ -145,12 +133,7 @@
 }
 
 .nav-links a {
-  @apply text-sm text-muted-foreground transition-colors hover:text-foreground;
-}
-
-/* Utility */
-.text-muted {
-  color: hsl(var(--muted-foreground));
+  @apply text-sm text-gray-500 transition-colors hover:text-gray-900;
 }
 
 /* Legacy support */
