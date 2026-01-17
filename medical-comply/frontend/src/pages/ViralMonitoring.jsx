@@ -113,7 +113,9 @@ function ViralMonitoring({ user }) {
 
       if (!response.ok) {
         if (data.apiRequired) {
-          setError('네이버 API 키가 설정되지 않았습니다. 관리자에게 문의해주세요.')
+          setError('네이버 API 키가 설정되지 않았습니다. 관리자에게 환경변수 설정을 요청해주세요.')
+        } else if (data.apiError) {
+          setError('네이버 API 호출에 실패했습니다. API 키가 올바른지 확인해주세요.')
         } else {
           setError(data.error || '검색 중 오류가 발생했습니다')
         }
@@ -201,6 +203,30 @@ function ViralMonitoring({ user }) {
           병원명, 키워드로 네이버 블로그/카페 콘텐츠를 실시간 모니터링합니다
         </p>
       </div>
+
+      {/* API 상태 경고 배너 */}
+      {apiStatus && !apiStatus.naverApiConfigured && (
+        <div style={{
+          background: '#fef3c7',
+          border: '1px solid #f59e0b',
+          borderRadius: '12px',
+          padding: '1rem 1.25rem',
+          marginBottom: '1.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem'
+        }}>
+          <span style={{ fontSize: '1.25rem' }}>⚠️</span>
+          <div>
+            <div style={{ fontWeight: '600', color: '#92400e', marginBottom: '0.25rem' }}>
+              네이버 API 설정 필요
+            </div>
+            <div style={{ fontSize: '0.875rem', color: '#b45309' }}>
+              실제 검색을 위해 관리자가 NAVER_SEARCH_ID, NAVER_SEARCH_SECRET 환경변수를 설정해야 합니다.
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 탭 */}
       <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
