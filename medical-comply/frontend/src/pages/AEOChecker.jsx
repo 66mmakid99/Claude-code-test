@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router-dom'
 
 function AEOChecker({ user }) {
   const navigate = useNavigate()
+  const [analysisType, setAnalysisType] = useState('aeo') // 'aeo' | 'seo'
   const [currentView, setCurrentView] = useState('analyze')
   const [url, setUrl] = useState('')
   const [compareUrls, setCompareUrls] = useState(['', ''])
   const [loading, setLoading] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState({ current: 0, total: 1, message: '' })
   const [result, setResult] = useState(null)
+  const [seoResult, setSeoResult] = useState(null)
   const [compareResults, setCompareResults] = useState([])
   const [error, setError] = useState('')
   const [activeTab, setActiveTab] = useState('structure')
+  const [activeSeoTab, setActiveSeoTab] = useState('meta')
   const [history, setHistory] = useState([])
   const [cache, setCache] = useState({})
   const [emailModal, setEmailModal] = useState(false)
@@ -19,7 +22,7 @@ function AEOChecker({ user }) {
   const [emailSending, setEmailSending] = useState(false)
   const [emailSuccess, setEmailSuccess] = useState('')
 
-  // 등급 기준
+  // AEO 등급 기준
   const gradeInfo = {
     'A+': { min: 90, max: 100, color: '#059669', bgColor: 'rgba(5,150,105,0.1)', label: '최우수', desc: 'AI 검색에 최적화됨' },
     'A': { min: 80, max: 89, color: '#10b981', bgColor: 'rgba(16,185,129,0.1)', label: '우수', desc: 'AI 친화적 구조' },
@@ -29,6 +32,62 @@ function AEOChecker({ user }) {
     'D': { min: 0, max: 49, color: '#dc2626', bgColor: 'rgba(220,38,38,0.1)', label: '매우미흡', desc: '전면 개편 필요' }
   }
 
+  // SEO 검사 카테고리
+  const seoCategories = {
+    meta: { icon: '🏷️', name: '메타 태그', full: 'Meta Tags 분석' },
+    social: { icon: '📱', name: '소셜 미디어', full: 'Social Meta Tags' },
+    technical: { icon: '⚙️', name: '기술적 SEO', full: 'Technical SEO' },
+    speed: { icon: '⚡', name: '속도 & 모바일', full: 'Speed & Mobile' },
+    content: { icon: '📄', name: '콘텐츠', full: 'Content Analysis' },
+    security: { icon: '🔒', name: '보안', full: 'Security' }
+  }
+
+  // SEO 검사 항목
+  const seoCheckItems = {
+    meta: [
+      { id: 'title', name: 'Title 태그', desc: '페이지 제목이 60자 이내인지, 키워드를 포함하는지 확인', maxPoints: 10 },
+      { id: 'description', name: 'Meta Description', desc: '설명이 160자 이내인지, 클릭을 유도하는지 확인', maxPoints: 10 },
+      { id: 'keywords', name: 'Meta Keywords', desc: '키워드 태그 존재 여부 (중요도 낮음)', maxPoints: 3 },
+      { id: 'viewport', name: 'Viewport 설정', desc: '모바일 반응형을 위한 viewport 메타 태그', maxPoints: 7 },
+      { id: 'charset', name: 'Character Encoding', desc: 'UTF-8 문자 인코딩 설정', maxPoints: 5 },
+      { id: 'language', name: 'Language 설정', desc: 'HTML lang 속성 설정', maxPoints: 5 }
+    ],
+    social: [
+      { id: 'og_title', name: 'OG:Title', desc: 'Open Graph 제목 태그', maxPoints: 8 },
+      { id: 'og_description', name: 'OG:Description', desc: 'Open Graph 설명 태그', maxPoints: 8 },
+      { id: 'og_image', name: 'OG:Image', desc: 'Open Graph 이미지 (1200x630 권장)', maxPoints: 8 },
+      { id: 'og_url', name: 'OG:URL', desc: 'Canonical URL 지정', maxPoints: 5 },
+      { id: 'twitter_card', name: 'Twitter Card', desc: 'Twitter 공유 최적화', maxPoints: 6 },
+      { id: 'twitter_image', name: 'Twitter Image', desc: 'Twitter 이미지 설정', maxPoints: 5 }
+    ],
+    technical: [
+      { id: 'robots_txt', name: 'Robots.txt', desc: '검색엔진 크롤러 접근 제어 파일', maxPoints: 8 },
+      { id: 'sitemap', name: 'XML Sitemap', desc: '사이트맵 존재 및 등록 여부', maxPoints: 10 },
+      { id: 'canonical', name: 'Canonical URL', desc: '중복 콘텐츠 방지를 위한 정규 URL', maxPoints: 8 },
+      { id: 'schema', name: 'Schema.org', desc: '구조화된 데이터 마크업', maxPoints: 10 },
+      { id: 'hreflang', name: 'Hreflang', desc: '다국어 사이트 언어 태그', maxPoints: 4 }
+    ],
+    speed: [
+      { id: 'page_speed', name: '페이지 로딩 속도', desc: 'LCP 2.5초 이내 권장', maxPoints: 15 },
+      { id: 'mobile_friendly', name: '모바일 친화성', desc: '반응형 디자인 및 터치 요소', maxPoints: 12 },
+      { id: 'image_optimization', name: '이미지 최적화', desc: '이미지 압축 및 lazy loading', maxPoints: 8 },
+      { id: 'minification', name: 'CSS/JS 압축', desc: '리소스 최소화 여부', maxPoints: 5 }
+    ],
+    content: [
+      { id: 'h1_tag', name: 'H1 태그', desc: '페이지당 1개의 H1 태그', maxPoints: 8 },
+      { id: 'heading_structure', name: '헤딩 구조', desc: 'H1-H6 논리적 계층 구조', maxPoints: 7 },
+      { id: 'image_alt', name: '이미지 Alt 텍스트', desc: '모든 이미지에 대체 텍스트', maxPoints: 8 },
+      { id: 'internal_links', name: '내부 링크', desc: '사이트 내 링크 구조', maxPoints: 7 },
+      { id: 'broken_links', name: '깨진 링크', desc: '404 오류 링크 없음', maxPoints: 5 },
+      { id: 'content_length', name: '콘텐츠 길이', desc: '충분한 텍스트 콘텐츠', maxPoints: 5 }
+    ],
+    security: [
+      { id: 'https', name: 'HTTPS', desc: 'SSL 인증서 적용', maxPoints: 15 },
+      { id: 'mixed_content', name: 'Mixed Content', desc: 'HTTP/HTTPS 혼합 콘텐츠 없음', maxPoints: 8 },
+      { id: 'security_headers', name: '보안 헤더', desc: 'CSP, X-Frame-Options 등', maxPoints: 7 }
+    ]
+  }
+
   useEffect(() => {
     loadData()
     if (user?.email) setEmail(user.email)
@@ -36,9 +95,9 @@ function AEOChecker({ user }) {
 
   const loadData = () => {
     try {
-      const historyData = localStorage.getItem('aeo-history-v6')
+      const historyData = localStorage.getItem('aeo-history-v7')
       if (historyData) setHistory(JSON.parse(historyData))
-      const cacheData = localStorage.getItem('aeo-cache-v6')
+      const cacheData = localStorage.getItem('aeo-cache-v7')
       if (cacheData) setCache(JSON.parse(cacheData))
     } catch (e) {
       console.log('Storage init')
@@ -47,7 +106,7 @@ function AEOChecker({ user }) {
 
   const saveHistory = (newHistory) => {
     setHistory(newHistory)
-    try { localStorage.setItem('aeo-history-v6', JSON.stringify(newHistory.slice(0, 50))) } catch (e) {}
+    try { localStorage.setItem('aeo-history-v7', JSON.stringify(newHistory.slice(0, 50))) } catch (e) {}
   }
 
   const saveCache = (newCache) => {
@@ -55,7 +114,7 @@ function AEOChecker({ user }) {
     try {
       const keys = Object.keys(newCache)
       const trimmed = keys.slice(-20).reduce((acc, k) => { acc[k] = newCache[k]; return acc }, {})
-      localStorage.setItem('aeo-cache-v6', JSON.stringify(trimmed))
+      localStorage.setItem('aeo-cache-v7', JSON.stringify(trimmed))
     } catch (e) {}
   }
 
@@ -65,15 +124,15 @@ function AEOChecker({ user }) {
     return n.replace(/\/+$/, '')
   }
 
-  const getCached = (u) => {
-    const key = normalizeUrl(u)
+  const getCached = (u, type) => {
+    const key = `${type}:${normalizeUrl(u)}`
     const cached = cache[key]
     if (cached && Date.now() - cached.timestamp < 24 * 60 * 60 * 1000) return cached.data
     return null
   }
 
-  const setCached = (u, data) => {
-    const key = normalizeUrl(u)
+  const setCached = (u, data, type) => {
+    const key = `${type}:${normalizeUrl(u)}`
     const newCache = { ...cache, [key]: { data, timestamp: Date.now() } }
     saveCache(newCache)
   }
@@ -90,7 +149,8 @@ function AEOChecker({ user }) {
   const getGradeColor = (score) => gradeInfo[getGrade(score)]?.color || '#64748b'
   const getGradeBg = (score) => gradeInfo[getGrade(score)]?.bgColor || 'rgba(100,116,139,0.1)'
 
-  const createPrompt = (targetUrl) => `웹사이트 "${targetUrl}"를 AEO/GEO 관점에서 분석해주세요.
+  // AEO 분석 프롬프트
+  const createAEOPrompt = (targetUrl) => `웹사이트 "${targetUrl}"를 AEO/GEO 관점에서 분석해주세요.
 
 채점 기준 (100점 만점):
 1. 구조(25점): Schema.org(8점), 헤딩구조(6점), 메타태그(6점), OG태그(5점)
@@ -121,15 +181,78 @@ function AEOChecker({ user }) {
   ]
 }`
 
-  const callAPI = async (targetUrl) => {
+  // SEO 분석 프롬프트
+  const createSEOPrompt = (targetUrl) => `웹사이트 "${targetUrl}"를 SEO 관점에서 상세히 분석해주세요.
+
+다음 카테고리별로 검사하세요 (총 100점):
+
+1. 메타 태그 (40점):
+   - Title 태그 (10점): 존재 여부, 60자 이내, 키워드 포함
+   - Meta Description (10점): 존재 여부, 160자 이내
+   - Meta Keywords (3점): 존재 여부
+   - Viewport (7점): 모바일 반응형 설정
+   - Charset (5점): UTF-8 인코딩
+   - Language (5점): lang 속성
+
+2. 소셜 미디어 (40점):
+   - OG:Title (8점), OG:Description (8점), OG:Image (8점)
+   - OG:URL (5점), Twitter Card (6점), Twitter Image (5점)
+
+3. 기술적 SEO (40점):
+   - Robots.txt (8점), XML Sitemap (10점)
+   - Canonical URL (8점), Schema.org (10점), Hreflang (4점)
+
+4. 속도 & 모바일 (40점):
+   - 페이지 속도 (15점), 모바일 친화성 (12점)
+   - 이미지 최적화 (8점), CSS/JS 압축 (5점)
+
+5. 콘텐츠 (40점):
+   - H1 태그 (8점), 헤딩 구조 (7점), 이미지 Alt (8점)
+   - 내부 링크 (7점), 깨진 링크 (5점), 콘텐츠 길이 (5점)
+
+6. 보안 (30점):
+   - HTTPS (15점), Mixed Content (8점), 보안 헤더 (7점)
+
+반드시 아래 JSON 형식으로만 응답하세요:
+
+{
+  "siteName": "사이트 이름",
+  "siteDescription": "사이트 설명",
+  "overallScore": 75,
+  "categories": {
+    "meta": {
+      "score": 32,
+      "maxScore": 40,
+      "items": [
+        {"id": "title", "name": "Title 태그", "points": 8, "maxPoints": 10, "status": "pass", "detail": "상세 설명", "value": "실제 타이틀 값"}
+      ]
+    },
+    "social": { "score": 28, "maxScore": 40, "items": [...] },
+    "technical": { "score": 30, "maxScore": 40, "items": [...] },
+    "speed": { "score": 25, "maxScore": 40, "items": [...] },
+    "content": { "score": 30, "maxScore": 40, "items": [...] },
+    "security": { "score": 25, "maxScore": 30, "items": [...] }
+  },
+  "criticalIssues": ["심각한 문제1", "심각한 문제2"],
+  "warnings": ["경고1", "경고2"],
+  "passedChecks": ["통과한 항목1", "통과한 항목2"],
+  "recommendations": [
+    {"title": "권고1", "priority": "high", "category": "meta", "impact": "높음"},
+    {"title": "권고2", "priority": "medium", "category": "technical", "impact": "중간"}
+  ]
+}`
+
+  const callAPI = async (targetUrl, type = 'aeo') => {
     const token = localStorage.getItem('token')
+    const prompt = type === 'seo' ? createSEOPrompt(targetUrl) : createAEOPrompt(targetUrl)
+
     const response = await fetch('/api/aeo/analyze', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ url: targetUrl, prompt: createPrompt(targetUrl) })
+      body: JSON.stringify({ url: targetUrl, prompt })
     })
 
     if (!response.ok) {
@@ -139,10 +262,15 @@ function AEOChecker({ user }) {
 
     const data = await response.json()
     const result = data.result
-    result.overallScore = ['structure', 'content', 'technical', 'trust']
-      .reduce((sum, cat) => sum + (result.categories?.[cat]?.score || 0), 0)
+
+    if (type === 'aeo') {
+      result.overallScore = ['structure', 'content', 'technical', 'trust']
+        .reduce((sum, cat) => sum + (result.categories?.[cat]?.score || 0), 0)
+    }
+
     result.url = normalizeUrl(targetUrl)
     result.analyzedAt = new Date().toISOString()
+    result.type = type
 
     return result
   }
@@ -150,24 +278,38 @@ function AEOChecker({ user }) {
   const runAnalysis = async () => {
     if (!url.trim()) { setError('URL을 입력해주세요'); return }
 
-    const cached = getCached(url)
+    const cached = getCached(url, analysisType)
     if (cached) {
-      setResult({ ...cached, fromCache: true })
+      if (analysisType === 'seo') {
+        setSeoResult({ ...cached, fromCache: true })
+      } else {
+        setResult({ ...cached, fromCache: true })
+      }
       setError('')
       return
     }
 
     setLoading(true)
     setError('')
-    setResult(null)
-    setLoadingProgress({ current: 0, total: 1, message: '분석 중...' })
+    if (analysisType === 'seo') {
+      setSeoResult(null)
+    } else {
+      setResult(null)
+    }
+    setLoadingProgress({ current: 0, total: 1, message: `${analysisType.toUpperCase()} 분석 중...` })
 
     try {
-      const r = await callAPI(url)
+      const r = await callAPI(url, analysisType)
       r.analysisCount = 1
       r.reliability = 'standard'
-      setResult(r)
-      setCached(url, r)
+
+      if (analysisType === 'seo') {
+        setSeoResult(r)
+      } else {
+        setResult(r)
+      }
+
+      setCached(url, r, analysisType)
       saveHistory([r, ...history].slice(0, 50))
     } catch (err) {
       setError(`오류: ${err.message}`)
@@ -181,32 +323,47 @@ function AEOChecker({ user }) {
 
     setLoading(true)
     setError('')
-    setResult(null)
+    if (analysisType === 'seo') {
+      setSeoResult(null)
+    } else {
+      setResult(null)
+    }
 
     try {
       const results = []
       for (let i = 0; i < 3; i++) {
         setLoadingProgress({ current: i + 1, total: 3, message: `${i + 1}차 분석 중...` })
-        results.push(await callAPI(url))
+        results.push(await callAPI(url, analysisType))
         if (i < 2) await new Promise(r => setTimeout(r, 1000))
       }
 
       const avgResult = { ...results[0] }
-      const cats = ['structure', 'content', 'technical', 'trust']
-      cats.forEach(cat => {
-        if (avgResult.categories?.[cat]) {
-          const scores = results.map(r => r.categories?.[cat]?.score || 0)
-          avgResult.categories[cat].score = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
-        }
-      })
 
-      const allScores = results.map(r => cats.reduce((s, c) => s + (r.categories?.[c]?.score || 0), 0))
-      avgResult.overallScore = Math.round(allScores.reduce((a, b) => a + b, 0) / allScores.length)
+      if (analysisType === 'aeo') {
+        const cats = ['structure', 'content', 'technical', 'trust']
+        cats.forEach(cat => {
+          if (avgResult.categories?.[cat]) {
+            const scores = results.map(r => r.categories?.[cat]?.score || 0)
+            avgResult.categories[cat].score = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+          }
+        })
+        const allScores = results.map(r => cats.reduce((s, c) => s + (r.categories?.[c]?.score || 0), 0))
+        avgResult.overallScore = Math.round(allScores.reduce((a, b) => a + b, 0) / allScores.length)
+      } else {
+        const allScores = results.map(r => r.overallScore || 0)
+        avgResult.overallScore = Math.round(allScores.reduce((a, b) => a + b, 0) / allScores.length)
+      }
+
       avgResult.analysisCount = 3
       avgResult.reliability = 'high'
 
-      setResult(avgResult)
-      setCached(url, avgResult)
+      if (analysisType === 'seo') {
+        setSeoResult(avgResult)
+      } else {
+        setResult(avgResult)
+      }
+
+      setCached(url, avgResult, analysisType)
       saveHistory([avgResult, ...history].slice(0, 50))
     } catch (err) {
       setError(`오류: ${err.message}`)
@@ -215,29 +372,28 @@ function AEOChecker({ user }) {
     }
   }
 
-  const runCompareAnalysis = async () => {
-    const validUrls = compareUrls.filter(u => u.trim())
-    if (validUrls.length < 2) { setError('2개 이상 입력해주세요'); return }
+  const runCombinedAnalysis = async () => {
+    if (!url.trim()) { setError('URL을 입력해주세요'); return }
 
     setLoading(true)
     setError('')
-    setCompareResults([])
+    setResult(null)
+    setSeoResult(null)
 
     try {
-      const results = []
-      for (let i = 0; i < validUrls.length; i++) {
-        setLoadingProgress({ current: i + 1, total: validUrls.length, message: `${i + 1}/${validUrls.length} 분석 중...` })
-        const cached = getCached(validUrls[i])
-        if (cached) {
-          results.push({ ...cached, fromCache: true })
-        } else {
-          const r = await callAPI(validUrls[i])
-          setCached(validUrls[i], r)
-          results.push(r)
-        }
-      }
-      setCompareResults(results)
-      saveHistory([...results, ...history].slice(0, 50))
+      setLoadingProgress({ current: 1, total: 2, message: 'AEO/GEO 분석 중...' })
+      const aeoR = await callAPI(url, 'aeo')
+      aeoR.analysisCount = 1
+      setResult(aeoR)
+      setCached(url, aeoR, 'aeo')
+
+      setLoadingProgress({ current: 2, total: 2, message: 'SEO 분석 중...' })
+      const seoR = await callAPI(url, 'seo')
+      seoR.analysisCount = 1
+      setSeoResult(seoR)
+      setCached(url, seoR, 'seo')
+
+      saveHistory([aeoR, seoR, ...history].slice(0, 50))
     } catch (err) {
       setError(`오류: ${err.message}`)
     } finally {
@@ -245,136 +401,7 @@ function AEOChecker({ user }) {
     }
   }
 
-  const sendEmail = async () => {
-    if (!email) { setError('이메일을 입력해주세요'); return }
-    if (!result) return
-
-    setEmailSending(true)
-    setEmailSuccess('')
-
-    try {
-      const token = localStorage.getItem('token')
-      const response = await fetch('/api/aeo/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ email, result })
-      })
-
-      if (response.ok) {
-        setEmailSuccess('이메일이 발송되었습니다!')
-        setTimeout(() => { setEmailModal(false); setEmailSuccess('') }, 2000)
-      } else {
-        const err = await response.json()
-        setError(err.error || '이메일 발송 실패')
-      }
-    } catch (err) {
-      setError('이메일 발송 중 오류가 발생했습니다.')
-    } finally {
-      setEmailSending(false)
-    }
-  }
-
-  const generateReport = () => {
-    const data = result || compareResults[0]
-    if (!data) return
-
-    const grade = getGrade(data.overallScore)
-    const gradeData = gradeInfo[grade]
-
-    const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>AEO/GEO 분석 리포트 - ${data.siteName}</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Malgun Gothic',-apple-system,sans-serif;font-size:11px;line-height:1.4;color:#1e293b;padding:20px;max-width:800px;margin:0 auto}
-.header{text-align:center;padding:15px 0;border-bottom:2px solid #2563eb;margin-bottom:15px}
-.header h1{font-size:18px;color:#2563eb;margin-bottom:5px}
-.header p{font-size:12px;color:#64748b}
-.score-section{display:flex;gap:15px;margin-bottom:15px}
-.score-box{flex:1;text-align:center;padding:15px;background:linear-gradient(135deg,${gradeData.color},${gradeData.color}dd);border-radius:10px;color:white}
-.score-box .score{font-size:36px;font-weight:800}
-.score-box .grade{font-size:20px;font-weight:700}
-.score-box .label{font-size:10px;opacity:0.9}
-.grade-table{flex:1;background:#f8fafc;border-radius:10px;padding:10px;font-size:9px}
-.grade-table h4{font-size:11px;margin-bottom:8px;color:#374151}
-.grade-row{display:flex;justify-content:space-between;padding:3px 5px;border-radius:4px;margin-bottom:2px}
-.grade-row.current{background:${gradeData.bgColor};font-weight:600}
-.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px}
-.cat-box{background:#f8fafc;border-radius:8px;padding:10px;border:1px solid #e2e8f0}
-.cat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid #e2e8f0}
-.cat-header h3{font-size:12px}
-.cat-header .score{font-size:14px;font-weight:700}
-.item{display:flex;gap:5px;padding:4px 0;border-bottom:1px solid #f1f5f9;font-size:10px}
-.item:last-child{border-bottom:none}
-.item .icon{width:14px;text-align:center}
-.pass{color:#059669}.fail{color:#dc2626}.warning{color:#d97706}
-.item .name{flex:1;font-weight:500}
-.item .pts{color:#2563eb;font-weight:600}
-.issues{background:#fef2f2;border-radius:8px;padding:10px;margin-bottom:10px}
-.issues h4{color:#dc2626;font-size:11px;margin-bottom:6px}
-.issue{padding:4px 0;font-size:10px;border-bottom:1px solid #fecaca}
-.issue:last-child{border-bottom:none}
-.recs{background:#eff6ff;border-radius:8px;padding:10px;margin-bottom:10px}
-.recs h4{color:#2563eb;font-size:11px;margin-bottom:6px}
-.rec{padding:5px 0;border-bottom:1px solid #bfdbfe;font-size:10px}
-.rec:last-child{border-bottom:none}
-.rec-title{font-weight:600;margin-bottom:2px}
-.rec-detail{color:#64748b;font-size:9px}
-.footer{text-align:center;padding-top:10px;border-top:1px solid #e2e8f0;font-size:9px;color:#94a3b8}
-.print-btn{display:block;width:150px;margin:0 auto 15px;padding:8px;background:#2563eb;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px}
-@media print{.print-btn{display:none}body{padding:10px}}
-</style></head>
-<body>
-<button class="print-btn" onclick="window.print()">PDF로 저장</button>
-<div class="header">
-<h1>AEO/GEO AI 친화도 분석 리포트</h1>
-<p>${data.siteName} | ${data.url} | ${new Date().toLocaleDateString('ko-KR')}</p>
-</div>
-<div class="score-section">
-<div class="score-box">
-<div class="score">${data.overallScore}</div>
-<div class="grade">${grade}</div>
-<div class="label">${gradeData.label} - ${gradeData.desc}</div>
-</div>
-<div class="grade-table">
-<h4>등급 기준표</h4>
-${Object.entries(gradeInfo).map(([g,info])=>`<div class="grade-row ${g===grade?'current':''}" style="color:${info.color}"><span>${g} (${info.min}-${info.max})</span><span>${info.label}</span></div>`).join('')}
-</div>
-</div>
-<div class="cat-grid">
-${Object.entries(data.categories||{}).map(([k,c])=>`<div class="cat-box">
-<div class="cat-header"><h3>${{structure:'구조',content:'콘텐츠',technical:'기술',trust:'신뢰도'}[k]}</h3><span class="score" style="color:${getGradeColor(c.score*4)}">${c.score}/25</span></div>
-${c.items?.map(i=>`<div class="item"><span class="icon ${i.status}">${{pass:'O',fail:'X',warning:'!'}[i.status]}</span><span class="name">${i.name}</span><span class="pts">${i.points}/${i.maxPoints||8}</span></div>`).join('')}
-</div>`).join('')}
-</div>
-${data.topIssues?.length?`<div class="issues"><h4>주요 문제점</h4>${data.topIssues.map(i=>`<div class="issue">${i}</div>`).join('')}</div>`:''}
-<div class="recs"><h4>개선 권고사항</h4>
-${(data.recommendations||[]).map(r=>`<div class="rec"><div class="rec-title">${typeof r==='string'?r:r.title}</div>${typeof r==='object'?`<div class="rec-detail">사유: ${r.reason||'-'} | 방법: ${r.method||'-'}</div>`:''}</div>`).join('')}
-</div>
-<div class="footer">MedicalComply AEO/GEO Analyzer | ${new Date().toLocaleString('ko-KR')}</div>
-</body></html>`
-
-    const w = window.open('', '_blank')
-    if (w) { w.document.write(html); w.document.close() }
-    else setError('팝업을 허용해주세요')
-  }
-
-  const clearHistory = () => {
-    if (confirm('기록을 삭제할까요?')) {
-      setHistory([])
-      localStorage.removeItem('aeo-history-v6')
-    }
-  }
-
-  const clearCache = () => {
-    if (confirm('캐시를 삭제할까요?')) {
-      setCache({})
-      localStorage.removeItem('aeo-cache-v6')
-    }
-  }
-
-  const statusIcon = (s) => s === 'pass' ? <span style={{color:'#059669',fontWeight:'bold'}}>O</span> : s === 'fail' ? <span style={{color:'#dc2626',fontWeight:'bold'}}>X</span> : <span style={{color:'#d97706',fontWeight:'bold'}}>!</span>
+  const statusIcon = (s) => s === 'pass' ? <span style={{color:'#059669',fontWeight:'bold'}}>✓</span> : s === 'fail' ? <span style={{color:'#dc2626',fontWeight:'bold'}}>✗</span> : <span style={{color:'#d97706',fontWeight:'bold'}}>!</span>
 
   const catLabels = {
     structure: { icon: '🏗️', name: '구조', full: '구조적 요소' },
@@ -383,22 +410,60 @@ ${(data.recommendations||[]).map(r=>`<div class="rec"><div class="rec-title">${t
     trust: { icon: '🛡️', name: '신뢰도', full: '신뢰도 요소' }
   }
 
-  const navItems = [
-    { key: 'analyze', label: 'AEO 분석' },
-    { key: 'compare', label: '경쟁사 비교' },
-    { key: 'history', label: '분석 기록' },
-    { key: 'dashboard', label: '통계' }
-  ]
+  const clearHistory = () => {
+    if (confirm('기록을 삭제할까요?')) {
+      setHistory([])
+      localStorage.removeItem('aeo-history-v7')
+    }
+  }
+
+  const clearCache = () => {
+    if (confirm('캐시를 삭제할까요?')) {
+      setCache({})
+      localStorage.removeItem('aeo-cache-v7')
+    }
+  }
 
   return (
-    <div className="container">
-      <h1 style={{ marginBottom: '0.5rem' }}>AEO/GEO 친화도 분석</h1>
-      <p style={{ color: 'var(--gray-500)', marginBottom: '1.5rem' }}>병의원 웹사이트의 AI 검색 최적화 점수를 측정합니다</p>
+    <div className="container py-6">
+      {/* 페이지 헤더 */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-semibold tracking-tight mb-1">웹사이트 최적화 분석</h1>
+        <p className="text-sm text-gray-500">AEO/GEO (AI 검색 최적화) + SEO (검색엔진 최적화) 통합 분석</p>
+      </div>
+
+      {/* 분석 타입 선택 탭 */}
+      <div className="flex gap-1 p-1 bg-gray-100 rounded-lg mb-6 w-fit">
+        <button
+          onClick={() => setAnalysisType('aeo')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            analysisType === 'aeo' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          🤖 AEO/GEO 분석
+        </button>
+        <button
+          onClick={() => setAnalysisType('seo')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            analysisType === 'seo' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          🔍 SEO 분석
+        </button>
+        <button
+          onClick={() => setAnalysisType('combined')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            analysisType === 'combined' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          📊 통합 분석
+        </button>
+      </div>
 
       {/* 등급 기준 안내 */}
-      <div className="card" style={{ marginBottom: '1.5rem', padding: '1rem' }}>
-        <h4 style={{ marginBottom: '0.75rem', fontSize: '0.875rem' }}>등급 기준</h4>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      <div className="rounded-lg border bg-white p-4 mb-6">
+        <h4 className="text-sm font-medium mb-3">등급 기준</h4>
+        <div className="flex flex-wrap gap-2">
           {Object.entries(gradeInfo).map(([grade, info]) => (
             <div key={grade} style={{
               padding: '0.25rem 0.75rem',
@@ -414,350 +479,277 @@ ${(data.recommendations||[]).map(r=>`<div class="rec"><div class="rec-title">${t
         </div>
       </div>
 
-      {/* 탭 네비게이션 */}
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-        {navItems.map(n => (
+      {/* URL 입력 */}
+      <div className="rounded-lg border bg-white p-6 mb-6">
+        <h3 className="font-medium mb-4">
+          {analysisType === 'seo' ? '🔍 SEO 분석' : analysisType === 'combined' ? '📊 통합 분석' : '🤖 AEO/GEO 분석'}
+        </h3>
+
+        <input
+          type="text"
+          className="input mb-4"
+          value={url}
+          onChange={e => setUrl(e.target.value)}
+          onKeyPress={e => e.key === 'Enter' && runAnalysis()}
+          placeholder="분석할 URL (예: hospital.co.kr)"
+        />
+
+        <div className="grid grid-cols-3 gap-3">
           <button
-            key={n.key}
-            onClick={() => setCurrentView(n.key)}
-            className={currentView === n.key ? 'btn btn-primary' : 'btn btn-secondary'}
+            onClick={runAnalysis}
+            disabled={loading}
+            className="btn btn-primary"
           >
-            {n.label}
+            {loading ? loadingProgress.message : '빠른 분석'}
           </button>
-        ))}
+          <button
+            onClick={runDeepAnalysis}
+            disabled={loading}
+            className="btn"
+            style={{ background: '#059669', color: 'white' }}
+          >
+            {loading ? '...' : '정밀 분석 (3회)'}
+          </button>
+          {analysisType !== 'combined' && (
+            <button
+              onClick={runCombinedAnalysis}
+              disabled={loading}
+              className="btn"
+              style={{ background: '#7c3aed', color: 'white' }}
+            >
+              {loading ? '...' : 'AEO + SEO 통합'}
+            </button>
+          )}
+        </div>
+
+        {error && <p className="text-red-500 mt-4 text-sm">{error}</p>}
       </div>
 
-      {/* 분석 뷰 */}
-      {currentView === 'analyze' && (
-        <div>
-          <div className="card" style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ marginBottom: '1rem' }}>웹사이트 URL 입력</h3>
-            <input
-              type="text"
-              className="input"
-              value={url}
-              onChange={e => setUrl(e.target.value)}
-              onKeyPress={e => e.key === 'Enter' && runAnalysis()}
-              placeholder="분석할 URL (예: hospital.co.kr)"
-              style={{ marginBottom: '1rem' }}
-            />
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-              <button onClick={runAnalysis} disabled={loading} className="btn btn-primary">
-                {loading ? `${loadingProgress.message}` : '빠른 분석'}
-              </button>
-              <button onClick={runDeepAnalysis} disabled={loading} className="btn" style={{ background: '#059669', color: 'white' }}>
-                {loading ? '...' : '정밀 분석 (3회)'}
-              </button>
-            </div>
-
-            {error && <p style={{ color: 'var(--danger)', marginTop: '1rem' }}>{error}</p>}
-          </div>
-
-          {loading && (
-            <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
-              <div className="spinner" style={{ margin: '0 auto 1rem' }}></div>
-              <h3>{loadingProgress.message || '분석 중...'}</h3>
-              {loadingProgress.total > 1 && (
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem' }}>
-                  {[1,2,3].map(i => (
-                    <div key={i} style={{
-                      width: '36px', height: '36px', borderRadius: '50%',
-                      background: i <= loadingProgress.current ? 'var(--primary)' : 'var(--gray-200)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: i <= loadingProgress.current ? 'white' : 'var(--gray-500)', fontWeight: '600'
-                    }}>{i}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-
-          {result && !loading && (
-            <div>
-              {/* 배지 */}
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-                {result.fromCache && <span className="badge badge-warning">캐시된 결과</span>}
-                {result.analysisCount > 1 && <span className="badge badge-success">{result.analysisCount}회 분석 평균</span>}
-              </div>
-
-              {/* 점수 카드 */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div className="card">
-                  <p style={{ color: 'var(--primary)', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>분석 대상</p>
-                  <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{result.siteName}</h2>
-                  <p style={{ color: 'var(--gray-500)', fontSize: '0.875rem', marginBottom: '1rem' }}>{result.siteDescription}</p>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button onClick={generateReport} className="btn btn-primary" style={{ flex: 1 }}>
-                      PDF 리포트
-                    </button>
-                    <button onClick={() => setEmailModal(true)} className="btn btn-secondary" style={{ flex: 1 }}>
-                      이메일 발송
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card" style={{ textAlign: 'center', background: getGradeBg(result.overallScore) }}>
-                  <p style={{ color: getGradeColor(result.overallScore), fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>AI 친화도 점수</p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-                    <div style={{ fontSize: '3.5rem', fontWeight: '800', color: getGradeColor(result.overallScore), lineHeight: 1 }}>{result.overallScore}</div>
-                    <div>
-                      <div style={{ fontSize: '2rem', fontWeight: '700', color: getGradeColor(result.overallScore) }}>{getGrade(result.overallScore)}</div>
-                      <div style={{ color: 'var(--gray-500)', fontSize: '0.75rem' }}>{gradeInfo[getGrade(result.overallScore)]?.label}</div>
-                    </div>
-                  </div>
-                  <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: getGradeColor(result.overallScore) }}>
-                    {gradeInfo[getGrade(result.overallScore)]?.desc}
-                  </p>
-                </div>
-              </div>
-
-              {/* 카테고리 버튼 */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                {Object.entries(catLabels).map(([key, label]) => {
-                  const score = result.categories?.[key]?.score || 0
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => setActiveTab(key)}
-                      className="card"
-                      style={{
-                        cursor: 'pointer',
-                        textAlign: 'center',
-                        padding: '1rem',
-                        border: activeTab === key ? `2px solid ${getGradeColor(score * 4)}` : '1px solid var(--gray-200)',
-                        background: activeTab === key ? getGradeBg(score * 4) : 'white'
-                      }}
-                    >
-                      <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{label.icon}</div>
-                      <div style={{ fontSize: '1.25rem', fontWeight: '700', color: getGradeColor(score * 4) }}>{score}/25</div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--gray-500)' }}>{label.name}</div>
-                    </button>
-                  )
-                })}
-              </div>
-
-              {/* 상세 결과 */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    {catLabels[activeTab]?.icon} {catLabels[activeTab]?.full}
-                    <span style={{ marginLeft: 'auto', color: getGradeColor((result.categories?.[activeTab]?.score || 0) * 4) }}>
-                      {result.categories?.[activeTab]?.score || 0}/25
-                    </span>
-                  </h3>
-                  {result.categories?.[activeTab]?.items?.map((item, idx) => (
-                    <div key={idx} style={{ background: 'var(--gray-50)', borderRadius: '8px', padding: '1rem', marginBottom: '0.75rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          {statusIcon(item.status)}
-                          <strong style={{ fontSize: '0.875rem' }}>{item.name}</strong>
-                        </div>
-                        <span style={{ color: 'var(--primary)', fontWeight: '600' }}>{item.points}/{item.maxPoints || 8}점</span>
-                      </div>
-                      <p style={{ color: 'var(--gray-600)', fontSize: '0.8125rem', marginBottom: '0.5rem' }}>{item.detail}</p>
-                      {item.reason && (
-                        <p style={{ color: '#d97706', fontSize: '0.75rem', marginBottom: '0.25rem' }}>
-                          <strong>개선 사유:</strong> {item.reason}
-                        </p>
-                      )}
-                      {item.solution && (
-                        <p style={{ color: '#059669', fontSize: '0.75rem' }}>
-                          <strong>개선 방법:</strong> {item.solution}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>개선 권고사항</h3>
-
-                  {result.topIssues?.length > 0 && (
-                    <div style={{ marginBottom: '1rem' }}>
-                      <h4 style={{ fontSize: '0.875rem', color: 'var(--danger)', marginBottom: '0.5rem' }}>주요 문제점</h4>
-                      {result.topIssues.map((issue, idx) => (
-                        <div key={idx} style={{
-                          background: 'rgba(220,38,38,0.1)',
-                          border: '1px solid rgba(220,38,38,0.2)',
-                          borderRadius: '8px',
-                          padding: '0.75rem',
-                          marginBottom: '0.5rem',
-                          color: 'var(--danger)',
-                          fontSize: '0.8125rem'
-                        }}>
-                          {issue}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <h4 style={{ fontSize: '0.875rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>개선 방안</h4>
-                  {(result.recommendations || []).slice(0, 5).map((rec, idx) => (
-                    <div key={idx} style={{
-                      background: 'rgba(37,99,235,0.05)',
-                      border: '1px solid rgba(37,99,235,0.2)',
-                      borderRadius: '8px',
-                      padding: '0.75rem',
-                      marginBottom: '0.5rem'
-                    }}>
-                      <div style={{ fontWeight: '600', fontSize: '0.875rem', color: 'var(--primary)', marginBottom: '0.25rem' }}>
-                        {typeof rec === 'string' ? rec : rec.title}
-                      </div>
-                      {typeof rec === 'object' && (
-                        <>
-                          {rec.reason && <p style={{ fontSize: '0.75rem', color: '#d97706', marginBottom: '0.25rem' }}><strong>사유:</strong> {rec.reason}</p>}
-                          {rec.method && <p style={{ fontSize: '0.75rem', color: '#059669' }}><strong>방법:</strong> {rec.method}</p>}
-                        </>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* 안내 카드 */}
-          {!result && !loading && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-              {[
-                { icon: '🏗️', title: '구조 (25점)', desc: 'Schema.org, 헤딩, 메타태그, OG태그' },
-                { icon: '📝', title: '콘텐츠 (25점)', desc: 'FAQ, 정의문, 통계, 업데이트 날짜' },
-                { icon: '⚙️', title: '기술 (25점)', desc: '속도, 모바일, AI크롤러, sitemap' },
-                { icon: '🛡️', title: '신뢰도 (25점)', desc: '저자정보, 출처, 연락처, SSL' }
-              ].map((f, i) => (
-                <div key={i} className="card">
-                  <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{f.icon}</div>
-                  <h3 style={{ marginBottom: '0.5rem', fontSize: '1rem' }}>{f.title}</h3>
-                  <p style={{ color: 'var(--gray-500)', fontSize: '0.875rem' }}>{f.desc}</p>
-                </div>
+      {/* 로딩 */}
+      {loading && (
+        <div className="rounded-lg border bg-white p-12 text-center">
+          <div className="spinner mx-auto mb-4" style={{ width: '40px', height: '40px' }}></div>
+          <h3 className="font-medium">{loadingProgress.message || '분석 중...'}</h3>
+          {loadingProgress.total > 1 && (
+            <div className="flex justify-center gap-2 mt-4">
+              {Array.from({ length: loadingProgress.total }, (_, i) => (
+                <div key={i} className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                  i < loadingProgress.current ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-500'
+                }`}>{i + 1}</div>
               ))}
             </div>
           )}
         </div>
       )}
 
-      {/* 비교 뷰 */}
-      {currentView === 'compare' && (
-        <div>
-          <div className="card" style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ marginBottom: '1rem' }}>경쟁사 비교 분석</h3>
-            {compareUrls.map((u, idx) => (
-              <div key={idx} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                <span style={{ color: 'var(--primary)', minWidth: '40px', fontWeight: '600' }}>#{idx + 1}</span>
-                <input
-                  type="text"
-                  className="input"
-                  value={u}
-                  onChange={e => { const arr = [...compareUrls]; arr[idx] = e.target.value; setCompareUrls(arr) }}
-                  placeholder="URL 입력"
-                  style={{ flex: 1 }}
-                />
+      {/* AEO 결과 */}
+      {result && !loading && (analysisType === 'aeo' || analysisType === 'combined') && (
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold mb-4">🤖 AEO/GEO 분석 결과</h2>
+
+          {/* 점수 카드 */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="rounded-lg border bg-white p-6">
+              <p className="text-sm font-medium text-blue-600 mb-2">분석 대상</p>
+              <h2 className="text-xl font-semibold mb-1">{result.siteName}</h2>
+              <p className="text-sm text-gray-500 mb-4">{result.siteDescription}</p>
+              {result.fromCache && <span className="badge badge-warning text-xs">캐시된 결과</span>}
+            </div>
+
+            <div className="rounded-lg border p-6 text-center" style={{ background: getGradeBg(result.overallScore) }}>
+              <p className="text-sm font-medium mb-2" style={{ color: getGradeColor(result.overallScore) }}>AI 친화도 점수</p>
+              <div className="flex items-center justify-center gap-4">
+                <span className="text-5xl font-bold" style={{ color: getGradeColor(result.overallScore) }}>{result.overallScore}</span>
+                <div>
+                  <div className="text-2xl font-bold" style={{ color: getGradeColor(result.overallScore) }}>{getGrade(result.overallScore)}</div>
+                  <div className="text-xs text-gray-500">{gradeInfo[getGrade(result.overallScore)]?.label}</div>
+                </div>
               </div>
-            ))}
-            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
-              {compareUrls.length < 4 && (
-                <button onClick={() => setCompareUrls([...compareUrls, ''])} className="btn btn-secondary">
-                  + URL 추가
+            </div>
+          </div>
+
+          {/* 카테고리 탭 */}
+          <div className="grid grid-cols-4 gap-2 mb-4">
+            {Object.entries(catLabels).map(([key, label]) => {
+              const score = result.categories?.[key]?.score || 0
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveTab(key)}
+                  className={`rounded-lg border p-4 text-center transition-colors ${
+                    activeTab === key ? 'border-gray-900 bg-gray-50' : 'border-gray-200 bg-white hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="text-2xl mb-1">{label.icon}</div>
+                  <div className="text-lg font-bold" style={{ color: getGradeColor(score * 4) }}>{score}/25</div>
+                  <div className="text-xs text-gray-500">{label.name}</div>
                 </button>
-              )}
-              <button onClick={runCompareAnalysis} disabled={loading} className="btn btn-primary" style={{ flex: 1 }}>
-                {loading ? loadingProgress.message || '분석 중...' : '비교 분석 시작'}
-              </button>
-            </div>
-            {error && <p style={{ color: 'var(--danger)', marginTop: '1rem' }}>{error}</p>}
+              )
+            })}
           </div>
 
-          {compareResults.length > 0 && (
-            <div>
-              {/* 점수 비교 요약 */}
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${compareResults.length}, 1fr)`, gap: '1rem', marginBottom: '1.5rem' }}>
-                {compareResults.map((r, i) => {
-                  const grade = getGrade(r.overallScore)
-                  return (
-                    <div key={i} className="card" style={{ textAlign: 'center', background: getGradeBg(r.overallScore) }}>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--gray-500)', marginBottom: '0.5rem' }}>{r.siteName}</div>
-                      <div style={{ fontSize: '2.5rem', fontWeight: '800', color: getGradeColor(r.overallScore) }}>{r.overallScore}</div>
-                      <div style={{ fontSize: '1.5rem', fontWeight: '600', color: getGradeColor(r.overallScore) }}>{grade}</div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--gray-500)' }}>{gradeInfo[grade]?.label}</div>
+          {/* 상세 결과 */}
+          <div className="rounded-lg border bg-white p-6">
+            <h3 className="font-medium mb-4">{catLabels[activeTab]?.icon} {catLabels[activeTab]?.full}</h3>
+            <div className="space-y-3">
+              {result.categories?.[activeTab]?.items?.map((item, idx) => (
+                <div key={idx} className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      {statusIcon(item.status)}
+                      <span className="font-medium text-sm">{item.name}</span>
                     </div>
-                  )
-                })}
-              </div>
+                    <span className="text-blue-600 font-semibold text-sm">{item.points}/{item.maxPoints || 8}점</span>
+                  </div>
+                  <p className="text-gray-600 text-sm">{item.detail}</p>
+                  {item.solution && <p className="text-green-600 text-xs mt-2">💡 {item.solution}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
-              {/* 카테고리별 상세 비교 */}
-              <div className="card" style={{ marginBottom: '1rem' }}>
-                <h3 style={{ marginBottom: '1rem' }}>카테고리별 비교</h3>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                  <thead>
-                    <tr style={{ borderBottom: '2px solid var(--gray-200)' }}>
-                      <th style={{ textAlign: 'left', padding: '0.75rem' }}>카테고리</th>
-                      {compareResults.map((r, i) => (
-                        <th key={i} style={{ textAlign: 'center', padding: '0.75rem', fontSize: '0.875rem' }}>{r.siteName?.slice(0, 15)}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Object.entries(catLabels).map(([key, label]) => (
-                      <tr key={key} style={{ borderBottom: '1px solid var(--gray-100)' }}>
-                        <td style={{ padding: '0.75rem' }}>{label.icon} {label.name}</td>
-                        {compareResults.map((r, i) => {
-                          const score = r.categories?.[key]?.score || 0
-                          return (
-                            <td key={i} style={{ textAlign: 'center', padding: '0.75rem' }}>
-                              <span style={{ fontWeight: '700', color: getGradeColor(score * 4) }}>{score}/25</span>
-                            </td>
-                          )
-                        })}
-                      </tr>
+      {/* SEO 결과 */}
+      {seoResult && !loading && (analysisType === 'seo' || analysisType === 'combined') && (
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold mb-4">🔍 SEO 분석 결과</h2>
+
+          {/* 점수 카드 */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="rounded-lg border bg-white p-6">
+              <p className="text-sm font-medium text-green-600 mb-2">분석 대상</p>
+              <h2 className="text-xl font-semibold mb-1">{seoResult.siteName}</h2>
+              <p className="text-sm text-gray-500 mb-4">{seoResult.siteDescription}</p>
+              {seoResult.fromCache && <span className="badge badge-warning text-xs">캐시된 결과</span>}
+            </div>
+
+            <div className="rounded-lg border p-6 text-center" style={{ background: getGradeBg(seoResult.overallScore) }}>
+              <p className="text-sm font-medium mb-2" style={{ color: getGradeColor(seoResult.overallScore) }}>SEO 점수</p>
+              <div className="flex items-center justify-center gap-4">
+                <span className="text-5xl font-bold" style={{ color: getGradeColor(seoResult.overallScore) }}>{seoResult.overallScore}</span>
+                <div>
+                  <div className="text-2xl font-bold" style={{ color: getGradeColor(seoResult.overallScore) }}>{getGrade(seoResult.overallScore)}</div>
+                  <div className="text-xs text-gray-500">{gradeInfo[getGrade(seoResult.overallScore)]?.label}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* SEO 카테고리 탭 */}
+          <div className="grid grid-cols-6 gap-2 mb-4">
+            {Object.entries(seoCategories).map(([key, label]) => {
+              const catData = seoResult.categories?.[key]
+              const score = catData?.score || 0
+              const maxScore = catData?.maxScore || 40
+              const percent = Math.round((score / maxScore) * 100)
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveSeoTab(key)}
+                  className={`rounded-lg border p-3 text-center transition-colors ${
+                    activeSeoTab === key ? 'border-gray-900 bg-gray-50' : 'border-gray-200 bg-white hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="text-xl mb-1">{label.icon}</div>
+                  <div className="text-sm font-bold" style={{ color: getGradeColor(percent) }}>{score}/{maxScore}</div>
+                  <div className="text-xs text-gray-500">{label.name}</div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* SEO 상세 결과 */}
+          <div className="rounded-lg border bg-white p-6">
+            <h3 className="font-medium mb-4">{seoCategories[activeSeoTab]?.icon} {seoCategories[activeSeoTab]?.full}</h3>
+            <div className="space-y-3">
+              {seoResult.categories?.[activeSeoTab]?.items?.map((item, idx) => (
+                <div key={idx} className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      {statusIcon(item.status)}
+                      <span className="font-medium text-sm">{item.name}</span>
+                    </div>
+                    <span className="text-green-600 font-semibold text-sm">{item.points}/{item.maxPoints}점</span>
+                  </div>
+                  <p className="text-gray-600 text-sm">{item.detail}</p>
+                  {item.value && <p className="text-blue-600 text-xs mt-1 font-mono bg-blue-50 px-2 py-1 rounded">{item.value}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* SEO 요약 */}
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            {seoResult.criticalIssues?.length > 0 && (
+              <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+                <h4 className="font-medium text-red-700 mb-2">🚨 심각한 문제 ({seoResult.criticalIssues.length})</h4>
+                <ul className="text-sm text-red-600 space-y-1">
+                  {seoResult.criticalIssues.slice(0, 3).map((issue, i) => (
+                    <li key={i}>• {issue}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {seoResult.warnings?.length > 0 && (
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <h4 className="font-medium text-amber-700 mb-2">⚠️ 경고 ({seoResult.warnings.length})</h4>
+                <ul className="text-sm text-amber-600 space-y-1">
+                  {seoResult.warnings.slice(0, 3).map((w, i) => (
+                    <li key={i}>• {w}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {seoResult.passedChecks?.length > 0 && (
+              <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+                <h4 className="font-medium text-green-700 mb-2">✅ 통과 ({seoResult.passedChecks.length})</h4>
+                <ul className="text-sm text-green-600 space-y-1">
+                  {seoResult.passedChecks.slice(0, 3).map((p, i) => (
+                    <li key={i}>• {p}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* 안내 (결과 없을 때) */}
+      {!result && !seoResult && !loading && (
+        <div>
+          <h3 className="text-sm font-medium text-gray-500 mb-4">
+            {analysisType === 'seo' ? 'SEO 검사 항목' : analysisType === 'combined' ? '통합 검사 항목' : 'AEO/GEO 검사 항목'}
+          </h3>
+
+          {analysisType === 'seo' || analysisType === 'combined' ? (
+            <div className="grid grid-cols-3 gap-4">
+              {Object.entries(seoCategories).map(([key, label]) => (
+                <div key={key} className="rounded-lg border bg-white p-4">
+                  <div className="text-2xl mb-2">{label.icon}</div>
+                  <h4 className="font-medium mb-2">{label.name}</h4>
+                  <ul className="text-xs text-gray-500 space-y-1">
+                    {seoCheckItems[key]?.slice(0, 3).map((item, i) => (
+                      <li key={i}>• {item.name}</li>
                     ))}
-                    <tr style={{ background: 'var(--gray-50)' }}>
-                      <td style={{ padding: '0.75rem', fontWeight: '600' }}>총점</td>
-                      {compareResults.map((r, i) => (
-                        <td key={i} style={{ textAlign: 'center', padding: '0.75rem' }}>
-                          <span style={{ fontWeight: '800', fontSize: '1.125rem', color: getGradeColor(r.overallScore) }}>{r.overallScore}</span>
-                        </td>
-                      ))}
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              {/* 각 사이트 상세 */}
-              {compareResults.map((r, idx) => (
-                <div key={idx} className="card" style={{ marginBottom: '1rem' }}>
-                  <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{
-                      width: '24px', height: '24px', borderRadius: '50%',
-                      background: getGradeColor(r.overallScore), color: 'white',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '0.75rem', fontWeight: '700'
-                    }}>#{idx + 1}</span>
-                    {r.siteName}
-                    <span style={{ marginLeft: 'auto', color: getGradeColor(r.overallScore), fontWeight: '700' }}>
-                      {r.overallScore}점 ({getGrade(r.overallScore)})
-                    </span>
-                  </h3>
-
-                  {r.topIssues?.length > 0 && (
-                    <div style={{ marginBottom: '0.75rem' }}>
-                      <strong style={{ fontSize: '0.875rem', color: 'var(--danger)' }}>주요 문제점:</strong>
-                      <ul style={{ marginTop: '0.25rem', marginLeft: '1.25rem', color: 'var(--gray-600)', fontSize: '0.8125rem' }}>
-                        {r.topIssues.slice(0, 3).map((issue, i) => <li key={i}>{issue}</li>)}
-                      </ul>
-                    </div>
-                  )}
-
-                  {r.recommendations?.length > 0 && (
-                    <div>
-                      <strong style={{ fontSize: '0.875rem', color: 'var(--primary)' }}>개선 권고:</strong>
-                      <ul style={{ marginTop: '0.25rem', marginLeft: '1.25rem', color: 'var(--gray-600)', fontSize: '0.8125rem' }}>
-                        {r.recommendations.slice(0, 3).map((rec, i) => (
-                          <li key={i}>{typeof rec === 'string' ? rec : rec.title}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-4 gap-4">
+              {[
+                { icon: '🏗️', title: '구조 (25점)', desc: 'Schema.org, 헤딩, 메타태그' },
+                { icon: '📝', title: '콘텐츠 (25점)', desc: 'FAQ, 정의문, 통계' },
+                { icon: '⚙️', title: '기술 (25점)', desc: '속도, 모바일, sitemap' },
+                { icon: '🛡️', title: '신뢰도 (25점)', desc: '저자정보, 출처, SSL' }
+              ].map((f, i) => (
+                <div key={i} className="rounded-lg border bg-white p-4">
+                  <div className="text-2xl mb-2">{f.icon}</div>
+                  <h4 className="font-medium mb-1">{f.title}</h4>
+                  <p className="text-xs text-gray-500">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -765,126 +757,16 @@ ${(data.recommendations||[]).map(r=>`<div class="rec"><div class="rec-title">${t
         </div>
       )}
 
-      {/* 기록 뷰 */}
-      {currentView === 'history' && (
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-            <h2>분석 기록</h2>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button onClick={clearCache} className="btn btn-secondary">캐시 삭제</button>
-              <button onClick={clearHistory} className="btn" style={{ background: 'var(--danger)', color: 'white' }}>기록 삭제</button>
-            </div>
-          </div>
-
-          {history.length === 0 ? (
-            <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
-              <p style={{ color: 'var(--gray-500)' }}>기록이 없습니다</p>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {history.map((item, idx) => (
-                <div key={idx} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{
-                      width: '48px', height: '48px', borderRadius: '8px',
-                      background: getGradeBg(item.overallScore),
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'
-                    }}>
-                      <span style={{ fontSize: '1rem', fontWeight: '700', color: getGradeColor(item.overallScore) }}>{item.overallScore}</span>
-                      <span style={{ fontSize: '0.625rem', color: getGradeColor(item.overallScore) }}>{getGrade(item.overallScore)}</span>
-                    </div>
-                    <div>
-                      <div style={{ fontWeight: '600' }}>{item.siteName}</div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--gray-500)' }}>{item.url}</div>
-                    </div>
-                  </div>
-                  <button onClick={() => { setResult(item); setCurrentView('analyze') }} className="btn btn-primary">
-                    보기
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
+      {/* 하단 기록/통계 링크 */}
+      <div className="mt-8 pt-6 border-t flex justify-between items-center">
+        <div className="text-sm text-gray-500">
+          분석 기록: {history.length}건 | 캐시: {Object.keys(cache).length}건
         </div>
-      )}
-
-      {/* 통계 뷰 */}
-      {currentView === 'dashboard' && (
-        <div>
-          <h2 style={{ marginBottom: '1.5rem' }}>분석 통계</h2>
-          {history.length === 0 ? (
-            <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
-              <p style={{ color: 'var(--gray-500)' }}>데이터가 없습니다</p>
-            </div>
-          ) : (
-            <>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
-                {[
-                  { label: '총 분석', value: history.length, color: 'var(--primary)' },
-                  { label: '평균 점수', value: Math.round(history.reduce((s, h) => s + h.overallScore, 0) / history.length), color: '#059669' },
-                  { label: '최고 점수', value: Math.max(...history.map(h => h.overallScore)), color: '#f59e0b' },
-                  { label: '최저 점수', value: Math.min(...history.map(h => h.overallScore)), color: '#dc2626' }
-                ].map((s, i) => (
-                  <div key={i} className="card" style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '2rem', fontWeight: '800', color: s.color }}>{s.value}</div>
-                    <div style={{ color: 'var(--gray-500)', fontSize: '0.875rem' }}>{s.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="card">
-                <h3 style={{ marginBottom: '1rem' }}>등급 분포</h3>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  {Object.entries(gradeInfo).map(([grade, info]) => {
-                    const count = history.filter(h => getGrade(h.overallScore) === grade).length
-                    return (
-                      <div key={grade} style={{
-                        flex: 1, minWidth: '80px',
-                        padding: '1rem', borderRadius: '8px',
-                        background: info.bgColor, textAlign: 'center'
-                      }}>
-                        <div style={{ fontSize: '1.5rem', fontWeight: '700', color: info.color }}>{count}</div>
-                        <div style={{ fontSize: '0.875rem', color: info.color }}>{grade}</div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            </>
-          )}
+        <div className="flex gap-2">
+          <button onClick={clearCache} className="btn btn-ghost text-sm h-8">캐시 삭제</button>
+          <button onClick={clearHistory} className="btn btn-ghost text-sm h-8 text-red-600">기록 삭제</button>
         </div>
-      )}
-
-      {/* 이메일 모달 */}
-      {emailModal && (
-        <div style={{
-          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          zIndex: 1000
-        }} onClick={() => setEmailModal(false)}>
-          <div className="card" style={{ width: '400px', maxWidth: '90%' }} onClick={e => e.stopPropagation()}>
-            <h3 style={{ marginBottom: '1rem' }}>이메일로 리포트 받기</h3>
-            <input
-              type="email"
-              className="input"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="이메일 주소"
-              style={{ marginBottom: '1rem' }}
-            />
-            {emailSuccess && <p style={{ color: '#059669', marginBottom: '1rem' }}>{emailSuccess}</p>}
-            {error && <p style={{ color: 'var(--danger)', marginBottom: '1rem' }}>{error}</p>}
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button onClick={() => setEmailModal(false)} className="btn btn-secondary" style={{ flex: 1 }}>
-                취소
-              </button>
-              <button onClick={sendEmail} disabled={emailSending} className="btn btn-primary" style={{ flex: 1 }}>
-                {emailSending ? '발송 중...' : '발송'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   )
 }
