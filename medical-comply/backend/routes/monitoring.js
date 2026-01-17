@@ -132,6 +132,17 @@ router.post('/search', authMiddleware, async (req, res) => {
 
       const searchResults = await Promise.all(searchPromises);
 
+      // API 호출 성공 여부 확인
+      const successfulResults = searchResults.filter(r => r.data !== null);
+      if (successfulResults.length === 0 && searchPromises.length > 0) {
+        // 모든 API 호출이 실패한 경우
+        return res.status(503).json({
+          error: '네이버 API 호출에 실패했습니다.',
+          message: 'API 키가 올바르지 않거나 네이버 API 서버에 문제가 있습니다.',
+          apiError: true
+        });
+      }
+
       // 결과 통합 및 변환
       let id = 1;
       for (const { type, data } of searchResults) {
@@ -165,13 +176,11 @@ router.post('/search', authMiddleware, async (req, res) => {
 
           // 날짜 형식 변환
           let formattedDate = '';
-          if (postDate) {
+          if (postDate && postDate.length === 8) {
             formattedDate = `${postDate.slice(0, 4)}-${postDate.slice(4, 6)}-${postDate.slice(6, 8)}`;
           } else {
-            // 날짜 없으면 현재 날짜 기준 랜덤 (임시)
-            const d = new Date();
-            d.setDate(d.getDate() - Math.floor(Math.random() * 30));
-            formattedDate = d.toISOString().split('T')[0];
+            // 날짜 없으면 현재 날짜 사용 (카페, 지식인은 날짜 정보 미제공)
+            formattedDate = new Date().toISOString().split('T')[0];
           }
 
           results.items.push({
