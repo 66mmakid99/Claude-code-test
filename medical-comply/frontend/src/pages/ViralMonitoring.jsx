@@ -222,7 +222,7 @@ function ViralMonitoring({ user }) {
               네이버 API 설정 필요
             </div>
             <div style={{ fontSize: '0.875rem', color: '#b45309' }}>
-              실제 검색을 위해 관리자가 NAVER_CLIENT_ID, NAVER_CLIENT_SECRET 환경변수를 설정해야 합니다.
+              실제 검색을 위해 관리자가 NAVER_SEARCH_ID, NAVER_SEARCH_SECRET 환경변수를 설정해야 합니다.
             </div>
           </div>
         </div>

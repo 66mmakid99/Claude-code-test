@@ -5,13 +5,13 @@ const { authMiddleware } = require('../middlewares/auth');
 
 const router = express.Router();
 
-// 네이버 API 설정
-const NAVER_CLIENT_ID = process.env.NAVER_CLIENT_ID;
-const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET;
+// 네이버 검색 API 설정 (로그인 API와 별도)
+const NAVER_SEARCH_ID = process.env.NAVER_SEARCH_ID;
+const NAVER_SEARCH_SECRET = process.env.NAVER_SEARCH_SECRET;
 
 // 네이버 검색 API 호출
 async function searchNaver(query, type = 'blog', display = 20, start = 1, sort = 'sim') {
-  if (!NAVER_CLIENT_ID || !NAVER_CLIENT_SECRET) {
+  if (!NAVER_SEARCH_ID || !NAVER_SEARCH_SECRET) {
     return null; // API 키 없으면 null 반환
   }
 
@@ -32,8 +32,8 @@ async function searchNaver(query, type = 'blog', display = 20, start = 1, sort =
         sort // sim: 관련도순, date: 최신순
       },
       headers: {
-        'X-Naver-Client-Id': NAVER_CLIENT_ID,
-        'X-Naver-Client-Secret': NAVER_CLIENT_SECRET
+        'X-Naver-Client-Id': NAVER_SEARCH_ID,
+        'X-Naver-Client-Secret': NAVER_SEARCH_SECRET
       }
     });
 
@@ -102,8 +102,8 @@ router.post('/search', authMiddleware, async (req, res) => {
     const naverSort = sort === 'recent' ? 'date' : 'sim';
     const results = { keyword, items: [], stats: {} };
 
-    // 네이버 API 키 확인
-    const hasNaverApi = NAVER_CLIENT_ID && NAVER_CLIENT_SECRET;
+    // 네이버 검색 API 키 확인
+    const hasNaverApi = NAVER_SEARCH_ID && NAVER_SEARCH_SECRET;
 
     if (hasNaverApi) {
       // 네이버 API로 실제 검색
@@ -330,10 +330,10 @@ router.post('/analyze-sentiment', authMiddleware, async (req, res) => {
 // API 상태 확인
 router.get('/status', (req, res) => {
   res.json({
-    naverApiConfigured: !!(NAVER_CLIENT_ID && NAVER_CLIENT_SECRET),
-    message: NAVER_CLIENT_ID && NAVER_CLIENT_SECRET
-      ? '네이버 API가 설정되어 있습니다.'
-      : '네이버 API 키가 설정되지 않았습니다. 실제 검색을 위해 환경변수를 설정해주세요.'
+    naverApiConfigured: !!(NAVER_SEARCH_ID && NAVER_SEARCH_SECRET),
+    message: NAVER_SEARCH_ID && NAVER_SEARCH_SECRET
+      ? '네이버 검색 API가 설정되어 있습니다.'
+      : '네이버 검색 API 키가 설정되지 않았습니다. NAVER_SEARCH_ID, NAVER_SEARCH_SECRET 환경변수를 설정해주세요.'
   });
 });
 
