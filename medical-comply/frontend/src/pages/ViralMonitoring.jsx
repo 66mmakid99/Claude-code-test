@@ -68,6 +68,17 @@ function ViralMonitoring({ user }) {
     return { bg: '#f3f4f6', text: '#374151', label: '중립' }
   }
 
+  // API 상태 확인
+  const [apiStatus, setApiStatus] = useState(null)
+
+  useEffect(() => {
+    // API 상태 확인
+    fetch('/api/monitoring/status')
+      .then(res => res.json())
+      .then(data => setApiStatus(data))
+      .catch(() => setApiStatus({ naverApiConfigured: false }))
+  }, [])
+
   // 검색 실행
   const handleSearch = async (e) => {
     e?.preventDefault()
@@ -80,6 +91,7 @@ function ViralMonitoring({ user }) {
     setLoading(true)
     setError('')
     setSelectedItems([])
+    setResults(null)
 
     try {
       const token = localStorage.getItem('token')
@@ -97,98 +109,23 @@ function ViralMonitoring({ user }) {
         })
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('검색 중 오류가 발생했습니다')
+        if (data.apiRequired) {
+          setError('네이버 API 키가 설정되지 않았습니다. 관리자에게 문의해주세요.')
+        } else {
+          setError(data.error || '검색 중 오류가 발생했습니다')
+        }
+        return
       }
 
-      const data = await response.json()
       setResults(data)
       saveToHistory(searchKeyword, data.totalCount)
     } catch (err) {
-      // API가 없으면 목업 데이터 사용 (개발용)
-      const mockResults = generateMockResults(searchKeyword, filters)
-      setResults(mockResults)
-      saveToHistory(searchKeyword, mockResults.totalCount)
+      setError('서버 연결에 실패했습니다. 잠시 후 다시 시도해주세요.')
     } finally {
       setLoading(false)
-    }
-  }
-
-  // 목업 데이터 생성 (API 연동 전 개발용)
-  const generateMockResults = (kw, filters) => {
-    const platforms = ['네이버 블로그', '네이버 카페', '네이버 지식인']
-    const sentiments = ['positive', 'neutral', 'negative']
-    const titles = [
-      `${kw} 실제 후기 - 3개월 다녀본 솔직 리뷰`,
-      `${kw} 추천 vs 비추천? 직접 경험담`,
-      `${kw} 가격 비교 정리 (2024년 최신)`,
-      `${kw} 방문 전 꼭 알아야 할 것들`,
-      `${kw} 상담 받고 온 후기`,
-      `[내돈내산] ${kw} 한달 후기`,
-      `${kw} 예약 방법 총정리`,
-      `${kw} 위치/주차 정보`,
-      `${kw} vs 경쟁업체 비교`,
-      `${kw} 이벤트 정보 공유`,
-      `${kw} 전문의 상담 후기`,
-      `${kw} 시술 비용 공개`,
-      `${kw} 재방문 후기 (2차 방문)`,
-      `${kw} 친구 추천 받고 다녀왔어요`,
-      `강남 ${kw} 근처 맛집까지`,
-    ]
-
-    const items = titles.map((title, idx) => {
-      const daysAgo = Math.floor(Math.random() * 30)
-      const date = new Date()
-      date.setDate(date.getDate() - daysAgo)
-
-      return {
-        id: idx + 1,
-        title,
-        url: `https://blog.naver.com/example${idx}`,
-        platform: platforms[Math.floor(Math.random() * platforms.length)],
-        author: `user${Math.floor(Math.random() * 1000)}`,
-        date: date.toISOString().split('T')[0],
-        views: Math.floor(Math.random() * 10000) + 100,
-        likes: Math.floor(Math.random() * 500),
-        comments: Math.floor(Math.random() * 100),
-        sentiment: sentiments[Math.floor(Math.random() * sentiments.length)],
-        snippet: `${kw}에 대한 상세한 후기입니다. 직접 방문해서 경험한 내용을 솔직하게 공유합니다. 전반적인 만족도와 개선점을 정리했습니다.`,
-        hasImage: Math.random() > 0.3,
-        isAd: Math.random() > 0.85
-      }
-    })
-
-    // 필터 적용
-    let filtered = items
-    if (filters.platform !== 'all') {
-      const platformMap = { blog: '블로그', cafe: '카페', kin: '지식인' }
-      filtered = filtered.filter(i => i.platform.includes(platformMap[filters.platform] || ''))
-    }
-
-    // 정렬
-    if (filters.sort === 'views') {
-      filtered.sort((a, b) => b.views - a.views)
-    } else if (filters.sort === 'recent') {
-      filtered.sort((a, b) => new Date(b.date) - new Date(a.date))
-    }
-
-    const positiveCount = filtered.filter(i => i.sentiment === 'positive').length
-    const negativeCount = filtered.filter(i => i.sentiment === 'negative').length
-
-    return {
-      keyword: kw,
-      totalCount: filtered.length,
-      items: filtered,
-      stats: {
-        blogCount: filtered.filter(i => i.platform.includes('블로그')).length,
-        cafeCount: filtered.filter(i => i.platform.includes('카페')).length,
-        kinCount: filtered.filter(i => i.platform.includes('지식인')).length,
-        totalViews: filtered.reduce((sum, i) => sum + i.views, 0),
-        avgViews: Math.round(filtered.reduce((sum, i) => sum + i.views, 0) / filtered.length),
-        positiveRatio: Math.round((positiveCount / filtered.length) * 100),
-        negativeRatio: Math.round((negativeCount / filtered.length) * 100)
-      },
-      analyzedAt: new Date().toISOString()
     }
   }
 
@@ -216,21 +153,20 @@ function ViralMonitoring({ user }) {
       ? results.items.filter(i => selectedItems.includes(i.id))
       : results.items
 
-    const headers = ['제목', '플랫폼', '작성자', '날짜', '조회수', '좋아요', '댓글', '감성', 'URL']
+    const headers = ['제목', '플랫폼', '작성자', '날짜', '감성', '감성신뢰도', '광고여부', 'URL']
     const rows = items.map(item => [
       item.title,
       item.platform,
-      item.author,
+      item.author || '-',
       item.date,
-      item.views,
-      item.likes,
-      item.comments,
       getSentimentColor(item.sentiment).label,
+      item.sentimentConfidence ? `${item.sentimentConfidence}%` : '-',
+      item.isAd ? '광고 의심' : '일반',
       item.url
     ])
 
     const csvContent = [headers, ...rows]
-      .map(row => row.map(cell => `"${cell}"`).join(','))
+      .map(row => row.map(cell => `"${cell || ''}"`).join(','))
       .join('\n')
 
     const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' })
@@ -553,18 +489,19 @@ function ViralMonitoring({ user }) {
                         </div>
 
                         <h4 style={{ color: '#111827', marginBottom: '0.5rem', fontWeight: '600' }}>
-                          {item.hasImage && <span style={{ marginRight: '0.25rem' }}>🖼️</span>}
                           {item.title}
                         </h4>
 
-                        <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '0.75rem', lineHeight: '1.5' }}>
-                          {item.snippet}
-                        </p>
+                        {item.description && (
+                          <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '0.75rem', lineHeight: '1.5' }}>
+                            {item.description}
+                          </p>
+                        )}
 
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.8rem', color: '#9ca3af' }}>
-                          <span>👁️ {item.views.toLocaleString()}</span>
-                          <span>❤️ {item.likes}</span>
-                          <span>💬 {item.comments}</span>
+                          {item.sentimentConfidence && (
+                            <span title="감성 분석 신뢰도">📊 신뢰도 {item.sentimentConfidence}%</span>
+                          )}
                         </div>
                       </div>
 

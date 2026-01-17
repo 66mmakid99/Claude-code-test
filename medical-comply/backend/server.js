@@ -44,6 +44,7 @@ const reportRoutes = require('./routes/reports');
 const paymentRoutes = require('./routes/payments');
 const dealerRoutes = require('./routes/dealers');
 const aeoRoutes = require('./routes/aeo');
+const monitoringRoutes = require('./routes/monitoring');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -68,6 +69,7 @@ app.use('/api/reports', reportRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/dealers', dealerRoutes);
 app.use('/api/aeo', aeoRoutes);
+app.use('/api/monitoring', monitoringRoutes);
 
 // 헬스 체크 (DB 상태와 무관하게 항상 200 반환)
 app.get('/api/health', async (req, res) => {
