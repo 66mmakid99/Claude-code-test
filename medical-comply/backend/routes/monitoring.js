@@ -22,7 +22,14 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 제56조 제2항 제3호',
       penalty: '1년 이하 징역 또는 1천만원 이하 벌금',
       keywords: ['100% 완치', '100%완치', '완치 보장', '확실한 효과', '효과 보장', '무조건 효과', '반드시 낫', '꼭 낫', '완벽하게 치료', '확실히 치료', '틀림없이'],
-      patterns: [/100\s*%\s*(완치|치료|효과|성공)/gi, /완치\s*(보장|약속|확실)/gi, /(반드시|꼭|무조건)\s*(낫|치료|완치)/gi]
+      patterns: [/100\s*%\s*(완치|치료|효과|성공)/gi, /완치\s*(보장|약속|확실)/gi, /(반드시|꼭|무조건)\s*(낫|치료|완치)/gi],
+      // 추천 수정안
+      suggestions: [
+        { wrong: '100% 완치', safe: '개인에 따라 치료 결과가 다를 수 있습니다' },
+        { wrong: '확실한 효과', safe: '많은 분들이 만족하신 시술입니다' },
+        { wrong: '완치 보장', safe: '최선의 치료 결과를 위해 노력합니다' },
+        { wrong: '반드시 낫습니다', safe: '치료 경과는 개인마다 다를 수 있습니다' }
+      ]
     },
     {
       code: 'C02',
@@ -31,7 +38,11 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 시행령 제23조 제1항',
       penalty: '과태료 300만원',
       keywords: ['전후사진', '전후 사진', '비포애프터', 'before after', 'before&after', '시술전후', '시술 전후', '전후비교', '변화사진', '변화 사진'],
-      patterns: [/전\s*후\s*사진/gi, /before\s*(&|and)?\s*after/gi, /시술\s*전\s*후/gi, /비포\s*애프터/gi]
+      patterns: [/전\s*후\s*사진/gi, /before\s*(&|and)?\s*after/gi, /시술\s*전\s*후/gi, /비포\s*애프터/gi],
+      suggestions: [
+        { wrong: '전후사진', safe: '사진 게시 시 환자 동의서 필수 + 객관적 촬영조건 명시 필요' },
+        { wrong: '비포애프터', safe: '전후 사진은 의료광고 심의 통과 후 게시 가능' }
+      ]
     },
     {
       code: 'C03',
@@ -40,7 +51,13 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 제56조 제2항 제1호',
       penalty: '1년 이하 징역 또는 1천만원 이하 벌금',
       keywords: ['국내 최초', '세계 최초', '국내 유일', '세계 유일', '업계 1위', '국내 1위', '최고의 기술', '독보적', '압도적 1위', '넘버원', 'No.1'],
-      patterns: [/(국내|세계|업계)\s*(최초|유일|1위)/gi, /(독보적|압도적)/gi, /no\s*\.?\s*1/gi]
+      patterns: [/(국내|세계|업계)\s*(최초|유일|1위)/gi, /(독보적|압도적)/gi, /no\s*\.?\s*1/gi],
+      suggestions: [
+        { wrong: '국내 최초', safe: '저희 병원에서 시행하고 있는 시술입니다' },
+        { wrong: '국내 1위', safe: '많은 환자분들이 선택하신 병원입니다' },
+        { wrong: '최고의 기술', safe: '검증된 의료 기술을 사용합니다' },
+        { wrong: '독보적', safe: '차별화된 진료 시스템을 갖추고 있습니다' }
+      ]
     },
     {
       code: 'C04',
@@ -49,7 +66,11 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 제27조, 약사법 제68조',
       penalty: '5년 이하 징역 또는 5천만원 이하 벌금',
       keywords: ['줄기세포 시술', '면역세포 치료', 'NK세포', '미승인 치료', '해외직수입'],
-      patterns: [/(줄기세포|면역세포|NK세포)\s*(시술|치료|주사)/gi]
+      patterns: [/(줄기세포|면역세포|NK세포)\s*(시술|치료|주사)/gi],
+      suggestions: [
+        { wrong: '줄기세포 시술', safe: '해당 표현은 식약처 승인 여부 확인 필요 - 삭제 권장' },
+        { wrong: '면역세포 치료', safe: '승인된 치료법만 광고 가능 - 삭제 권장' }
+      ]
     }
   ],
 
@@ -62,7 +83,11 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 제56조 제2항 제5호',
       penalty: '시정명령, 과태료 300만원',
       keywords: ['타병원', '다른병원', '타 병원', '다른 병원', '경쟁병원', 'OO보다', '비교하면', '보다 좋은', '보다 저렴'],
-      patterns: [/(타|다른|경쟁)\s*병원/gi, /보다\s*(좋|나은|저렴|빠른)/gi]
+      patterns: [/(타|다른|경쟁)\s*병원/gi, /보다\s*(좋|나은|저렴|빠른)/gi],
+      suggestions: [
+        { wrong: '타병원보다', safe: '저희 병원만의 특징을 소개합니다' },
+        { wrong: '비교하면', safe: '저희 병원의 장점을 안내드립니다' }
+      ]
     },
     {
       code: 'W02',
@@ -71,7 +96,12 @@ const VIOLATION_RULES = {
       legalBasis: '의료광고 심의기준 제4조',
       penalty: '심의 부적합 판정, 시정명령',
       keywords: ['50% 할인', '70% 할인', '파격 할인', '반값', '무료 시술', '공짜', '특가', '최저가', '가격 파괴'],
-      patterns: [/[5-9]0\s*%\s*할인/gi, /(파격|반값|무료|공짜|특가)/gi, /최저\s*가/gi]
+      patterns: [/[5-9]0\s*%\s*할인/gi, /(파격|반값|무료|공짜|특가)/gi, /최저\s*가/gi],
+      suggestions: [
+        { wrong: '50% 할인', safe: '합리적인 비용으로 진료받으실 수 있습니다' },
+        { wrong: '무료 시술', safe: '자세한 비용은 상담 시 안내드립니다' },
+        { wrong: '최저가', safe: '투명한 가격 정책을 운영합니다' }
+      ]
     },
     {
       code: 'W03',
@@ -80,7 +110,12 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 제56조 제2항 제2호',
       penalty: '과태료 300만원',
       keywords: ['획기적인 기술', '혁신적 치료', '기적의 치료', '꿈의 치료', '신기술', '첨단 기술', '최신 기술'],
-      patterns: [/(획기적|혁신적|기적의|꿈의)\s*(기술|치료|시술)/gi]
+      patterns: [/(획기적|혁신적|기적의|꿈의)\s*(기술|치료|시술)/gi],
+      suggestions: [
+        { wrong: '획기적인 기술', safe: '검증된 의료 기술을 적용합니다' },
+        { wrong: '기적의 치료', safe: '체계적인 치료 프로그램을 운영합니다' },
+        { wrong: '최신 기술', safe: '지속적으로 발전하는 의료 서비스를 제공합니다' }
+      ]
     },
     {
       code: 'W04',
@@ -90,7 +125,10 @@ const VIOLATION_RULES = {
       penalty: '과태료 500만원 이하',
       keywords: ['체험단', '협찬', '제공받았', '지원받았', '서포터즈', '원고료'],
       patterns: [/(체험단|협찬|서포터즈)/gi, /(제공|지원)\s*받/gi],
-      checkAdDisclosure: true // 광고 표기 여부 추가 확인 필요
+      checkAdDisclosure: true,
+      suggestions: [
+        { wrong: '(광고 미표기)', safe: '글 상단에 "#광고" 또는 "이 글은 광고입니다" 명시 필요' }
+      ]
     },
     {
       code: 'W05',
@@ -99,7 +137,12 @@ const VIOLATION_RULES = {
       legalBasis: '의료법 제56조 제2항 제4호',
       penalty: '시정명령, 과태료',
       keywords: ['명의', '국내 최고 전문의', '대한민국 대표', '카리스마 원장', '레전드', '신의 손'],
-      patterns: [/(명의|대가|거장|레전드)/gi, /(국내|대한민국)\s*(최고|대표)\s*(전문의|의사|원장)/gi]
+      patterns: [/(명의|대가|거장|레전드)/gi, /(국내|대한민국)\s*(최고|대표)\s*(전문의|의사|원장)/gi],
+      suggestions: [
+        { wrong: '명의', safe: '00과 전문의 / 00대학교 출신' },
+        { wrong: '국내 최고 전문의', safe: '풍부한 임상 경험을 보유한 전문의' },
+        { wrong: '신의 손', safe: '섬세한 시술을 추구합니다' }
+      ]
     }
   ],
 
@@ -111,7 +154,10 @@ const VIOLATION_RULES = {
       description: '환자 후기는 객관성이 담보되어야 하며, 과장되면 안됩니다.',
       legalBasis: '의료광고 심의기준',
       keywords: ['솔직후기', '생생후기', '리얼후기', '체험후기', '시술후기', '방문후기'],
-      patterns: [/(솔직|생생|리얼|체험|시술|방문)\s*후기/gi]
+      patterns: [/(솔직|생생|리얼|체험|시술|방문)\s*후기/gi],
+      suggestions: [
+        { wrong: '솔직후기', safe: '후기 게시 시 환자 동의 및 객관적 서술 필요' }
+      ]
     },
     {
       code: 'I02',
@@ -119,7 +165,11 @@ const VIOLATION_RULES = {
       description: '과도하게 과장된 만족 표현은 주의가 필요합니다.',
       legalBasis: '의료광고 심의기준',
       keywords: ['인생병원', '신세계', '대박', '미쳤다', '역대급', '찐이다', '레알 추천'],
-      patterns: [/(인생|신세계|역대급)/gi, /대박/gi]
+      patterns: [/(인생|신세계|역대급)/gi, /대박/gi],
+      suggestions: [
+        { wrong: '인생병원', safe: '만족스러운 진료 경험이었습니다' },
+        { wrong: '대박', safe: '좋은 결과를 얻었습니다' }
+      ]
     }
   ]
 };
@@ -177,7 +227,9 @@ function detectViolations(title, description) {
           legalBasis: rule.legalBasis,
           penalty: rule.penalty,
           matchedKeywords: uniqueMatches,
-          needsAdDisclosure: rule.checkAdDisclosure || false
+          needsAdDisclosure: rule.checkAdDisclosure || false,
+          // 추천 수정안 추가
+          suggestions: rule.suggestions || []
         });
       }
     }
@@ -615,6 +667,127 @@ router.get('/status', (req, res) => {
       ? '네이버 검색 API가 설정되어 있습니다.'
       : '네이버 검색 API 키가 설정되지 않았습니다. NAVER_SEARCH_ID, NAVER_SEARCH_SECRET 환경변수를 설정해주세요.'
   });
+});
+
+// ============================================
+// 조치 요청 관리 (인메모리 + 추후 DB 연동)
+// ============================================
+const actionRequests = []; // 임시 인메모리 저장 (서버 재시작 시 초기화)
+
+// 조치 요청 생성
+router.post('/action-request', authMiddleware, async (req, res) => {
+  try {
+    const { contentUrl, contentTitle, actionType, violations, memo } = req.body;
+    const userId = req.user?.id || 'unknown';
+
+    if (!contentUrl || !actionType) {
+      return res.status(400).json({ error: '필수 정보가 누락되었습니다.' });
+    }
+
+    const actionTypeLabels = {
+      delete: '콘텐츠 삭제 요청',
+      modify: '콘텐츠 수정 요청',
+      contact: '대행사 연락 요청'
+    };
+
+    const request = {
+      id: Date.now().toString(),
+      userId,
+      contentUrl,
+      contentTitle: contentTitle || '제목 없음',
+      actionType,
+      actionTypeLabel: actionTypeLabels[actionType] || actionType,
+      violations: violations || [],
+      memo: memo || '',
+      status: 'pending', // pending, in_progress, completed, cancelled
+      statusLabel: '접수됨',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    actionRequests.unshift(request); // 최신 순으로 앞에 추가
+
+    // TODO: 실제 DB 저장 로직 추가
+    // await pool.query('INSERT INTO action_requests ...', [...]);
+
+    res.status(201).json({
+      success: true,
+      message: '조치 요청이 접수되었습니다.',
+      request
+    });
+
+  } catch (error) {
+    console.error('조치 요청 생성 오류:', error);
+    res.status(500).json({ error: '조치 요청 처리 중 오류가 발생했습니다.' });
+  }
+});
+
+// 조치 요청 목록 조회
+router.get('/action-requests', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user?.id;
+    const { status } = req.query;
+
+    let filtered = actionRequests;
+
+    // 사용자별 필터링 (관리자가 아니면 본인 것만)
+    if (req.user?.role !== 'admin') {
+      filtered = filtered.filter(r => r.userId === userId);
+    }
+
+    // 상태별 필터링
+    if (status && status !== 'all') {
+      filtered = filtered.filter(r => r.status === status);
+    }
+
+    res.json({
+      total: filtered.length,
+      requests: filtered.slice(0, 50) // 최근 50개만
+    });
+
+  } catch (error) {
+    console.error('조치 요청 목록 조회 오류:', error);
+    res.status(500).json({ error: '목록 조회 중 오류가 발생했습니다.' });
+  }
+});
+
+// 조치 요청 상태 업데이트
+router.patch('/action-request/:id', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, note } = req.body;
+
+    const statusLabels = {
+      pending: '접수됨',
+      in_progress: '처리 중',
+      completed: '처리 완료',
+      cancelled: '취소됨'
+    };
+
+    const request = actionRequests.find(r => r.id === id);
+    if (!request) {
+      return res.status(404).json({ error: '조치 요청을 찾을 수 없습니다.' });
+    }
+
+    if (status) {
+      request.status = status;
+      request.statusLabel = statusLabels[status] || status;
+    }
+    if (note) {
+      request.adminNote = note;
+    }
+    request.updatedAt = new Date().toISOString();
+
+    res.json({
+      success: true,
+      message: '상태가 업데이트되었습니다.',
+      request
+    });
+
+  } catch (error) {
+    console.error('조치 요청 상태 업데이트 오류:', error);
+    res.status(500).json({ error: '상태 업데이트 중 오류가 발생했습니다.' });
+  }
 });
 
 module.exports = router;
