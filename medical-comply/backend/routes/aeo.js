@@ -1,9 +1,168 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { authMiddleware } = require('../middlewares/auth');
 
 const router = express.Router();
+
+// Gemini AI 초기화
+let geminiModel = null;
+if (process.env.GEMINI_API_KEY) {
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  geminiModel = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+  console.log('✅ Gemini API 초기화 완료');
+}
+
+/**
+ * Claude API 호출 함수
+ * @param {string} prompt - 분석 프롬프트
+ * @param {object} data - 크롤링 데이터
+ * @returns {object} 분석 결과
+ */
+async function callClaudeAPI(prompt, data) {
+  const startTime = Date.now();
+
+  const response = await axios.post('https://api.anthropic.com/v1/messages', {
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 4000,
+    messages: [{ role: 'user', content: prompt + '\n\n[크롤링 데이터]\n' + JSON.stringify(data, null, 2) }]
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    }
+  });
+
+  const text = response.data.content
+    .filter(i => i.type === 'text')
+    .map(i => i.text)
+    .join('');
+
+  const result = parseJSONFromText(text);
+  const responseTime = Date.now() - startTime;
+
+  // 토큰 사용량 추정 (Claude 응답에서 가져오기)
+  const inputTokens = response.data.usage?.input_tokens || 0;
+  const outputTokens = response.data.usage?.output_tokens || 0;
+
+  return {
+    result,
+    metadata: {
+      provider: 'claude',
+      model: 'claude-sonnet-4-20250514',
+      responseTime,
+      inputTokens,
+      outputTokens,
+      estimatedCost: calculateClaudeCost(inputTokens, outputTokens)
+    }
+  };
+}
+
+/**
+ * Gemini API 호출 함수
+ * @param {string} prompt - 분석 프롬프트
+ * @param {object} data - 크롤링 데이터
+ * @returns {object} 분석 결과
+ */
+async function callGeminiAPI(prompt, data) {
+  if (!geminiModel) {
+    throw new Error('Gemini API가 설정되지 않았습니다.');
+  }
+
+  const startTime = Date.now();
+  const fullPrompt = prompt + '\n\n[크롤링 데이터]\n' + JSON.stringify(data, null, 2);
+
+  const response = await geminiModel.generateContent(fullPrompt);
+  const text = response.response.text();
+
+  const result = parseJSONFromText(text);
+  const responseTime = Date.now() - startTime;
+
+  // 토큰 사용량 (Gemini는 usageMetadata에서 제공)
+  const usageMetadata = response.response.usageMetadata || {};
+  const inputTokens = usageMetadata.promptTokenCount || 0;
+  const outputTokens = usageMetadata.candidatesTokenCount || 0;
+
+  return {
+    result,
+    metadata: {
+      provider: 'gemini',
+      model: 'gemini-2.0-flash',
+      responseTime,
+      inputTokens,
+      outputTokens,
+      estimatedCost: calculateGeminiCost(inputTokens, outputTokens)
+    }
+  };
+}
+
+/**
+ * 텍스트에서 JSON 파싱
+ */
+function parseJSONFromText(text) {
+  let jsonStr = text;
+  const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+  if (match) {
+    jsonStr = match[1];
+  } else {
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start !== -1 && end !== -1) jsonStr = text.substring(start, end + 1);
+  }
+  return JSON.parse(jsonStr);
+}
+
+/**
+ * Claude 비용 계산 (USD)
+ * Claude 3.5 Sonnet: $3/1M input, $15/1M output
+ */
+function calculateClaudeCost(inputTokens, outputTokens) {
+  const inputCost = (inputTokens / 1000000) * 3;
+  const outputCost = (outputTokens / 1000000) * 15;
+  return {
+    inputCost: inputCost.toFixed(6),
+    outputCost: outputCost.toFixed(6),
+    totalCost: (inputCost + outputCost).toFixed(6),
+    currency: 'USD'
+  };
+}
+
+/**
+ * Gemini 비용 계산 (USD)
+ * Gemini 2.0 Flash: $0.10/1M input, $0.40/1M output
+ */
+function calculateGeminiCost(inputTokens, outputTokens) {
+  const inputCost = (inputTokens / 1000000) * 0.10;
+  const outputCost = (outputTokens / 1000000) * 0.40;
+  return {
+    inputCost: inputCost.toFixed(6),
+    outputCost: outputCost.toFixed(6),
+    totalCost: (inputCost + outputCost).toFixed(6),
+    currency: 'USD'
+  };
+}
+
+/**
+ * AI 제공자 선택 함수
+ * @param {string} provider - 'claude', 'gemini', 또는 'auto'
+ * @returns {string} 실제 사용할 provider
+ */
+function selectProvider(provider = 'auto') {
+  if (provider === 'gemini' && geminiModel) return 'gemini';
+  if (provider === 'claude' && process.env.ANTHROPIC_API_KEY) return 'claude';
+
+  // auto: 환경변수 AI_PROVIDER 확인, 없으면 Claude 우선
+  if (provider === 'auto') {
+    const envProvider = process.env.AI_PROVIDER?.toLowerCase();
+    if (envProvider === 'gemini' && geminiModel) return 'gemini';
+    if (process.env.ANTHROPIC_API_KEY) return 'claude';
+    if (geminiModel) return 'gemini';
+  }
+
+  return null; // API 키가 없음
+}
 
 // AEO/GEO 분석 API
 router.post('/analyze', authMiddleware, async (req, res) => {
@@ -1621,5 +1780,256 @@ router.post('/send-email', authMiddleware, async (req, res) => {
     res.status(500).json({ error: '이메일 발송 중 오류가 발생했습니다.', detail: error.message });
   }
 });
+
+// ============================================================
+// AI 품질 비교 테스트 API
+// ============================================================
+
+/**
+ * Claude vs Gemini 비교 테스트 엔드포인트
+ * 동일한 프롬프트로 두 API를 호출하여 결과 비교
+ */
+router.post('/compare-ai', authMiddleware, async (req, res) => {
+  try {
+    const { url, testType = 'aeo' } = req.body;
+
+    if (!url) {
+      return res.status(400).json({ error: 'URL을 입력해주세요.' });
+    }
+
+    // API 키 확인
+    const hasClaudeKey = !!process.env.ANTHROPIC_API_KEY;
+    const hasGeminiKey = !!geminiModel;
+
+    if (!hasClaudeKey && !hasGeminiKey) {
+      return res.status(400).json({ error: 'Claude 또는 Gemini API 키가 필요합니다.' });
+    }
+
+    // URL 정규화
+    let targetUrl = url.trim();
+    if (!targetUrl.startsWith('http')) {
+      targetUrl = 'https://' + targetUrl;
+    }
+
+    // 웹사이트 크롤링
+    let crawlData = {};
+    try {
+      const startTime = Date.now();
+      const response = await axios.get(targetUrl, {
+        timeout: 15000,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; MedicalComplyBot/1.0; +https://medicalcomply.com)'
+        }
+      });
+      const responseTime = Date.now() - startTime;
+
+      const $ = cheerio.load(response.data);
+
+      crawlData = {
+        title: $('title').text().trim(),
+        description: $('meta[name="description"]').attr('content') || '',
+        keywords: $('meta[name="keywords"]').attr('content') || '',
+        h1: $('h1').first().text().trim(),
+        h1Count: $('h1').length,
+        h2Count: $('h2').length,
+        hasSchema: $('script[type="application/ld+json"]').length > 0,
+        hasOG: $('meta[property^="og:"]').length > 0,
+        ogTitle: $('meta[property="og:title"]').attr('content') || '',
+        ogDescription: $('meta[property="og:description"]').attr('content') || '',
+        totalImages: $('img').length,
+        imagesWithAlt: $('img[alt]').filter((i, el) => $(el).attr('alt').trim() !== '').length,
+        responseTime,
+        bodyText: $('body').text().slice(0, 3000)
+      };
+    } catch (crawlError) {
+      return res.status(400).json({ error: '웹사이트 크롤링 실패', detail: crawlError.message });
+    }
+
+    // 테스트 프롬프트 생성
+    const prompt = generateCompareTestPrompt(testType, targetUrl);
+
+    const results = {
+      url: targetUrl,
+      testType,
+      crawlData: {
+        title: crawlData.title,
+        hasSchema: crawlData.hasSchema,
+        hasOG: crawlData.hasOG,
+        totalImages: crawlData.totalImages,
+        imagesWithAlt: crawlData.imagesWithAlt
+      },
+      claude: null,
+      gemini: null,
+      comparison: null,
+      testedAt: new Date().toISOString()
+    };
+
+    // Claude API 테스트
+    if (hasClaudeKey) {
+      try {
+        console.log('🔵 Claude API 테스트 시작...');
+        results.claude = await callClaudeAPI(prompt, crawlData);
+        console.log(`✅ Claude 완료 (${results.claude.metadata.responseTime}ms)`);
+      } catch (claudeError) {
+        results.claude = {
+          error: claudeError.message,
+          metadata: { provider: 'claude', model: 'claude-sonnet-4-20250514' }
+        };
+        console.log('❌ Claude 오류:', claudeError.message);
+      }
+    }
+
+    // Gemini API 테스트
+    if (hasGeminiKey) {
+      try {
+        console.log('🟡 Gemini API 테스트 시작...');
+        results.gemini = await callGeminiAPI(prompt, crawlData);
+        console.log(`✅ Gemini 완료 (${results.gemini.metadata.responseTime}ms)`);
+      } catch (geminiError) {
+        results.gemini = {
+          error: geminiError.message,
+          metadata: { provider: 'gemini', model: 'gemini-2.0-flash' }
+        };
+        console.log('❌ Gemini 오류:', geminiError.message);
+      }
+    }
+
+    // 비교 분석
+    if (results.claude?.result && results.gemini?.result) {
+      results.comparison = compareResults(results.claude, results.gemini);
+    }
+
+    res.json(results);
+
+  } catch (error) {
+    console.error('AI 비교 테스트 오류:', error);
+    res.status(500).json({ error: 'AI 비교 테스트 중 오류가 발생했습니다.', detail: error.message });
+  }
+});
+
+/**
+ * AI 제공자 상태 확인 API
+ */
+router.get('/ai-status', authMiddleware, (req, res) => {
+  const status = {
+    claude: {
+      available: !!process.env.ANTHROPIC_API_KEY,
+      model: 'claude-sonnet-4-20250514',
+      pricing: {
+        input: '$3.00 / 1M tokens',
+        output: '$15.00 / 1M tokens'
+      }
+    },
+    gemini: {
+      available: !!geminiModel,
+      model: 'gemini-2.0-flash',
+      pricing: {
+        input: '$0.10 / 1M tokens',
+        output: '$0.40 / 1M tokens'
+      }
+    },
+    currentProvider: selectProvider('auto'),
+    envProvider: process.env.AI_PROVIDER || 'auto'
+  };
+
+  res.json(status);
+});
+
+/**
+ * 비교 테스트용 프롬프트 생성
+ */
+function generateCompareTestPrompt(testType, url) {
+  if (testType === 'seo') {
+    return `다음 웹사이트의 SEO 상태를 분석하고 JSON 형식으로 결과를 반환하세요.
+
+분석 대상: ${url}
+
+다음 형식으로 응답하세요:
+{
+  "overallScore": 0-100,
+  "categories": {
+    "technical": { "score": 0-100, "issues": ["이슈1", "이슈2"] },
+    "content": { "score": 0-100, "issues": [] },
+    "meta": { "score": 0-100, "issues": [] }
+  },
+  "topPriorities": ["우선 개선 사항 1", "2", "3"],
+  "summary": "한줄 요약"
+}`;
+  }
+
+  // AEO 기본 분석
+  return `다음 웹사이트의 AEO(Answer Engine Optimization) 상태를 분석하고 JSON 형식으로 결과를 반환하세요.
+
+분석 대상: ${url}
+
+AI 검색엔진(ChatGPT, Perplexity, Google AI Overview 등)에서 답변으로 인용되기 적합한지 평가하세요.
+
+다음 형식으로 응답하세요:
+{
+  "overallScore": 0-100,
+  "categories": {
+    "structure": { "score": 0-100, "items": [{"name": "항목", "status": "pass/fail/warning", "detail": "설명"}] },
+    "content": { "score": 0-100, "items": [] },
+    "authority": { "score": 0-100, "items": [] }
+  },
+  "recommendations": ["개선 권장사항 1", "2", "3"],
+  "summary": "한줄 요약"
+}`;
+}
+
+/**
+ * Claude와 Gemini 결과 비교
+ */
+function compareResults(claudeResult, geminiResult) {
+  const claudeScore = claudeResult.result?.overallScore || 0;
+  const geminiScore = geminiResult.result?.overallScore || 0;
+
+  return {
+    scoreDifference: Math.abs(claudeScore - geminiScore),
+    claudeScore,
+    geminiScore,
+    responseTime: {
+      claude: claudeResult.metadata.responseTime,
+      gemini: geminiResult.metadata.responseTime,
+      faster: claudeResult.metadata.responseTime < geminiResult.metadata.responseTime ? 'claude' : 'gemini',
+      difference: Math.abs(claudeResult.metadata.responseTime - geminiResult.metadata.responseTime)
+    },
+    cost: {
+      claude: claudeResult.metadata.estimatedCost,
+      gemini: geminiResult.metadata.estimatedCost,
+      cheaper: 'gemini', // Gemini is always cheaper
+      savingsPercent: ((parseFloat(claudeResult.metadata.estimatedCost.totalCost) - parseFloat(geminiResult.metadata.estimatedCost.totalCost)) / parseFloat(claudeResult.metadata.estimatedCost.totalCost) * 100).toFixed(1)
+    },
+    tokens: {
+      claude: { input: claudeResult.metadata.inputTokens, output: claudeResult.metadata.outputTokens },
+      gemini: { input: geminiResult.metadata.inputTokens, output: geminiResult.metadata.outputTokens }
+    },
+    qualityNotes: generateQualityNotes(claudeResult.result, geminiResult.result)
+  };
+}
+
+/**
+ * 품질 비교 노트 생성
+ */
+function generateQualityNotes(claudeResult, geminiResult) {
+  const notes = [];
+
+  // 점수 차이 평가
+  const scoreDiff = Math.abs((claudeResult?.overallScore || 0) - (geminiResult?.overallScore || 0));
+  if (scoreDiff <= 5) {
+    notes.push('✅ 점수 차이가 5점 이내로 유사한 평가');
+  } else if (scoreDiff <= 15) {
+    notes.push('⚠️ 점수 차이가 ' + scoreDiff + '점으로 약간의 차이 있음');
+  } else {
+    notes.push('❌ 점수 차이가 ' + scoreDiff + '점으로 상당한 차이');
+  }
+
+  // 권장사항 개수 비교
+  const claudeRecs = claudeResult?.recommendations?.length || 0;
+  const geminiRecs = geminiResult?.recommendations?.length || 0;
+  notes.push(`📋 권장사항: Claude ${claudeRecs}개 vs Gemini ${geminiRecs}개`);
+
+  return notes;
+}
 
 module.exports = router;
