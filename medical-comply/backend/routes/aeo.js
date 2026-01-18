@@ -6,12 +6,13 @@ const { authMiddleware } = require('../middlewares/auth');
 
 const router = express.Router();
 
-// Gemini AI 초기화
+// Gemini AI 초기화 (2.5 Flash-Lite: 가장 비용 효율적)
 let geminiModel = null;
+const GEMINI_MODEL = 'gemini-2.5-flash-lite';
 if (process.env.GEMINI_API_KEY) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  geminiModel = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-  console.log('✅ Gemini API 초기화 완료');
+  geminiModel = genAI.getGenerativeModel({ model: GEMINI_MODEL });
+  console.log(`✅ Gemini API 초기화 완료 (${GEMINI_MODEL})`);
 }
 
 /**
@@ -89,7 +90,7 @@ async function callGeminiAPI(prompt, data) {
     result,
     metadata: {
       provider: 'gemini',
-      model: 'gemini-2.0-flash',
+      model: GEMINI_MODEL,
       responseTime,
       inputTokens,
       outputTokens,
@@ -1888,7 +1889,7 @@ router.post('/compare-ai', authMiddleware, async (req, res) => {
       } catch (geminiError) {
         results.gemini = {
           error: geminiError.message,
-          metadata: { provider: 'gemini', model: 'gemini-2.0-flash' }
+          metadata: { provider: 'gemini', model: GEMINI_MODEL }
         };
         console.log('❌ Gemini 오류:', geminiError.message);
       }
@@ -1922,7 +1923,7 @@ router.get('/ai-status', authMiddleware, (req, res) => {
     },
     gemini: {
       available: !!geminiModel,
-      model: 'gemini-2.0-flash',
+      model: GEMINI_MODEL,
       pricing: {
         input: '$0.10 / 1M tokens',
         output: '$0.40 / 1M tokens'
