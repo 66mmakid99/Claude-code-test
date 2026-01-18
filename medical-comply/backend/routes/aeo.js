@@ -6,9 +6,10 @@ const { authMiddleware } = require('../middlewares/auth');
 
 const router = express.Router();
 
-// Gemini AI 초기화 (2.5 Flash-Lite: 가장 비용 효율적)
+// Gemini AI 초기화 (2.5 Flash: 품질/비용 최적 밸런스)
+// Flash-Lite는 HumanEval 21%로 품질 부족, Flash는 39%로 분석 작업에 적합
 let geminiModel = null;
-const GEMINI_MODEL = 'gemini-2.5-flash-lite';
+const GEMINI_MODEL = 'gemini-2.5-flash';
 if (process.env.GEMINI_API_KEY) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   geminiModel = genAI.getGenerativeModel({ model: GEMINI_MODEL });
@@ -132,11 +133,11 @@ function calculateClaudeCost(inputTokens, outputTokens) {
 
 /**
  * Gemini 비용 계산 (USD)
- * Gemini 2.0 Flash: $0.10/1M input, $0.40/1M output
+ * Gemini 2.5 Flash: $0.30/1M input, $2.50/1M output
  */
 function calculateGeminiCost(inputTokens, outputTokens) {
-  const inputCost = (inputTokens / 1000000) * 0.10;
-  const outputCost = (outputTokens / 1000000) * 0.40;
+  const inputCost = (inputTokens / 1000000) * 0.30;
+  const outputCost = (outputTokens / 1000000) * 2.50;
   return {
     inputCost: inputCost.toFixed(6),
     outputCost: outputCost.toFixed(6),
@@ -1925,8 +1926,8 @@ router.get('/ai-status', authMiddleware, (req, res) => {
       available: !!geminiModel,
       model: GEMINI_MODEL,
       pricing: {
-        input: '$0.10 / 1M tokens',
-        output: '$0.40 / 1M tokens'
+        input: '$0.30 / 1M tokens',
+        output: '$2.50 / 1M tokens'
       }
     },
     currentProvider: selectProvider('auto'),
