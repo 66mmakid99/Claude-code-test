@@ -15,6 +15,14 @@ function AEOChecker({ user }) {
   const [history, setHistory] = useState([])
   const [cache, setCache] = useState({})
   const [showSeoInfo, setShowSeoInfo] = useState(false)
+  // 이미지 기반 사이트 분석
+  const [imageSiteResult, setImageSiteResult] = useState(null)
+  const [showManualInput, setShowManualInput] = useState(false)
+  const [manualContent, setManualContent] = useState({
+    services: [{ name: '', description: '', price: '' }],
+    faqs: [{ question: '', answer: '' }],
+    doctors: [{ name: '', title: '' }]
+  })
 
   // 등급 기준
   const gradeInfo = {
@@ -307,6 +315,42 @@ function AEOChecker({ user }) {
   const runAnalysis = async () => {
     if (!url.trim()) { setError('URL을 입력해주세요'); return }
 
+    // 이미지 사이트 분석
+    if (analysisType === 'image') {
+      setLoading(true)
+      setError('')
+      setImageSiteResult(null)
+      setLoadingProgress({ current: 1, total: 1, message: '이미지 기반 사이트 분석 중...' })
+
+      try {
+        const token = localStorage.getItem('token')
+        const response = await fetch('/api/aeo/analyze-image-site', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            url: normalizeUrl(url),
+            manualContent: showManualInput ? manualContent : null
+          })
+        })
+
+        if (!response.ok) {
+          const err = await response.json()
+          throw new Error(err.error || `API 오류: ${response.status}`)
+        }
+
+        const data = await response.json()
+        setImageSiteResult(data.diagnosis)
+      } catch (err) {
+        setError(`오류: ${err.message}`)
+      } finally {
+        setLoading(false)
+      }
+      return
+    }
+
     const type = analysisType === 'combined' ? 'aeo' : analysisType
     const cached = getCached(url, type)
     if (cached) {
@@ -482,11 +526,12 @@ function AEOChecker({ user }) {
         {[
           { key: 'aeo', label: '🤖 AEO/GEO', desc: 'AI 검색 최적화' },
           { key: 'seo', label: '🔍 SEO', desc: '검색엔진 최적화' },
-          { key: 'combined', label: '📊 통합', desc: 'AEO + SEO' }
+          { key: 'combined', label: '📊 통합', desc: 'AEO + SEO' },
+          { key: 'image', label: '🖼️ 이미지 사이트', desc: '이미지 기반 분석' }
         ].map(t => (
           <button
             key={t.key}
-            onClick={() => setAnalysisType(t.key)}
+            onClick={() => { setAnalysisType(t.key); setResult(null); setSeoResult(null); setImageSiteResult(null); }}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
               analysisType === t.key
                 ? 'bg-white text-gray-900 shadow-sm'
@@ -501,11 +546,21 @@ function AEOChecker({ user }) {
       {/* URL 입력 */}
       <div className="rounded-xl border bg-white p-6 mb-6 shadow-sm">
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-2xl">{analysisType === 'seo' ? '🔍' : analysisType === 'combined' ? '📊' : '🤖'}</span>
+          <span className="text-2xl">{analysisType === 'seo' ? '🔍' : analysisType === 'combined' ? '📊' : analysisType === 'image' ? '🖼️' : '🤖'}</span>
           <h3 className="font-semibold text-lg">
-            {analysisType === 'seo' ? 'SEO 분석' : analysisType === 'combined' ? '통합 분석' : 'AEO/GEO 분석'}
+            {analysisType === 'seo' ? 'SEO 분석' : analysisType === 'combined' ? '통합 분석' : analysisType === 'image' ? '이미지 기반 사이트 분석' : 'AEO/GEO 분석'}
           </h3>
         </div>
+
+        {/* 이미지 사이트 분석 안내 */}
+        {analysisType === 'image' && (
+          <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+            <p className="text-amber-800 text-sm">
+              <strong>이미지 기반 사이트 분석</strong>은 이미지 중심 웹사이트(병원, 클리닉 등)의 SEO 문제점을 진단하고
+              텍스트 전환 권고안을 제공합니다.
+            </p>
+          </div>
+        )}
 
         <div className="flex gap-3">
           <input
@@ -524,6 +579,118 @@ function AEOChecker({ user }) {
             {loading ? '분석 중...' : '분석 시작'}
           </button>
         </div>
+
+        {/* 이미지 사이트 - 수동 콘텐츠 입력 옵션 */}
+        {analysisType === 'image' && (
+          <div className="mt-4">
+            <button
+              onClick={() => setShowManualInput(!showManualInput)}
+              className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700"
+            >
+              <span>{showManualInput ? '▼' : '▶'}</span>
+              <span>실제 시술/서비스 정보 입력 (선택사항)</span>
+            </button>
+
+            {showManualInput && (
+              <div className="mt-4 p-4 bg-gray-50 rounded-lg border">
+                <p className="text-sm text-gray-600 mb-4">
+                  이미지에 담긴 실제 콘텐츠를 입력하면 더 정확한 SEO 권고안과 HTML/스키마 코드를 생성해드립니다.
+                </p>
+
+                {/* 시술/서비스 */}
+                <div className="mb-4">
+                  <h4 className="font-medium text-sm mb-2">시술/서비스</h4>
+                  {manualContent.services.map((service, idx) => (
+                    <div key={idx} className="grid grid-cols-3 gap-2 mb-2">
+                      <input
+                        type="text"
+                        placeholder="시술명"
+                        className="input text-sm"
+                        value={service.name}
+                        onChange={e => {
+                          const updated = [...manualContent.services]
+                          updated[idx].name = e.target.value
+                          setManualContent({ ...manualContent, services: updated })
+                        }}
+                      />
+                      <input
+                        type="text"
+                        placeholder="설명"
+                        className="input text-sm"
+                        value={service.description}
+                        onChange={e => {
+                          const updated = [...manualContent.services]
+                          updated[idx].description = e.target.value
+                          setManualContent({ ...manualContent, services: updated })
+                        }}
+                      />
+                      <input
+                        type="text"
+                        placeholder="가격"
+                        className="input text-sm"
+                        value={service.price}
+                        onChange={e => {
+                          const updated = [...manualContent.services]
+                          updated[idx].price = e.target.value
+                          setManualContent({ ...manualContent, services: updated })
+                        }}
+                      />
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => setManualContent({
+                      ...manualContent,
+                      services: [...manualContent.services, { name: '', description: '', price: '' }]
+                    })}
+                    className="text-sm text-blue-600 hover:underline"
+                  >
+                    + 시술 추가
+                  </button>
+                </div>
+
+                {/* FAQ */}
+                <div className="mb-4">
+                  <h4 className="font-medium text-sm mb-2">자주 묻는 질문 (FAQ)</h4>
+                  {manualContent.faqs.map((faq, idx) => (
+                    <div key={idx} className="grid grid-cols-2 gap-2 mb-2">
+                      <input
+                        type="text"
+                        placeholder="질문"
+                        className="input text-sm"
+                        value={faq.question}
+                        onChange={e => {
+                          const updated = [...manualContent.faqs]
+                          updated[idx].question = e.target.value
+                          setManualContent({ ...manualContent, faqs: updated })
+                        }}
+                      />
+                      <input
+                        type="text"
+                        placeholder="답변"
+                        className="input text-sm"
+                        value={faq.answer}
+                        onChange={e => {
+                          const updated = [...manualContent.faqs]
+                          updated[idx].answer = e.target.value
+                          setManualContent({ ...manualContent, faqs: updated })
+                        }}
+                      />
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => setManualContent({
+                      ...manualContent,
+                      faqs: [...manualContent.faqs, { question: '', answer: '' }]
+                    })}
+                    className="text-sm text-blue-600 hover:underline"
+                  >
+                    + FAQ 추가
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {error && (
           <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
@@ -764,8 +931,273 @@ function AEOChecker({ user }) {
         </div>
       )}
 
+      {/* 이미지 사이트 분석 결과 */}
+      {imageSiteResult && !loading && analysisType === 'image' && (
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <span className="text-2xl">🖼️</span> 이미지 기반 사이트 분석 결과
+          </h2>
+
+          {/* 요약 카드 */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
+            {/* 사이트 유형 */}
+            <div className={`rounded-xl border p-6 ${
+              imageSiteResult.siteType?.type === 'image-heavy' ? 'bg-red-50 border-red-200' :
+              imageSiteResult.siteType?.type === 'image-dominant' ? 'bg-amber-50 border-amber-200' :
+              'bg-green-50 border-green-200'
+            }`}>
+              <p className="text-sm font-medium mb-2 text-gray-600">사이트 유형</p>
+              <div className={`text-lg font-bold ${
+                imageSiteResult.siteType?.type === 'image-heavy' ? 'text-red-600' :
+                imageSiteResult.siteType?.type === 'image-dominant' ? 'text-amber-600' :
+                'text-green-600'
+              }`}>
+                {imageSiteResult.siteType?.label}
+              </div>
+              <p className="text-xs text-gray-500 mt-1">{imageSiteResult.siteType?.description}</p>
+            </div>
+
+            {/* 이미지/텍스트 비율 */}
+            <div className="rounded-xl border bg-white p-6">
+              <p className="text-sm font-medium mb-3 text-gray-600">이미지 vs 텍스트 비율</p>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex-1 h-4 bg-gray-200 rounded-full overflow-hidden flex">
+                  <div
+                    className="bg-blue-500 h-full"
+                    style={{ width: `${imageSiteResult.ratio?.imageRatio || 50}%` }}
+                  />
+                  <div
+                    className="bg-green-500 h-full"
+                    style={{ width: `${imageSiteResult.ratio?.textRatio || 50}%` }}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-between text-xs">
+                <span className="text-blue-600">🖼️ 이미지 {imageSiteResult.ratio?.imageRatio}%</span>
+                <span className="text-green-600">📝 텍스트 {imageSiteResult.ratio?.textRatio}%</span>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                {imageSiteResult.ratio?.imageCount}개 이미지 / {imageSiteResult.ratio?.textLength}자 텍스트
+              </p>
+            </div>
+
+            {/* SEO 점수 */}
+            <div className="rounded-xl border p-6 text-center" style={{ background: getGradeBg(imageSiteResult.seoScore) }}>
+              <p className="text-sm font-medium mb-2" style={{ color: getGradeColor(imageSiteResult.seoScore) }}>SEO 점수</p>
+              <div className="text-4xl font-bold" style={{ color: getGradeColor(imageSiteResult.seoScore) }}>
+                {imageSiteResult.seoScore}
+              </div>
+              <div className="text-lg font-bold" style={{ color: getGradeColor(imageSiteResult.seoScore) }}>
+                {imageSiteResult.seoGrade}
+              </div>
+            </div>
+
+            {/* AEO 준비도 */}
+            <div className={`rounded-xl border p-6 text-center ${
+              imageSiteResult.aeoReadiness?.level === 'high' ? 'bg-green-50 border-green-200' :
+              imageSiteResult.aeoReadiness?.level === 'medium' ? 'bg-amber-50 border-amber-200' :
+              'bg-red-50 border-red-200'
+            }`}>
+              <p className="text-sm font-medium mb-2 text-gray-600">AI 검색 준비도</p>
+              <div className={`text-2xl font-bold ${
+                imageSiteResult.aeoReadiness?.level === 'high' ? 'text-green-600' :
+                imageSiteResult.aeoReadiness?.level === 'medium' ? 'text-amber-600' :
+                'text-red-600'
+              }`}>
+                {imageSiteResult.aeoReadiness?.score}/100
+              </div>
+              <p className="text-xs text-gray-500 mt-1">{imageSiteResult.aeoReadiness?.label}</p>
+            </div>
+          </div>
+
+          {/* 이미지 분석 상세 */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* 점수 상세 */}
+            <div className="rounded-xl border bg-white p-6">
+              <h3 className="font-semibold mb-4">📊 SEO 점수 상세</h3>
+              <div className="space-y-3">
+                {imageSiteResult.scoreDetails?.map((item, idx) => (
+                  <div key={idx} className={`p-3 rounded-lg ${
+                    item.status === 'pass' ? 'bg-green-50 border border-green-200' :
+                    item.status === 'warning' ? 'bg-amber-50 border border-amber-200' :
+                    'bg-red-50 border border-red-200'
+                  }`}>
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-2">
+                        {statusIcon(item.status)}
+                        <span className="font-medium">{item.name}</span>
+                      </div>
+                      <span className="font-bold" style={{ color: getGradeColor((item.points / item.maxPoints) * 100) }}>
+                        {item.points}/{item.maxPoints}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">{item.detail}</p>
+                    {item.recommendation && (
+                      <p className="text-sm text-blue-600 mt-1">💡 {item.recommendation}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 이미지 Alt 분석 */}
+            <div className="rounded-xl border bg-white p-6">
+              <h3 className="font-semibold mb-4">🖼️ 이미지 분석</h3>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="p-4 bg-gray-50 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-gray-900">{imageSiteResult.imageAnalysis?.total}</div>
+                  <div className="text-sm text-gray-500">전체 이미지</div>
+                </div>
+                <div className="p-4 bg-green-50 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-green-600">{imageSiteResult.imageAnalysis?.withAlt}</div>
+                  <div className="text-sm text-gray-500">Alt 속성 있음</div>
+                </div>
+                <div className="p-4 bg-red-50 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-red-600">{imageSiteResult.imageAnalysis?.withoutAlt}</div>
+                  <div className="text-sm text-gray-500">Alt 속성 없음</div>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg text-center">
+                  <div className="text-3xl font-bold text-blue-600">{imageSiteResult.imageAnalysis?.altCoverage}%</div>
+                  <div className="text-sm text-gray-500">Alt 적용률</div>
+                </div>
+              </div>
+
+              {imageSiteResult.imageAnalysis?.altCoverage < 80 && (
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <p className="text-sm text-amber-800">
+                    <strong>권고:</strong> 모든 이미지에 설명적인 alt 텍스트를 추가하세요.
+                    검색엔진은 alt 속성으로 이미지 내용을 파악합니다.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* 전환 권고사항 */}
+          {imageSiteResult.conversionRecommendations?.length > 0 && (
+            <div className="rounded-xl border bg-white p-6 mb-6">
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <span>🔄</span> 이미지 → 텍스트 전환 권고
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                다음 콘텐츠를 이미지에서 HTML 텍스트로 전환하면 검색 노출이 크게 향상됩니다.
+              </p>
+              <div className="space-y-4">
+                {imageSiteResult.conversionRecommendations.map((rec, idx) => (
+                  <div key={idx} className={`p-4 rounded-lg border ${
+                    rec.priority === 'critical' ? 'border-red-300 bg-red-50' :
+                    rec.priority === 'high' ? 'border-amber-300 bg-amber-50' :
+                    'border-blue-300 bg-blue-50'
+                  }`}>
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-semibold">{rec.title}</h4>
+                      <span className={`text-xs px-2 py-1 rounded ${
+                        rec.priority === 'critical' ? 'bg-red-200 text-red-800' :
+                        rec.priority === 'high' ? 'bg-amber-200 text-amber-800' :
+                        'bg-blue-200 text-blue-800'
+                      }`}>
+                        {rec.priority === 'critical' ? '긴급' : rec.priority === 'high' ? '높음' : '보통'}
+                      </span>
+                    </div>
+                    <div className="text-sm space-y-1">
+                      <p><span className="text-red-600">현재:</span> {rec.current}</p>
+                      <p><span className="text-green-600">권장:</span> {rec.recommended}</p>
+                      <p><span className="text-blue-600">효과:</span> {rec.impact}</p>
+                      {rec.effort && <p><span className="text-gray-600">소요:</span> {rec.effort}</p>}
+                    </div>
+                    {rec.example && (
+                      <details className="mt-3">
+                        <summary className="text-sm text-blue-600 cursor-pointer hover:underline">코드 예시 보기</summary>
+                        <pre className="mt-2 p-3 bg-gray-900 text-green-400 text-xs rounded overflow-x-auto">
+                          {rec.example}
+                        </pre>
+                      </details>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 개선 우선순위 */}
+          {imageSiteResult.priorities?.length > 0 && (
+            <div className="rounded-xl border bg-white p-6">
+              <h3 className="font-semibold mb-4">📋 개선 우선순위</h3>
+              <div className="space-y-2">
+                {imageSiteResult.priorities.map((p, idx) => (
+                  <div key={idx} className={`flex items-center gap-3 p-3 rounded-lg ${
+                    p.impact === 'critical' ? 'bg-red-50' :
+                    p.impact === 'high' ? 'bg-amber-50' :
+                    p.impact === 'medium' ? 'bg-blue-50' :
+                    'bg-gray-50'
+                  }`}>
+                    <span className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
+                      p.impact === 'critical' ? 'bg-red-500' :
+                      p.impact === 'high' ? 'bg-amber-500' :
+                      p.impact === 'medium' ? 'bg-blue-500' :
+                      'bg-gray-400'
+                    }`}>
+                      {idx + 1}
+                    </span>
+                    <div className="flex-1">
+                      <div className="font-medium">{p.name}</div>
+                      <div className="text-sm text-gray-600">{p.recommendation}</div>
+                    </div>
+                    {p.currentScore !== 'N/A' && (
+                      <span className="text-sm text-gray-500">{p.currentScore}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 수동 입력 콘텐츠 분석 결과 */}
+          {imageSiteResult.manualContentAnalysis && (
+            <div className="mt-6 rounded-xl border bg-gradient-to-r from-purple-50 to-indigo-50 p-6">
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <span>✨</span> 입력된 콘텐츠 기반 권고
+              </h3>
+
+              {imageSiteResult.manualContentAnalysis.keywords?.length > 0 && (
+                <div className="mb-4">
+                  <h4 className="text-sm font-medium mb-2">추출된 키워드</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {imageSiteResult.manualContentAnalysis.keywords.map((kw, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-white rounded text-sm text-purple-600 border border-purple-200">
+                        {kw}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {imageSiteResult.manualContentAnalysis.schemaRecommendations?.length > 0 && (
+                <div>
+                  <h4 className="text-sm font-medium mb-2">권장 스키마</h4>
+                  {imageSiteResult.manualContentAnalysis.schemaRecommendations.map((rec, idx) => (
+                    <div key={idx} className="mb-3 p-3 bg-white rounded-lg border">
+                      <div className="font-medium text-indigo-600">{rec.type}</div>
+                      <p className="text-sm text-gray-600 mt-1">{rec.reason}</p>
+                      {rec.example && (
+                        <details className="mt-2">
+                          <summary className="text-sm text-indigo-600 cursor-pointer hover:underline">JSON-LD 코드 보기</summary>
+                          <pre className="mt-2 p-3 bg-gray-900 text-green-400 text-xs rounded overflow-x-auto">
+                            {JSON.stringify(rec.example, null, 2)}
+                          </pre>
+                        </details>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* 안내 (결과 없을 때) */}
-      {!result && !seoResult && !loading && (
+      {!result && !seoResult && !imageSiteResult && !loading && (
         <div>
           <h3 className="text-sm font-medium text-gray-500 mb-4">검사 항목 미리보기</h3>
 
