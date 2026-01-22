@@ -322,11 +322,11 @@
     "increaseConfidence": [
       {
         "condition": "위반 지표 패턴 매칭",
-        "adjustment": +20
+        "adjustment": 20
       },
       {
         "condition": "복수의 위반 키워드 동시 존재",
-        "adjustment": +15
+        "adjustment": 15
       }
     ],
     "thresholds": {
