@@ -273,8 +273,35 @@ async function sendCommissionEmail({ to, name, amount, customerName }) {
   }
 }
 
+/**
+ * 이메일 서비스 사용 가능 여부 확인
+ */
+function isEmailServiceAvailable() {
+  return !!resend;
+}
+
+/**
+ * 이메일 서비스 상태 반환
+ */
+function getEmailServiceStatus() {
+  if (!process.env.RESEND_API_KEY) {
+    return {
+      available: false,
+      reason: 'RESEND_API_KEY 환경변수가 설정되지 않았습니다.',
+      hint: 'Resend (https://resend.com)에서 API 키를 발급받아 설정하세요.'
+    };
+  }
+  return {
+    available: true,
+    reason: null,
+    hint: null
+  };
+}
+
 module.exports = {
   sendReportEmail,
   sendWelcomeEmail,
-  sendCommissionEmail
+  sendCommissionEmail,
+  isEmailServiceAvailable,
+  getEmailServiceStatus
 };

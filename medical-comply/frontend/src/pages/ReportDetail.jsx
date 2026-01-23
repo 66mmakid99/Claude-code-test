@@ -12,6 +12,7 @@ function ReportDetail() {
   const [email, setEmail] = useState('')
   const [sending, setSending] = useState(false)
   const [sendResult, setSendResult] = useState(null)
+  const [activeFilter, setActiveFilter] = useState(null) // 'critical', 'warning', 'pass', or null for all
 
   useEffect(() => {
     loadReport()
@@ -196,25 +197,66 @@ function ReportDetail() {
         </div>
       </div>
 
-      {/* 요약 */}
+      {/* 요약 - 클릭하면 해당 항목만 필터링 */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
-        <div className="card" style={{ textAlign: 'center' }}>
+        <div
+          className="card"
+          style={{
+            textAlign: 'center',
+            cursor: 'pointer',
+            border: activeFilter === 'critical' ? '2px solid var(--danger)' : undefined,
+            transition: 'all 0.2s'
+          }}
+          onClick={() => setActiveFilter(activeFilter === 'critical' ? null : 'critical')}
+        >
           <p style={{ color: 'var(--danger)', fontSize: '2rem', fontWeight: '700' }}>{report.violation_count}</p>
           <p style={{ color: 'var(--gray-500)' }}>위반 항목</p>
+          {activeFilter === 'critical' && <p style={{ fontSize: '0.75rem', color: 'var(--danger)' }}>필터 적용 중</p>}
         </div>
-        <div className="card" style={{ textAlign: 'center' }}>
+        <div
+          className="card"
+          style={{
+            textAlign: 'center',
+            cursor: 'pointer',
+            border: activeFilter === 'warning' ? '2px solid var(--warning)' : undefined,
+            transition: 'all 0.2s'
+          }}
+          onClick={() => setActiveFilter(activeFilter === 'warning' ? null : 'warning')}
+        >
           <p style={{ color: 'var(--warning)', fontSize: '2rem', fontWeight: '700' }}>{report.warning_count}</p>
           <p style={{ color: 'var(--gray-500)' }}>주의 항목</p>
+          {activeFilter === 'warning' && <p style={{ fontSize: '0.75rem', color: 'var(--warning)' }}>필터 적용 중</p>}
         </div>
-        <div className="card" style={{ textAlign: 'center' }}>
+        <div
+          className="card"
+          style={{
+            textAlign: 'center',
+            cursor: 'pointer',
+            border: activeFilter === 'pass' ? '2px solid var(--secondary)' : undefined,
+            transition: 'all 0.2s'
+          }}
+          onClick={() => setActiveFilter(activeFilter === 'pass' ? null : 'pass')}
+        >
           <p style={{ color: 'var(--secondary)', fontSize: '2rem', fontWeight: '700' }}>{report.pass_count || 0}</p>
           <p style={{ color: 'var(--gray-500)' }}>통과 항목</p>
+          {activeFilter === 'pass' && <p style={{ fontSize: '0.75rem', color: 'var(--secondary)' }}>필터 적용 중</p>}
         </div>
       </div>
 
       {/* 위반 상세 */}
       <div className="card">
-        <h2 style={{ marginBottom: '1.5rem' }}>상세 분석 결과</h2>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <h2 style={{ margin: 0 }}>상세 분석 결과</h2>
+          {activeFilter && (
+            <button
+              className="btn btn-secondary"
+              style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}
+              onClick={() => setActiveFilter(null)}
+            >
+              필터 해제
+            </button>
+          )}
+        </div>
 
         {violations.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -225,7 +267,15 @@ function ReportDetail() {
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {violations.map((violation, index) => {
+            {violations
+              .filter(v => {
+                if (!activeFilter) return true
+                if (activeFilter === 'critical') return v.severity === 'critical'
+                if (activeFilter === 'warning') return v.severity === 'warning'
+                if (activeFilter === 'pass') return v.severity === 'info' || v.severity === 'pass'
+                return true
+              })
+              .map((violation, index) => {
               const badge = getSeverityBadge(violation.severity)
               return (
                 <div

@@ -228,7 +228,7 @@ function extractText($) {
 }
 
 /**
- * 이미지 정보 추출
+ * 이미지 정보 추출 (문맥 기반 분석 포함)
  */
 function extractImages($, baseUrl) {
   const images = [];
@@ -245,12 +245,20 @@ function extractImages($, baseUrl) {
         fullUrl = new URL(src, baseUrl).href;
       } catch {}
 
+      // 부모 요소 컨텍스트 추출
+      const parentContext = getImageContext($, el);
+
+      // 전후 사진 관련 분석
+      const suspicionResult = checkSuspiciousImage(alt, title, src, parentContext);
+
       images.push({
         src: fullUrl,
         alt,
         title,
-        // 전후 사진 관련 키워드 체크
-        isSuspicious: checkSuspiciousImage(alt, title, src)
+        context: parentContext,
+        isSuspicious: suspicionResult.isSuspicious,
+        suspicionReason: suspicionResult.reason,
+        suspicionScore: suspicionResult.score
       });
     }
   });
@@ -259,16 +267,151 @@ function extractImages($, baseUrl) {
 }
 
 /**
- * 의심스러운 이미지 체크 (전후 사진 등)
+ * 이미지 주변 컨텍스트 추출
  */
-function checkSuspiciousImage(alt, title, src) {
+function getImageContext($, imgElement) {
+  const context = {
+    parentClass: '',
+    parentId: '',
+    sectionType: '',
+    nearbyText: '',
+    isInStaffSection: false,
+    isInGallerySection: false
+  };
+
+  try {
+    // 부모 요소 정보
+    const $parent = $(imgElement).parent();
+    context.parentClass = $parent.attr('class') || '';
+    context.parentId = $parent.attr('id') || '';
+
+    // 상위 5단계까지 탐색하여 섹션 타입 감지
+    let $current = $(imgElement);
+    for (let i = 0; i < 5; i++) {
+      $current = $current.parent();
+      if (!$current.length) break;
+
+      const cls = ($current.attr('class') || '').toLowerCase();
+      const id = ($current.attr('id') || '').toLowerCase();
+      const combined = `${cls} ${id}`;
+
+      // 의료진/스태프 섹션 감지
+      if (/staff|doctor|team|의료진|원장|전문의|profile|about/.test(combined)) {
+        context.isInStaffSection = true;
+        context.sectionType = 'staff';
+      }
+
+      // 갤러리/시설 섹션 감지
+      if (/gallery|facility|시설|내부|인테리어/.test(combined)) {
+        context.isInGallerySection = true;
+        context.sectionType = 'facility';
+      }
+
+      // 후기/리뷰 섹션 감지
+      if (/review|후기|testimonial|result|결과/.test(combined)) {
+        context.sectionType = 'review';
+      }
+    }
+
+    // 주변 텍스트 추출 (이미지 근처 100자)
+    const siblingText = $(imgElement).siblings().text().substring(0, 100);
+    const parentText = $parent.text().substring(0, 100);
+    context.nearbyText = `${siblingText} ${parentText}`.trim().substring(0, 150);
+
+  } catch (e) {
+    // 에러 시 기본값 유지
+  }
+
+  return context;
+}
+
+/**
+ * 의심스러운 이미지 체크 (문맥 기반 분석)
+ * @returns {Object} { isSuspicious: boolean, reason: string, score: number }
+ */
+function checkSuspiciousImage(alt, title, src, context = {}) {
   const text = `${alt} ${title} ${src}`.toLowerCase();
-  const suspiciousKeywords = [
-    'before', 'after', '전', '후', '비포', '애프터',
-    'result', '결과', 'comparison', '비교'
+  let suspicionScore = 0;
+  let reasons = [];
+
+  // 1. 명확한 제외 패턴 (프로필, 로고, 아이콘 등)
+  const excludePatterns = [
+    /logo|icon|avatar|profile|stamp|badge|seal/i,
+    /원장|의사|doctor|staff|team|ceo/i,
+    /favicon|thumbnail|banner|header/i,
+    /kakao|naver|facebook|instagram|youtube|sns/i,
+    /button|btn|arrow|menu|nav/i,
+    /map|location|위치/i
   ];
 
-  return suspiciousKeywords.some(keyword => text.includes(keyword));
+  for (const pattern of excludePatterns) {
+    if (pattern.test(text)) {
+      return { isSuspicious: false, reason: '제외 패턴 매칭', score: 0 };
+    }
+  }
+
+  // 2. 의료진 섹션의 이미지는 제외
+  if (context.isInStaffSection) {
+    return { isSuspicious: false, reason: '의료진 섹션 이미지', score: 0 };
+  }
+
+  // 3. 시설 갤러리 섹션의 이미지는 제외
+  if (context.isInGallerySection) {
+    return { isSuspicious: false, reason: '시설 갤러리 이미지', score: 0 };
+  }
+
+  // 4. 전후 비교 키워드 체크 (명시적)
+  const beforeAfterPatterns = [
+    /before.*after|전.*후|비포.*애프터/i,
+    /시술\s*전|시술\s*후/i,
+    /치료\s*전|치료\s*후/i,
+    /전후\s*비교|비교\s*사진/i
+  ];
+
+  for (const pattern of beforeAfterPatterns) {
+    if (pattern.test(text) || pattern.test(context.nearbyText || '')) {
+      suspicionScore += 40;
+      reasons.push('전후 비교 패턴 발견');
+    }
+  }
+
+  // 5. 결과 관련 키워드 (의심도 증가)
+  const resultKeywords = ['result', '결과', '효과', '변화'];
+  for (const keyword of resultKeywords) {
+    if (text.includes(keyword)) {
+      suspicionScore += 15;
+      reasons.push(`결과 키워드: ${keyword}`);
+    }
+  }
+
+  // 6. 후기/리뷰 섹션 내 이미지
+  if (context.sectionType === 'review') {
+    suspicionScore += 25;
+    reasons.push('후기 섹션 이미지');
+  }
+
+  // 7. 파일명 패턴 분석
+  const filenamePatterns = [
+    /ba\d|before_after/i,  // ba1, before_after
+    /compare|comparison/i,
+    /result\d|effect/i
+  ];
+
+  for (const pattern of filenamePatterns) {
+    if (pattern.test(src)) {
+      suspicionScore += 20;
+      reasons.push('의심스러운 파일명');
+    }
+  }
+
+  // 임계값 30 이상이면 의심
+  const isSuspicious = suspicionScore >= 30;
+
+  return {
+    isSuspicious,
+    reason: reasons.length > 0 ? reasons.join(', ') : '해당 없음',
+    score: suspicionScore
+  };
 }
 
 /**

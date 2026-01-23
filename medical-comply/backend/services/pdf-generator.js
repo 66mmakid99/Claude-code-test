@@ -4,10 +4,23 @@ const path = require('path');
 
 // 리포트 저장 디렉토리
 const REPORTS_DIR = path.join(__dirname, '..', 'reports');
+const FONTS_DIR = path.join(__dirname, '..', 'fonts');
 
 // 디렉토리 생성
 if (!fs.existsSync(REPORTS_DIR)) {
   fs.mkdirSync(REPORTS_DIR, { recursive: true });
+}
+
+// 한글 폰트 경로 (Railway 배포 시 fonts 디렉토리에 폰트 파일 필요)
+const KOREAN_FONT_PATH = path.join(FONTS_DIR, 'NanumGothic.ttf');
+const KOREAN_FONT_BOLD_PATH = path.join(FONTS_DIR, 'NanumGothic-Bold.ttf');
+
+// 폰트 사용 가능 여부 체크
+const hasKoreanFont = fs.existsSync(KOREAN_FONT_PATH);
+
+if (!hasKoreanFont) {
+  console.log('⚠️  한글 폰트(NanumGothic.ttf)가 없습니다. PDF에서 한글이 깨질 수 있습니다.');
+  console.log('   fonts/NanumGothic.ttf 파일을 추가하세요.');
 }
 
 /**
@@ -25,52 +38,67 @@ async function generatePDFReport(report) {
         size: 'A4',
         margins: { top: 50, bottom: 50, left: 50, right: 50 },
         info: {
-          Title: `MedicalComply 의료법 준수 리포트 - ${report.url}`,
-          Author: 'MedicalComply',
-          Subject: '의료법 준수 검사 결과'
+          Title: `MADMEDCHECK Report - ${report.url}`,
+          Author: 'MADMEDCHECK',
+          Subject: 'Medical Advertisement Compliance Report'
         }
       });
 
       const stream = fs.createWriteStream(filepath);
       doc.pipe(stream);
 
-      // 한글 폰트 설정 (기본 폰트 사용)
-      // 실제 배포시 NanumGothic 등 한글 폰트 파일 필요
+      // 한글 폰트 등록 (있는 경우)
+      if (hasKoreanFont) {
+        doc.registerFont('Korean', KOREAN_FONT_PATH);
+        if (fs.existsSync(KOREAN_FONT_BOLD_PATH)) {
+          doc.registerFont('Korean-Bold', KOREAN_FONT_BOLD_PATH);
+        }
+        doc.font('Korean');
+      }
+
+      // 텍스트 헬퍼 (한글 폰트 없을 때 대체)
+      const setText = (text, options = {}) => {
+        if (!hasKoreanFont) {
+          // 한글을 로마자로 대체하지 않고 그대로 출력 (깨질 수 있음)
+          // 또는 영문 대체 텍스트 사용
+        }
+        return text;
+      };
 
       // 헤더
       doc.rect(0, 0, doc.page.width, 120).fill('#6366f1');
       doc.fillColor('#ffffff')
          .fontSize(28)
-         .text('MedicalComply', 50, 40);
+         .text('MADMEDCHECK', 50, 40);
       doc.fontSize(14)
-         .text('의료법 준수 검사 리포트', 50, 75);
+         .text(setText('Medical Compliance Report'), 50, 75);
 
       doc.moveDown(4);
 
       // 기본 정보
       doc.fillColor('#1f2937')
          .fontSize(12)
-         .text(`검사 URL: ${report.url}`, 50, 140);
-      doc.text(`검사 일시: ${new Date(report.created_at).toLocaleString('ko-KR')}`, 50, 160);
-      doc.text(`리포트 ID: ${report.id}`, 50, 180);
+         .text(`URL: ${report.url}`, 50, 140);
+      doc.text(`Date: ${new Date(report.created_at).toLocaleString('ko-KR')}`, 50, 160);
+      doc.text(`Report ID: ${report.id}`, 50, 180);
 
       // 총점 박스
       const scoreColor = getScoreColor(report.total_score);
       doc.rect(400, 130, 140, 70).fill(scoreColor);
       doc.fillColor('#ffffff')
          .fontSize(10)
-         .text('총점', 440, 140);
+         .text('SCORE', 440, 140);
       doc.fontSize(36)
          .text(`${report.total_score}`, 440, 155);
       doc.fontSize(12)
-         .text('/ 100점', 480, 175);
+         .text('/ 100', 480, 175);
 
       doc.moveDown(4);
 
       // 요약
       doc.fillColor('#1f2937')
          .fontSize(16)
-         .text('검사 요약', 50, 230);
+         .text(setText('Summary'), 50, 230);
 
       doc.rect(50, 250, 495, 1).fill('#e5e7eb');
 
@@ -81,9 +109,9 @@ async function generatePDFReport(report) {
       const warningCount = report.warning_count || 0;
       const passCount = report.pass_count || 0;
 
-      doc.text(`위반 항목: ${violationCount}개`, 50, 265);
-      doc.text(`경고 항목: ${warningCount}개`, 200, 265);
-      doc.text(`통과 항목: ${passCount}개`, 350, 265);
+      doc.text(`Violations: ${violationCount}`, 50, 265);
+      doc.text(`Warnings: ${warningCount}`, 200, 265);
+      doc.text(`Passed: ${passCount}`, 350, 265);
 
       // 위반 사항 상세
       let yPosition = 310;
@@ -92,7 +120,7 @@ async function generatePDFReport(report) {
       if (violations.length > 0) {
         doc.fillColor('#1f2937')
            .fontSize(16)
-           .text('위반 사항 상세', 50, yPosition);
+           .text(setText('Violation Details'), 50, yPosition);
 
         yPosition += 25;
 
@@ -100,6 +128,7 @@ async function generatePDFReport(report) {
           // 페이지 넘김 체크
           if (yPosition > 700) {
             doc.addPage();
+            if (hasKoreanFont) doc.font('Korean');
             yPosition = 50;
           }
 
@@ -112,33 +141,36 @@ async function generatePDFReport(report) {
              .stroke(borderColor);
 
           // 심각도 배지
-          doc.rect(55, yPosition + 5, 50, 18)
+          doc.rect(55, yPosition + 5, 60, 18)
              .fill(borderColor);
           doc.fillColor('#ffffff')
              .fontSize(9)
-             .text(violation.severity === 'critical' ? '위반' : '경고', 62, yPosition + 9);
+             .text(getSeverityText(violation.severity), 60, yPosition + 9);
 
           // 규칙명
           doc.fillColor('#1f2937')
              .fontSize(12)
-             .text(violation.rule_name || violation.ruleName, 115, yPosition + 8);
+             .text(violation.rule_name || violation.ruleName || 'Unknown', 125, yPosition + 8);
 
-          // 카테고리
+          // 규칙 코드
           doc.fillColor('#6b7280')
              .fontSize(9)
-             .text(violation.category, 115, yPosition + 25);
+             .text(`(${violation.rule_code || violation.ruleCode || ''})`, 125, yPosition + 25);
 
           // 증거
+          const evidenceText = (violation.evidence || '').substring(0, 80);
           doc.fillColor('#374151')
              .fontSize(10)
-             .text(`증거: ${(violation.evidence || '').substring(0, 80)}...`, 55, yPosition + 45, {
+             .text(`Evidence: ${evidenceText}${evidenceText.length >= 80 ? '...' : ''}`, 55, yPosition + 45, {
                width: 480
              });
 
-          // 법적 근거
-          doc.fillColor('#6b7280')
-             .fontSize(9)
-             .text(violation.legal_basis || violation.legalBasis || '', 55, yPosition + 65);
+          // Confidence 표시 (있는 경우)
+          if (violation.confidence) {
+            doc.fillColor('#6b7280')
+               .fontSize(9)
+               .text(`Confidence: ${violation.confidence}%`, 400, yPosition + 8);
+          }
 
           yPosition += 95;
         }
@@ -147,12 +179,13 @@ async function generatePDFReport(report) {
       // 권고사항
       if (yPosition > 600) {
         doc.addPage();
+        if (hasKoreanFont) doc.font('Korean');
         yPosition = 50;
       }
 
       doc.fillColor('#1f2937')
          .fontSize(16)
-         .text('개선 권고사항', 50, yPosition);
+         .text(setText('Recommendations'), 50, yPosition);
 
       yPosition += 25;
 
@@ -160,6 +193,7 @@ async function generatePDFReport(report) {
       for (const rec of recommendations) {
         if (yPosition > 750) {
           doc.addPage();
+          if (hasKoreanFont) doc.font('Korean');
           yPosition = 50;
         }
 
@@ -173,10 +207,11 @@ async function generatePDFReport(report) {
       const pageCount = doc.bufferedPageRange().count;
       for (let i = 0; i < pageCount; i++) {
         doc.switchToPage(i);
+        if (hasKoreanFont) doc.font('Korean');
         doc.fillColor('#9ca3af')
            .fontSize(9)
            .text(
-             `MedicalComply | 페이지 ${i + 1} / ${pageCount}`,
+             `MADMEDCHECK | Page ${i + 1} / ${pageCount}`,
              50,
              doc.page.height - 30,
              { align: 'center', width: 495 }
@@ -185,29 +220,31 @@ async function generatePDFReport(report) {
 
       // 면책 조항
       doc.addPage();
+      if (hasKoreanFont) doc.font('Korean');
+
       doc.fillColor('#1f2937')
          .fontSize(14)
-         .text('면책 조항', 50, 50);
+         .text('Disclaimer', 50, 50);
 
       doc.fillColor('#6b7280')
          .fontSize(10)
          .text(
-           '본 리포트는 웹사이트의 의료법 준수 여부를 참고용으로 분석한 것입니다. ' +
-           '정확한 법적 판단을 위해서는 반드시 의료법 전문 변호사의 자문을 받으시기 바랍니다. ' +
-           'MedicalComply는 본 리포트의 내용에 대해 법적 책임을 지지 않습니다.',
+           'This report is for reference purposes only and provides an analysis of website compliance with Korean Medical Service Act. ' +
+           'For accurate legal judgment, please consult with a medical law specialist. ' +
+           'MADMEDCHECK is not legally responsible for the contents of this report.',
            50, 80, { width: 495, lineGap: 5 }
          );
 
       doc.fillColor('#1f2937')
          .fontSize(14)
-         .text('관련 법률', 50, 150);
+         .text('Legal Reference', 50, 150);
 
       doc.fillColor('#6b7280')
          .fontSize(10)
          .text(
-           '• 의료법 제56조 (의료광고의 금지 등)\n' +
-           '• 의료법 시행령 제23조 (의료광고의 범위)\n' +
-           '• 의료법 제89조 (벌칙) - 1년 이하의 징역 또는 1천만원 이하의 벌금',
+           '• Medical Service Act Article 56 (Prohibition of Medical Advertising)\n' +
+           '• Medical Service Act Enforcement Decree Article 23\n' +
+           '• Medical Service Act Article 89 (Penalties)',
            50, 180, { width: 495, lineGap: 8 }
          );
 
@@ -223,6 +260,19 @@ async function generatePDFReport(report) {
       reject(error);
     }
   });
+}
+
+/**
+ * 심각도 텍스트 반환
+ */
+function getSeverityText(severity) {
+  const texts = {
+    'critical': 'VIOLATION',
+    'warning': 'WARNING',
+    'review': 'REVIEW',
+    'info': 'INFO'
+  };
+  return texts[severity] || 'INFO';
 }
 
 /**
@@ -245,30 +295,30 @@ function getRecommendations(violations) {
 
     switch (code) {
       case 'MED001':
-        recommendations.add('환자 후기, 치료 경험담을 삭제하거나 객관적인 의료 정보로 대체하세요.');
+        recommendations.add('Remove patient testimonials or replace with objective medical information.');
         break;
       case 'MED002':
-        recommendations.add('치료 전후 비교 사진을 즉시 삭제하고, 일반적인 시술 설명 이미지로 대체하세요.');
+        recommendations.add('Remove before/after treatment photos and replace with general procedure images.');
         break;
       case 'MED003':
-        recommendations.add('성공률, 치료율 등 수치 표현을 삭제하고 "개인차가 있을 수 있습니다" 문구를 추가하세요.');
+        recommendations.add('Remove success rate claims and add "individual results may vary" disclaimer.');
         break;
       case 'MED004':
-        recommendations.add('유명인/연예인 관련 추천 콘텐츠를 삭제하세요.');
+        recommendations.add('Remove celebrity endorsement content.');
         break;
       case 'MED005':
-        recommendations.add('과도한 할인/이벤트 문구를 수정하고, 할인 조건을 명확히 표시하세요.');
+        recommendations.add('Modify excessive discount claims and clearly state conditions.');
         break;
       case 'MED006':
-        recommendations.add('"최고", "최초", "1위" 등 최상급 표현을 삭제하거나 객관적 근거를 제시하세요.');
+        recommendations.add('Remove superlative expressions or provide objective evidence.');
         break;
       default:
-        recommendations.add('의료법 전문가와 상담하여 해당 콘텐츠를 검토하세요.');
+        recommendations.add('Consult with a medical law expert to review the content.');
     }
   }
 
   if (recommendations.size === 0) {
-    recommendations.add('현재 웹사이트는 의료법을 잘 준수하고 있습니다. 지속적인 모니터링을 권장합니다.');
+    recommendations.add('Your website is currently compliant. Continue regular monitoring.');
   }
 
   return Array.from(recommendations);
@@ -290,9 +340,17 @@ function deletePDF(filepath) {
   }
 }
 
+/**
+ * 한글 폰트 사용 가능 여부
+ */
+function isKoreanFontAvailable() {
+  return hasKoreanFont;
+}
+
 module.exports = {
   generatePDFReport,
   getPDFBuffer,
   deletePDF,
+  isKoreanFontAvailable,
   REPORTS_DIR
 };
