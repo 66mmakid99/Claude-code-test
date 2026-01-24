@@ -1,0 +1,331 @@
+{
+  "hospitalId": "hosp-1769187168783-ahgwakbhz",
+  "hospitalName": "강남 피어봄의원",
+  "url": "http://gn.pieobom.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:57:07.825Z",
+  "processingTimeMs": 29673,
+  "metadata": {
+    "title": "피어봄의원 강남본점",
+    "description": "각종 시술 부작용 치료부터 필러/보톡스/리프팅/스킨부스터/피부/바디 진료까지. 오직 당신만을 위한 퍼스널 진료 시스템, 피어봄의원 강남본점입니다. 강남역 5번출구 위치 "
+  },
+  "targetUrl": "http://gn.pieobom.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료광고 심의기준 제4조",
+        "article": "의료의 신뢰성을 해치는 과도한 가격 경쟁 유도 광고 금지",
+        "penalty": "심의 부적합 판정, 시정명령"
+      },
+      "recommendation": {
+        "action": "과도한 할인 표현을 자제하고, 비용에 대한 정확한 정보를 제공하세요.",
+        "example": {
+          "bad": "70% 파격 할인! 오늘만!",
+          "good": "비용 안내: 시술별 비용은 상담 후 안내드립니다. (비급여 항목)"
+        }
+      },
+      "matched": true,
+      "matchedText": "특가",
+      "contextWindow": "예뻐지는 12월 뷰티 혜택🎄 이벤트종료 🔥올해 단 한 번, 블랙프라이데이 슈퍼 핫… 이벤트종료 [피어봄 11월 이벤트] ✨피어봄 뷰티 전… 이벤트종료 🎃해피 할로윈 달콤살벌 특가🎃 이벤트종료 🔥F/W 2025 피어봄 HOT 시술 기획… 이벤트종료 🧡풍성한 秋(추)가 혜택🧡 이벤트종료 🎁민생회복 소비쿠폰 사용 시 20% 적립 … MORE > 2",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 940
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "0 장바구니 × 장바구니가 비어있습니다. 시술 보러가기 회원가입 로그인 피어봄 소개 병원 진료 안내 의료진 소개 학술 활동 피어봄 시그니처 퍼스널 프로그램 시술 부작용 치료 피어봄 쁘띠 필러 톡신 윤곽주사 갸름주사 갸름주사 퍼스널 브이올렛 퍼스널 브이올렛 피어봄 리프팅 실리프팅 레이저리프팅 덴서티리프팅 퍼스널 울쎄라 써마지 FLX 리니어지 텐써마리프팅 리니어펌 슈링크 유니버스 피어봄 스킨 퍼스널 스킨 솔루션 스킨부스터 콜라겐부스터 색소/잡티 모공/여드름 피어봄 바디 다이어트주사 다이어트장비 레이저제모 피어봄 성형 눈성형 비절개 쁘띠 하안검 비절개 쁘띠 하안검 노컷 눈밑지 노컷 눈밑지 커뮤니티 이벤트 가격 안내 공지사항 전후사진 사례연구 주의사항 안내 회원가입 로그인 피어봄 소개 병원 진료 안내 의료진 소개 학술 활동 피어봄 시그니처 퍼스널 프로그램 시술 부작용 치료 피어봄 쁘띠 필러 톡신 윤곽주사 갸름주사 퍼스널 브이올렛 피어봄 리프팅 실리프팅 레이저리프팅 덴서티리프팅 퍼스널 울쎄라 써마지 FLX 리니어지 텐써마리프팅 리니어펌 슈링크 유니버스 피어봄 스킨 퍼스널 스킨 솔루션 스킨부스터 콜라겐부스터 색소/잡티 모공/여드름 피어봄 바디 다이어트주사 다이어트장비 레이저제모 피어봄 성형 눈성형 비절개 쁘띠 하안검 노컷 눈밑지 커뮤니티 이벤트 가격 안내 공지사항 전후사진 사례연구 주의사항 안내 MORE > 🎁새해맞이 라인 리셋 스페셜 패키지🎁 ❣️설레는 예쁨, 풍요로운 혜택!",
+        "matched": "특가",
+        "matchedSentence": "신년 혜… 이벤트종료 🎄크리스마스 기념🎄반짝 무통증 리프팅 레이… 이벤트종료 🎅🏻 피어봄 산타가 드리는 크리스마스 선물… 이벤트종료 💎리투오&셀르디엠 스킨 솔루션 런칭 이벤트… 이벤트종료 🎄티 안나게 예뻐지는 12월 뷰티 혜택🎄 이벤트종료 🔥올해 단 한 번, 블랙프라이데이 슈퍼 핫… 이벤트종료 [피어봄 11월 이벤트] ✨피어봄 뷰티 전… 이벤트종료 🎃해피 할로윈 달콤살벌 특가🎃 이벤트종료 🔥F/W 2025 피어봄 HOT 시술 기획… 이벤트종료 🧡풍성한 秋(추)가 혜택🧡 이벤트종료 🎁민생회복 소비쿠폰 사용 시 20% 적립 … MORE > 20년은 늙어 보이는 \"이마 주름\", 없애는 법?",
+        "matchedHighlight": {
+          "text": "특가",
+          "startInSentence": 218
+        },
+        "after": "너무 간단합니다. .",
+        "full": "0 장바구니 × 장바구니가 비어있습니다. 시술 보러가기 회원가입 로그인 피어봄 소개 병원 진료 안내 의료진 소개 학술 활동 피어봄 시그니처 퍼스널 프로그램 시술 부작용 치료 피어봄 쁘띠 필러 톡신 윤곽주사 갸름주사 갸름주사 퍼스널 브이올렛 퍼스널 브이올렛 피어봄 리프팅 실리프팅 레이저리프팅 덴서티리프팅 퍼스널 울쎄라 써마지 FLX 리니어지 텐써마리프팅 리니어펌 슈링크 유니버스 피어봄 스킨 퍼스널 스킨 솔루션 스킨부스터 콜라겐부스터 색소/잡티 모공/여드름 피어봄 바디 다이어트주사 다이어트장비 레이저제모 피어봄 성형 눈성형 비절개 쁘띠 하안검 비절개 쁘띠 하안검 노컷 눈밑지 노컷 눈밑지 커뮤니티 이벤트 가격 안내 공지사항 전후사진 사례연구 주의사항 안내 회원가입 로그인 피어봄 소개 병원 진료 안내 의료진 소개 학술 활동 피어봄 시그니처 퍼스널 프로그램 시술 부작용 치료 피어봄 쁘띠 필러 톡신 윤곽주사 갸름주사 퍼스널 브이올렛 피어봄 리프팅 실리프팅 레이저리프팅 덴서티리프팅 퍼스널 울쎄라...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.006303,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 4,
+    "aiVerified": 0,
+    "falsePositivesFound": 4,
+    "falsePositives": [
+      {
+        "matchedText": "수술 없이",
+        "ruleId": "MED-UN-004",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "한번에",
+        "ruleId": "MED-EFF-007",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "인스타",
+        "ruleId": "MED-SNS-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "대가",
+        "ruleId": "MED-QU-001",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 147,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 180,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://gn.pieobom.com/data/file/event/d279b25b4e696e7a9d716a345af8c26c_qEOzcod6_8858586c0e84d717802c8eb8de1ea29054a2a514.jpg",
+        "preview": "2020\n새해맞이 라인 리셋\nSpecial Package\n이벤트 기간 : 1월 12일 ~ 1월 24일까지\n\n피아봄 재해 한정 패키지\n* 상담 후 개인별 맞춤 시술�� 진행됩니다. ...",
+        "wordCount": 61
+      },
+      {
+        "imageUrl": "http://gn.pieobom.com/data/file/event/d279b25b4e696e7a9d716a345af8c26c_XRTeS85k_37eba5ed3520e6741d4407ad93544f7cbdf7236d.jpg",
+        "preview": "설레는 예몸, 풍요로운 해년!\n\n2026\n\n새해맞이 피어불 \n신년 혜택전\n\n뽀미의 정석, 디데일의 다르다!\n\nBLACK LABEL DUAL LIFT (프리미��실리프팅) 59만원\n...",
+        "wordCount": 64
+      },
+      {
+        "imageUrl": "http://gn.pieobom.com/data/file/event/c326d85b038d5fc34c5b6e79d1cc8e34_GojzOmp5_e3097cad8efbf0863674b516f62845943b03b520.jpg",
+        "preview": "크리스마스 기념\n\n이벤트 기간: 12월 19일 ~ 12월 31일까지 | VAT 별도\n\n빈짝 무통증\n리프팅 레이저\n이벤트\n\n연말엔 더 쫄쫄하게, 뷰��� 없이 리프팅 하세요!\n\n쫄쫄...",
+        "wordCount": 55
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 21,
+    "totalCost": 0.13490999999999997,
+    "geminiCalls": 0,
+    "claudeCalls": 21,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 81,
+    "successCalls": 80,
+    "failedCalls": 1,
+    "totalImagesProcessed": 80,
+    "totalTextExtracted": 6723
+  }
+}

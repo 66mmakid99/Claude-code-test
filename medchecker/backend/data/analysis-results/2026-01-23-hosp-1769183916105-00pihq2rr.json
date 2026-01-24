@@ -1,0 +1,402 @@
+{
+  "hospitalId": "hosp-1769183916105-00pihq2rr",
+  "hospitalName": "과천예일의원",
+  "url": "http://www.yaleclinic.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:40:20.608Z",
+  "processingTimeMs": 31200,
+  "metadata": {
+    "title": "과천예일의원",
+    "description": "과천예일의원은 30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다"
+  },
+  "targetUrl": "http://www.yaleclinic.com/",
+  "targetType": "website",
+  "totalScore": 65,
+  "riskLevel": "medium",
+  "violations": [
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장",
+      "category": "medical_ad",
+      "subcategory": "exaggeration",
+      "severity": "info",
+      "riskScore": 50,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제1호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "실제 운영 시간을 정확히 표기하고, 야간/주말은 별도 안내하세요.",
+        "example": {
+          "bad": "24시간 365일 진료",
+          "good": "평일 09:00-18:00 / 토요일 09:00-13:00 (야간, 공휴일은 응급실 운영)"
+        }
+      },
+      "matched": true,
+      "matchedText": "365일",
+      "contextWindow": "메디컬 스킨케어 + 더보기 YALE CLINIC​과천예일의원​최선의 치료와 따뜻한 마음으로 성심껏 환자분들을 모시겠습니다. 외래진료 예일의원은 365일 진료합니다.예약/문의02-507-7582월~금요일09:00 ~ 18:00토요일09:00 ~ 18:00(원장님 진료 09:00~13:00",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "365일",
+            "text": "365일",
+            "position": 1413
+          },
+          {
+            "type": "pattern",
+            "pattern": "/365\\s*일\\s*(진료|운영)/gi",
+            "text": "365일 진료",
+            "position": 1413
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "과천예일의원30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다. YALE CLINIC진료과목 안내 이비인후과 + 이비인후과 + 내과 + 내과 + 소아청소년과 + 소아청소년과 + 외과 + 외과 + 비뇨기과+ 비뇨기과+ 더보기 이비인후과 + 이비인후과 + 내과 + 내과 + 소아청소년과 + 소아청소년과 + 외과 + 외과 + 비뇨기과+ 비뇨기과+ 예일의원 소개 > 의료진 소개 +검사안내 +국가건강검진 +미소지앤피부비만센터 + 찾아오시는 길+ 병원 둘러보기+ 미소지앤피부비만센터 이벤트 / 공지사항 > 미소지앤피부비만센터 미소지앤피부비만센터 소개 + 미소지앤피부비만센터 소개 + 레이저 패키지 프로그램 + 레이저 패키지 프로그램 + 특수 관리 프로그램 + 특수 관리 프로그램 + 쁘띠 시술 프로그램 + 쁘띠 시술 프로그램 + 비만클리닉 +(비향정 비만약처방) 비만클리닉 +(비향정 비만약처방) 메디컬 스킨케어 + 메디컬 스킨케어 + 더보기 YALE CLINIC​과천예일의원​최선의 치료와 따뜻한 마음으로 성심껏 환자분들을 모시겠습니다.",
+        "matched": "365일",
+        "matchedSentence": "외래진료 예일의원은 365일 진료합니다.",
+        "matchedHighlight": {
+          "text": "365일",
+          "startInSentence": 11
+        },
+        "after": "예약/문의02-507-7582월~금요일09:00 ~ 18:00토요일09:00 ~ 18:00(원장님 진료 09:00~13:00)일/공휴일09:00 ~ 18:00점심시간13:00 ~ 14:00 미소지앤피부비만센터 (비향정 비만약처방)예약/문의02-502-7533월~금요일09:00 ~ 18:00토요일09:00 ~ 14:00일/공휴일휴진점심시간13:00 ~ 14:00이벤트 보러가기 → 대표 : 배광준 사업자등록번호 : 138-10-33163 팩스 : 02-507-7593 주소 : 경기 과천시 별양상가1로 30 골든타워빌딩 4F (4호선 정부과천청사역 1번출구에서 312m ) 주차 : 공영주차장 이용 과천예일의원 예약/문의 외래진료/건강검진센터 02-507-7582 진료시간 : 월~일 9시~18시 (점심 13시~14시) 토요일/원장진료 9시~13시 피부과진료/피부관리실 02-502-7533 진료시간 : 월~금 9시~18시 (점심 13시~14시) 토요일 9시~14시, 일/공휴일 휴진 사이트 가이드 진료과목검사안내국가건강검진(공단검진)미소지앤피부센터개인정보처리방침이용약관찾아오시는길공지사항 Login icon [이미지 텍스트]",
+        "full": "과천예일의원30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다. YALE CLINIC진료과목 안내 이비인후과 + 이비인후과 + 내과 + 내과 + 소아청소년과 + 소아청소년과 + 외과 + 외과 + 비뇨기과+ 비뇨기과+ 더보기 이비인후과 + 이비인후과 + 내과 + 내과 + 소아청소년과 + 소아청소년과 + 외과 + 외과 + 비뇨기과+ 비뇨기과+ 예일의원 소개 > 의료진 소개 +검사안내 +국가건강검진 +미소지앤피부비만센터 + 찾아오시는 길+ 병원 둘러보기+ 미소지앤피부비만센터 이벤트 / 공지사항 > 미소지앤피부비만센터 미소지앤피부비만센터 소개 + 미소지앤피부비만센터 소개 + 레이저 패키지 프로그램 + 레이저 패키지 프로그램 + 특수 관리 프로그램 + 특수 관리 프로그램 + 쁘띠 시술 프로그램 + 쁘띠 시술 프로그램 + 비만클리닉 +(비향정 비만약처방) 비만클리닉 +(비향정 비만약처방) 메디컬 스킨케어 + 메디컬 스킨케어 + 더보기 YALE CLINIC​과...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최상의",
+      "contextWindow": "원 예일의원 소개 진료과목 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 커뮤니티 과천예일의원30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다. 과천예일의원30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다. YALE CLINIC진료과목 안내 이비인후과 + ",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 844
+          },
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 900
+          },
+          {
+            "type": "keyword",
+            "keyword": "최선의",
+            "text": "최선의",
+            "position": 1367
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(최상|최고|최선)\\s*(의|인)\\s*(효과|결과|서비스|치료)/gi",
+            "text": "최선의 치료",
+            "position": 1367
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "외래 피부과 1일 동안 보지 않음 닫기 알림 뒤로 알림 설정 뒤로 더보기 게시물 알림 내 글 반응 내가 작성한 게시물이나 댓글에 다른 사람이 댓글이나 답글을 작성하면 알려줍니다. 공지사항 사이트에서 보내는 중요한 공지를 실시간으로 알려줍니다.",
+        "matched": "최상의",
+        "matchedSentence": "Alarm 마이페이지 로그아웃 예일의원 소개 병원소개 의료진 소개 찾아오시는 길 진료과목 이비인후과 내과 소아청소년과 외과 비뇨기과 피부과 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 미소지앤 소개 레이저 패키지 프로그램 시술 종류 특수관리 프로그램 쁘띠 시술 프로그램 비만클리닉 메디컬 스킨케어 시술 후기 커뮤니티 이벤트 건강칼럼 닫기 예일의원 소개 병원소개 의료진 소개 찾아오시는 길 진료과목 이비인후과 내과 소아청소년과 외과 비뇨기과 피부과 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 미소지앤 소개 레이저 패키지 프로그램 시술 종류 특수관리 프로그램 쁘띠 시술 프로그램 비만클리닉 메디컬 스킨케어 시술 후기 커뮤니티 이벤트 건강칼럼 과천예일의원 예일의원 소개 병원소개 의료진 소개 찾아오시는 길 진료과목 이비인후과 내과 소아청소년과 외과 비뇨기과 피부과 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 미소지앤 소개 레이저 패키지 프로그램 시술 종류 특수관리 프로그램 쁘띠 시술 프로그램 비만클리닉 메디컬 스킨케어 시술 후기 커뮤니티 이벤트 건강칼럼 미소지앤피부비만센터 MENU MENU 과천예일의원 예일의원 소개 진료과목 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 커뮤니티 과천예일의원30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다.",
+        "matchedHighlight": {
+          "text": "최상의",
+          "startInSentence": 708
+        },
+        "after": "과천예일의원30여년의 풍부한 임상경험과 치료성과를 바탕으로 환자분들께 최상의 진료를 해드리겠습니다. YALE CLINIC진료과목 안내 이비인후과 + 이비인후과 + 내과 + 내과 + 소아청소년과 + 소아청소년과 + 외과 + 외과 + 비뇨기과+ 비뇨기과+ 더보기 이비인후과 + 이비인후과 + 내과 + 내과 + 소아청소년과 + 소아청소년과 + 외과 + 외과 + 비뇨기과+ 비뇨기과+ 예일의원 소개 > 의료진 소개 +검사안내 +국가건강검진 +미소지앤피부비만센터 + 찾아오시는 길+ 병원 둘러보기+ 미소지앤피부비만센터 이벤트 / 공지사항 > 미소지앤피부비만센터 미소지앤피부비만센터 소개 + 미소지앤피부비만센터 소개 + 레이저 패키지 프로그램 + 레이저 패키지 프로그램 + 특수 관리 프로그램 + 특수 관리 프로그램 + 쁘띠 시술 프로그램 + 쁘띠 시술 프로그램 + 비만클리닉 +(비향정 비만약처방) 비만클리닉 +(비향정 비만약처방) 메디컬 스킨케어 + 메디컬 스킨케어 + 더보기 YALE CLINIC​과천예일의원​최선의 치료와 따뜻한 마음으로 성심껏 환자분들을 모시겠습니다.",
+        "full": "외래 피부과 1일 동안 보지 않음 닫기 알림 뒤로 알림 설정 뒤로 더보기 게시물 알림 내 글 반응 내가 작성한 게시물이나 댓글에 다른 사람이 댓글이나 답글을 작성하면 알려줍니다. 공지사항 사이트에서 보내는 중요한 공지를 실시간으로 알려줍니다. Alarm 마이페이지 로그아웃 예일의원 소개 병원소개 의료진 소개 찾아오시는 길 진료과목 이비인후과 내과 소아청소년과 외과 비뇨기과 피부과 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 미소지앤 소개 레이저 패키지 프로그램 시술 종류 특수관리 프로그램 쁘띠 시술 프로그램 비만클리닉 메디컬 스킨케어 시술 후기 커뮤니티 이벤트 건강칼럼 닫기 예일의원 소개 병원소개 의료진 소개 찾아오시는 길 진료과목 이비인후과 내과 소아청소년과 외과 비뇨기과 피부과 검사안내 예방접종 영양수액주사 국가건강검진(공단검진) 미소지앤피부비만센터 미소지앤 소개 레이저 패키지 프로그램 시술 종류 특수관리 프로그램 쁘띠 시술 프로그램 비만클리닉 메디컬...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-TM-001",
+        "matchedText": "시술 후기",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 46,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 82,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://cdn.imweb.me/upload/S2024062636e94fd4c7eda/483c650c2b325.jpg",
+        "preview": "2026\n해 마해 신년 이벤트\n\n*이벤트기간: ~ 2월28일까지 / *모든 서울 부가세 별도\n\n- 번디시술 -\n상안부 스킨부톡스                    9만원\n볼쳐짐 스...",
+        "wordCount": 77
+      },
+      {
+        "imageUrl": "https://cdn.imweb.me/upload/S2024062636e94fd4c7eda/6a8682b64e959.png",
+        "preview": "YALE CLINIC\n과천예일의원\nSINCE 2003~",
+        "wordCount": 5
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 49,
+    "totalCost": 0.3025860000000001,
+    "geminiCalls": 0,
+    "claudeCalls": 49,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 231,
+    "successCalls": 209,
+    "failedCalls": 22,
+    "totalImagesProcessed": 209,
+    "totalTextExtracted": 17397
+  }
+}

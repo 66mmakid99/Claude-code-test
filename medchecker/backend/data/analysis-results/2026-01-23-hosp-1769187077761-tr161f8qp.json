@@ -1,0 +1,540 @@
+{
+  "hospitalId": "hosp-1769187077761-tr161f8qp",
+  "hospitalName": "청담BLS의원",
+  "url": "http://www.blsclinic2.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:37:42.909Z",
+  "processingTimeMs": 26109,
+  "metadata": {
+    "title": "BLS클리닉 청담점 | 청담피부과·압구정로데오역피부과 | 프리미엄 리프팅",
+    "description": "청담피부과, 청담 BLS의원은 압구정로데오에서 프리미엄 리프팅을 선도하는 클리닉으로, 1:1 개인 맞춤 커스텀 디자인을 통해 섬세하고 품격 있는 리프팅을 완성합니다. 압구정로데오역 4번 출구 위치, 울쎄라 써마지FLX, 티타늄, 슈링크, 슈링크유니버스, 인모드, 에어젯2, 실루엣리프팅, 하트리프팅, 하이코, 필러, 스컬트라, 쥬베룩볼륨, 윤곽주사, 조각주사, 이마톡신, 눈가톡신, 미간톡신, 턱톡신, 다한증톡신, 특수부위톡신, 피코토닝, 레이저토닝, 골드PTT, 필링, 리투오, 쥬베룩, 리쥬란HB, 리쥬란필러, 미백관리, 재생관리, 체형관리, 제모, 안티에이징, 수액"
+  },
+  "targetUrl": "http://www.blsclinic2.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의",
+      "category": "medical_ad",
+      "subcategory": "sns_advertising",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료법 제57조 (의료광고의 심의)",
+        "penalty": "300만원 이하의 과태료"
+      },
+      "recommendation": {
+        "action": "SNS 의료광고도 반드시 사전 심의를 받아야 합니다.",
+        "example": {
+          "bad": "(심의 없이 SNS에 의료광고 게시)",
+          "good": "[의료광고심의필] 심의번호: 제2023-XXXXXX호"
+        }
+      },
+      "matched": true,
+      "matchedText": "#01",
+      "contextWindow": " 칭찬/불만 접수 MY BLS 예약 확인/변경/취소 최근 본 시술 GLOBAL BLS 브랜드 BBG LAB BLS global Korean English Japanese Chinese Vietnamese Thai Indonesian EVENT PROGRAM BLS클리닉 청담점의 이벤트 시술을 소개합니다. Detail BLS 청담 티타늄 리프팅 EVENT! #01 청담점 BLS 티타늄 리프팅 ! 490,000 원 부터 Detail 디테일 써마지 FLX #02 고주파 에너지로 탄력 UP [정품팁사용] 0 원 부터 Detail 디테일 울쎄라 #03 오리지널 초음파 리프팅 [정품 인증서 발급] 490,000 원 부터 Detail 라비앙BB + 라셈드 #04 비비크림 바른 듯 깨끗한 피부 190,000 원 부터 De",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.25,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.95,
+      "decision": "violation",
+      "confidence": 0.95,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#01",
+            "position": 842
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#02",
+            "position": 896
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#03",
+            "position": 945
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#04",
+            "position": 1006
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#05",
+            "position": 1062
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#티타늄",
+            "position": 3105
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#울쎄라",
+            "position": 3110
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#텐써마",
+            "position": 3115
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#슈링크",
+            "position": 3120
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#써마지",
+            "position": 3125
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#올리지오",
+            "position": 3130
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#튠페이스",
+            "position": 3136
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#인모드",
+            "position": 3142
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#쥬베룩",
+            "position": 3147
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리쥬란",
+            "position": 3152
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리프팅",
+            "position": 3157
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#스킨부스터",
+            "position": 3162
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#타이트닝",
+            "position": 3511
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#피부톤",
+            "position": 3517
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리프팅",
+            "position": 3525
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#얼굴라인",
+            "position": 3530
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "시술"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "청담비엘에스의원 BEST 디테일 써마지 FLX 디테일 울쎄라 티타늄 리프팅 에어젯2 인모드 슈링크 유니버스 실루엣 리프팅 올인원 VIP 프로그램 시술안내 안티에이징 메타셀 프로그램 prp 주사 리프팅 원데이 리프팅 디테일 써마지 FLX 디테일 울쎄라 티타늄 리프팅 슈링크 유니버스 슈링크 인모드 에어젯2 실루엣 리프팅 하트리프팅 쁘띠 하이코 필러 스컬트라 쥬베룩 볼륨 톡신 윤곽주사 조각주사 제로셀 주사 색소 올인원 VIP 프로그램 BB화이트닝 라비앙BB + 라셈드 클라리티2 피코토닝 레이저 토닝 여드름 액션투 모자이크 ECO2 골드 PTT BLS 필링 아크네필링 블랙필 아쿠아필링 여드름관리 스킨부스터 엘라비에 리투오 엑소좀ASCE+ 쥬베룩 리쥬란 HB plus 리쥬란 힐러 SMILE 리쥬란 다이아주사 에스테틱 H2O수분관리 프로틴케어 PHA (르네상스 필링)관리 수소토닝관리 미백관리 재생관리 체형관리 걸그룹 주사 카복시 엣지 주사 바디 조각주사 바디 제로셀 펀치 웨이브 울핏 바디 슈링크 바디 인모드 기타 여성제모 남성제모 다한증 주사 수액 이벤트 안티에이징 이벤트 이달의 이벤트 쁘띠 이벤트 리프팅 이벤트 피부 이벤트 전후사진 BLS영상 BLS뷰티그룹 BLS클리닉 소개 의료진 소개 BLS활동내역 스타와 BLS 공지사항 지점소개/오시는길 칭찬/불만 접수 MY BLS 예약 확인/변경/취소 최근 본 시술 GLOBAL BLS 브랜드 BBG LAB BLS global Korean English Japanese Chinese Vietnamese Thai Indonesian EVENT PROGRAM BLS클리닉 청담점의 이벤트 시술을 소개합니다. Detail BLS 청담 티타늄 리프팅 EVENT!",
+        "matched": "#01",
+        "matchedSentence": "#01 청담점 BLS 티타늄 리프팅 !",
+        "matchedHighlight": {
+          "text": "#01",
+          "startInSentence": 0
+        },
+        "after": "490,000 원 부터 Detail 디테일 써마지 FLX #02 고주파 에너지로 탄력 UP [정품팁사용] 0 원 부터 Detail 디테일 울쎄라 #03 오리지널 초음파 리프팅 [정품 인증서 발급] 490,000 원 부터 Detail 라비앙BB + 라셈드 #04 비비크림 바른 듯 깨끗한 피부 190,000 원 부터 Detail 리쥬란HB plus 이벤트 #05 통증은 줄이고 효과는 올린 리쥬란HB 250,000 원 부터 SIGNATURE PROGRAM 리프팅의 명가, BLS클리닉 청담만의 아이코닉 리프팅을 소개합니다. 아이코닉 프리미엄 리프팅 6대 천왕 프리미엄 고주파 리프팅 디테일 써마지FLX 탄력 초음파 리프팅 디테일 울쎄라 탄력 및 주름개선 리프팅 티타늄 리프팅 동안 페이스 리프팅 슈링크 유니버스 헐리웃 화제의 리프팅 디테일 인모드 콜라겐 생성 촉진 에어젯2 BEST PROGRAM BLS클리닉 청담점의 인기 시술을 소개합니다.",
+        "full": "청담비엘에스의원 BEST 디테일 써마지 FLX 디테일 울쎄라 티타늄 리프팅 에어젯2 인모드 슈링크 유니버스 실루엣 리프팅 올인원 VIP 프로그램 시술안내 안티에이징 메타셀 프로그램 prp 주사 리프팅 원데이 리프팅 디테일 써마지 FLX 디테일 울쎄라 티타늄 리프팅 슈링크 유니버스 슈링크 인모드 에어젯2 실루엣 리프팅 하트리프팅 쁘띠 하이코 필러 스컬트라 쥬베룩 볼륨 톡신 윤곽주사 조각주사 제로셀 주사 색소 올인원 VIP 프로그램 BB화이트닝 라비앙BB + 라셈드 클라리티2 피코토닝 레이저 토닝 여드름 액션투 모자이크 ECO2 골드 PTT BLS 필링 아크네필링 블랙필 아쿠아필링 여드름관리 스킨부스터 엘라비에 리투오 엑소좀ASCE+ 쥬베룩 리쥬란 HB plus 리쥬란 힐러 SMILE 리쥬란 다이아주사 에스테틱 H2O수분관리 프로틴케어 PHA (르네상스 필링)관리 수소토닝관리 미백관리 재생관리 체형관리 걸그룹 주사 카복시 엣지 주사 바디 조각주사 바디 제로셀 펀치 웨이브 울핏 바디 슈링...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "warning",
+      "riskScore": 55,
+      "legal": {
+        "basis": "표시광고법 제3조 (기만적 광고)",
+        "penalty": "과태료 및 시정명령"
+      },
+      "recommendation": {
+        "action": "가격 표기 시 조건을 명확히 밝히세요.",
+        "example": {
+          "bad": "눈 성형 50만원부터~",
+          "good": "눈 성형 비용은 시술 범위에 따라 다르며, 상담 후 정확한 견적을 안내드립니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "000 원 부터",
+      "contextWindow": "ian EVENT PROGRAM BLS클리닉 청담점의 이벤트 시술을 소개합니다. Detail BLS 청담 티타늄 리프팅 EVENT! #01 청담점 BLS 티타늄 리프팅 ! 490,000 원 부터 Detail 디테일 써마지 FLX #02 고주파 에너지로 탄력 UP [정품팁사용] 0 원 부터 Detail 디테일 울쎄라 #03 오리지널 초음파 리프팅 [정품 인증",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.25,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.95,
+      "decision": "violation",
+      "confidence": 0.95,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 868
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "0 원 부터",
+            "position": 923
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 978
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 1031
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 1091
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "이벤트"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "Detail BLS 청담 티타늄 리프팅 EVENT! #01 청담점 BLS 티타늄 리프팅 !",
+        "matched": "000 원 부터",
+        "matchedSentence": "490,000 원 부터 Detail 디테일 써마지 FLX #02 고주파 에너지로 탄력 UP [정품팁사용] 0 원 부터 Detail 디테일 울쎄라 #03 오리지널 초음파 리프팅 [정품 인증서 발급] 490,000 원 부터 Detail 라비앙BB + 라셈드 #04 비비크림 바른 듯 깨끗한 피부 190,000 원 부터 Detail 리쥬란HB plus 이벤트 #05 통증은 줄이고 효과는 올린 리쥬란HB 250,000 원 부터 SIGNATURE PROGRAM 리프팅의 명가, BLS클리닉 청담만의 아이코닉 리프팅을 소개합니다.",
+        "matchedHighlight": {
+          "text": "000 원 부터",
+          "startInSentence": 4
+        },
+        "after": "아이코닉 프리미엄 리프팅 6대 천왕 프리미엄 고주파 리프팅 디테일 써마지FLX 탄력 초음파 리프팅 디테일 울쎄라 탄력 및 주름개선 리프팅 티타늄 리프팅 동안 페이스 리프팅 슈링크 유니버스 헐리웃 화제의 리프팅 디테일 인모드 콜라겐 생성 촉진 에어젯2 BEST PROGRAM BLS클리닉 청담점의 인기 시술을 소개합니다. 디테일 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 디테일 울쎄라 오리지널 초음파 리프팅 [정품 인증서 발급] BLS 청담 티타늄 리프팅 EVENT!",
+        "full": "Detail BLS 청담 티타늄 리프팅 EVENT! #01 청담점 BLS 티타늄 리프팅 ! 490,000 원 부터 Detail 디테일 써마지 FLX #02 고주파 에너지로 탄력 UP [정품팁사용] 0 원 부터 Detail 디테일 울쎄라 #03 오리지널 초음파 리프팅 [정품 인증서 발급] 490,000 원 부터 Detail 라비앙BB + 라셈드 #04 비비크림 바른 듯 깨끗한 피부 190,000 원 부터 Detail 리쥬란HB plus 이벤트 #05 통증은 줄이고 효과는 올린 리쥬란HB 250,000 원 부터 SIGNATURE PROGRAM 리프팅의 명가, BLS클리닉 청담만의 아이코닉 리프팅을 소개합니다. 아이코닉 프리미엄 리프팅 6대 천왕 프리미엄 고주파 리프팅 디테일 써마지FLX 탄력 초음파 리프팅 디테일 울쎄라 탄력 및 주름개선 리프팅 티타늄 리프팅 동안 페이스 리프팅 슈링크 유니버스 헐리웃 화제의 리프팅 디테일 인모드 콜라겐 생성 촉진 에어젯2 BEST PROGRAM BLS클...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-PR-004",
+        "matchedText": "올인원",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "동안",
+        "ruleId": "MED-SP-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 50,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 36,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20251022091951_1.jpg",
+        "preview": "BLS Clinic\n\nBLS청담점\n\n티타늄 리프팅\nEVENT\n\n#타이트닝 #피부톤 개선\n#리프팅 #얼굴라인 개선\n\nSoprano",
+        "wordCount": 13
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20220308105851_1_1.jpg",
+        "preview": "BLS Clinic\n\n숙련한 물러미의 미덕\n\n리쥬란 HB plus\n\nLaunching event\n\nREJURAN Plus",
+        "wordCount": 12
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20240716103935_1.jpg",
+        "preview": "BLS Clinic\n\nSpecial care\n엑소좀\n프로그램\n피부 속 콜라겐을 충전할 시간",
+        "wordCount": 11
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 15,
+    "totalCost": 0.08088,
+    "geminiCalls": 0,
+    "claudeCalls": 15,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 54,
+    "successCalls": 50,
+    "failedCalls": 4,
+    "totalImagesProcessed": 50,
+    "totalTextExtracted": 5095
+  }
+}

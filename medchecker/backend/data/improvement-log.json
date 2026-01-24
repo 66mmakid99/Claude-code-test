@@ -1,0 +1,53 @@
+{
+  "iterations": [
+    {
+      "number": 1,
+      "timestamp": "2026-01-23T17:06:11.761Z",
+      "before": {
+        "violations": 18,
+        "warnings": 2,
+        "filtered": 14,
+        "avgViolations": 0.78,
+        "fpPatterns": 0
+      },
+      "after": {
+        "violations": 18,
+        "warnings": 2,
+        "filtered": 14,
+        "avgViolations": 0.78,
+        "fpPatterns": 0
+      },
+      "improvement": {
+        "violationsReduced": 0,
+        "reanalyzed": 0,
+        "improved": 0
+      }
+    },
+    {
+      "number": 2,
+      "timestamp": "2026-01-23T17:10:07.082Z",
+      "before": {
+        "violations": 18,
+        "warnings": 2,
+        "filtered": 14,
+        "avgViolations": 0.78,
+        "fpPatterns": 0
+      },
+      "after": {
+        "violations": 18,
+        "warnings": 2,
+        "filtered": 14,
+        "avgViolations": 0.78,
+        "fpPatterns": 0
+      },
+      "improvement": {
+        "violationsReduced": 0,
+        "patternsLearned": 0,
+        "reanalyzed": 3,
+        "improved": 2
+      }
+    }
+  ],
+  "startedAt": "2026-01-23T17:06:11.711Z",
+  "lastUpdated": "2026-01-23T17:10:07.083Z"
+}

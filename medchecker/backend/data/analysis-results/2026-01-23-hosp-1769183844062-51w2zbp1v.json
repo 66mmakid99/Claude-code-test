@@ -1,0 +1,349 @@
+{
+  "hospitalId": "hosp-1769183844062-51w2zbp1v",
+  "hospitalName": "타토아의원 용인점",
+  "url": "http://tatoayi.co.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T18:30:44.577Z",
+  "processingTimeMs": 26835,
+  "metadata": {
+    "title": "용인피부과ㅣ타토아의원 용인ㅣTATOA YONGIN",
+    "description": "타토아용인, 용인피부과, 용인 기흥구 동백지구 위치, 보톡스, 필러, 제모, 여드름, 색소질환, 리프팅, 피부관리 타토아오픈, 타토아왔다"
+  },
+  "targetUrl": "http://tatoayi.co.kr",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최상의",
+      "contextWindow": "꼼히 시술합니다. TATOA YONGIN 용인에서 만나는 품격 있는 케어와 따뜻한 휴식 용인점은 타토아의 철학을 담아 고객과 함께합니다. 세심하게 설계된 진료실과 아늑한 분위기로 최상의 결과를 위한 최적의 환경을 제공합니다. INFO 위치 / 연락처 경기 용인시 기흥구 동백중앙로 269, 2층 031-307-7500 영업 시간 월,화,목 [09:30~20:",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 1814
+          },
+          {
+            "type": "keyword",
+            "keyword": "최고의",
+            "text": "최고의",
+            "position": 1577
+          },
+          {
+            "type": "keyword",
+            "keyword": "최선의",
+            "text": "최선의",
+            "position": 2064
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(최상|최고|최선)\\s*(의|인)\\s*(효과|결과|서비스|치료)/gi",
+            "text": "최상의 결과",
+            "position": 1814
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "투명한 소통과 책임 진료 시술의 원리와 과정을 세심하게 소통하며, 결과에 만족하실 때까지 충분한 시간 동안 꼼꼼히 시술합니다. TATOA YONGIN 용인에서 만나는 품격 있는 케어와 따뜻한 휴식 용인점은 타토아의 철학을 담아 고객과 함께합니다.",
+        "matched": "최상의",
+        "matchedSentence": "세심하게 설계된 진료실과 아늑한 분위기로 최상의 결과를 위한 최적의 환경을 제공합니다.",
+        "matchedHighlight": {
+          "text": "최상의",
+          "startInSentence": 23
+        },
+        "after": "INFO 위치 / 연락처 경기 용인시 기흥구 동백중앙로 269, 2층 031-307-7500 영업 시간 월,화,목 [09:30~20:00] 수,금 [10:00 ~ 20:00] 휴게시간 [13:00 ~ 14:00] 토 [09:30 ~15:00]일 정기휴무 TATOA NETWORK 지역마다 펼쳐지는 타토아만의 특별한 경험 용인점 안산점 원주점 신사점 고양점 강릉점 의정부점 위례점 노원점 구미점 안양점 최선의 나를 위한 여정, 함께하겠습니다. 타토아의원 용인경기 용인시 기흥구 동백중앙로 269,2층 대표: 김일우사업자번호: 111-26-28235 대표 번호 : 031-307-7500 이용약관 개인정보처리방침 이메일수집거부 제휴문의 비급여진료비용안내 가맹 문의 © 2024 TATOA.",
+        "full": "투명한 소통과 책임 진료 시술의 원리와 과정을 세심하게 소통하며, 결과에 만족하실 때까지 충분한 시간 동안 꼼꼼히 시술합니다. TATOA YONGIN 용인에서 만나는 품격 있는 케어와 따뜻한 휴식 용인점은 타토아의 철학을 담아 고객과 함께합니다. 세심하게 설계된 진료실과 아늑한 분위기로 최상의 결과를 위한 최적의 환경을 제공합니다. INFO 위치 / 연락처 경기 용인시 기흥구 동백중앙로 269, 2층 031-307-7500 영업 시간 월,화,목 [09:30~20:00] 수,금 [10:00 ~ 20:00] 휴게시간 [13:00 ~ 14:00] 토 [09:30 ~15:00]일 정기휴무 TATOA NETWORK 지역마다 펼쳐지는 타토아만의 특별한 경험 용인점 안산점 원주점 신사점 고양점 강릉점 의정부점 위례점 노원점 구미점 안양점 최선의 나를 위한 여정, 함께하겠습니다. 타토아의원 용인경기 용인시 기흥구 동백중앙로 269,2층 대표: 김일우사업자번호: 111-26-28235 대표 번호 :...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "warning"
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.007962,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-PR-004",
+        "matchedText": "올인원",
+        "reason": "menu_pattern"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 1,
+    "falsePositivesFound": 3,
+    "falsePositives": [
+      {
+        "matchedText": "한번에",
+        "ruleId": "MED-EFF-007",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "동안",
+        "ruleId": "MED-SP-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "는데",
+        "ruleId": "MED-PR-001",
+        "reason": "context_negative",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 69,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 112,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://tatoayi.co.kr/fileupload/event/1768352234MjYwMTA5X-2DgO2GoOyVhOyaqeyduF_snbTri4jrs7Qt7Yah7IugLeydtOuypO2KuF8oMTIwMHg5MDAp.jpg",
+        "preview": "TATOA YONGIN TATOA YONGIN TATOA YONGIN TATOA YONG\n\nNew Arrival,\n\n이니보 특신 런칭 기념!\n\n이니보(INIBO)\n특신\n런칭 이벤트...",
+        "wordCount": 42
+      },
+      {
+        "imageUrl": "http://tatoayi.co.kr/fileupload/event/1768204858MjYwMTA5X-2DgO2GoOyVhOyaqeyduF_snbTri4jrs7Qt7Yah7IugLeydtOuypO2KuF8xMDgwWDEzNTA.jpg",
+        "preview": "New Arrival,\n이니보(INIBO) 톡신\n런칭 이벤트\n\n부가세 10% 별도\n\n이니보 톡신 런칭 기념!\n\n턱/집쇄/관자보톡스        9만원 5.9만원\n\n주름보톡스    ...",
+        "wordCount": 26
+      },
+      {
+        "imageUrl": "http://tatoayi.co.kr/fileupload/event/1767158796MjUxMjMxX-2DgO2GoOyVhOyaqeyduF_tlYTrn6wt7J2067Kk7Yq4XzEyMDBfOTAw.jpg",
+        "preview": "TATOA\n필러이벤트\n\n부가세 10% 별도\n\n이벤트 설명 바로가기\n\n필러, 항상 결과가 불만족스러우셨나요?\n\n하는 방식과 필러 종류의 ��제입니다.\n잘 움직이는데 빨리, 대충, 많...",
+        "wordCount": 44
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 24,
+    "totalCost": 0.141828,
+    "geminiCalls": 0,
+    "claudeCalls": 24,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 62,
+    "successCalls": 59,
+    "failedCalls": 3,
+    "totalImagesProcessed": 59,
+    "totalTextExtracted": 3148
+  }
+}

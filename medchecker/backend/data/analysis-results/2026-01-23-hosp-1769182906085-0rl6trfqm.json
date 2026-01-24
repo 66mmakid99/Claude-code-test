@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769182906085-0rl6trfqm",
+  "hospitalName": "듀오피부과의원",
+  "url": "http://www.duoclinic.co.kr/",
+  "success": false,
+  "error": "웹사이트 크롤링 실패",
+  "detail": "write EPROTO BCA40000:error:0A00018A:SSL routines:tls_process_ske_dhe:dh key too small:openssl\\ssl\\statem\\statem_clnt.c:2352:\n",
+  "processingTimeMs": 82,
+  "analyzedAt": "2026-01-23T18:20:26.918Z"
+}

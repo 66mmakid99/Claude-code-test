@@ -1,0 +1,380 @@
+{
+  "hospitalId": "hosp-1769183925725-2ovm2czxq",
+  "hospitalName": "톤즈의원 의정부",
+  "url": "https://tonesclinic.co.kr/uijeongbu?lang=ko",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:14:04.505Z",
+  "processingTimeMs": 62841,
+  "metadata": {
+    "title": "의정부 피부과 톤즈의원이벤트 | 의정부 피부과 톤즈의원",
+    "description": "진료과목:피부과,의정부 피부과,의정부역 피부과,의정부레이저제모,의정부보톡스,회룡역피부과,호원동피부과,의정부제모,의정부점빼기,의정부필러,의정부울쎄라,의정부인모드,의정부피부과추천,의정부피부과잘하는곳"
+  },
+  "targetUrl": "https://tonesclinic.co.kr/uijeongbu?lang=ko",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고",
+      "category": "medical_ad",
+      "subcategory": "comparison",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제5호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "암시적 비교 표현을 삭제하고, 자사의 장점만 안내하세요.",
+        "example": {
+          "bad": "아무 병원에서 막 하면 부작용 위험!",
+          "good": "숙련된 전문의가 안전하게 시술합니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "다른 곳",
+      "contextWindow": " 입술필러 만족스러워서 이것저것 하나씩 추가적으로 받아보는중♡ iteat | 2025-12-10 켈로이드 치료 때문에 여러번 방문 중인데 다들 친절하시고 효과도 너무 좋아요 !! 다른 곳에선 켈로이드 안한다고 하는 곳 많았는데 유일하게 찾은 곳이랍니당 tls**** | 2025-12-11 수액맞으러 갔는데 생각보다 깔끔하고 고급스러운 분위기네요 ^^ 상담도",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "다른 곳",
+            "text": "다른 곳",
+            "position": 8232
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "bel**** | 2025-12-06 다들 친절하시고 설명 해주시는것도 이해하기 쉬워서 좋아요 이벤트도 매달 꾸준히 하고 입술필러 만족스러워서 이것저것 하나씩 추가적으로 받아보는중♡ iteat | 2025-12-10 켈로이드 치료 때문에 여러번 방문 중인데 다들 친절하시고 효과도 너무 좋아요 ! !",
+        "matched": "다른 곳",
+        "matchedSentence": "다른 곳에선 켈로이드 안한다고 하는 곳 많았는데 유일하게 찾은 곳이랍니당 tls**** | 2025-12-11 수액맞으러 갔는데 생각보다 깔끔하고 고급스러운 분위기네요 ^^ 상담도 너무 상세하게 잘해주시고 할인가로 싸게 받을수 있도록 해주셔서 너무 좋네요 jm406 | 2025-12-12 당일 예약 후 이용했고 대기 없이 바로 상담 하고 시술 했어요 꼼꼼하게 상담 해주셨고 병원도 깔끔하고 쾌적해서 좋아요 다른 피부과 다녔는데 이제 톤즈로 정착하려구요^^ 겨울조아4 | 2025-12-16 실시간 대한민국 인기 검색어 🔍 🥇 인모드 리프팅 BEST 🥈 울쎄라 BEST 🥉 스킨부스터 BEST 4 리쥬란힐러 5 리프팅 6 보톡스 7 쥬베룩 8 슈링크 다짐합니다 바쁘게 앞만 보고 달려왔습니다.",
+        "matchedHighlight": {
+          "text": "다른 곳",
+          "startInSentence": 0
+        },
+        "after": "환자의 피부를 더 건강하게, 더 아름답게 만들겠다는 마음 하나로 쉼 없이 진료실을 지켜왔습니다. 그러던 어느 날, 누군가에게는 작은 고민처럼 보일지 몰라도 당사자에게는 삶의 자신감을 흔드는 문제며 의사의 한 문장, 한 시술, 한 선택이 그 사람의 하루와 인생을 바꿀 수 있다는 걸 다시 깊이 깨닫게 되었습니다.",
+        "full": "bel**** | 2025-12-06 다들 친절하시고 설명 해주시는것도 이해하기 쉬워서 좋아요 이벤트도 매달 꾸준히 하고 입술필러 만족스러워서 이것저것 하나씩 추가적으로 받아보는중♡ iteat | 2025-12-10 켈로이드 치료 때문에 여러번 방문 중인데 다들 친절하시고 효과도 너무 좋아요 ! ! 다른 곳에선 켈로이드 안한다고 하는 곳 많았는데 유일하게 찾은 곳이랍니당 tls**** | 2025-12-11 수액맞으러 갔는데 생각보다 깔끔하고 고급스러운 분위기네요 ^^ 상담도 너무 상세하게 잘해주시고 할인가로 싸게 받을수 있도록 해주셔서 너무 좋네요 jm406 | 2025-12-12 당일 예약 후 이용했고 대기 없이 바로 상담 하고 시술 했어요 꼼꼼하게 상담 해주셨고 병원도 깔끔하고 쾌적해서 좋아요 다른 피부과 다녔는데 이제 톤즈로 정착하려구요^^ 겨울조아4 | 2025-12-16 실시간 대한민국 인기 검색어 🔍 🥇 인모드 리프팅 BEST 🥈 울쎄라 BEST 🥉 스킨부스터 B...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최고의",
+      "contextWindow": "미나 24.08.24 전체 세미나 직원의 미소가 고객의 만족을 만들어요 톤즈는 믿습니다. 직원이 행복해야 고객에게 더 따뜻하게 다가갈 수 있고,스스로 존중받는다고 느낄 때 비로소 최고의 진료와 서비스를 만드는 힘이 생긴다는 것을요. 그래서 톤즈는 '직원 복지'가 아닌,'직원의 삶을 지지하는 문화'를 만들어가고 있습니다. 행복한 직원이 만드는 더 따뜻한 진료",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최고의",
+            "text": "최고의",
+            "position": 6672
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "08. 24 전체 세미나 직원의 미소가 고객의 만족을 만들어요 톤즈는 믿습니다.",
+        "matched": "최고의",
+        "matchedSentence": "직원이 행복해야 고객에게 더 따뜻하게 다가갈 수 있고,스스로 존중받는다고 느낄 때 비로소 최고의 진료와 서비스를 만드는 힘이 생긴다는 것을요.",
+        "matchedHighlight": {
+          "text": "최고의",
+          "startInSentence": 50
+        },
+        "after": "그래서 톤즈는 '직원 복지'가 아닌,'직원의 삶을 지지하는 문화'를 만들어가고 있습니다. 행복한 직원이 만드는 더 따뜻한 진료 더 정직한 서비스 더 건강한 조직 이것이 톤즈가 복지에 진심인 이유입니다.",
+        "full": "08. 24 전체 세미나 직원의 미소가 고객의 만족을 만들어요 톤즈는 믿습니다. 직원이 행복해야 고객에게 더 따뜻하게 다가갈 수 있고,스스로 존중받는다고 느낄 때 비로소 최고의 진료와 서비스를 만드는 힘이 생긴다는 것을요. 그래서 톤즈는 '직원 복지'가 아닌,'직원의 삶을 지지하는 문화'를 만들어가고 있습니다. 행복한 직원이 만드는 더 따뜻한 진료 더 정직한 서비스 더 건강한 조직 이것이 톤즈가 복지에 진심인 이유입니다.",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "warning"
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-SNS-001",
+        "matchedText": "SNS",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 0,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "인증",
+        "ruleId": "MED-EX-003",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "만족도",
+        "ruleId": "MED-EFF-003",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 111,
+    "processedImages": 3,
+    "successfulOcr": 1,
+    "totalWords": 2,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://tonesclinic.co.kr/main/img/upload/banner/mainBanner2.png",
+        "preview": "TONY'S CLINIC",
+        "wordCount": 2
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 7,
+    "totalCost": 0.038976,
+    "geminiCalls": 0,
+    "claudeCalls": 7,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 21,
+    "successCalls": 21,
+    "failedCalls": 0,
+    "totalImagesProcessed": 21,
+    "totalTextExtracted": 1072
+  }
+}

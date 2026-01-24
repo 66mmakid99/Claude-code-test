@@ -1,0 +1,492 @@
+{
+  "hospitalId": "hosp-1769183865108-p7udiqpqe",
+  "hospitalName": "맑은누리의원",
+  "url": "http://www.purenurips.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:23:21.397Z",
+  "processingTimeMs": 20542,
+  "metadata": {
+    "title": "안산성형외과 안산피부과 맑은누리의원",
+    "description": "안산 비만클리닉 안산성형외과 안산피부과 맑은누리의원"
+  },
+  "targetUrl": "http://www.purenurips.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의",
+      "category": "medical_ad",
+      "subcategory": "sns_advertising",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료법 제57조 (의료광고의 심의)",
+        "penalty": "300만원 이하의 과태료"
+      },
+      "recommendation": {
+        "action": "SNS 의료광고도 반드시 사전 심의를 받아야 합니다.",
+        "example": {
+          "bad": "(심의 없이 SNS에 의료광고 게시)",
+          "good": "[의료광고심의필] 심의번호: 제2023-XXXXXX호"
+        }
+      },
+      "matched": true,
+      "matchedText": "#맑은누리만의",
+      "contextWindow": "셀 클라리티레이저 레이저피부시술 주름성형 지방이식 실리프팅 맞춤형 실리프팅 스페셜성형 안면윤곽 지방흡입 모발성형 흉터성형 커뮤니티 이벤트게시판 공지사항 031.411.7979 카톡 상담 오시는길 TOP 안산시, 동안성형의 중심 실력으로 인정받는 '맑은누리' 입니다. 이전으로 다음으로 맑은누리 EVENT purenuri PLASTIC SURGERY 성형수술 #맑은누리만의 특화 수술 방법 눈처짐 수술 #내 얼굴에 맞게 최적의 눈모양 눈성형 #입체감을 살려주는 코성형 #탄력있는 볼륨라인 가슴성형 피부관리 #동안탱탱 V라인 실 리프팅 #진피층까지 수분 가득 피부 보습 탄력관리 #밝고 화사한 기미 잡티제거 관리 #매끈매끈 여드름 집중 관리 쁘띠시술 #10살 더 어리게 팔자 필러 #트렌드에 맞춘 콧대 필러 #입체감 있",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.5,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#맑은누리만의",
+            "position": 381
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#내",
+            "position": 405
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#입체감을",
+            "position": 427
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#탄력있는",
+            "position": 442
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#동안탱탱",
+            "position": 463
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#진피층까지",
+            "position": 479
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#밝고",
+            "position": 503
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#매끈매끈",
+            "position": 522
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#10살",
+            "position": 543
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#트렌드에",
+            "position": 560
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#입체감",
+            "position": 575
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#꽃중년으로",
+            "position": 598
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#더이상",
+            "position": 629
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#다이어트는",
+            "position": 651
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#피부보습",
+            "position": 674
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#동안얼굴",
+            "position": 680
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#다이어트는",
+            "position": 694
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "시술"
+          },
+          {
+            "type": "keyword",
+            "text": "수술"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "411. 7979 카톡 상담 오시는길 TOP 안산시, 동안성형의 중심 실력으로 인정받는 '맑은누리' 입니다.",
+        "matched": "#맑은누리만의",
+        "matchedSentence": "이전으로 다음으로 맑은누리 EVENT purenuri PLASTIC SURGERY 성형수술 #맑은누리만의 특화 수술 방법 눈처짐 수술 #내 얼굴에 맞게 최적의 눈모양 눈성형 #입체감을 살려주는 코성형 #탄력있는 볼륨라인 가슴성형 피부관리 #동안탱탱 V라인 실 리프팅 #진피층까지 수분 가득 피부 보습 탄력관리 #밝고 화사한 기미 잡티제거 관리 #매끈매끈 여드름 집중 관리 쁘띠시술 #10살 더 어리게 팔자 필러 #트렌드에 맞춘 콧대 필러 #입체감 있는 동안 얼굴 얼굴 볼륨 필러 #꽃중년으로 거듭나기 이마 주름 필러 간단한 주사 시술 #더이상 주름은 용서 못해 주름 보톡스 #다이어트는 내가 도와줄게!",
+        "matchedHighlight": {
+          "text": "#맑은누리만의",
+          "startInSentence": 51
+        },
+        "after": "지방분해주사 #피부보습 #동안얼굴 피부 물광주사 #다이어트는 쉽게 하는거야! 쏙싹다이어트 맑은누리는 특별합니다 purenuri PLASTIC SURGERY 병원 시설 소개 purenuri PLASTIC SURGERY 고객센터 (안산점) 031.",
+        "full": "411. 7979 카톡 상담 오시는길 TOP 안산시, 동안성형의 중심 실력으로 인정받는 '맑은누리' 입니다. 이전으로 다음으로 맑은누리 EVENT purenuri PLASTIC SURGERY 성형수술 #맑은누리만의 특화 수술 방법 눈처짐 수술 #내 얼굴에 맞게 최적의 눈모양 눈성형 #입체감을 살려주는 코성형 #탄력있는 볼륨라인 가슴성형 피부관리 #동안탱탱 V라인 실 리프팅 #진피층까지 수분 가득 피부 보습 탄력관리 #밝고 화사한 기미 잡티제거 관리 #매끈매끈 여드름 집중 관리 쁘띠시술 #10살 더 어리게 팔자 필러 #트렌드에 맞춘 콧대 필러 #입체감 있는 동안 얼굴 얼굴 볼륨 필러 #꽃중년으로 거듭나기 이마 주름 필러 간단한 주사 시술 #더이상 주름은 용서 못해 주름 보톡스 #다이어트는 내가 도와줄게! 지방분해주사 #피부보습 #동안얼굴 피부 물광주사 #다이어트는 쉽게 하는거야! 쏙싹다이어트 맑은누리는 특별합니다 purenuri PLASTIC SURGERY 병원 시설 소개 purenu...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료광고 심의기준 제4조",
+        "article": "의료의 신뢰성을 해치는 과도한 가격 경쟁 유도 광고 금지",
+        "penalty": "심의 부적합 판정, 시정명령"
+      },
+      "recommendation": {
+        "action": "과도한 할인 표현을 자제하고, 비용에 대한 정확한 정보를 제공하세요.",
+        "example": {
+          "bad": "70% 파격 할인! 오늘만!",
+          "good": "비용 안내: 시술별 비용은 상담 후 안내드립니다. (비급여 항목)"
+        }
+      },
+      "matched": true,
+      "matchedText": "특가",
+      "contextWindow": "의 오늘 하루 이 창 열지 않음 [닫기] SVF누리셀 브로우솜 비절개 인중리프팅 맑은누리의원 인중리프팅 화수목 이벤트 솜털제모 2주이벤트 슬림바디만들기추천 BEST 5 월,금 타임특가! 카톡 채널추가 이벤트 더블 눈처짐 수술 오늘 하루 이 창을 열지 않음 [닫기]\n\n[이미지 텍스트]\n맑은누리의원\nCLINIC\n\n맑은누리의원 AUTUMN EVENT\n\n가을이벤트",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 1159
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "쏙싹다이어트 맑은누리는 특별합니다 purenuri PLASTIC SURGERY 병원 시설 소개 purenuri PLASTIC SURGERY 고객센터 (안산점) 031. 411.",
+        "matched": "특가",
+        "matchedSentence": "7979 경기도 안산시 단원구 광덕대로 181 (고잔동) BYC빌딩 505호 TEL : 031-411-7979 FAX : 031-411-7909 사업자등록번호 : 659-04-00606 상호명 : 맑은누리의원 대표자 : 백승근 맑은누리소식 보도자료 이용약관 개인정보취급방침 이메일무단수신거부 빠른상담신청 상담부위를 선택하세요 눈성형 코성형 실리프팅 피부 필러,보톡스,지방분해주사 동안리프팅 동안성형 가슴성형 스페셜성형 개인정보 동의[자세히보기] 상담문의 오늘 하루 이 창 열지 않음 [닫기] SVF누리셀 브로우솜 비절개 인중리프팅 맑은누리의원 인중리프팅 화수목 이벤트 솜털제모 2주이벤트 슬림바디만들기추천 BEST 5 월,금 타임특가!",
+        "matchedHighlight": {
+          "text": "특가",
+          "startInSentence": 352
+        },
+        "after": "카톡 채널추가 이벤트 더블 눈처짐 수술 오늘 하루 이 창을 열지 않음 [닫기] [이미지 텍스트]",
+        "full": "쏙싹다이어트 맑은누리는 특별합니다 purenuri PLASTIC SURGERY 병원 시설 소개 purenuri PLASTIC SURGERY 고객센터 (안산점) 031. 411. 7979 경기도 안산시 단원구 광덕대로 181 (고잔동) BYC빌딩 505호 TEL : 031-411-7979 FAX : 031-411-7909 사업자등록번호 : 659-04-00606 상호명 : 맑은누리의원 대표자 : 백승근 맑은누리소식 보도자료 이용약관 개인정보취급방침 이메일무단수신거부 빠른상담신청 상담부위를 선택하세요 눈성형 코성형 실리프팅 피부 필러,보톡스,지방분해주사 동안리프팅 동안성형 가슴성형 스페셜성형 개인정보 동의[자세히보기] 상담문의 오늘 하루 이 창 열지 않음 [닫기] SVF누리셀 브로우솜 비절개 인중리프팅 맑은누리의원 인중리프팅 화수목 이벤트 솜털제모 2주이벤트 슬림바디만들기추천 BEST 5 월,금 타임특가! 카톡 채널추가 이벤트 더블 눈처짐 수술 오늘 하루 이 창을 열지 않음 [닫기] [...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.007632,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 1,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "동안",
+        "ruleId": "MED-SP-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "정 이벤트",
+        "ruleId": "MED-PR-003",
+        "reason": "info_only",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 56,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 34,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.purenurips.com/new2014/images/main_renew/event02.png",
+        "preview": "맑은누리의원\nCLINIC\n\n맑은누리의원 AUTUMN EVENT\n\n가을이벤트\n\n2024.9.2~11.30",
+        "wordCount": 7
+      },
+      {
+        "imageUrl": "http://www.purenurips.com/new2014/images/main_renew/event01.png",
+        "preview": "바로 지금! 논성형이 떡이야\n\n특별한 가격\n한정 이벤트\n\n조기 마감 시\n이벤트 종료\n\n이벤트 기간\n10/14~ 11/30",
+        "wordCount": 17
+      },
+      {
+        "imageUrl": "http://www.purenurips.com/new2014/images/main_renew/event2024.png",
+        "preview": "PURENURI 11월 피부\n\n가을가을\n보너스\nEVENT\n\n기간: 11/1 ~ 11/30",
+        "wordCount": 10
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 24,
+    "totalCost": 0.147873,
+    "geminiCalls": 0,
+    "claudeCalls": 24,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 104,
+    "successCalls": 98,
+    "failedCalls": 6,
+    "totalImagesProcessed": 98,
+    "totalTextExtracted": 7041
+  }
+}

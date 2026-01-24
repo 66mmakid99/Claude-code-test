@@ -1,0 +1,73 @@
+{
+  "timeoutHospitals": [
+    {
+      "id": "hosp-1769182887630-erj4kubsh",
+      "name": "유앤아이의원 명동점",
+      "url": "https://www.mduni114.co.kr/",
+      "timestamp": "2026-01-23T17:54:28.026Z",
+      "reason": "analysis_timeout",
+      "avgProcessingTimeAtTimeout": 18066.61111111111,
+      "timeoutThreshold": 90000,
+      "elapsedMs": 307775,
+      "errorMessage": "Analysis timeout after 90s"
+    },
+    {
+      "id": "hosp-1769182887630-ot5mpgl2v",
+      "name": "올의원",
+      "url": "http://www.allclinic.co.kr",
+      "timestamp": "2026-01-23T17:56:38.840Z",
+      "reason": "analysis_timeout",
+      "avgProcessingTimeAtTimeout": 18945.36842105263,
+      "timeoutThreshold": 90000,
+      "elapsedMs": 90014,
+      "errorMessage": "Analysis timeout after 90s"
+    },
+    {
+      "id": "hosp-1769182896725-t8tg84i3x",
+      "name": "유앤아이의원 건대점",
+      "url": "https://www.kduni114.co.kr/",
+      "timestamp": "2026-01-23T18:02:10.248Z",
+      "reason": "analysis_timeout",
+      "avgProcessingTimeAtTimeout": 15939.4,
+      "timeoutThreshold": 90000,
+      "elapsedMs": 153063,
+      "errorMessage": "Analysis timeout after 90s"
+    },
+    {
+      "id": "hosp-1769183847193-qk9jp8n3r",
+      "name": "유앤아이의원 수원점",
+      "url": "https://www.swuni114.co.kr/",
+      "timestamp": "2026-01-23T19:05:25.532Z",
+      "reason": "analysis_timeout",
+      "avgProcessingTimeAtTimeout": 30000,
+      "timeoutThreshold": 90000,
+      "elapsedMs": 1274158,
+      "errorMessage": "Analysis timeout after 90s"
+    },
+    {
+      "id": "hosp-1769183881800-nc1j7xx65",
+      "name": "참조은병원",
+      "url": "http://www.chamhosp.co.kr/",
+      "timestamp": "2026-01-23T19:32:59.720Z",
+      "reason": "analysis_timeout",
+      "avgProcessingTimeAtTimeout": 17024.85,
+      "timeoutThreshold": 90000,
+      "elapsedMs": 90013,
+      "errorMessage": "Analysis timeout after 90s"
+    },
+    {
+      "id": "hosp-1769183950606-qdfwuhrqk",
+      "name": "인천검단 리포유의원",
+      "url": "https://www.lfu.co.kr/",
+      "timestamp": "2026-01-23T20:35:27.657Z",
+      "reason": "analysis_timeout",
+      "avgProcessingTimeAtTimeout": 46866,
+      "timeoutThreshold": 106866,
+      "elapsedMs": 286198,
+      "errorMessage": "Analysis timeout after 107s"
+    }
+  ],
+  "lastUpdated": "2026-01-23T20:35:27.657Z",
+  "totalTimeouts": 6,
+  "analysisForImprovement": []
+}

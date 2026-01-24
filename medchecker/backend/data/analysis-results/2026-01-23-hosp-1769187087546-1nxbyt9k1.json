@@ -1,0 +1,321 @@
+{
+  "hospitalId": "hosp-1769187087546-1nxbyt9k1",
+  "hospitalName": "마이미의원 선릉",
+  "url": "http://www.mymeclinic.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:51:41.344Z",
+  "processingTimeMs": 7314,
+  "metadata": {
+    "title": "마이미의원",
+    "description": "1:1 원장 맞춤 진료, 100% 예약제, 프라이빗 1인 관리실,  리프팅, 여드름, 보톡스, 선릉역 5,6번 출구 앞 프리미엄 선릉역 피부과"
+  },
+  "targetUrl": "http://www.mymeclinic.com/",
+  "targetType": "website",
+  "totalScore": 80,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "탁월한",
+      "contextWindow": "트닝 효과 MYME CLINIC 아큐토닝 피지선에 직접 작용해 피지선조절, 여드름개선 유수분관리까지 MYME CLINIC 클라리티 기미, 주근깨, 피부재생 여드름치료, 색소치료에 탁월한 효과 MYME CLINIC 실펌X 피부 깊은 곳까지 고주파 에너지를 전달 기미, 홍조, 색소, 탄력 개선 MYME CLINIC 레블라이트SI토닝 피부 손상 최소화 기미, 잡",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "탁월한",
+            "text": "탁월한",
+            "position": 1290
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "온라인상담 N예약 BLOG KAKAOTALK YOUTUBE 닥터마이미TV User Login T. 02 563 2332 ABOUT MYME 의료진소개 둘러보기 오시는길 / 진료안내 EVENT EVENT 탄력/리프팅 울쎄라 티타늄리프팅 슈링크유니버스 볼뉴머 실리프팅 시그니처 입술필러 주름지우개 심부볼타파 무통스킨부스터 기미/잡티/주근깨 기미/잡티/주근깨 여드름 여드름 필러/보톡스 필러 보톡스 모공/흉터/피부결 모공/흉터/피부결 플라필 스킨부스터 리쥬란 엑소좀 쥬베룩 레디어스 활력주사 활력주사 커뮤니티 온라인상담 in MEDIA 닥터마이미TV ABOUT MYME 의료진소개 둘러보기 오시는길 / 진료안내 EVENT EVENT 탄력/리프팅 울쎄라 티타늄리프팅 슈링크유니버스 볼뉴머 실리프팅 시그니처 입술필러 주름지우개 심부볼타파 무통스킨부스터 기미/잡티/주근깨 기미/잡티/주근깨 여드름 여드름 필러/보톡스 필러 보톡스 모공/흉터/피부결 모공/흉터/피부결 플라필 스킨부스터 리쥬란 엑소좀 쥬베룩 레디어스 활력주사 활력주사 커뮤니티 온라인상담 in MEDIA 닥터마이미TV 닫기 LOGIN JOIN ABOUT MYME 의료진소개 둘러보기 오시는길 / 진료안내 EVENT EVENT 탄력/리프팅 울쎄라 티타늄리프팅 슈링크유니버스 볼뉴머 실리프팅 시그니처 입술필러 주름지우개 심부볼타파 무통스킨부스터 기미/잡티/주근깨 기미/잡티/주근깨 여드름 여드름 필러/보톡스 필러 보톡스 모공/흉터/피부결 모공/흉터/피부결 플라필 스킨부스터 리쥬란 엑소좀 쥬베룩 레디어스 활력주사 활력주사 커뮤니티 온라인상담 in MEDIA 닥터마이미TV 'ONLY MY FOR ME' MYME 무엇이 진짜 효과가 있는지 어떤 시술이 나에게 맞는 시술인지 혼란스러운 여러분에게 해결책을 제시합니다.",
+        "matched": "탁월한",
+        "matchedSentence": "MYME STYLE 아름다운 나의 모습을 위한 마이미의 의료장비 MYME CLINIC 더마샤인프로 피부톤을 환하게 강력한 수분감 흔적없이 빠르게 MYME CLINIC 울쎄라 피부탄력, 잔주름 개선 등 강력한 리프팅 효과 및 V라인 개선 효과 MYME CLINIC 마크뷰 전 광원 LED 분석기 피부 정밀 측정 및 정확한 피부진단 MYME CLINIC Co2 LASER 점, 검버섯, 사마귀 주름살 제거, 여드름흉터 등에 효과적 MYME CLINIC LDM med tri 3중 주파수로 지속적 콜라겐 증가와 리프팅, 타이트닝 효과 MYME CLINIC 아큐토닝 피지선에 직접 작용해 피지선조절, 여드름개선 유수분관리까지 MYME CLINIC 클라리티 기미, 주근깨, 피부재생 여드름치료, 색소치료에 탁월한 효과 MYME CLINIC 실펌X 피부 깊은 곳까지 고주파 에너지를 전달 기미, 홍조, 색소, 탄력 개선 MYME CLINIC 레블라이트SI토닝 피부 손상 최소화 기미, 잡티, 잔주름 피부톤, 피부결 개선 등 MYME CLINIC 슈링크유니버스 피부탄력, 잔주름 개선 더 빨라지고, 통증 감소 리프팅 효과 MYME CLINIC 볼뉴머 내피부에 맞춘 진동레벨과 쿨링레벨 통증은 감소, 리프팅은 극대화 MYME CLINIC 아쿠아필 피부 노폐물 제거 및 수분과 영양보충이 가능합니다.",
+        "matchedHighlight": {
+          "text": "탁월한",
+          "startInSentence": 390
+        },
+        "after": "MYME CLINIC 크라이오셀 리프팅, 미백효과, 피부진정, 피부결개선 등에 적용해볼 수 있습니다. 국민일보 칼럼 연재 정지원 원장의 피부이야기더 보러가기 [국민일보] 피부가 갑자기 예민해진 이유는?",
+        "full": "온라인상담 N예약 BLOG KAKAOTALK YOUTUBE 닥터마이미TV User Login T. 02 563 2332 ABOUT MYME 의료진소개 둘러보기 오시는길 / 진료안내 EVENT EVENT 탄력/리프팅 울쎄라 티타늄리프팅 슈링크유니버스 볼뉴머 실리프팅 시그니처 입술필러 주름지우개 심부볼타파 무통스킨부스터 기미/잡티/주근깨 기미/잡티/주근깨 여드름 여드름 필러/보톡스 필러 보톡스 모공/흉터/피부결 모공/흉터/피부결 플라필 스킨부스터 리쥬란 엑소좀 쥬베룩 레디어스 활력주사 활력주사 커뮤니티 온라인상담 in MEDIA 닥터마이미TV ABOUT MYME 의료진소개 둘러보기 오시는길 / 진료안내 EVENT EVENT 탄력/리프팅 울쎄라 티타늄리프팅 슈링크유니버스 볼뉴머 실리프팅 시그니처 입술필러 주름지우개 심부볼타파 무통스킨부스터 기미/잡티/주근깨 기미/잡티/주근깨 여드름 여드름 필러/보톡스 필러 보톡스 모공/흉터/피부결 모공/흉터/피부결 플라필 스킨부스터 리쥬란 엑소좀 쥬베룩 ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 43,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 18,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.mymeclinic.com/img/mt_event.jpg",
+        "preview": "MYME\nEVENT\n자세히보기",
+        "wordCount": 3
+      },
+      {
+        "imageUrl": "http://www.mymeclinic.com/img/mmt_event.jpg",
+        "preview": "MYME\nEVENT\n자세히보기",
+        "wordCount": 3
+      },
+      {
+        "imageUrl": "http://www.mymeclinic.com/img/mmv_img0.jpg",
+        "preview": "Titanium®\n\n나답게, 강렬하게, 3파장 레이저 티타늄\n\n앰버서더(엠버서더)\n설 인 아\n\nMYME CLINIC",
+        "wordCount": 12
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 7,
+    "totalCost": 0.044001,
+    "geminiCalls": 0,
+    "claudeCalls": 7,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 45,
+    "successCalls": 45,
+    "failedCalls": 0,
+    "totalImagesProcessed": 45,
+    "totalTextExtracted": 3356
+  }
+}

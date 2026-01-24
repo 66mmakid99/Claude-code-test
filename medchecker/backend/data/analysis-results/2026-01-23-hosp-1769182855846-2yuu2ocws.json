@@ -1,0 +1,314 @@
+{
+  "hospitalId": "hosp-1769182855846-2yuu2ocws",
+  "hospitalName": "프리마피부과의원 강서",
+  "url": "https://www.primaderma.co.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:34:41.629Z",
+  "processingTimeMs": 16155,
+  "metadata": {
+    "title": "프리마피부과의원",
+    "description": "화곡역 피부과, 피부과 전문의, 흉터 치료 중점, 써마지, 울쎄라, 리프팅, 기미/잡티/색소/여드름 치료, 레이저제모, 난치성 피부질환 치료 잘하는 곳"
+  },
+  "targetUrl": "https://www.primaderma.co.kr",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "가장 좋은",
+      "contextWindow": "kinPrecise Care,Personal Dermatology 피부는 사람마다 다른 구조와 흐름을 가지고 있습니다.프리마 피부과는 그 차이를 정확히 이해하고,당신 피부가 지닌 가장 좋은 상태에 가까워질 수 있도록 돕습니다.프리마 피부과와 함께당신의 피부 여정을 시작하세요. 빠른상담신청 1차 시술 분류 프리마 시그니처 프리마 웰에이징 센터 프리마 피부재생",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "가장 좋은",
+            "text": "가장 좋은",
+            "position": 1641
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "04 구조를 기반으로 한정밀 진단 시스템 피부 구조, 층, 원인을 세밀하게 분석해보다 정밀한 진단과 치료 설계를 돕습니다. PRIMA EVENT 12월 연말 이벤트 12월 연말 이벤트 12월 연말 이벤트 12월 연말 이벤트 PRIMA,The First Step to Better SkinPrecise Care,Personal Dermatology 피부는 사람마다 다른 구조와 흐름을 가지고 있습니다.",
+        "matched": "가장 좋은",
+        "matchedSentence": "프리마 피부과는 그 차이를 정확히 이해하고,당신 피부가 지닌 가장 좋은 상태에 가까워질 수 있도록 돕습니다.",
+        "matchedHighlight": {
+          "text": "가장 좋은",
+          "startInSentence": 34
+        },
+        "after": "프리마 피부과와 함께당신의 피부 여정을 시작하세요. 빠른상담신청 1차 시술 분류 프리마 시그니처 프리마 웰에이징 센터 프리마 피부재생 센터 프리마 특수클리닉 센터 지점 프리마피부과의원 이름 연락처 고객 혜택, 이벤트 공지 등 마케팅 문자 수신에 동의합니다 (선택) 개인정보 취급방침에 동의합니다.",
+        "full": "04 구조를 기반으로 한정밀 진단 시스템 피부 구조, 층, 원인을 세밀하게 분석해보다 정밀한 진단과 치료 설계를 돕습니다. PRIMA EVENT 12월 연말 이벤트 12월 연말 이벤트 12월 연말 이벤트 12월 연말 이벤트 PRIMA,The First Step to Better SkinPrecise Care,Personal Dermatology 피부는 사람마다 다른 구조와 흐름을 가지고 있습니다. 프리마 피부과는 그 차이를 정확히 이해하고,당신 피부가 지닌 가장 좋은 상태에 가까워질 수 있도록 돕습니다. 프리마 피부과와 함께당신의 피부 여정을 시작하세요. 빠른상담신청 1차 시술 분류 프리마 시그니처 프리마 웰에이징 센터 프리마 피부재생 센터 프리마 특수클리닉 센터 지점 프리마피부과의원 이름 연락처 고객 혜택, 이벤트 공지 등 마케팅 문자 수신에 동의합니다 (선택) 개인정보 취급방침에 동의합니다.",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "warning"
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.0077399999999999995,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-UN-001",
+        "matchedText": "줄기세포 주사",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 2,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "치료 경험",
+        "ruleId": "MED-TM-001",
+        "reason": "menu_text",
+        "source": "ai_verification"
+      },
+      {
+        "matchedText": "유튜브",
+        "ruleId": "MED-SNS-001",
+        "reason": "menu_text",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 25,
+    "processedImages": 3,
+    "successfulOcr": 0,
+    "totalWords": 0,
+    "extractedTexts": []
+  },
+  "aiStats": {
+    "totalCalls": 3,
+    "totalCost": 0.020619,
+    "geminiCalls": 0,
+    "claudeCalls": 3,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 9,
+    "successCalls": 9,
+    "failedCalls": 0,
+    "totalImagesProcessed": 9,
+    "totalTextExtracted": 1295
+  }
+}

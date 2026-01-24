@@ -1,0 +1,378 @@
+{
+  "hospitalId": "hosp-1769182895728-m5dihf373",
+  "hospitalName": "프리미의원",
+  "url": "https://primiclinic.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:58:58.549Z",
+  "processingTimeMs": 18741,
+  "metadata": {
+    "title": "1:1의사 상담 성수피부과 -기미 잡티 레이저 제거, 레이저 제모 및 리프팅 프리미클리닉",
+    "description": "성수동 성수 피부과 건대 성수역 도보 5분거리 피부과 찾는다면 프리미클리닉 여드름 흉터 기미 잡티 치료 레이저 제모 보톡스 필러 리프팅까지 원스톱 케어"
+  },
+  "targetUrl": "https://primiclinic.com/",
+  "targetType": "website",
+  "totalScore": 0,
+  "riskLevel": "high",
+  "violations": [
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시",
+      "category": "medical_ad",
+      "subcategory": "before_after",
+      "severity": "critical",
+      "riskScore": 80,
+      "legal": {
+        "basis": "의료법 시행령 제23조 제1항",
+        "article": "치료 전·후의 사진 등을 광고에 사용하는 경우 환자의 서면 동의 필요",
+        "penalty": "300만원 이하의 과태료",
+        "caseExamples": [
+          "2022년 B피부과: 환자 동의 없이 전후사진 게시로 과태료 200만원"
+        ]
+      },
+      "recommendation": {
+        "action": "전후사진 사용 시 반드시 환자의 서면 동의를 받고, 동의 사실을 명시하세요. 또는 모델/일러스트 이미지로 대체하세요.",
+        "example": {
+          "bad": "시술 전후 사진을 확인하세요!",
+          "good": "* 본 이미지는 환자의 서면 동의를 받아 게시되었습니다. 결과는 개인에 따라 다를 수 있습니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "시술 전후",
+      "contextWindow": "정품 팁과 재료만을 사용합니다. 높은 퀄리티를 유지하면서도 마진율을 낮춰, 더 많은 분들께 아름다움을 선물하겠습니다. KEY POINT Point 01 숙련된 의사 상담 피부과 Point 02 피부 진단기 마크뷰로 시술 전후 비교 Point 03 최신 프리미엄 장비와 정품 팁, 재료 사용 Point 04 레이저 외 모든 시술은 프라이빗한 1인실 Point 05 자동차 방문 고객님을 위한 주차 가능한 피부과 시설 Point 06",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "시술 전후",
+            "text": "시술 전후",
+            "position": 772
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "안전하면서 좋은 결과를 위해, 저희 병원에서는 검증된 최신 장비만을 사용하며, 모든 시술에 정품 팁과 재료만을 사용합니다. 높은 퀄리티를 유지하면서도 마진율을 낮춰, 더 많은 분들께 아름다움을 선물하겠습니다.",
+        "matched": "시술 전후",
+        "matchedSentence": "KEY POINT Point 01 숙련된 의사 상담 피부과 Point 02 피부 진단기 마크뷰로 시술 전후 비교 Point 03 최신 프리미엄 장비와 정품 팁, 재료 사용 Point 04 레이저 외 모든 시술은 프라이빗한 1인실 Point 05 자동차 방문 고객님을 위한 주차 가능한 피부과 시설 Point 06 100% 예약제로, 예약 고객님의 대기시간을 최소화 SIGNATURE 01 색소 및 혈관 레이저 레이저 시술은 에너지, 파장, 조사 시간, 샷 수, 핸드 피스의 방향과 속도 등 다양한 변수에 의해 결과가 달라질 수 있습니다.",
+        "matchedHighlight": {
+          "text": "시술 전후",
+          "startInSentence": 54
+        },
+        "after": "프리미 클리닉에서는 시술 전 피부진단기 촬영과 의료진의 전문적인 상담을 통해 정확한 진단을 내리고, 이를 바탕으로 최적의 시술 계획을 제시합니다. 02 리프팅 프리미 클리닉은 풍부한 경험과 노하우를 바탕으로, 안전을 최우선으로 고려하면서도 최적의 리프팅 결과를 얻기 위해 ‘높은 에너지’를 사용합니다.",
+        "full": "안전하면서 좋은 결과를 위해, 저희 병원에서는 검증된 최신 장비만을 사용하며, 모든 시술에 정품 팁과 재료만을 사용합니다. 높은 퀄리티를 유지하면서도 마진율을 낮춰, 더 많은 분들께 아름다움을 선물하겠습니다. KEY POINT Point 01 숙련된 의사 상담 피부과 Point 02 피부 진단기 마크뷰로 시술 전후 비교 Point 03 최신 프리미엄 장비와 정품 팁, 재료 사용 Point 04 레이저 외 모든 시술은 프라이빗한 1인실 Point 05 자동차 방문 고객님을 위한 주차 가능한 피부과 시설 Point 06 100% 예약제로, 예약 고객님의 대기시간을 최소화 SIGNATURE 01 색소 및 혈관 레이저 레이저 시술은 에너지, 파장, 조사 시간, 샷 수, 핸드 피스의 방향과 속도 등 다양한 변수에 의해 결과가 달라질 수 있습니다. 프리미 클리닉에서는 시술 전 피부진단기 촬영과 의료진의 전문적인 상담을 통해 정확한 진단을 내리고, 이를 바탕으로 최적의 시술 계획을 제시합니다. ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장",
+      "category": "medical_ad",
+      "subcategory": "exaggeration",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제2호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "장비/시설 홍보 시 구체적인 정보(제조사, 모델명, 인증)를 명시하세요.",
+        "example": {
+          "bad": "국내 유일 최첨단 장비 보유!",
+          "good": "OO사 XX레이저 (FDA 승인, 2023년 도입)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최신 장비",
+      "contextWindow": "은 각 개인의 피부 상태에 맞춘 ‘맞춤형 치료’를 추구하고 있습니다. 프리미엄 시술과 서비스를 합리적인 가격으로 제공합니다. 안전하면서 좋은 결과를 위해, 저희 병원에서는 검증된 최신 장비만을 사용하며, 모든 시술에 정품 팁과 재료만을 사용합니다. 높은 퀄리티를 유지하면서도 마진율을 낮춰, 더 많은 분들께 아름다움을 선물하겠습니다. KEY POINT Poi",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최신 장비",
+            "text": "최신 장비",
+            "position": 631
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "‘피부 레이저의 이해와 설정법’ 저자인 대표원장님은 기미와 잡티 치료에 대한 풍부한 경험과 노하우를 보유하고 있어, 프리미 클리닉은 각 개인의 피부 상태에 맞춘 ‘맞춤형 치료’를 추구하고 있습니다. 프리미엄 시술과 서비스를 합리적인 가격으로 제공합니다.",
+        "matched": "최신 장비",
+        "matchedSentence": "안전하면서 좋은 결과를 위해, 저희 병원에서는 검증된 최신 장비만을 사용하며, 모든 시술에 정품 팁과 재료만을 사용합니다.",
+        "matchedHighlight": {
+          "text": "최신 장비",
+          "startInSentence": 30
+        },
+        "after": "높은 퀄리티를 유지하면서도 마진율을 낮춰, 더 많은 분들께 아름다움을 선물하겠습니다. KEY POINT Point 01 숙련된 의사 상담 피부과 Point 02 피부 진단기 마크뷰로 시술 전후 비교 Point 03 최신 프리미엄 장비와 정품 팁, 재료 사용 Point 04 레이저 외 모든 시술은 프라이빗한 1인실 Point 05 자동차 방문 고객님을 위한 주차 가능한 피부과 시설 Point 06 100% 예약제로, 예약 고객님의 대기시간을 최소화 SIGNATURE 01 색소 및 혈관 레이저 레이저 시술은 에너지, 파장, 조사 시간, 샷 수, 핸드 피스의 방향과 속도 등 다양한 변수에 의해 결과가 달라질 수 있습니다.",
+        "full": "‘피부 레이저의 이해와 설정법’ 저자인 대표원장님은 기미와 잡티 치료에 대한 풍부한 경험과 노하우를 보유하고 있어, 프리미 클리닉은 각 개인의 피부 상태에 맞춘 ‘맞춤형 치료’를 추구하고 있습니다. 프리미엄 시술과 서비스를 합리적인 가격으로 제공합니다. 안전하면서 좋은 결과를 위해, 저희 병원에서는 검증된 최신 장비만을 사용하며, 모든 시술에 정품 팁과 재료만을 사용합니다. 높은 퀄리티를 유지하면서도 마진율을 낮춰, 더 많은 분들께 아름다움을 선물하겠습니다. KEY POINT Point 01 숙련된 의사 상담 피부과 Point 02 피부 진단기 마크뷰로 시술 전후 비교 Point 03 최신 프리미엄 장비와 정품 팁, 재료 사용 Point 04 레이저 외 모든 시술은 프라이빗한 1인실 Point 05 자동차 방문 고객님을 위한 주차 가능한 피부과 시설 Point 06 100% 예약제로, 예약 고객님의 대기시간을 최소화 SIGNATURE 01 색소 및 혈관 레이저 레이저 시술은 에너지,...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 26,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 2,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://primiclinic.com/files/attach/images/main/blog.png",
+        "preview": "blog",
+        "wordCount": 1
+      },
+      {
+        "imageUrl": "https://primiclinic.com/files/attach/images/main/kakao.png",
+        "preview": "PLUS",
+        "wordCount": 1
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 20,
+    "totalCost": 0.11624999999999998,
+    "geminiCalls": 0,
+    "claudeCalls": 20,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 78,
+    "successCalls": 75,
+    "failedCalls": 3,
+    "totalImagesProcessed": 75,
+    "totalTextExtracted": 6316
+  }
+}

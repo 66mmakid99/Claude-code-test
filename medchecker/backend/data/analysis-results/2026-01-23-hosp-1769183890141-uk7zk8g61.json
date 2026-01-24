@@ -1,0 +1,334 @@
+{
+  "hospitalId": "hosp-1769183890141-uk7zk8g61",
+  "hospitalName": "하남e편한메디컬의원",
+  "url": "https://sites.google.com/view/easyclinic-365",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:35:48.629Z",
+  "processingTimeMs": 24553,
+  "metadata": {
+    "title": "하남E편한메디컬의원",
+    "description": ""
+  },
+  "targetUrl": "https://sites.google.com/view/easyclinic-365",
+  "targetType": "website",
+  "totalScore": 60,
+  "riskLevel": "medium",
+  "violations": [
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장",
+      "category": "medical_ad",
+      "subcategory": "exaggeration",
+      "severity": "info",
+      "riskScore": 50,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제1호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "실제 운영 시간을 정확히 표기하고, 야간/주말은 별도 안내하세요.",
+        "example": {
+          "bad": "24시간 365일 진료",
+          "good": "평일 09:00-18:00 / 토요일 09:00-13:00 (야간, 공휴일은 응급실 운영)"
+        }
+      },
+      "matched": true,
+      "matchedText": "점\n\n3",
+      "contextWindow": "건전 게시물 신고페이지 세부정보페이지 업데이트 시간: Google Sites불건전 게시물 신고\n\n[이미지 텍스트]\n하남드림메디컬의원\n\n본원의 장점\n\n365일 즉방 진료\n토요일 일요일 공휴일 진료\n\n365일 전문의 여의사 진료\n\n1인 수액실 운영\n1인 도수치료실 운영\n\n가족 모두가 방문하",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "365일",
+            "text": "점\n\n3",
+            "position": 786
+          },
+          {
+            "type": "keyword",
+            "keyword": "365일",
+            "text": "하늘 E",
+            "position": 1222
+          },
+          {
+            "type": "keyword",
+            "keyword": "공휴일 진료",
+            "text": " 메디컬의원",
+            "position": 1228
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "[이미지 텍스트] 하남드림메디컬의원",
+        "matched": "점\n\n3",
+        "matchedSentence": "본원의 장점",
+        "matchedHighlight": {
+          "text": "점\n\n3",
+          "startInSentence": -1
+        },
+        "after": "365일 즉방 진료 토요일 일요일 공휴일 진료",
+        "full": "[이미지 텍스트] 하남드림메디컬의원 본원의 장점 365일 즉방 진료 토요일 일요일 공휴일 진료",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.008241,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-PR-001",
+        "matchedText": "무료",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 21,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 184,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://lh3.googleusercontent.com/sitesv/AAzXCkevYaxXrN1XJ9Nr8ukCzAX_E6t3FhLLm38TfwwECQvnLRoU9nfK3LythZDH2TfE6KPjpH0WkJC88M8NQMKVOgEgUx0VW_2uP8xXPNx8bQ3-wQKNnkYKyeqniAJZhAqnhtuoG_0S4iKOfn33g3Lk8nYPBBE_5GFTV3DbzTQR9-1c83CYOslkp2boLgg=w1280",
+        "preview": "하남드림메디컬의원\n\n본원의 장점\n\n365일 즉방 진료\n토요일 일요일 공휴일 진료\n\n365일 전문의 여의사 진료\n\n1인 수액실 운영\n1인 도수치료실 운영\n\n가족 모두가 방문하여\n진료...",
+        "wordCount": 32
+      },
+      {
+        "imageUrl": "https://lh3.googleusercontent.com/sitesv/AAzXCkdVdcIGicJfvk5cAHabTGqoJIWcaiSDdGQDP3qc5evInzuOmz9V2YzcWQh5U2Vo47dOWFx9-gY6rGEI2pXqBPfbnHxNvyHOMVH0HRmwfo01ELG4Ftfn2swS8774rN1K1MjWFTcxNuRE6SgezlqVmo5XBSnerKvEIpgODF6j1Vw2RnZ3S3RGAGWQARE=w1280",
+        "preview": "하나로병원메디컬의원\n\n외상클리닉\n\n서울 강동 지역 및 경기 동북부 지역 특히 하남 미사 지역은\n외상으로 인한 치료를 받을 수 있는 병원이 많지 않습니다.\n\n주말 및 공휴일에 외상 ...",
+        "wordCount": 82
+      },
+      {
+        "imageUrl": "https://lh3.googleusercontent.com/sitesv/AAzXCkd7RNRiUi2Y2-5RF9yEPp3wcM4TAh2Qjb6ZVYtGeIvrqlSYPfKyDilcT7kE9-PanQhG-AWs6j1OTv3OGRttWNB_TLhl77xYmrdUcidtm-fpOhp8Euu494pionKA92HVGNcqoDRURl-ALABGZJuKOehoqNoOAYmyRxVYB4VXoi4OeGGN9Y6DtmF0EcNLpF7f8N095vRv_JYlt2nCfx2zibZ3Q-tdtRLnAbxjkWM=w1280",
+        "preview": "하늘 E편한 메디컬의원\n\n\"365일, 공휴일 진료\"\n1인 수액실 운영\n\n수액 패키지 이벤트\n\n강남 수액\n아미노산·라이닝·글루타치온\n\n피로 회복\n간 기능 개선\n\n10만원\n\n최강 수액...",
+        "wordCount": 70
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 2,
+    "totalCost": 0.011682,
+    "geminiCalls": 0,
+    "claudeCalls": 2,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 6,
+    "successCalls": 6,
+    "failedCalls": 0,
+    "totalImagesProcessed": 6,
+    "totalTextExtracted": 774
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "hospitalId": "hosp-1769183927827-zqjp6kf8v",
+  "hospitalName": "튼튼어린이병원",
+  "url": "http://튼튼어린이병원.com",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:15:02.881Z",
+  "processingTimeMs": 15104,
+  "metadata": {
+    "title": "의정부 소아과 튼튼어린이병원 홈페이지",
+    "description": "의정부어린이병원, 의정부소아과, 의정부아토피센터, 의정부소아과전문병원,의정부아동병원"
+  },
+  "targetUrl": "http://튼튼어린이병원.com",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 2,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "수상",
+        "ruleId": "MED-EX-003",
+        "reason": "info_only",
+        "source": "ai_verification"
+      },
+      {
+        "matchedText": "신기술",
+        "ruleId": "MED-EX-002",
+        "reason": "info_only",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 23,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 139,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://xn--sy2b80d7yks6anx980ca.com/img/slide8.jpg",
+        "preview": "어린이 코로나 치료\n튼튼어린이병원에서 진답하고 있습니다.\n\n튼튼어린이병원은 소아전담 거점병원으로 코로나 환자 치료에 최선을 다하고 있습니다.\n\nYTN 뉴스 튼튼어린이병원 송개 현장...",
+        "wordCount": 39
+      },
+      {
+        "imageUrl": "http://xn--sy2b80d7yks6anx980ca.com/img/slide7.jpg",
+        "preview": "또래보다 키 작은 우리 아이,\nAI 성장판 검사 로 확인해보세요!\n\n올바른 성장 검사 체크사항\n\n01 우리아이 성장판 검사를 받아 봐야할 때는?\n\n02 또래보다 키가 작은 것 같은...",
+        "wordCount": 57
+      },
+      {
+        "imageUrl": "http://xn--sy2b80d7yks6anx980ca.com/img/slide6.jpg",
+        "preview": "흥터 걱정 없는 생활 화상치료\n\n우리 아이, 화상치료 고민하지 마세요!\n\n튼튼어린이병원 화상센터의\n안전하고 정확한 치료의 선��!\n\n외과 출신의 대표원장과 의료진이 독수공납으로 원...",
+        "wordCount": 43
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 9,
+    "totalCost": 0.047285999999999995,
+    "geminiCalls": 0,
+    "claudeCalls": 9,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 30,
+    "successCalls": 30,
+    "failedCalls": 0,
+    "totalImagesProcessed": 30,
+    "totalTextExtracted": 2237
+  }
+}

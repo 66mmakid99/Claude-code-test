@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769183941276-r03we2y93",
+  "hospitalName": "블리비의원 인천구월점",
+  "url": "http://www.velyb.kr/",
+  "success": false,
+  "error": "웹사이트 크롤링 실패",
+  "detail": "getaddrinfo ENOTFOUND www.velyb.kr",
+  "processingTimeMs": 11068,
+  "analyzedAt": "2026-01-23T20:20:31.188Z"
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDCHECKER - 위반 영역 뷰어</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* 헤더 */
+    .viewer-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+    }
+
+    .viewer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .viewer-logo h1 {
+      font-size: 1rem;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .viewer-url {
+      flex: 1;
+      margin: 0 20px;
+      padding: 8px 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 500px;
+    }
+
+    .viewer-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .viewer-btn {
+      padding: 8px 16px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 6px;
+      color: #00d4ff;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .viewer-btn:hover {
+      background: rgba(0, 212, 255, 0.2);
+    }
+
+    .viewer-btn.back {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #94a3b8;
+    }
+
+    /* iframe 컨테이너 */
+    .viewer-container {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .viewer-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #fff;
+    }
+
+    /* 로딩 */
+    .loading-overlay {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 15, 26, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .loading-overlay.hidden {
+      display: none;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top-color: #00d4ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* 에러 */
+    .error-message {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .error-message h2 {
+      color: #ef4444;
+      margin-bottom: 15px;
+    }
+
+    .error-message p {
+      color: #94a3b8;
+    }
+
+    /* 범례 */
+    .legend {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(26, 26, 46, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      z-index: 1000;
+      font-size: 0.85rem;
+    }
+
+    .legend-title {
+      color: #00d4ff;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: #e2e8f0;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 12px;
+      border-radius: 3px;
+      border-bottom: 3px solid;
+    }
+
+    .legend-color.critical {
+      background: rgba(239, 68, 68, 0.3);
+      border-color: #ef4444;
+    }
+
+    .legend-color.warning {
+      background: rgba(245, 158, 11, 0.3);
+      border-color: #f59e0b;
+    }
+
+    .legend-color.info {
+      background: rgba(59, 130, 246, 0.3);
+      border-color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="viewer-header">
+    <div class="viewer-logo">
+      <h1>🔍 MEDCHECKER</h1>
+    </div>
+    <div class="viewer-url" id="currentUrl">로딩 중...</div>
+    <div class="viewer-actions">
+      <a href="/" class="viewer-btn back">← 분석 페이지로</a>
+      <a href="#" class="viewer-btn" id="openOriginal" target="_blank">원본 페이지 열기</a>
+    </div>
+  </header>
+
+  <!-- 로딩 오버레이 -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text">위반 영역을 마킹하는 중...</div>
+  </div>
+
+  <!-- iframe 컨테이너 -->
+  <div class="viewer-container">
+    <iframe class="viewer-iframe" id="viewerFrame" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+  </div>
+
+  <!-- 범례 -->
+  <div class="legend">
+    <div class="legend-title">위반 마킹 범례</div>
+    <div class="legend-item">
+      <span class="legend-color critical"></span>
+      <span>심각 (Critical)</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color warning"></span>
+      <span>주의 (Warning)</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color info"></span>
+      <span>참고 (Info)</span>
+    </div>
+  </div>
+
+  <script>
+    // URL 파라미터 파싱
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetUrl = urlParams.get('url');
+    const violations = urlParams.get('violations');
+
+    // URL 표시
+    const urlDisplay = document.getElementById('currentUrl');
+    const openOriginal = document.getElementById('openOriginal');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const viewerFrame = document.getElementById('viewerFrame');
+
+    if (targetUrl) {
+      urlDisplay.textContent = targetUrl;
+      openOriginal.href = targetUrl;
+
+      // 프록시 뷰어 URL 생성
+      let proxyUrl = `/api/proxy-view?url=${encodeURIComponent(targetUrl)}`;
+      if (violations) {
+        proxyUrl += `&violations=${violations}`;
+      }
+
+      // iframe 로드
+      viewerFrame.src = proxyUrl;
+
+      viewerFrame.onload = () => {
+        loadingOverlay.classList.add('hidden');
+      };
+
+      viewerFrame.onerror = () => {
+        loadingOverlay.innerHTML = `
+          <div class="error-message">
+            <h2>페이지 로드 실패</h2>
+            <p>해당 웹사이트를 불러올 수 없습니다.</p>
+            <p style="margin-top: 10px;">
+              <a href="${targetUrl}" target="_blank" class="viewer-btn">원본 페이지 직접 열기</a>
+            </p>
+          </div>
+        `;
+      };
+
+      // 5초 타임아웃 (로딩이 너무 오래 걸리면)
+      setTimeout(() => {
+        if (!loadingOverlay.classList.contains('hidden')) {
+          loadingOverlay.classList.add('hidden');
+        }
+      }, 5000);
+
+    } else {
+      urlDisplay.textContent = 'URL이 지정되지 않았습니다';
+      loadingOverlay.innerHTML = `
+        <div class="error-message">
+          <h2>URL이 필요합니다</h2>
+          <p>분석 페이지에서 URL을 입력하고 "위반 영역 보기"를 클릭하세요.</p>
+          <p style="margin-top: 15px;">
+            <a href="/" class="viewer-btn">분석 페이지로 이동</a>
+          </p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

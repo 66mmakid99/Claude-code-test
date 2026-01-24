@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769182896725-t8tg84i3x",
+  "hospitalName": "유앤아이의원 건대점",
+  "url": "https://www.kduni114.co.kr/",
+  "success": false,
+  "error": "Analysis timeout after 90s",
+  "isTimeout": true,
+  "analyzedAt": "2026-01-23T18:02:10.249Z",
+  "processingTimeMs": 153063
+}

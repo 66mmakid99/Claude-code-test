@@ -1,0 +1,309 @@
+{
+  "hospitalId": "hosp-1769183878671-awn3tyqod",
+  "hospitalName": "시아의원 광명",
+  "url": "https://gwangmyeong.sia-clinic.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:29:09.502Z",
+  "processingTimeMs": 3251,
+  "metadata": {
+    "title": "시아클리닉 광명점 | 피부과 · 미용 · 레이저 클리닉",
+    "description": "당신의 아름다움이 시작되는 시아클리닉. 스킨케어, 리프팅, 레이저 시술 전문 클리닉. 합리적인 진료비와 최신 장비로 안전한 치료를 약속드립니다."
+  },
+  "targetUrl": "https://gwangmyeong.sia-clinic.com/",
+  "targetType": "website",
+  "totalScore": 80,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최상의",
+      "contextWindow": "있습니다!찾으시는 시술을 검색해주세요.🎉 시아 클리닉 추천 이벤트 🎉시아 클리닉의 엄선된 이벤트를 경험하세요!이벤트 상세보기보톡스 | 윤곽주사병원 시설편안하고 쾌적한 환경에서 최상의 진료를 받으실 수 있습니다.시아 클리닉 프리미엄 맞춤 시술대표 시술을 확인하고 간편하게 예약하세요.울쎄라자세히 보기온다자세히 보기써마지 FLX자세히 보기당신의 아름다움을 잔",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 259
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "찾으시는 시술을 검색해주세요. 🎉 시아 클리닉 추천 이벤트 🎉시아 클리닉의 엄선된 이벤트를 경험하세요!",
+        "matched": "최상의",
+        "matchedSentence": "이벤트 상세보기보톡스 | 윤곽주사병원 시설편안하고 쾌적한 환경에서 최상의 진료를 받으실 수 있습니다.",
+        "matchedHighlight": {
+          "text": "최상의",
+          "startInSentence": 37
+        },
+        "after": "시아 클리닉 프리미엄 맞춤 시술대표 시술을 확인하고 간편하게 예약하세요. 울쎄라자세히 보기온다자세히 보기써마지 FLX자세히 보기당신의 아름다움을 잔잔하게 일깨워줄시아 클리닉시간이 흘러도 우아하게 남는 품격 있는 아름다움, 시아클리닉에서 만나보세요.",
+        "full": "찾으시는 시술을 검색해주세요. 🎉 시아 클리닉 추천 이벤트 🎉시아 클리닉의 엄선된 이벤트를 경험하세요! 이벤트 상세보기보톡스 | 윤곽주사병원 시설편안하고 쾌적한 환경에서 최상의 진료를 받으실 수 있습니다. 시아 클리닉 프리미엄 맞춤 시술대표 시술을 확인하고 간편하게 예약하세요. 울쎄라자세히 보기온다자세히 보기써마지 FLX자세히 보기당신의 아름다움을 잔잔하게 일깨워줄시아 클리닉시간이 흘러도 우아하게 남는 품격 있는 아름다움, 시아클리닉에서 만나보세요.",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "warning"
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "최신 장비",
+        "ruleId": "MED-EX-004",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 17,
+    "processedImages": 3,
+    "successfulOcr": 0,
+    "totalWords": 0,
+    "extractedTexts": []
+  },
+  "aiStats": {
+    "totalCalls": 32,
+    "totalCost": 0.19820700000000002,
+    "geminiCalls": 0,
+    "claudeCalls": 32,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 160,
+    "successCalls": 144,
+    "failedCalls": 16,
+    "totalImagesProcessed": 144,
+    "totalTextExtracted": 9122
+  }
+}

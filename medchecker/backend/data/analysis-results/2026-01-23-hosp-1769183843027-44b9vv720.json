@@ -1,0 +1,317 @@
+{
+  "hospitalId": "hosp-1769183843027-44b9vv720",
+  "hospitalName": "포레스트의원",
+  "url": "https://forest.quv.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T18:28:12.077Z",
+  "processingTimeMs": 83776,
+  "metadata": {
+    "title": "포레스트의원",
+    "description": "서현역4번출구, 콜라겐리프팅, 리프팅시술, 필러, 보○스, 쁘띠성형, 색소, 여드름, 다이어트, 튼살, 척추/관절 통증치료, 도수치료, 체외충격파, 신장분사치료 등 고민별 맞춤시술 진행, 피부과&통증의학과 진료"
+  },
+  "targetUrl": "https://forest.quv.kr",
+  "targetType": "website",
+  "totalScore": 80,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장",
+      "category": "medical_ad",
+      "subcategory": "exaggeration",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제2호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "시술 건수 표기 시 기간과 기준을 명확히 밝히세요.",
+        "example": {
+          "bad": "10만 건 시술 돌파!",
+          "good": "2010년~2023년 누적 시술 건수 (내부 통계 기준)"
+        }
+      },
+      "matched": true,
+      "matchedText": "5천 건",
+      "contextWindow": "게 맞는 스킨 & 콜라겐 부스터 FOREST 포레스트 힐러 오직 포레스트에서만 만나는 단독 시술,PN, 히알루론산, 보O스의 황금 비율 FOREST CLINIC 연 평균 약 2만 5천 건 예약, 시술 불만으로 인한 분쟁 0건 높은 재방문율 리프팅 및 쁘띠 시술 레이저 및 메디컬 피부관리 여드름 및 흉터 치료 스킨부스터 및 주사 치료 과체중 및 체형 치료 피",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만|천)\\s*(건|케이스|례|회)/gi",
+            "text": "5천 건",
+            "position": 2015
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "자세히 보기 FOREST CLINIC 실력이 검증된 의료진30여 종 이상의 첨단 장비 오랜 경력의 숙련된 전문가와최적화된 의료 장비를 경험해 보세요. 자세히 보기 FOREST CLINIC 힐로웨이브 · 리투오 · 고우리 도입 당신을 더욱 아름답게 빛내줄 시술 도입 소식을 확인하세요!",
+        "matched": "5천 건",
+        "matchedSentence": "자세히 보기 Previous Next Previous Next FOREST CLINIC 편안한 아름다움, 포레스트의원 FOREST 콜라겐 리프팅 스킨, 코어부터 채우다- 피부 속부터 채워 탄탄하게 FOREST 쥬베룩 & 쥬베룩 볼륨 스킨 컨디션 UP, 볼륨감 UP 나에게 맞는 스킨 & 콜라겐 부스터 FOREST 포레스트 힐러 오직 포레스트에서만 만나는 단독 시술,PN, 히알루론산, 보O스의 황금 비율 FOREST CLINIC 연 평균 약 2만 5천 건 예약, 시술 불만으로 인한 분쟁 0건 높은 재방문율 리프팅 및 쁘띠 시술 레이저 및 메디컬 피부관리 여드름 및 흉터 치료 스킨부스터 및 주사 치료 과체중 및 체형 치료 피부 및 근골격계 통증 치료 Previous Next Previous Next FOREST CLINIC 포레스트의원 핵심 진료 리프팅 실리프팅 기미·색소 치료 여드름 치료 CLICK 해서 더 보러가기 >> {\"google\":[\"Roboto\",\"Barlow\",\"Libre Baskerville\"],\"custom\":[\"Noto Sans KR\",\"Nanum Brush Script\",\"Noto Serif KR\",\"Nanum Barun Gothic\",\"Nanum Square\"]} 처음으로 끝으로 {\"google\":[\"Roboto\",\"Barlow\",\"Libre Baskerville\"],\"custom\":[\"Noto Sans KR\",\"Nanum Brush Script\",\"Noto Serif KR\",\"Nanum Barun Gothic\",\"Nanum Square\"]} 로그인 로그인 회원가입 비밀번호 찾기 네이버 아이디로 로그인 카카오 아이디로 로그인 구글 아이디로 로그인 비밀번호 재설정 비밀번호를 찾고자 하는 아이디 또는 이메일을 입력해 주세요.",
+        "matchedHighlight": {
+          "text": "5천 건",
+          "startInSentence": 250
+        },
+        "after": "해당 계정의 이메일로 비밀번호 변경 안내 메일이 발송됩니다. 비밀번호 재설정 비밀번호 변경 새로운 비밀번호를 입력하세요.",
+        "full": "자세히 보기 FOREST CLINIC 실력이 검증된 의료진30여 종 이상의 첨단 장비 오랜 경력의 숙련된 전문가와최적화된 의료 장비를 경험해 보세요. 자세히 보기 FOREST CLINIC 힐로웨이브 · 리투오 · 고우리 도입 당신을 더욱 아름답게 빛내줄 시술 도입 소식을 확인하세요! 자세히 보기 Previous Next Previous Next FOREST CLINIC 편안한 아름다움, 포레스트의원 FOREST 콜라겐 리프팅 스킨, 코어부터 채우다- 피부 속부터 채워 탄탄하게 FOREST 쥬베룩 & 쥬베룩 볼륨 스킨 컨디션 UP, 볼륨감 UP 나에게 맞는 스킨 & 콜라겐 부스터 FOREST 포레스트 힐러 오직 포레스트에서만 만나는 단독 시술,PN, 히알루론산, 보O스의 황금 비율 FOREST CLINIC 연 평균 약 2만 5천 건 예약, 시술 불만으로 인한 분쟁 0건 높은 재방문율 리프팅 및 쁘띠 시술 레이저 및 메디컬 피부관리 여드름 및 흉터 치료 스킨부스터 및 주사 치료 과체중 ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 30,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 4,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://cdn.quv.kr/mzbptt2q0/up/66f3cf9ec4bb3_1920.png",
+        "preview": "Forest\n포레스트의원",
+        "wordCount": 2
+      },
+      {
+        "imageUrl": "https://cdn.quv.kr/mzbptt2q0%2Fup%2F66f3d50ef0b29_1920.png",
+        "preview": "Forest\n포레스트의원",
+        "wordCount": 2
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 18,
+    "totalCost": 0.111165,
+    "geminiCalls": 0,
+    "claudeCalls": 18,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 53,
+    "successCalls": 50,
+    "failedCalls": 3,
+    "totalImagesProcessed": 50,
+    "totalTextExtracted": 2378
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "hospitalId": "hosp-1769183859822-ug1ycgrg3",
+  "hospitalName": "포에버의원 안양",
+  "url": "https://ay.4-ever.co.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:21:34.438Z",
+  "processingTimeMs": 59522,
+  "metadata": {
+    "title": "포에버의원 ::: 피부과 성형외과 토탈 뷰티 메디컬그룹",
+    "description": "눈성형, 코성형, 지방이식, 가슴성형, 지방흡입, 기미, 잡티, 여드름, 여드름흉터, 모공, 리프팅, 비만, 보톡스, 필러"
+  },
+  "targetUrl": "https://ay.4-ever.co.kr",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료광고 심의기준 제4조",
+        "article": "의료의 신뢰성을 해치는 과도한 가격 경쟁 유도 광고 금지",
+        "penalty": "심의 부적합 판정, 시정명령"
+      },
+      "recommendation": {
+        "action": "과도한 할인 표현을 자제하고, 비용에 대한 정확한 정보를 제공하세요.",
+        "example": {
+          "bad": "70% 파격 할인! 오늘만!",
+          "good": "비용 안내: 시술별 비용은 상담 후 안내드립니다. (비급여 항목)"
+        }
+      },
+      "matched": true,
+      "matchedText": "특가",
+      "contextWindow": "안하게 예약하기 CLICK 관심있는 시술을선택해보세요. 필러 보톡스 리프팅 피부 스킨부스터 제모/탈모 눈성형 윤곽성형 가슴성형 체형성형 주목해야 될 기획전 🔥1인 1회🔥 한정 특가 이벤트 안양점 2026-01-31까지 월간포에버 🥳2026년 1월🥳 안양점 2026-01-31까지 부스터 📣런칭기념📣 특가 안양점 2026-01-31까지 ❤️첫방문❤️",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.3,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 1154
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 1227
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 1320
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 1354
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 2026
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 2309
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 2322
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 2359
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 2555
+          },
+          {
+            "type": "keyword",
+            "keyword": "특가",
+            "text": "특가",
+            "position": 2697
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "한정"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "4ever Clinic 언제 어디서나당신과 함께 포에버의원 인기 검색어 인모드리프팅 BEST 5 리프팅 울쎄라 BEST 6 보톡스 스킨부스터 BEST 7 쥬베룩 4 리쥬란힐러 8 슈링크 포에버의원 안양점 언제 어디서나 당신과 함께하는 포에버의원 포에버의원 안양점 진료 시간 월요일 AM 10 : 00 ~ PM 19 : 00 화요일 AM 10 : 00 ~ PM 20 : 00 수요일 AM 10 : 00 ~ PM 19 : 00 목요일 AM 10 : 00 ~ PM 20 : 00 금요일 AM 10 : 00 ~ PM 20 : 00 토요일 AM 10 : 00 ~ PM 15 : 00 ※ 점심시간 PM 13 : 00 ~ PM 14 :00※ 토요일 점심시간 없이 진료 포에버의원 안양점 주소 경기 안양시 동안구 시민대로 214 1588-0335 카톡상담 안양점 전체 지점 안내 서울 지점 경기도 지점 충청도 지점 전라도 지점 제주도 지점 서울 강남점 강서점 마포점 위례점 청담점 천호점 홍대점 홍제점 경기 구리점 분당점 수원점 시흥점 안산점 안양점 의정부점 하남 미사점 충청도 청주점 천안점 전라도 여수점 제주도 제주점 로그인 회원가입 필러 보톡스 리프팅 피부 눈성형 코성형 윤곽성형 가슴성형 체형성형 제모/탈모 필러 보톡스 울쎄라 슈링크 인모드 리프팅 온다 리프팅 레이저 리프팅 실리프팅 리프팅 수술 이마/눈썹하거상 안면거상 복부거상 바디 리프팅 피부 토닝 여드름 치료 여드름 흉터/모공 문신 제거 스킨부스터 피부 관리 리쥬베룩 쌍꺼풀 트임성형 상안검 성형 하안검 성형 눈 재수술 유형별 코성형 콧볼 / 콧구멍 성형 쁘띠코 성형 보형물 제거/재수술 안면윤곽 얼굴 지방이식 / 흡입 이마 성형 쁘띠 윤곽술 가슴 성형 가슴 필러 가슴 지방이식 가슴 거상술 가슴 축소술 가슴 재수술 지방흡입 지방분해 (비수술) 지방흡입 재수술 제모 탈모 관리 언제 어디서나포에버의원 피부과, 성형외과, 가정의학과, 외과 등 각 분야별 100여명 전문 의료진 협진 시스템 단 한 달간만 만날 수 있는 피부 솔루션 특별한 월간 이벤트를 지금 확인해 보세요 한층 더 정교해진 울쎄라 2세대 1세대보다 더 촘촘하게, 더 편안하게 예약하기 CLICK 관심있는 시술을선택해보세요.",
+        "matched": "특가",
+        "matchedSentence": "필러 보톡스 리프팅 피부 스킨부스터 제모/탈모 눈성형 윤곽성형 가슴성형 체형성형 주목해야 될 기획전 🔥1인 1회🔥 한정 특가 이벤트 안양점 2026-01-31까지 월간포에버 🥳2026년 1월🥳 안양점 2026-01-31까지 부스터 📣런칭기념📣 특가 안양점 2026-01-31까지 ❤️첫방문❤️ 체험가 혜택 안양점 2026-01-31까지 ✨핫딜✨ 체험전 안양점 2026-01-31까지 × 🔥1인 1회🔥 한정 특가 이벤트 단 한 번의 기회!",
+        "matchedHighlight": {
+          "text": "특가",
+          "startInSentence": 69
+        },
+        "after": "1인 1회 한정 #1월#새해#특가#피부#혜택#월간#깜짝#세일#할인 항목 선택 없이 바로 예약 ~49% 선택이 어렵다면 바로 접수 가능합니다! ✨런칭✨ 울쎄라 2세대(울쎄라피 프라임) 300샷 48% 1,000,000원 1,940,000원 ✨런칭✨ 울쎄라 2세대(울쎄라피 프라임) 600샷 47% 1,800,000원 3,410,000원 🎁새해선물🎁 화이트닝 (레이저토닝 + 비타민관리 + 진정팩 3회 + 인모드FX 1부위) 46% 99,000원 185,000원 풀페이스 스킨보톡스(국산) + 제네시스(속탄력) 1회 41% 139,000원 236,000원 피코 듀얼토닝 (피코토닝 + 제네시스 + 비타민관리) 3회 41% 230,000원 393,000원 아쿠아필(피지쏙쏙) 1회 46% 35,000원 65,000원 겨울철 피부보호 (LDM 물방울관리 + LED 재생관리 + 팩) 46% 65,000원 121,000원 붉은얼굴 집중케어 (여드름붉음증/홍조/혈관 레이저 中 택1가지 )3회 47% 300,000원 575,000원 엑소좀 1병(6cc) 48% 250,000원 488,000원 앵두입술패키지 (입술/입꼬리필러(미국산 레스틸렌키스) 1cc + 입꼬리보톡스(독일산) 43% 300,000원 530,000원 개인정보수집 이용 동의 [자세히보기] × 월간포에버 🥳2026년 1월🥳 새해에도 포에버와 함께하세요!",
+        "full": "4ever Clinic 언제 어디서나당신과 함께 포에버의원 인기 검색어 인모드리프팅 BEST 5 리프팅 울쎄라 BEST 6 보톡스 스킨부스터 BEST 7 쥬베룩 4 리쥬란힐러 8 슈링크 포에버의원 안양점 언제 어디서나 당신과 함께하는 포에버의원 포에버의원 안양점 진료 시간 월요일 AM 10 : 00 ~ PM 19 : 00 화요일 AM 10 : 00 ~ PM 20 : 00 수요일 AM 10 : 00 ~ PM 19 : 00 목요일 AM 10 : 00 ~ PM 20 : 00 금요일 AM 10 : 00 ~ PM 20 : 00 토요일 AM 10 : 00 ~ PM 15 : 00 ※ 점심시간 PM 13 : 00 ~ PM 14 :00※ 토요일 점심시간 없이 진료 포에버의원 안양점 주소 경기 안양시 동안구 시민대로 214 1588-0335 카톡상담 안양점 전체 지점 안내 서울 지점 경기도 지점 충청도 지점 전라도 지점 제주도 지점 서울 강남점 강서점 마포점 위례점 청담점 천호점 홍대점 홍제점 경기 ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 1,
+          "after": 2,
+          "total": 4
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.0050279999999999995,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 4,
+    "aiVerified": 0,
+    "falsePositivesFound": 4,
+    "falsePositives": [
+      {
+        "matchedText": "시술 영상",
+        "ruleId": "MED-BA-002",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "인스타",
+        "ruleId": "MED-SNS-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "시술 영상",
+        "ruleId": "MED-BS-002",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "000원~",
+        "ruleId": "MED-PR-002",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 99,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 22,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://ay.4-ever.co.kr/images/branch/branch_banner_event260101.jpg",
+        "preview": "1",
+        "wordCount": 1
+      },
+      {
+        "imageUrl": "https://ay.4-ever.co.kr/images/branch/branch_banner_ys03.png",
+        "preview": "이미지를 자세히 살펴보았지만, 의료 장비의 화면에 표시된 텍스트가 너무 작고 흐릿하여 정확하게 읽을 수 없습니다.\n\n텍스트 없��",
+        "wordCount": 17
+      },
+      {
+        "imageUrl": "https://ay.4-ever.co.kr/_data/event/2025/0930529416700.jpg",
+        "preview": "1인1회\n한정\n\n4ever\nBEAUTY&CLINIC",
+        "wordCount": 4
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 12,
+    "totalCost": 0.063288,
+    "geminiCalls": 0,
+    "claudeCalls": 12,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 56,
+    "successCalls": 53,
+    "failedCalls": 3,
+    "totalImagesProcessed": 53,
+    "totalTextExtracted": 4530
+  }
+}

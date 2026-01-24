@@ -1,0 +1,265 @@
+{
+  "hospitalId": "hosp-1769183846147-f1rj83dmr",
+  "hospitalName": "베르나르의원",
+  "url": "http://www.bernard.co.kr/",
+  "success": true,
+  "analyzedAt": "2026-01-23T18:31:10.958Z",
+  "processingTimeMs": 23359,
+  "metadata": {
+    "title": "베르나르의원 - 용인 성형외과, 피부과, 산부인과",
+    "description": "눈,코성형, 가슴성형, 리프팅, 지방흡입, 피부관리, 레이저치료, 두피,탈모관리, 비만, 체형관리,산부인과진료"
+  },
+  "targetUrl": "http://www.bernard.co.kr/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 2,
+  "aiCost": 0.012378,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-SP-001",
+        "matchedText": "동안",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 1,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "치료 후기",
+        "ruleId": "MED-TM-001",
+        "reason": "menu_text",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 53,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 77,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.bernard.co.kr/layouts/NewMainlayouts/img/sliderRight20231221_re.jpg",
+        "preview": "진료안내\nMEDICAL INFORMATION\n\n전화상담 031. 8005. 6633\n카톡상담 010-7376-3595\n\n월 요 일  am 9:30 ~ pm 8:30\n화,수,목,금 ...",
+        "wordCount": 42
+      },
+      {
+        "imageUrl": "http://www.bernard.co.kr/images/event1.png",
+        "preview": "출렁이 좋은\n국산리프팅\n\n뉴테라\n프로그램\n\n피부 깊은 곳 부터 끝까지 당겨 올리는\n강력한 리프팅 효과\n\n뉴테라 100샷                    10 만원\n뉴테라 100샷...",
+        "wordCount": 25
+      },
+      {
+        "imageUrl": "http://www.bernard.co.kr/images/event5_1.jpg",
+        "preview": "리브이리프팅\n특별이벤트\n\n#피부탄력 #눈가주름 #치밀세포감소 #피부재생\n\n리브이 페이스 1회/3회    12/30만원",
+        "wordCount": 10
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 27,
+    "totalCost": 0.15727200000000002,
+    "geminiCalls": 0,
+    "claudeCalls": 27,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 65,
+    "successCalls": 62,
+    "failedCalls": 3,
+    "totalImagesProcessed": 62,
+    "totalTextExtracted": 3543
+  }
+}

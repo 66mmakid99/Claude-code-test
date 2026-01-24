@@ -1,0 +1,341 @@
+{
+  "hospitalId": "hosp-1769187165614-z31m1ukyg",
+  "hospitalName": "연세곰돌이소아청소년과의원",
+  "url": "http://www.gomdori.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:56:26.666Z",
+  "processingTimeMs": 20154,
+  "metadata": {
+    "title": "연세곰돌이소아청소년과의원",
+    "description": "연세곰돌이소아청소년과, 모든평일/토요일/일요일/공휴일 밤12시까지 진료 소아과"
+  },
+  "targetUrl": "http://www.gomdori.kr",
+  "targetType": "website",
+  "totalScore": 60,
+  "riskLevel": "medium",
+  "violations": [
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장",
+      "category": "medical_ad",
+      "subcategory": "exaggeration",
+      "severity": "info",
+      "riskScore": 50,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제1호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "실제 운영 시간을 정확히 표기하고, 야간/주말은 별도 안내하세요.",
+        "example": {
+          "bad": "24시간 365일 진료",
+          "good": "평일 09:00-18:00 / 토요일 09:00-13:00 (야간, 공휴일은 응급실 운영)"
+        }
+      },
+      "matched": true,
+      "matchedText": "365일",
+      "contextWindow": "96-4585 팩스. 02-596-4586 Copyright (C) 연세곰돌이소아청소년과의원. All Rights Reserved. 메인비주얼 365일 밤 12까지 모든평일/토요일/일요일/공휴일 진료 구정당일/추석당일/크리스마스 휴진 오전 9시 ~ 밤 12시 Pediatric Preci",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": -0.35,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.35,
+      "decision": "violation",
+      "confidence": 0.85,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "365일",
+            "text": "365일",
+            "position": 670
+          },
+          {
+            "type": "keyword",
+            "keyword": "공휴일 진료",
+            "text": "공휴일 진료",
+            "position": 695
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": [
+          {
+            "type": "keyword",
+            "text": "응급"
+          }
+        ]
+      },
+      "aiVerification": {
+        "performed": true,
+        "provider": "gemini",
+        "isViolation": true,
+        "confidence": 0.85,
+        "reasoning": "텍스트에서 '365일 밤 12까지 모든평일/토요일/일요일/공휴일 진료'라고 명시하여 연중무휴 진료를 광고하고 있습니다. 비록 '구정당일/추석당일/크리스마스 휴진'이라는 예외 조건이 있으나, '365일'이라는 표현 자체가 진료시간을 과장하는 광고에 해당합니다. 실제로는 휴진일이 있음에도 불구하고 365일이라는 절대적 표현을 사용한 것은 의료광고 가이드라인 위반입니다.",
+        "mitigatingFactorsFound": [
+          "구정당일/추석당일/크리스마스 휴진"
+        ],
+        "aggravatingFactorsFound": [
+          "365일",
+          "모든평일/토요일/일요일/공휴일 진료",
+          "밤 12까지"
+        ],
+        "cost": 0.008016
+      },
+      "extendedContext": {
+        "before": "02-596-4586 Copyright (C) 연세곰돌이소아청소년과의원. All Rights Reserved.",
+        "matched": "365일",
+        "matchedSentence": "메인비주얼 365일 밤 12까지 모든평일/토요일/일요일/공휴일 진료 구정당일/추석당일/크리스마스 휴진 오전 9시 ~ 밤 12시 Pediatric Precision Medicine 소아청소년 정밀의학 정밀 검사 기기와 빅데이터, Ai,유전정보, 환경요인 등을활용한 진단과 맞춤치료 Pediatric Precision Medicine 소아청소년 광역 긴급의료기능 준응급, 긴급 진료가 가능한 광역 소아긴급의료센터 역할 Developmental disability Clinic 소아 발달증진센터 다양한 치료프로그램 맞춤치료, 소아정밀의학 연계, 소아청소년과와유기적 협력 시스템 Pediatic Telemedicine 원격 비대면 진료 소아 원격의료 허브,소아 의료취약지 비대면및 원격진료시스템 추진 소아청소년 정밀의학 정밀 검사 기기와 빅데이터,Ai, 유전정보, 환경요인 등을활용한 진단과 맞춤치료 소아청소년 광역 긴급의료기능 준응급, 긴급 진료가 가능한 광역 소아긴급의료센터 역할 소아 발달증진센터 다양한 치료프로그램 맞춤치료, 소아정밀의학 연계, 소아청소년과와유기적 협력 시스템 원격 비대면 진료 소아 원격의료 허브,소아 의료취약지 비대면및 원격진료시스템 추진 의료진 진료 일정표 월별 의료진 진료 일정을확인 할 수 있습니다.",
+        "matchedHighlight": {
+          "text": "365일",
+          "startInSentence": 6
+        },
+        "after": "일정표 확인하러 가기 의료진 소개 연세곰돌이소아과의료진을 소개합니다. 위치 안내 서울 서초구 방배로226넥센강남타워 3층 주차 안내 건물 바로 뒷편 GS주차장 (방배동 제2주차장) 검진 및 예방접종 예약 검진 및 검사는 예약을 해주시기 바랍니다.",
+        "full": "02-596-4586 Copyright (C) 연세곰돌이소아청소년과의원. All Rights Reserved. 메인비주얼 365일 밤 12까지 모든평일/토요일/일요일/공휴일 진료 구정당일/추석당일/크리스마스 휴진 오전 9시 ~ 밤 12시 Pediatric Precision Medicine 소아청소년 정밀의학 정밀 검사 기기와 빅데이터, Ai,유전정보, 환경요인 등을활용한 진단과 맞춤치료 Pediatric Precision Medicine 소아청소년 광역 긴급의료기능 준응급, 긴급 진료가 가능한 광역 소아긴급의료센터 역할 Developmental disability Clinic 소아 발달증진센터 다양한 치료프로그램 맞춤치료, 소아정밀의학 연계, 소아청소년과와유기적 협력 시스템 Pediatic Telemedicine 원격 비대면 진료 소아 원격의료 허브,소아 의료취약지 비대면및 원격진료시스템 추진 소아청소년 정밀의학 정밀 검사 기기와 빅데이터,Ai, 유전정보, 환경요인 등을활용한 진단과...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.008016,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-CL-003",
+        "matchedText": "언론보도",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 22,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 78,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.gomdori.kr/app/popup/upload/20250909020504-B2CKX.jpg",
+        "preview": "연 세 람 통 이 솜 이 질 솜 녀 과\n\n위고비 가격 안내\nwegovy\n\n(4주 사용분 : 진료비 | + 처방전 가격 포함)\n\n0.25 mg    28만원\n0.5 mg     29...",
+        "wordCount": 39
+      },
+      {
+        "imageUrl": "http://www.gomdori.kr/app/popup/upload/20250909020722-FUZOM.jpg",
+        "preview": "면세갑등이승아청소년코\n\n유학생\n검진 및 영문증명서\n\n유학 및 외국인 학교 입학, 외국캠프 등록 시 필요한\n건강검진 및 제출 영문 증명 서류 작성\n\n예방접종 증명서 (Immuniza...",
+        "wordCount": 39
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 19,
+    "totalCost": 0.12215399999999997,
+    "geminiCalls": 0,
+    "claudeCalls": 19,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 75,
+    "successCalls": 74,
+    "failedCalls": 1,
+    "totalImagesProcessed": 74,
+    "totalTextExtracted": 5957
+  }
+}

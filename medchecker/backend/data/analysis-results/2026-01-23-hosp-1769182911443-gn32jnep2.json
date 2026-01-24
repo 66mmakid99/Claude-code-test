@@ -1,0 +1,329 @@
+{
+  "hospitalId": "hosp-1769182911443-gn32jnep2",
+  "hospitalName": "푸름외과의원",
+  "url": "http://www.purumveinclinic.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T18:21:54.518Z",
+  "processingTimeMs": 17686,
+  "metadata": {
+    "title": "푸름외과의원 | 하지정맥류클리닉",
+    "description": "푸름외과, 하지정맥류, 강북점981-6006,  노원점931-0365"
+  },
+  "targetUrl": "http://www.purumveinclinic.com/",
+  "targetType": "website",
+  "totalScore": 50,
+  "riskLevel": "medium",
+  "violations": [
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기",
+      "category": "medical_ad",
+      "subcategory": "qualification",
+      "severity": "warning",
+      "riskScore": 70,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제4호, 제1호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "학력/경력은 사실에 기반하여 정확하게 표기하세요.",
+        "example": {
+          "bad": "국내 최초 도입! 10만 건 시술 경력!",
+          "good": "OO대학교 의과대학 졸업 / OO전문의 자격 취득 (20년 경력)"
+        }
+      },
+      "matched": true,
+      "matchedText": "세계적",
+      "contextWindow": "인 회원가입 바로가기 대장항문클리닉 네이버 블로그 다음 카페 팝업레이어 알림 24시간 동안 다시 열람하지 않습니다. 닫기 이전 다음 2007년 건보공단 공개 하지정맥류 급여수술건수 서울 강북권1위 6월 7일(토) 휴진 현존하는 최신 파장대4세대 1940nm 혈관레이저 세계적으로 인정받는최고 사양의 혈관초음파 윤리강령에 따른 진료 환자의 치유와 안전을 위하여 수술이 꼭 필요한 경우만 시행 온라인예약/상담 약도문자발송 온라인예약/상담 약도문자발송 구분 예약문의 상담문의 지점 강북점 노원점 성명 비밀번호 휴대폰 답변등록 SMS알림 수신 ",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.25,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.95,
+      "decision": "violation",
+      "confidence": 0.95,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "세계적",
+            "text": "세계적",
+            "position": 272
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "최고"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "바로가기 대장항문클리닉 네이버 블로그 다음 카페 Toggle navigation 푸름외과 강북점 노원점 하지정맥류 동정맥루 수족냉증/통증 하지부종 지방종 온라인상담/예약 블로그 공지사항 자주묻는질문 하지정맥류이야기 로그인 회원가입 바로가기 대장항문클리닉 네이버 블로그 다음 카페 팝업레이어 알림 24시간 동안 다시 열람하지 않습니다.",
+        "matched": "세계적",
+        "matchedSentence": "닫기 이전 다음 2007년 건보공단 공개 하지정맥류 급여수술건수 서울 강북권1위 6월 7일(토) 휴진 현존하는 최신 파장대4세대 1940nm 혈관레이저 세계적으로 인정받는최고 사양의 혈관초음파 윤리강령에 따른 진료 환자의 치유와 안전을 위하여 수술이 꼭 필요한 경우만 시행 온라인예약/상담 약도문자발송 온라인예약/상담 약도문자발송 구분 예약문의 상담문의 지점 강북점 노원점 성명 비밀번호 휴대폰 답변등록 SMS알림 수신 상담/예약내용 파일 파일선택 개인정보취급방침 보기 동의 '푸름외과의원 | 하지정맥류클리닉'은 (이하 '회사'는) 고객님의 개인정보를 중요시하며, 정보통신망 이용촉진 및 정보보호에 관한 법률을 준수하고 있습니다.",
+        "matchedHighlight": {
+          "text": "세계적",
+          "startInSentence": 85
+        },
+        "after": "회사는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다. 회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.",
+        "full": "바로가기 대장항문클리닉 네이버 블로그 다음 카페 Toggle navigation 푸름외과 강북점 노원점 하지정맥류 동정맥루 수족냉증/통증 하지부종 지방종 온라인상담/예약 블로그 공지사항 자주묻는질문 하지정맥류이야기 로그인 회원가입 바로가기 대장항문클리닉 네이버 블로그 다음 카페 팝업레이어 알림 24시간 동안 다시 열람하지 않습니다. 닫기 이전 다음 2007년 건보공단 공개 하지정맥류 급여수술건수 서울 강북권1위 6월 7일(토) 휴진 현존하는 최신 파장대4세대 1940nm 혈관레이저 세계적으로 인정받는최고 사양의 혈관초음파 윤리강령에 따른 진료 환자의 치유와 안전을 위하여 수술이 꼭 필요한 경우만 시행 온라인예약/상담 약도문자발송 온라인예약/상담 약도문자발송 구분 예약문의 상담문의 지점 강북점 노원점 성명 비밀번호 휴대폰 답변등록 SMS알림 수신 상담/예약내용 파일 파일선택 개인정보취급방침 보기 동의 '푸름외과의원 | 하지정맥류클리닉'은 (이하 '회사'는) 고객님의 개인정보를 중요시하...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 1,
+          "after": 2,
+          "total": 4
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.007857,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 16,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 15,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://www.purumveinclinic.com:443/theme/st-basic/img/main/banner01_2210a.jpg",
+        "preview": "NEW\n\nVeincare1940",
+        "wordCount": 2
+      },
+      {
+        "imageUrl": "https://www.purumveinclinic.com:443/theme/st-basic/img/main/banner02_2210a.jpg",
+        "preview": "NEW",
+        "wordCount": 1
+      },
+      {
+        "imageUrl": "https://www.purumveinclinic.com:443/data/_st/themes/st-basic/files/main_banner_1.png",
+        "preview": "2007 건보공단 공개\n하지정맥류 급여수술건수\n서울 강북권1위 의65771\n항상 최고의 진료로 보답하겠습니다.",
+        "wordCount": 12
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 9,
+    "totalCost": 0.055053000000000005,
+    "geminiCalls": 0,
+    "claudeCalls": 9,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 21,
+    "successCalls": 21,
+    "failedCalls": 0,
+    "totalImagesProcessed": 21,
+    "totalTextExtracted": 1166
+  }
+}

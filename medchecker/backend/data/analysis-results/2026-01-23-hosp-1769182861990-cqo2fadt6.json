@@ -1,0 +1,331 @@
+{
+  "hospitalId": "hosp-1769182861990-cqo2fadt6",
+  "hospitalName": "닥터제이앤비의원",
+  "url": "http://www.drjnb.com",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:36:36.025Z",
+  "processingTimeMs": 55115,
+  "metadata": {
+    "title": "DR.JNB | 닥터제이앤비의원",
+    "description": "DR.JNB | 닥터제이앤비의원 - Beyond The Beauty 아름다움을 넘어선 아름다움"
+  },
+  "targetUrl": "http://www.drjnb.com",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장",
+      "category": "medical_ad",
+      "subcategory": "exaggeration",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제2호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "장비/시설 홍보 시 구체적인 정보(제조사, 모델명, 인증)를 명시하세요.",
+        "example": {
+          "bad": "국내 유일 최첨단 장비 보유!",
+          "good": "OO사 XX레이저 (FDA 승인, 2023년 도입)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최신 장비",
+      "contextWindow": "스 볼뉴머 볼뉴머 인모드 인모드 시크릿 시크릿 네오빔 네오빔 CO2 CO2 LPL LPL PREVIEW닥터제이앤비 둘러보기 닥터제이앤비는 꼼꼼한 진료와 차별화된 시술,최신 시설, 최신 장비, 1인 관리실 (프라이빗),편안하고 세련된 인테리어 공간으로안심하고 케어를 받으실 수 있습니다. Beyond The Beauty ADDRESS서울특별시 구로구 경인로43",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최신 장비",
+            "text": "최신 장비",
+            "position": 3075
+          },
+          {
+            "type": "keyword",
+            "keyword": "최신 장비",
+            "text": "최신 장비",
+            "position": 3662
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(최신|최첨단|세계적)\\s*(장비|시설|기기)/gi",
+            "text": "최신 시설",
+            "position": 3068
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(최신|최첨단|세계적)\\s*(장비|시설|기기)/gi",
+            "text": "최신 시설",
+            "position": 3655
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "B 김 범 석 원장가정의학과 전문의전) 타미성형외과 스킨레이저센터 원장전) 루온의원 대표원장전) 유앤아이 광명점 원장· 대한가정의학회 정회원· 한국미용성형학회 정회원· 대한임상레이저학회 정회원· 대한레이저피부모발학회 정회원· 대한비만미용치료학회 정회원· 대한비만학회 정회원 · 대한임상미용의학회 정회원· 대한미용성형레이저학회 정회원· 대한미용웰빙학회 정회원 대표원장의 사명닥터제이앤비의원 대표원장으로서 이것만큼은 꼭 지킵니다. 대표원장 철학 더보기 EQUIPMENTS닥터제이앤비 보유 장비 다양한 프리미엄 정품 장비로개인의 피부 두께와 상태에 따라 적합하고 복합적인 시술을 제안하고 진행합니다.",
+        "matched": "최신 장비",
+        "matchedSentence": "헬리오스4 헬리오스4 울쎄라 울쎄라 마크뷰 피부 진단기 마크뷰 피부 진단기 포토나 스타워커 Qx 포토나 스타워커 Qx 클라리티 프로 클라리티 프로 셀렉 V 셀렉 V 슈링크 유니버스 슈링크 유니버스 볼뉴머 볼뉴머 인모드 인모드 시크릿 시크릿 네오빔 네오빔 CO2 CO2 LPL LPL PREVIEW닥터제이앤비 둘러보기 닥터제이앤비는 꼼꼼한 진료와 차별화된 시술,최신 시설, 최신 장비, 1인 관리실 (프라이빗),편안하고 세련된 인테리어 공간으로안심하고 케어를 받으실 수 있습니다.",
+        "matchedHighlight": {
+          "text": "최신 장비",
+          "startInSentence": 208
+        },
+        "after": "Beyond The Beauty ADDRESS서울특별시 구로구 경인로43길 49 아이파크몰 고척점 B동 2층 닥터제이앤비의원 TEL02-6952-1989 HOURS평일 오전 10:00 ~ 오후 08:00토요일 오전 09:30 ~ 오후 03:00 (점심시간 없음)점심시간 오후 01:00 ~ 오후 02:00일요일 휴진 인스타그램 네이버 블로그 네이버 예약 카카오톡 상담 Partner Hospitals 닥터제이앤비 협력병원 EQUIPMENTS닥터제이앤비 보유 장비 다양한 프리미엄 정품 장비로 개인의 피부 두께와 상태에 따라 적합하고 복합적인 시술을 제안하고 진행합니다. 헬리오스4 헬리오스4 울쎄라 울쎄라 마크뷰 피부 진단기 마크뷰 피부 진단기 포토나 스타워커 Qx 포토나 스타워커 Qx 클라리티 프로 클라리티 프로 셀렉 V 셀렉 V 슈링크 유니버스 슈링크 유니버스 볼뉴머 볼뉴머 인모드 인모드 시크릿 시크릿 네오빔 네오빔 CO2 CO2 LPL LPL PREVIEW닥터제이앤비 둘러보기 닥터제이앤비는 꼼꼼한 진료와 차별화된 시술,최신 시설, 최신 장비, 1인 관리​​실 (프라이빗),편안하고 세련된 인테리어 공간으로안심하고 케어를 받으실 수 있습니다.",
+        "full": "B 김 범 석 원장가정의학과 전문의전) 타미성형외과 스킨레이저센터 원장전) 루온의원 대표원장전) 유앤아이 광명점 원장· 대한가정의학회 정회원· 한국미용성형학회 정회원· 대한임상레이저학회 정회원· 대한레이저피부모발학회 정회원· 대한비만미용치료학회 정회원· 대한비만학회 정회원 · 대한임상미용의학회 정회원· 대한미용성형레이저학회 정회원· 대한미용웰빙학회 정회원 대표원장의 사명닥터제이앤비의원 대표원장으로서 이것만큼은 꼭 지킵니다. 대표원장 철학 더보기 EQUIPMENTS닥터제이앤비 보유 장비 다양한 프리미엄 정품 장비로개인의 피부 두께와 상태에 따라 적합하고 복합적인 시술을 제안하고 진행합니다. 헬리오스4 헬리오스4 울쎄라 울쎄라 마크뷰 피부 진단기 마크뷰 피부 진단기 포토나 스타워커 Qx 포토나 스타워커 Qx 클라리티 프로 클라리티 프로 셀렉 V 셀렉 V 슈링크 유니버스 슈링크 유니버스 볼뉴머 볼뉴머 인모드 인모드 시크릿 시크릿 네오빔 네오빔 CO2 CO2 LPL LPL PREVIEW닥터...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.008223000000000001,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-PR-004",
+        "matchedText": "올인원",
+        "reason": "menu_pattern"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 90,
+    "processedImages": 3,
+    "successfulOcr": 1,
+    "totalWords": 5,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://cdn.imweb.me/thumbnail/20250505/e2de154328ba4.png",
+        "preview": "Dr. JNB SKIN CLINIC\n닥터제이앤비의원",
+        "wordCount": 5
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 7,
+    "totalCost": 0.045897,
+    "geminiCalls": 0,
+    "claudeCalls": 7,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 18,
+    "successCalls": 18,
+    "failedCalls": 0,
+    "totalImagesProcessed": 18,
+    "totalTextExtracted": 1944
+  }
+}

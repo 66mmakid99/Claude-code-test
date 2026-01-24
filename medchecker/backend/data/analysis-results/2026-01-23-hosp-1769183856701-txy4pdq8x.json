@@ -1,0 +1,340 @@
+{
+  "hospitalId": "hosp-1769183856701-txy4pdq8x",
+  "hospitalName": "미앤미의원 부천",
+  "url": "http://bc.mipretty.co.kr/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:18:14.784Z",
+  "processingTimeMs": 28973,
+  "metadata": {
+    "title": "부천피부과-상동역피부과 아름다움을 위한 뷰티시크릿 부천피부과 미앤미",
+    "description": "부천피부과 간단하게! 새롭게! 자신있게! 필러,보톡스,리프팅엔 부천역피부과 미앤미"
+  },
+  "targetUrl": "http://bc.mipretty.co.kr/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "medium",
+  "violations": [
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고",
+      "category": "medical_ad",
+      "subcategory": "celebrity",
+      "severity": "critical",
+      "riskScore": 80,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제5호",
+        "article": "유명인이나 전문가를 이용하여 추천, 보증하는 내용의 광고 금지",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "유명인/연예인을 이용한 추천, 보증 광고를 삭제하세요.",
+        "example": {
+          "bad": "유명 배우 OOO도 다니는 병원",
+          "good": "(유명인 광고 없이 의료 서비스 내용만 안내)"
+        }
+      },
+      "matched": true,
+      "matchedText": "셀럽",
+      "contextWindow": "니다. [깜짝 카메라]남친에게 여신미모 엄마 소개?! 영상 바로가기 [미앤미 드라마] 그녀를 만나다 영상 바로가기 [브랜드 영상] 예뻐지는 습관, 미앤미 영상 바로가기 [with 셀럽] 아이돌 효인 뷰티인터뷰 영상 바로가기 [with 셀럽] 노경미 리포터 뷰티인터뷰 영상 바로가기 MI&MI RECOMMEND PROGRAM 미앤미 부천점의 추천시술 기간:~0",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.3,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "셀럽",
+            "text": "셀럽",
+            "position": 5540
+          },
+          {
+            "type": "keyword",
+            "keyword": "셀럽",
+            "text": "셀럽",
+            "position": 5571
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "인터뷰"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "[깜짝 카메라]남친에게 여신미모 엄마 소개? !",
+        "matched": "셀럽",
+        "matchedSentence": "영상 바로가기 [미앤미 드라마] 그녀를 만나다 영상 바로가기 [브랜드 영상] 예뻐지는 습관, 미앤미 영상 바로가기 [with 셀럽] 아이돌 효인 뷰티인터뷰 영상 바로가기 [with 셀럽] 노경미 리포터 뷰티인터뷰 영상 바로가기 MI&MI RECOMMEND PROGRAM 미앤미 부천점의 추천시술 기간:~01/31까지 실리프팅 1:1 맞춤 커스텀 디자인 민트실리프팅 1줄 44% 10만원 18만 MI&MI SNS 미앤미 공식마케팅 채널 Instagram Facebook Youtube kakaotalk 부천점 주소 경기 부천시 원미구 길주로 91 비잔티움 WEST동 5층 501호 진료시간 안내 월 · 수오전 10:00 ~ 오후 07:00 화 · 금오후 10:00 ~ 오후 09:00 토 요 일오전 10:00 ~ 오후 03:00 점심시간오후 01:00 ~ 오후 02:00 토요일은 점심시간 없이 진료합니다 목요일 · 일요일 · 공휴일 휴무 주차안내 병원 건물 주차장 주차 가능 카드사별 무이자 혜택 안내 2-3개월 국민,현대,신한,하나 2-4개월 우리 2-5개월 삼성, BC 2-6개월 농협 위 혜택은 카드사의 사정에 따라 변경될 수 있습니다.",
+        "matchedHighlight": {
+          "text": "셀럽",
+          "startInSentence": 70
+        },
+        "after": "032-329-2229 010-3990-3229 네이버블로그 @미앤미의원 부천점 미앤미 부천점 주소 : 경기 부천시 원미구 길주로 91 비잔티움 WEST동 5층 501호 / 대표 : 황준영 사업자등록번호 : 341-35-01824 / 사업자명 : 미앤미의원 / 사이트명 : 미앤미의원 / 대표전화 : 032-329-2229 Copyright(c) 2003~2025 mimimi. co.",
+        "full": "[깜짝 카메라]남친에게 여신미모 엄마 소개? ! 영상 바로가기 [미앤미 드라마] 그녀를 만나다 영상 바로가기 [브랜드 영상] 예뻐지는 습관, 미앤미 영상 바로가기 [with 셀럽] 아이돌 효인 뷰티인터뷰 영상 바로가기 [with 셀럽] 노경미 리포터 뷰티인터뷰 영상 바로가기 MI&MI RECOMMEND PROGRAM 미앤미 부천점의 추천시술 기간:~01/31까지 실리프팅 1:1 맞춤 커스텀 디자인 민트실리프팅 1줄 44% 10만원 18만 MI&MI SNS 미앤미 공식마케팅 채널 Instagram Facebook Youtube kakaotalk 부천점 주소 경기 부천시 원미구 길주로 91 비잔티움 WEST동 5층 501호 진료시간 안내 월 · 수오전 10:00 ~ 오후 07:00 화 · 금오후 10:00 ~ 오후 09:00 토 요 일오전 10:00 ~ 오후 03:00 점심시간오후 01:00 ~ 오후 02:00 토요일은 점심시간 없이 진료합니다 목요일 · 일요일 · 공휴일 휴무 주차안내...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "시술전후",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 0,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "만족도",
+        "ruleId": "MED-EFF-003",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "유튜브",
+        "ruleId": "MED-SNS-001",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 34,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 65,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://bc.mipretty.co.kr/uploadFiles/bannerImg/20250801121308_1.jpg",
+        "preview": "레스틸렌\n자문의\n\n비수술 윤곽교정\n페이스 필러\n\n이마부위\n\n광대\n\n눈밑볼록\n\n입술주변\n\n볼처짐\n\n턱끝볼륨\n\n목주름필러\n\n개인별 얼굴의 조화를 생각하는\n시술 부위별 맞춤 컨설팅",
+        "wordCount": 21
+      },
+      {
+        "imageUrl": "http://bc.mipretty.co.kr/uploadFiles/bannerImg/20250801121640_1.jpg",
+        "preview": "레스틸렌\n자문의\n\n섬세한 라인교정\n바디 필러\n\n감각적인 터치로 디자인하는\n서울 부위별 맞춤 컨설팅\n\n이재필러\n\n턱끝\n\n볼��한\n\n승모근\n\n우콜라몰",
+        "wordCount": 18
+      },
+      {
+        "imageUrl": "http://bc.mipretty.co.kr/uploadFiles/bannerImg/20250801121834_1.jpg",
+        "preview": "자연스러운 표정 변화까지 생각하는 맞춤 디자인\n\n3D 실리프팅\n\n비스포크\n디자인\n\n최적의\n벡터 방향 시술\n\n실 비법, 딤플 거의\n없는 리프팅 노하우\n\n2가지 이상\n맞춤 실 사용",
+        "wordCount": 26
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 6,
+    "totalCost": 0.034047,
+    "geminiCalls": 0,
+    "claudeCalls": 6,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 38,
+    "successCalls": 38,
+    "failedCalls": 0,
+    "totalImagesProcessed": 38,
+    "totalTextExtracted": 3413
+  }
+}

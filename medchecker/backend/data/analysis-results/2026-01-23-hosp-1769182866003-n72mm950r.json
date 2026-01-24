@@ -1,0 +1,343 @@
+{
+  "hospitalId": "hosp-1769182866003-n72mm950r",
+  "hospitalName": "서울특별시보라매병원",
+  "url": "http://www.brmh.org/",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:40:16.614Z",
+  "processingTimeMs": 18119,
+  "metadata": {
+    "title": "서울대학교병원운영 서울특별시보라매병원",
+    "description": "1577-0075, 서울 동작구 신대방동 위치, 서울대학교병원운영, 주요 암진료 1등급 종합병원, 진료예약/검진안내"
+  },
+  "targetUrl": "http://www.brmh.org/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "최상의 효과를 보장합니다",
+          "good": "최상의 결과를 위해 노력합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "최상의",
+      "contextWindow": "문화 꿈을 이루는 일터 정지 재생 쉽고 빠른 진료예약 1577-0075 온라인 진료예약 처음오신분 빠른예약 암진료 빠른예약 의료진/진료과 검색 의료진 및 진료과 검색 검색하기 # 최상의서비스 # 동반자 # 진료센터 # 진료과 # 클리닉 최상의 의료서비스로 대한민국 공공의료를 선도합니다. 진료과 자세히 보기 시민과 함께하는 생명우선 삶의 의료기관 동반자로써의",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 1870
+          },
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 1970
+          },
+          {
+            "type": "keyword",
+            "keyword": "최고의",
+            "text": "최고의",
+            "position": 2278
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "바로가기 글자크기 가작게 가보통 가조금크게 가크게 가가장크게 초기화 Search 검색하기 Best for Most! !",
+        "matched": "최상의",
+        "matchedSentence": "서울특별시 보라매병원 최첨단 자동화 시스템 등의 첨단의료장비를 갖추고 서울대학교병원과 유기적으로 연계된 수준높은 진료서비스 제공 보라매병원, 보건복지부 평가 8년 연속 최우수 공공보건의료기관 선정 2026_보라매병원_신년사 2025년 보라매병원 10대뉴스 보라매병원, 보건복지부 평가 8년 연속 최우수 공공보건의료기관 선정 국제임상연구 인증기구 AAHRPP 4차 인증 획득 서울특별시 보라매병원 소식지 보람 애 서울대학교병원 메디컬 그룹 뉴 비전 선포 One SNUH Network 미래의료를 개척하는 국민의병원 그룹미션 및 비전 보러가기 버튼 Pioneering the Future of Healthcare for All 진료 미래의료의 기준 교육 글로벌 리더의 캠퍼스 연구 첨단연구의 허브 공공의료 국민건강의 희망 조직문화 꿈을 이루는 일터 정지 재생 쉽고 빠른 진료예약 1577-0075 온라인 진료예약 처음오신분 빠른예약 암진료 빠른예약 의료진/진료과 검색 의료진 및 진료과 검색 검색하기 # 최상의서비스 # 동반자 # 진료센터 # 진료과 # 클리닉 최상의 의료서비스로 대한민국 공공의료를 선도합니다.",
+        "matchedHighlight": {
+          "text": "최상의",
+          "startInSentence": 504
+        },
+        "after": "진료과 자세히 보기 시민과 함께하는 생명우선 삶의 의료기관 동반자로써의 따뜻하고 긍정적인 의료서비스 제공 진료센터 자세히 보기 최상의 의료서비스에 대한 자부심과 더 나은 삶을 제시하는 의료서비스 제공 클리닉 자세히 보기 노하우를 보유한 전문 의료기관으로써 꼭 필요한 정보만을 간결하고 직관적으로 의료서비스 제공 암센터 자세히 보기 '건강한 미래'를 만들어가는 서울특별시보라매병원 암센터 암센터 자세히 보기 '건강한 미래'를 만들어가는 서울특별시보라매병원 암센터 오시는 길 주차안내 증명서발급 동의서/위임장 모바일앱 진료협력실 연구지원시스템 희망기부 암센터 SMG-SNU Boramae Medical Center 암정보 서울대학교병원의 의료품질과 시립병원으로서의 실용성의 결합한 최고의 프로그램 진료 예약신청 온라인으로 바로 예약신청 가능합니다. 간단한 정보만 남겨주시면 전문상담사가 연락드립니다.",
+        "full": "바로가기 글자크기 가작게 가보통 가조금크게 가크게 가가장크게 초기화 Search 검색하기 Best for Most! ! 서울특별시 보라매병원 최첨단 자동화 시스템 등의 첨단의료장비를 갖추고 서울대학교병원과 유기적으로 연계된 수준높은 진료서비스 제공 보라매병원, 보건복지부 평가 8년 연속 최우수 공공보건의료기관 선정 2026_보라매병원_신년사 2025년 보라매병원 10대뉴스 보라매병원, 보건복지부 평가 8년 연속 최우수 공공보건의료기관 선정 국제임상연구 인증기구 AAHRPP 4차 인증 획득 서울특별시 보라매병원 소식지 보람 애 서울대학교병원 메디컬 그룹 뉴 비전 선포 One SNUH Network 미래의료를 개척하는 국민의병원 그룹미션 및 비전 보러가기 버튼 Pioneering the Future of Healthcare for All 진료 미래의료의 기준 교육 글로벌 리더의 캠퍼스 연구 첨단연구의 허브 공공의료 국민건강의 희망 조직문화 꿈을 이루는 일터 정지 재생 쉽고 빠른 진료예약...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "warning"
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-CL-003",
+        "matchedText": "언론보도",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 3,
+    "aiVerified": 0,
+    "falsePositivesFound": 3,
+    "falsePositives": [
+      {
+        "matchedText": "만족도",
+        "ruleId": "MED-EFF-003",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "유튜브",
+        "ruleId": "MED-SNS-001",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 26,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 20,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.brmh.org/../upload/TB_MAINIMG_MANAGE/1a3e0a97452c4264aa331022cf1de192.jpg",
+        "preview": "謹賀\n新年\n\n- 丙午年 -\n\n새해복 많이\n받으세요\n\n2023\nHAPPY NEW YEAR",
+        "wordCount": 12
+      },
+      {
+        "imageUrl": "http://www.brmh.org/../upload/TB_MAINIMG_MANAGE/9ccf7003bf46454f88c29d4c50bde5fa.png",
+        "preview": "SNUH\n서울특별시보라매병원\n\n서울특별시보라매병원\n\n2026\n신년사",
+        "wordCount": 5
+      },
+      {
+        "imageUrl": "http://www.brmh.org/../upload/TB_MAINIMG_MANAGE/53cf8be17c724c73848c210758b4fb50.png",
+        "preview": "2025년 서울특별시보라매병원\n\n10대NEWS",
+        "wordCount": 3
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 17,
+    "totalCost": 0.110586,
+    "geminiCalls": 0,
+    "claudeCalls": 17,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 44,
+    "successCalls": 44,
+    "failedCalls": 0,
+    "totalImagesProcessed": 44,
+    "totalTextExtracted": 4654
+  }
+}

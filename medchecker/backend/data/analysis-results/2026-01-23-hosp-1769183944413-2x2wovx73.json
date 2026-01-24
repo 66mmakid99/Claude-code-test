@@ -1,0 +1,335 @@
+{
+  "hospitalId": "hosp-1769183944413-2x2wovx73",
+  "hospitalName": "케이톡스의원 부평",
+  "url": "http://bp.k-tox.com",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:27:36.759Z",
+  "processingTimeMs": 19769,
+  "metadata": {
+    "title": "케이톡스의원 Brand > Brand > 인천부평점",
+    "description": "여드름치료잘하는곳, 입술필러잘하는곳, 흉터치료잘하는곳, 필러잘하는곳, 실리프팅잘하는곳"
+  },
+  "targetUrl": "http://bp.k-tox.com",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의",
+      "category": "medical_ad",
+      "subcategory": "sns_advertising",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료법 제57조 (의료광고의 심의)",
+        "penalty": "300만원 이하의 과태료"
+      },
+      "recommendation": {
+        "action": "SNS 의료광고도 반드시 사전 심의를 받아야 합니다.",
+        "example": {
+          "bad": "(심의 없이 SNS에 의료광고 게시)",
+          "good": "[의료광고심의필] 심의번호: 제2023-XXXXXX호"
+        }
+      },
+      "matched": true,
+      "matchedText": "#사각턱보톡스",
+      "contextWindow": "세는 레이저리프팅! 울쎄라 그 탁월함은 무엇?.. 자본주의 미소가 아닌 찐미소!40년, 외모 콤플렉.. 어려운 안면비대칭 시술이지만 시술로도 교정이 .. 팔자주름.이마.코필러 솔직담백 리얼 스토리.. 중요한 약속 전! 생기 찾는 피부관리.. 3개월 관리로 이렇게?? 만족도 최고의 시술은??[.. 별걸 다알려주는 케이톡스 의료진이 알려주는 시술 이야기 검색 #엘란쎄 #클라리티 #사각턱보톡스 Q.울쎄라 리프팅 한 번만 받아도 턱선이 살아난다?.. Q.필러 부작용과 필러 안전성에 대하여.. Q.'웃는 입'을 만들어주는 케이톡스 입술필러&입꼬.. Q.이마보톡스의 모든것 Q.발톱무좀 빠르게 개선시켜보세요 Q.케이톡스 윤곽주사는? Q.모공치료 받기 전에 꼭 알고계셔야 합니다. .. Q.두피관리 소홀하면 탈모로 이어진다",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.5,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#사각턱보톡스",
+            "position": 3192
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "시술"
+          },
+          {
+            "type": "keyword",
+            "text": "치료"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "[. .",
+        "matched": "#사각턱보톡스",
+        "matchedSentence": "별걸 다알려주는 케이톡스 의료진이 알려주는 시술 이야기 검색 #엘란쎄 #클라리티 #사각턱보톡스 Q.",
+        "matchedHighlight": {
+          "text": "#사각턱보톡스",
+          "startInSentence": 45
+        },
+        "after": "울쎄라 리프팅 한 번만 받아도 턱선이 살아난다? .",
+        "full": "[. . 별걸 다알려주는 케이톡스 의료진이 알려주는 시술 이야기 검색 #엘란쎄 #클라리티 #사각턱보톡스 Q. 울쎄라 리프팅 한 번만 받아도 턱선이 살아난다? .",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-TM-001",
+        "matchedText": "시술후기",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 3,
+    "aiVerified": 0,
+    "falsePositivesFound": 3,
+    "falsePositives": [
+      {
+        "matchedText": "수술 없이",
+        "ruleId": "MED-UN-004",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "만족도",
+        "ruleId": "MED-EFF-003",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "동안",
+        "ruleId": "MED-SP-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 94,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 24,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://bp.k-tox.com/page_KR0/01_sub/images/eventtitle.png",
+        "preview": "세로로 회전된 텍스트가 보이며 다음과 같이 읽힙니다:\n\n네이버 NAVER",
+        "wordCount": 9
+      },
+      {
+        "imageUrl": "http://bp.k-tox.com/images/popup/close.png",
+        "preview": "이미지가 표시되지 않아서 텍스트를 추출할 수 없습니다. 이미지를 다시 업로드해 주시면 모든 텍스트를 정확히 추출해드리겠습니��.",
+        "wordCount": 15
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 6,
+    "totalCost": 0.031407,
+    "geminiCalls": 0,
+    "claudeCalls": 6,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 15,
+    "successCalls": 15,
+    "failedCalls": 0,
+    "totalImagesProcessed": 15,
+    "totalTextExtracted": 1220
+  }
+}

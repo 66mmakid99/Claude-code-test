@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769183881800-nc1j7xx65",
+  "hospitalName": "참조은병원",
+  "url": "http://www.chamhosp.co.kr/",
+  "success": false,
+  "error": "Analysis timeout after 90s",
+  "isTimeout": true,
+  "analyzedAt": "2026-01-23T19:32:59.721Z",
+  "processingTimeMs": 90013
+}

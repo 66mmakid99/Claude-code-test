@@ -1,0 +1,855 @@
+{
+  "hospitalId": "hosp-1769182843255-tecw1yo31",
+  "hospitalName": "BLS의원 본점",
+  "url": "http://www.blsclinic1.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T15:48:37.087Z",
+  "processingTimeMs": 18868,
+  "metadata": {
+    "title": "BLS클리닉 본점 | 서울피부과·청담피부과 | 프리미엄 리프팅",
+    "description": "서울피부과, BLS의원 본점은 청담 프리미엄 리프팅을 선도하는 클리닉으로, 1:1 개인 맞춤 커스텀 디자인을 통해 섬세하고 품격 있는 리프팅을 완성합니다. 온다, 소프웨이브, 울쎄라피프라임, 튠페이스, 인모드, 엠페이스, 써마지FLX, 티타늄, 오푸스, 텐써마, 슈링크, 슈링크유니버스, 코레지셀핏, 컴포트듀얼, 스킨부스터, 엑소좀, 힐로웨이즈, 레티젠, 리쥬란HB, 리쥬란힐러, 리쥬하이, 레디어스, 쥬베룩, 리투오, 체형관리, 두피, 스파, 에스테틱, 미백관리, 재생관리, 쁘띠, 더모톡신, 윤곽주사, 조각주사, 스컬트라, 하이코, 제로셀, 필링, 줄기세포, 미라드라이, 리팟레이저, 레이저토닝, 클라리티, 라비앙, 마운자로, 다이어트, 여드름관리"
+  },
+  "targetUrl": "http://www.blsclinic1.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의",
+      "category": "medical_ad",
+      "subcategory": "sns_advertising",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료법 제57조 (의료광고의 심의)",
+        "penalty": "300만원 이하의 과태료"
+      },
+      "recommendation": {
+        "action": "SNS 의료광고도 반드시 사전 심의를 받아야 합니다.",
+        "example": {
+          "bad": "(심의 없이 SNS에 의료광고 게시)",
+          "good": "[의료광고심의필] 심의번호: 제2023-XXXXXX호"
+        }
+      },
+      "matched": true,
+      "matchedText": "#티타늄",
+      "contextWindow": " 13-5, BLS클리닉 빌딩 월 · 목 10:00 ~ 21:00 (야간진료) 화 · 수 · 금 10:00 ~ 19:00 토요일 10:00 ~ 17:00 ※일요일, 공휴일 휴진입니다. 02-543-4842 약도 전송 예약하기 연락처 010 011 [필수] 서비스 이용 및 예약 신청을 위한 개인정보 제공에 동의 이용약관 약도전송 약도전송 팝업닫기 인기검색어 #티타늄 #울쎄라 #텐써마 #슈링크 #써마지 #올리지오 #튠페이스 #인모드 #쥬베룩 #리쥬란 #리프팅 #스킨부스터 RESERVATION KAKAOTALK INSTAGRAM FACEBOOK YOUTUBE BLOG 상단으로 본점 본점 청담점 압구정점 잠실점 명동점 강남점 상호명 : 비엘에스의원 본점 대표 : 이동진 사업자번호 : 211-09-45027 대표번호",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#티타늄",
+            "position": 3657
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#울쎄라",
+            "position": 3662
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#텐써마",
+            "position": 3667
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#슈링크",
+            "position": 3672
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#써마지",
+            "position": 3677
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#올리지오",
+            "position": 3682
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#튠페이스",
+            "position": 3688
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#인모드",
+            "position": 3694
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#쥬베룩",
+            "position": 3699
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리쥬란",
+            "position": 3704
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리프팅",
+            "position": 3709
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#스킨부스터",
+            "position": 3714
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "promise 06 정품 · 정량사용 단 한병이라도 공식 수입절차를 거쳐 정품 · 정량으로 안전하게 시술하고 있습니다. BLS CLINIC COMMUNITY 공지사항 - BLS 2026년 2월 진료일정 안내 - BLS 2026년 1월 진료일정 안내 - BLS 2025년 12월 진료일정 안내 - BLS 2025년 10월 진료일정 안내 + CONTACT US 서울 강남구 도산대로67길 13-5, BLS클리닉 빌딩 월 · 목 10:00 ~ 21:00 (야간진료) 화 · 수 · 금 10:00 ~ 19:00 토요일 10:00 ~ 17:00 ※일요일, 공휴일 휴진입니다.",
+        "matched": "#티타늄",
+        "matchedSentence": "02-543-4842 약도 전송 예약하기 연락처 010 011 [필수] 서비스 이용 및 예약 신청을 위한 개인정보 제공에 동의 이용약관 약도전송 약도전송 팝업닫기 인기검색어 #티타늄 #울쎄라 #텐써마 #슈링크 #써마지 #올리지오 #튠페이스 #인모드 #쥬베룩 #리쥬란 #리프팅 #스킨부스터 RESERVATION KAKAOTALK INSTAGRAM FACEBOOK YOUTUBE BLOG 상단으로 본점 본점 청담점 압구정점 잠실점 명동점 강남점 상호명 : 비엘에스의원 본점 대표 : 이동진 사업자번호 : 211-09-45027 대표번호 : 02-543-4842 지점휴대번호 : 010-4981-4842 주소 : 서울 강남구 도산대로67길 13-5 BLS클리닉 빌딩 상호명 : BLS의원 대표자명 : 이동진 사업자번호 : 211-09-45027 사이트이용약관 개인정보처리방침 오늘 하루 열지 않기 닫기 오늘 하루 열지 않기 닫기",
+        "matchedHighlight": {
+          "text": "#티타늄",
+          "startInSentence": 97
+        },
+        "after": "[이미지 텍스트] BLS Clinic",
+        "full": "promise 06 정품 · 정량사용 단 한병이라도 공식 수입절차를 거쳐 정품 · 정량으로 안전하게 시술하고 있습니다. BLS CLINIC COMMUNITY 공지사항 - BLS 2026년 2월 진료일정 안내 - BLS 2026년 1월 진료일정 안내 - BLS 2025년 12월 진료일정 안내 - BLS 2025년 10월 진료일정 안내 + CONTACT US 서울 강남구 도산대로67길 13-5, BLS클리닉 빌딩 월 · 목 10:00 ~ 21:00 (야간진료) 화 · 수 · 금 10:00 ~ 19:00 토요일 10:00 ~ 17:00 ※일요일, 공휴일 휴진입니다. 02-543-4842 약도 전송 예약하기 연락처 010 011 [필수] 서비스 이용 및 예약 신청을 위한 개인정보 제공에 동의 이용약관 약도전송 약도전송 팝업닫기 인기검색어 #티타늄 #울쎄라 #텐써마 #슈링크 #써마지 #올리지오 #튠페이스 #인모드 #쥬베룩 #리쥬란 #리프팅 #스킨부스터 RESERVATION KAKAOTALK ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "info",
+      "riskScore": 50,
+      "legal": {
+        "basis": "의료광고 심의기준",
+        "penalty": "심의 부적합"
+      },
+      "recommendation": {
+        "action": "패키지 광고 시 개별 항목의 필요성과 비용을 명확히 안내하세요.",
+        "example": {
+          "bad": "토탈 케어 패키지 1+1 이벤트!",
+          "good": "맞춤 치료 프로그램 - 상담을 통해 필요한 시술만 선택하세요."
+        }
+      },
+      "matched": true,
+      "matchedText": "토탈 케어",
+      "contextWindow": " 케어 서비스 전담 주치의 지정 전담 상담 실장&전담 관리사 지정 평균 7년 이상의 경력숙련된 직원의프리미엄 서비스 프라이빗한 공간 적립 제도 운영 리프팅의명가 스킨 커스터마이징 토탈 케어 서비스 다양한 통증 경감 솔루션 BLS 멤버쉽 BEST PROGRAM BLS클리닉 본점의 인기 시술을 소개합니다. NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.25,
+        "mitigatingScore": -0.3,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.6499999999999999,
+      "decision": "violation",
+      "confidence": 0.6499999999999999,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "토탈 케어",
+            "text": "토탈 케어",
+            "position": 2072
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "서비스"
+          }
+        ],
+        "mitigatingMatches": [
+          {
+            "type": "keyword",
+            "text": "맞춤"
+          }
+        ]
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "01 리프팅 등고선 측정기 02 고화질피부측정기 03 1:1 맞춤 피부 컨설팅 04 1:1 맞춤 프리미엄 앰플 05 1:1 피부 전담관리사 많은 시술 케이스를 가진 클리닉이기 때문에 가능한 다양한 통증 경감 솔루션! BLS클리닉 본점은 응급 상황에 대한 신속한 대처로언제나 환자의 안전을 최우선으로 합니다.",
+        "matched": "토탈 케어",
+        "matchedSentence": "POINT 01 수면 마취 가능 POINT 02 의식하 진정기기 POINT 03 BLS 마취 칵테일주사 POINT 04 통증 감소 진동기 POINT 05 꼼꼼한 연고 마취 당신만을 위한 프라이빗하고 체계적인 프리미엄 케어 서비스 전담 주치의 지정 전담 상담 실장&전담 관리사 지정 평균 7년 이상의 경력숙련된 직원의프리미엄 서비스 프라이빗한 공간 적립 제도 운영 리프팅의명가 스킨 커스터마이징 토탈 케어 서비스 다양한 통증 경감 솔루션 BLS 멤버쉽 BEST PROGRAM BLS클리닉 본점의 인기 시술을 소개합니다.",
+        "matchedHighlight": {
+          "text": "토탈 케어",
+          "startInSentence": 220
+        },
+        "after": "NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 디테일 써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅!",
+        "full": "01 리프팅 등고선 측정기 02 고화질피부측정기 03 1:1 맞춤 피부 컨설팅 04 1:1 맞춤 프리미엄 앰플 05 1:1 피부 전담관리사 많은 시술 케이스를 가진 클리닉이기 때문에 가능한 다양한 통증 경감 솔루션! BLS클리닉 본점은 응급 상황에 대한 신속한 대처로언제나 환자의 안전을 최우선으로 합니다. POINT 01 수면 마취 가능 POINT 02 의식하 진정기기 POINT 03 BLS 마취 칵테일주사 POINT 04 통증 감소 진동기 POINT 05 꼼꼼한 연고 마취 당신만을 위한 프라이빗하고 체계적인 프리미엄 케어 서비스 전담 주치의 지정 전담 상담 실장&전담 관리사 지정 평균 7년 이상의 경력숙련된 직원의프리미엄 서비스 프라이빗한 공간 적립 제도 운영 리프팅의명가 스킨 커스터마이징 토탈 케어 서비스 다양한 통증 경감 솔루션 BLS 멤버쉽 BEST PROGRAM BLS클리닉 본점의 인기 시술을 소개합니다. NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고",
+      "category": "medical_ad",
+      "subcategory": "celebrity",
+      "severity": "critical",
+      "riskScore": 80,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제5호",
+        "article": "유명인이나 전문가를 이용하여 추천, 보증하는 내용의 광고 금지",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "유명인/연예인을 이용한 추천, 보증 광고를 삭제하세요.",
+        "example": {
+          "bad": "유명 배우 OOO도 다니는 병원",
+          "good": "(유명인 광고 없이 의료 서비스 내용만 안내)"
+        }
+      },
+      "matched": true,
+      "matchedText": "연예인",
+      "contextWindow": "써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅! 디테일 튠페이스 속까지 올려주는 1:1 맞춤 리프팅 커스텀 티타늄 연예인 리프팅, 티타늄 도입! 커스텀 오푸스 나의 피부 루틴 시술 커스텀 텐써마 강력한 고주파 리프팅 커스텀 슈링크 유니버스 더 강력해진 2세대 슈링크 NEW 디테일 울쎄라피 프라",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "연예인",
+            "text": "연예인",
+            "position": 2295
+          },
+          {
+            "type": "keyword",
+            "keyword": "연예인",
+            "text": "연예인",
+            "position": 2553
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 디테일 써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅!",
+        "matched": "연예인",
+        "matchedSentence": "디테일 튠페이스 속까지 올려주는 1:1 맞춤 리프팅 커스텀 티타늄 연예인 리프팅, 티타늄 도입!",
+        "matchedHighlight": {
+          "text": "연예인",
+          "startInSentence": 37
+        },
+        "after": "커스텀 오푸스 나의 피부 루틴 시술 커스텀 텐써마 강력한 고주파 리프팅 커스텀 슈링크 유니버스 더 강력해진 2세대 슈링크 NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! VIEW 디테일 써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] VIEW 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅!",
+        "full": "NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 디테일 써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅! 디테일 튠페이스 속까지 올려주는 1:1 맞춤 리프팅 커스텀 티타늄 연예인 리프팅, 티타늄 도입! 커스텀 오푸스 나의 피부 루틴 시술 커스텀 텐써마 강력한 고주파 리프팅 커스텀 슈링크 유니버스 더 강력해진 2세대 슈링크 NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! VIEW 디테일 써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] VIEW 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅!",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-TM-001",
+        "matchedText": "시술후기",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-SP-003",
+        "matchedText": "풍성",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 67,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 33,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20250328092813_1.jpg",
+        "preview": "BLS Clinic\nBLS 클리닉\n성심 출시\n세로워진 울세라\nNEW 울세라피 프라임\nUltherapy PRIME\nlaunching",
+        "wordCount": 14
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20201211184628_1.jpg",
+        "preview": "BLS Clinic\n\nthermage®\nFLX\n\n피부 속 콜라겐 재생 및 주름개선\n나를 위한 단 하나의 정품 팁\n\nREADY\n\n0.0\n\nthermage",
+        "wordCount": 19
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 0,
+    "totalCost": 0,
+    "geminiCalls": 0,
+    "claudeCalls": 0
+  },
+  "ocrApiStats": {
+    "totalCalls": 9,
+    "successCalls": 9,
+    "failedCalls": 0,
+    "totalImagesProcessed": 9,
+    "totalTextExtracted": 550
+  },
+  "analysis": {
+    "success": true,
+    "url": "http://www.blsclinic1.com/",
+    "analyzedAt": "2026-01-23T18:14:07.070Z",
+    "processingTimeMs": 5642,
+    "metadata": {
+      "title": "BLS클리닉 본점 | 서울피부과·청담피부과 | 프리미엄 리프팅",
+      "description": "서울피부과, BLS의원 본점은 청담 프리미엄 리프팅을 선도하는 클리닉으로, 1:1 개인 맞춤 커스텀 디자인을 통해 섬세하고 품격 있는 리프팅을 완성합니다. 온다, 소프웨이브, 울쎄라피프라임, 튠페이스, 인모드, 엠페이스, 써마지FLX, 티타늄, 오푸스, 텐써마, 슈링크, 슈링크유니버스, 코레지셀핏, 컴포트듀얼, 스킨부스터, 엑소좀, 힐로웨이즈, 레티젠, 리쥬란HB, 리쥬란힐러, 리쥬하이, 레디어스, 쥬베룩, 리투오, 체형관리, 두피, 스파, 에스테틱, 미백관리, 재생관리, 쁘띠, 더모톡신, 윤곽주사, 조각주사, 스컬트라, 하이코, 제로셀, 필링, 줄기세포, 미라드라이, 리팟레이저, 레이저토닝, 클라리티, 라비앙, 마운자로, 다이어트, 여드름관리"
+    },
+    "targetUrl": "http://www.blsclinic1.com/",
+    "targetType": "website",
+    "totalScore": 100,
+    "riskLevel": "low",
+    "violations": [
+      {
+        "ruleId": "MED-PR-004",
+        "ruleName": "패키지/번들 과장",
+        "category": "medical_ad",
+        "subcategory": "price_discount",
+        "severity": "info",
+        "riskScore": 50,
+        "legal": {
+          "basis": "의료광고 심의기준",
+          "penalty": "심의 부적합"
+        },
+        "recommendation": {
+          "action": "패키지 광고 시 개별 항목의 필요성과 비용을 명확히 안내하세요.",
+          "example": {
+            "bad": "토탈 케어 패키지 1+1 이벤트!",
+            "good": "맞춤 치료 프로그램 - 상담을 통해 필요한 시술만 선택하세요."
+          }
+        },
+        "matched": true,
+        "matchedText": "토탈 케어",
+        "contextWindow": " 케어 서비스 전담 주치의 지정 전담 상담 실장&전담 관리사 지정 평균 7년 이상의 경력숙련된 직원의프리미엄 서비스 프라이빗한 공간 적립 제도 운영 리프팅의명가 스킨 커스터마이징 토탈 케어 서비스 다양한 통증 경감 솔루션 BLS 멤버쉽 BEST PROGRAM BLS클리닉 본점의 인기 시술을 소개합니다. NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드",
+        "contextScores": {
+          "triggerScore": 0.5,
+          "aggravatingScore": 0.25,
+          "mitigatingScore": -0.3,
+          "requiredScore": 0.2
+        },
+        "finalScore": 0.6499999999999999,
+        "decision": "violation",
+        "confidence": 0.6499999999999999,
+        "evidence": {
+          "triggerMatches": [
+            {
+              "type": "keyword",
+              "keyword": "토탈 케어",
+              "text": "토탈 케어",
+              "position": 2072
+            }
+          ],
+          "aggravatingMatches": [
+            {
+              "type": "keyword",
+              "text": "서비스"
+            }
+          ],
+          "mitigatingMatches": [
+            {
+              "type": "keyword",
+              "text": "맞춤"
+            }
+          ]
+        },
+        "aiVerification": {
+          "performed": false
+        },
+        "extendedContext": {
+          "before": "01 리프팅 등고선 측정기 02 고화질피부측정기 03 1:1 맞춤 피부 컨설팅 04 1:1 맞춤 프리미엄 앰플 05 1:1 피부 전담관리사 많은 시술 케이스를 가진 클리닉이기 때문에 가능한 다양한 통증 경감 솔루션! BLS클리닉 본점은 응급 상황에 대한 신속한 대처로언제나 환자의 안전을 최우선으로 합니다.",
+          "matched": "토탈 케어",
+          "matchedSentence": "POINT 01 수면 마취 가능 POINT 02 의식하 진정기기 POINT 03 BLS 마취 칵테일주사 POINT 04 통증 감소 진동기 POINT 05 꼼꼼한 연고 마취 당신만을 위한 프라이빗하고 체계적인 프리미엄 케어 서비스 전담 주치의 지정 전담 상담 실장&전담 관리사 지정 평균 7년 이상의 경력숙련된 직원의프리미엄 서비스 프라이빗한 공간 적립 제도 운영 리프팅의명가 스킨 커스터마이징 토탈 케어 서비스 다양한 통증 경감 솔루션 BLS 멤버쉽 BEST PROGRAM BLS클리닉 본점의 인기 시술을 소개합니다.",
+          "matchedHighlight": {
+            "text": "토탈 케어",
+            "startInSentence": 220
+          },
+          "after": "NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 디테일 써마지FLX 고주파 에너지로 탄력 UP [정품팁사용] 디테일 인모드 두 가지 모드로 지방세포사멸, 탄력 리프팅!",
+          "full": "01 리프팅 등고선 측정기 02 고화질피부측정기 03 1:1 맞춤 피부 컨설팅 04 1:1 맞춤 프리미엄 앰플 05 1:1 피부 전담관리사 많은 시술 케이스를 가진 클리닉이기 때문에 가능한 다양한 통증 경감 솔루션! BLS클리닉 본점은 응급 상황에 대한 신속한 대처로언제나 환자의 안전을 최우선으로 합니다. POINT 01 수면 마취 가능 POINT 02 의식하 진정기기 POINT 03 BLS 마취 칵테일주사 POINT 04 통증 감소 진동기 POINT 05 꼼꼼한 연고 마취 당신만을 위한 프라이빗하고 체계적인 프리미엄 케어 서비스 전담 주치의 지정 전담 상담 실장&전담 관리사 지정 평균 7년 이상의 경력숙련된 직원의프리미엄 서비스 프라이빗한 공간 적립 제도 운영 리프팅의명가 스킨 커스터마이징 토탈 케어 서비스 다양한 통증 경감 솔루션 BLS 멤버쉽 BEST PROGRAM BLS클리닉 본점의 인기 시술을 소개합니다. NEW 디테일 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피...",
+          "sentenceContext": true,
+          "sentenceCount": {
+            "before": 2,
+            "after": 2,
+            "total": 5
+          }
+        },
+        "type": "violation"
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      {
+        "ruleId": "MED-UN-001",
+        "ruleName": "미승인/불법 시술 광고"
+      },
+      {
+        "ruleId": "MED-TM-002",
+        "ruleName": "가짜/조작 후기"
+      },
+      {
+        "ruleId": "MED-UN-002",
+        "ruleName": "오프라벨 사용 광고"
+      },
+      {
+        "ruleId": "MED-UN-003",
+        "ruleName": "해외 직구 의약품/기기 광고"
+      },
+      {
+        "ruleId": "MED-EFF-001",
+        "ruleName": "치료효과 100% 보장 표현"
+      },
+      {
+        "ruleId": "MED-EFF-002",
+        "ruleName": "완치/완벽 보장 표현"
+      },
+      {
+        "ruleId": "MED-BA-001",
+        "ruleName": "치료 전후 사진 게시"
+      },
+      {
+        "ruleId": "MED-EX-001",
+        "ruleName": "객관적 근거 없는 최상급 표현"
+      },
+      {
+        "ruleId": "MED-CL-001",
+        "ruleName": "유명인/연예인 추천 광고"
+      },
+      {
+        "ruleId": "MED-EFF-004",
+        "ruleName": "부작용 없음 보장"
+      },
+      {
+        "ruleId": "MED-EFF-006",
+        "ruleName": "재발 없음 보장"
+      },
+      {
+        "ruleId": "MED-BA-002",
+        "ruleName": "전후 동영상 게시"
+      },
+      {
+        "ruleId": "MED-BA-003",
+        "ruleName": "타인 전후사진 무단 사용"
+      },
+      {
+        "ruleId": "MED-EX-003",
+        "ruleName": "가짜 수상/인증 표시"
+      },
+      {
+        "ruleId": "MED-CL-002",
+        "ruleName": "의사/전문가 추천 가장"
+      },
+      {
+        "ruleId": "MED-UN-004",
+        "ruleName": "민간요법/대체의학 광고"
+      },
+      {
+        "ruleId": "MED-EFF-003",
+        "ruleName": "성공률/치료율 수치 표현"
+      },
+      {
+        "ruleId": "MED-EX-002",
+        "ruleName": "신기술/혁신 과장 표현"
+      },
+      {
+        "ruleId": "MED-CP-001",
+        "ruleName": "타 의료기관 비교/비방 광고"
+      },
+      {
+        "ruleId": "MED-EFF-005",
+        "ruleName": "무통증 보장"
+      },
+      {
+        "ruleId": "MED-EFF-007",
+        "ruleName": "즉각적/빠른 효과 보장"
+      },
+      {
+        "ruleId": "MED-TM-003",
+        "ruleName": "블로그/카페 체험단 후기"
+      },
+      {
+        "ruleId": "MED-CP-002",
+        "ruleName": "가격 비교 광고"
+      },
+      {
+        "ruleId": "MED-PR-003",
+        "ruleName": "긴급/마감 임박 유도"
+      },
+      {
+        "ruleId": "MED-SNS-002",
+        "ruleName": "인플루언서 협찬 미표기"
+      },
+      {
+        "ruleId": "MED-BS-001",
+        "ruleName": "의료인 아닌 자의 의료광고"
+      },
+      {
+        "ruleId": "MED-BS-002",
+        "ruleName": "수술 장면 공개"
+      },
+      {
+        "ruleId": "MED-BS-003",
+        "ruleName": "공포/불안 조장"
+      },
+      {
+        "ruleId": "MED-SP-001",
+        "ruleName": "성형수술 과장 광고"
+      },
+      {
+        "ruleId": "MED-SP-002",
+        "ruleName": "다이어트 시술 과장"
+      },
+      {
+        "ruleId": "MED-PR-001",
+        "ruleName": "과도한 할인/가격 광고"
+      },
+      {
+        "ruleId": "MED-QU-001",
+        "ruleName": "의료인 자격/경력 과장"
+      },
+      {
+        "ruleId": "MED-EX-004",
+        "ruleName": "시설/장비 과장"
+      },
+      {
+        "ruleId": "MED-EX-005",
+        "ruleName": "경험/실적 과장"
+      },
+      {
+        "ruleId": "MED-CL-003",
+        "ruleName": "방송/언론 출연 과장"
+      },
+      {
+        "ruleId": "MED-CP-003",
+        "ruleName": "암묵적 비교 광고"
+      },
+      {
+        "ruleId": "MED-PR-002",
+        "ruleName": "미끼 가격 광고"
+      },
+      {
+        "ruleId": "MED-QU-003",
+        "ruleName": "가짜 자격증/인증 표시"
+      },
+      {
+        "ruleId": "MED-AD-001",
+        "ruleName": "광고 표기 누락 (협찬/체험단)"
+      },
+      {
+        "ruleId": "MED-EX-006",
+        "ruleName": "진료시간 과장"
+      },
+      {
+        "ruleId": "MED-QU-002",
+        "ruleName": "학력/경력 허위 표기"
+      },
+      {
+        "ruleId": "MED-INFO-001",
+        "ruleName": "일반적 홍보성 최상급 표현"
+      }
+    ],
+    "aiCalls": 1,
+    "aiCost": 0.007275,
+    "filterStats": {
+      "violationsFiltered": 2,
+      "warningsFiltered": 0,
+      "filterReasons": [
+        {
+          "ruleId": "MED-TM-001",
+          "matchedText": "시술후기",
+          "reason": "menu_text_exact_match"
+        },
+        {
+          "ruleId": "MED-SP-003",
+          "matchedText": "풍성",
+          "reason": "menu_text_partial_match"
+        }
+      ]
+    },
+    "errorCollectorStats": {
+      "autoFiltered": 0,
+      "aiVerified": 1,
+      "falsePositivesFound": 1,
+      "falsePositives": [
+        {
+          "matchedText": "#티타늄",
+          "ruleId": "MED-SNS-001",
+          "reason": "info_only",
+          "source": "ai_verification"
+        }
+      ]
+    },
+    "ocrStats": {
+      "totalImages": 67,
+      "processedImages": 5,
+      "successfulOcr": 4,
+      "totalWords": 54,
+      "extractedTexts": [
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20250328092813_1.jpg",
+          "preview": "BLS Clinic\n\nBLS Clinic\n삼성동N\n\n세로위진 울쎄라\n\nNEW 울쎄라피/프라임 launching\n\nUltherapy PRIME",
+          "wordCount": 12
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20201211184628_1.jpg",
+          "preview": "BLS Clinic\n\nthermage®\nFLX\n\n피부 속 콜라겐 재생 및 주름개선\n나를 위한 단 하나의 정품 팁\n\nREADY\n\n0.0\n\nTreatment Level\n4.1\n\nthe...",
+          "wordCount": 22
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20210624144642_1_1.jpg",
+          "preview": "BLS Clinic\n\ninmode\n\n두 가지 모드로 지방세포시멸, 탄력 리프팅\n리프팅 신세계 인모드 리프팅\n\ninmode",
+          "wordCount": 14
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20201212225406_1.jpg",
+          "preview": "BLS Clinic\n\n툰페이스\n콜라겐을 제간시키는 FACE리프팅",
+          "wordCount": 6
+        }
+      ]
+    },
+    "aiStats": {
+      "totalCalls": 10,
+      "totalCost": 0.063564,
+      "geminiCalls": 0,
+      "claudeCalls": 10,
+      "geminiFallbacks": 0,
+      "geminiStatus": {
+        "available": true,
+        "disabled": false,
+        "disabledUntil": null,
+        "consecutiveFailures": 0
+      }
+    },
+    "ocrApiStats": {
+      "totalCalls": 25,
+      "successCalls": 25,
+      "failedCalls": 0,
+      "totalImagesProcessed": 25,
+      "totalTextExtracted": 1435
+    }
+  },
+  "reanalyzedAt": "2026-01-23T18:14:20.142Z",
+  "previousViolations": 2
+}

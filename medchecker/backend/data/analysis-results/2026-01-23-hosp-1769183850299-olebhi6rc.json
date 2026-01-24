@@ -1,0 +1,321 @@
+{
+  "hospitalId": "hosp-1769183850299-olebhi6rc",
+  "hospitalName": "에미뜨의원 동탄",
+  "url": "http://emitclinic.com",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:09:25.011Z",
+  "processingTimeMs": 17649,
+  "metadata": {
+    "title": "동탄피부과 에미뜨의원 | 나만의 아름다움을 만나는 곳",
+    "description": "에미뜨의 타임머신 프로젝트는 단순한 시술이 아닌, 윤곽과 미백으로 나뉘는 1:1 맞춤 설계를 통해 리프팅·필러·콜라겐부스터부터 색소 레이저까지 피부 콤플렉스를 근본부터 해결합니다."
+  },
+  "targetUrl": "http://emitclinic.com",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장",
+      "category": "medical_ad",
+      "subcategory": "specialty",
+      "severity": "warning",
+      "riskScore": 70,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "다이어트 시술 광고 시 개인차와 생활습관 관리의 중요성을 명시하세요.",
+        "example": {
+          "bad": "2주 만에 10kg 감량 보장!",
+          "good": "의료진과의 상담을 통한 건강한 체중 관리 (개인차가 있으며, 식이/운동 병행 필요)"
+        }
+      },
+      "matched": true,
+      "matchedText": "요요방지",
+      "contextWindow": "티 #주근깨 #흑자 #미백 #홍조 스킨트러블 #여드름흉터개선 #모공축소 #염증성여드름 #진정 #블랙헤드제거 제모 #남성제모 #여성제모 바디밸런스 솔루션 #체중감소 #바디라인개선 #요요방지 Contact Us 에미뜨의원은 예약제로 운영됩니다. 원하시는 날짜에 온라인예약이 어려우실 경우, 전화주시면 순차적으로 예약을 도와드리겠습니다. CLINIC HOURS. ",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/요요\\s*(없|방지|걱정)/gi",
+            "text": "요요방지",
+            "position": 2014
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "아는닥터 이원장이 직접 실험해봤습니다. 대표원장이 직접 쓰는 네이버 블로그 블로그 보러가기 에미뜨 기부: 3가지 ‘선’을 추구합니다 자세히 보기 EMIT Program 무엇이 고민이신가요?",
+        "matched": "요요방지",
+        "matchedSentence": "에미뜨 윤곽리프팅 리프팅레이저·실리프팅 에미뜨 볼륨 안티에이징 필러·자가콜라겐 브라이트닝 기미·잡티·홍조 스킨트러블 모공·여드름·흉터 제모 남성제모·여성제모 바디밸런스 솔루션 다이어트·나잇살관리·요요예방 EMIT Equipment 다양한 피부고민을 위한, 다양한 장비 30가지 에미뜨 윤곽리프팅 #처진얼굴 #꺼진얼굴 #땅콩형얼굴 #잔주름개선 #피부탄력개선 에미뜨 볼륨 안티에이징 #탄력저하 #처짐 #꺼짐 #윤곽개선 #볼륨 브라이트닝 #기미 #잡티 #주근깨 #흑자 #미백 #홍조 스킨트러블 #여드름흉터개선 #모공축소 #염증성여드름 #진정 #블랙헤드제거 제모 #남성제모 #여성제모 바디밸런스 솔루션 #체중감소 #바디라인개선 #요요방지 Contact Us 에미뜨의원은 예약제로 운영됩니다.",
+        "matchedHighlight": {
+          "text": "요요방지",
+          "startInSentence": 348
+        },
+        "after": "원하시는 날짜에 온라인예약이 어려우실 경우, 전화주시면 순차적으로 예약을 도와드리겠습니다. CLINIC HOURS.",
+        "full": "아는닥터 이원장이 직접 실험해봤습니다. 대표원장이 직접 쓰는 네이버 블로그 블로그 보러가기 에미뜨 기부: 3가지 ‘선’을 추구합니다 자세히 보기 EMIT Program 무엇이 고민이신가요? 에미뜨 윤곽리프팅 리프팅레이저·실리프팅 에미뜨 볼륨 안티에이징 필러·자가콜라겐 브라이트닝 기미·잡티·홍조 스킨트러블 모공·여드름·흉터 제모 남성제모·여성제모 바디밸런스 솔루션 다이어트·나잇살관리·요요예방 EMIT Equipment 다양한 피부고민을 위한, 다양한 장비 30가지 에미뜨 윤곽리프팅 #처진얼굴 #꺼진얼굴 #땅콩형얼굴 #잔주름개선 #피부탄력개선 에미뜨 볼륨 안티에이징 #탄력저하 #처짐 #꺼짐 #윤곽개선 #볼륨 브라이트닝 #기미 #잡티 #주근깨 #흑자 #미백 #홍조 스킨트러블 #여드름흉터개선 #모공축소 #염증성여드름 #진정 #블랙헤드제거 제모 #남성제모 #여성제모 바디밸런스 솔루션 #체중감소 #바디라인개선 #요요방지 Contact Us 에미뜨의원은 예약제로 운영됩니다. 원하시는 날짜에 온라...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "무료",
+        "ruleId": "MED-PR-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 68,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 30,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://emitclinic.com/wp-content/themes/emit/images/pic/pic_why_slide01.jpg",
+        "preview": "Preview\n\nSTEP 1\n\nSTEP 2\n\nSTEP 3\n\nSTEP 4\n\nSTEP 5\n\nEXIT\n\nFront Side\n\nLeft Side\n\nRight Side\n\nCAPTURE\n\nN...",
+        "wordCount": 23
+      },
+      {
+        "imageUrl": "http://emitclinic.com/wp-content/themes/emit/images/pic/pic_why_slide02.jpg",
+        "preview": "EMT clinic 대표원장\n전문의 이 창 홍",
+        "wordCount": 7
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 10,
+    "totalCost": 0.067158,
+    "geminiCalls": 0,
+    "claudeCalls": 10,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 24,
+    "successCalls": 24,
+    "failedCalls": 0,
+    "totalImagesProcessed": 24,
+    "totalTextExtracted": 1035
+  }
+}

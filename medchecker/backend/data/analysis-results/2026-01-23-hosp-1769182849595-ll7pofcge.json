@@ -1,0 +1,268 @@
+{
+  "hospitalId": "hosp-1769182849595-ll7pofcge",
+  "hospitalName": "잠실미의원",
+  "url": "http://mecl8.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T16:55:48.010Z",
+  "processingTimeMs": 15591,
+  "metadata": {
+    "title": "미클리닉 잠실새내점",
+    "description": "필러,보톡스,리프팅,제모,피부관리,비만관리,아름다워지는 가장 빠른길 미클리닉,미클리닉신천점,미클리닉잠실점, 잠실피부과, 잠실 미의원"
+  },
+  "targetUrl": "http://mecl8.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_pattern"
+      },
+      {
+        "ruleId": "MED-EX-003",
+        "matchedText": "\n인",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 1,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "인스타",
+        "ruleId": "MED-SNS-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "00",
+        "ruleId": "MED-PR-001",
+        "reason": "info_only",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 30,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 26,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://mecl8.com:443/data/file/main_banner/thumb-2949799048_BG5gsbPx_sub_roll01_274x368.png",
+        "preview": "정품 아포지 제모\n인증+거타링이 5회\n\n4 *vat별도 만원\n\n정품 아포지 장비로만\n시술하는 믿을 수 있는\n미클리닉\n\neApogee",
+        "wordCount": 17
+      },
+      {
+        "imageUrl": "https://mecl8.com:443/data/file/main_banner/thumb-2949799048_TbajsDhX_sub_roll02_274x368.png",
+        "preview": "특별체험이벤트\n\n레이저토닝\n재생관리 택1\n\n₩9900",
+        "wordCount": 5
+      },
+      {
+        "imageUrl": "https://mecl8.com:443/data/file/main_banner/thumb-2949799048_FIks9qfz_sub_roll03_274x368.png",
+        "preview": "전지점\n특가 이벤트\n진행중",
+        "wordCount": 4
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 2,
+    "totalCost": 0.014769000000000001,
+    "geminiCalls": 0,
+    "claudeCalls": 2,
+    "geminiFallbacks": 2,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 2
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 15,
+    "successCalls": 11,
+    "failedCalls": 4,
+    "totalImagesProcessed": 11,
+    "totalTextExtracted": 1224
+  }
+}

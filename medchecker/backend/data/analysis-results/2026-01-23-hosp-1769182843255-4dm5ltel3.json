@@ -1,0 +1,1087 @@
+{
+  "hospitalId": "hosp-1769182843255-4dm5ltel3",
+  "hospitalName": "압구정 BLS의원",
+  "url": "http://blsclinic3.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T15:48:55.438Z",
+  "processingTimeMs": 15340,
+  "metadata": {
+    "title": "BLS클리닉 압구정점 | 압구정피부과·압구정역피부과 |",
+    "description": "압구정피부과, 압구정 BLS의원은 프리미엄 리프팅을 선도하는 클리닉으로, 1:1 개인 맞춤 커스텀 디자인을 통해 섬세하고 품격 있는 리프팅을 완성합니다. 압구정역 4번 출구 위치, 울쎄라, 울쎄라피프라인, 쿨소닉, 써마지FLX, 티타늄, 볼뉴머, 올리지오, 슈링크유니버스, 실리프팅, 턱톡신, 주름톡신, 바디톡신, 다한증톡신, 조각주사, 필러, 라비앙레이저, 루카스레이저, 홍조레이저, 레이저토닝, 리쥬란HB, 리쥬란힐러, 스킨부스터, 스킨바이브, 리투오, 히라셀, 쥬베룩, 리쥬톡신, 골드PTT, 물광주사, 토닝, 제모, 재생관리, 여드름관리, 미백관리, 울핏, 체형관리, 쁘띠, 에스테틱"
+  },
+  "targetUrl": "http://blsclinic3.com/",
+  "targetType": "website",
+  "totalScore": 0,
+  "riskLevel": "high",
+  "violations": [
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장",
+      "category": "medical_ad",
+      "subcategory": "effect_guarantee",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "즉각적 효과 보장 표현을 삭제하고, \"개인차가 있을 수 있습니다\"를 추가하세요.",
+        "example": {
+          "bad": "단 1회 시술로 즉시 효과!",
+          "good": "시술 후 개선 효과가 나타나며, 개인에 따라 차이가 있을 수 있습니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "한번에",
+      "contextWindow": " BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에! 900,000원 부터 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 1,300,000원 부터 울쎄라피 프라임 약 10년만의 업",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+            "text": "한번에",
+            "position": 1295
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+            "text": "한번에",
+            "position": 1600
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+            "text": "한번에",
+            "position": 2071
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+            "text": "한번에",
+            "position": 3421
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "아이코닉 프리미엄 리프팅 7대 천왕 프리미엄 고주파 리프팅 아이코닉 써마지 콜라겐 활성화 리프팅 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다!",
+        "matched": "한번에",
+        "matchedSentence": "300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에!",
+        "matchedHighlight": {
+          "text": "한번에",
+          "startInSentence": 34
+        },
+        "after": "900,000원 부터 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 1,300,000원 부터 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 600,000원 부터 쿼드세이 하이브리드 열 전달 시스템으로 피부 진피층에 열에너지를 안정적으로 전달하는 차세대 고주파 레이저 690,000원 부터 엘라비에 리투오 리얼 휴먼 스킨 성분으로 피부 본연의 힘을 되살리는 프리미엄 스킨 부스터 600,000원 부터 쿨소닉 초음파에 쿨링을 더하다!",
+        "full": "아이코닉 프리미엄 리프팅 7대 천왕 프리미엄 고주파 리프팅 아이코닉 써마지 콜라겐 활성화 리프팅 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에! 900,000원 부터 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 1,300,000원 부터 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 600,000원 부터 쿼드세이 하이브리드 열 전달 시스템으로 피부 진피층에 열에너지를 안정적으로 전달하는 차세대 고주파 레이저 690,000원 부터 엘라비에 리투오 리얼 휴먼 스킨 성분으로 피부 본연의 힘을 되살리는 프리미엄 스킨 부스터...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고",
+      "category": "medical_ad",
+      "subcategory": "specialty",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "성형수술 결과를 과장하지 마시고, 개인차가 있음을 명시하세요.",
+        "example": {
+          "bad": "연예인 느낌 100% 보장! 티 안남!",
+          "good": "자연스러운 결과를 위해 최선을 다합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "동안",
+      "contextWindow": " 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝,",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "동안",
+            "text": "동안",
+            "position": 1183
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "#03 오직 첫방문의 고객분들께만 드리는 혜택! 490,000 원 부터 Detail 엘라비에 리투오 #04 리얼 휴먼 스킨 성분으로 피부 본연의 힘을 되살리는 프리미엄 스킨 부스터 600,000 원 부터 SIGNATURE PROGRAM 리프팅의 명가, BLS클리닉 압구정만의 아이코닉 리프팅을 소개합니다.",
+        "matched": "동안",
+        "matchedSentence": "아이코닉 프리미엄 리프팅 7대 천왕 프리미엄 고주파 리프팅 아이코닉 써마지 콜라겐 활성화 리프팅 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다.",
+        "matchedHighlight": {
+          "text": "동안",
+          "startInSentence": 153
+        },
+        "after": "쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에!",
+        "full": "#03 오직 첫방문의 고객분들께만 드리는 혜택! 490,000 원 부터 Detail 엘라비에 리투오 #04 리얼 휴먼 스킨 성분으로 피부 본연의 힘을 되살리는 프리미엄 스킨 부스터 600,000 원 부터 SIGNATURE PROGRAM 리프팅의 명가, BLS클리닉 압구정만의 아이코닉 리프팅을 소개합니다. 아이코닉 프리미엄 리프팅 7대 천왕 프리미엄 고주파 리프팅 아이코닉 써마지 콜라겐 활성화 리프팅 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에!",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "warning",
+      "riskScore": 55,
+      "legal": {
+        "basis": "표시광고법 제3조 (기만적 광고)",
+        "penalty": "과태료 및 시정명령"
+      },
+      "recommendation": {
+        "action": "가격 표기 시 조건을 명확히 밝히세요.",
+        "example": {
+          "bad": "눈 성형 50만원부터~",
+          "good": "눈 성형 비용은 시술 범위에 따라 다르며, 상담 후 정확한 견적을 안내드립니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "000 원 부터",
+      "contextWindow": "클리닉 압구정점의 이벤트 시술을 소개합니다. Detail [1-2월] 압구정점의 설레는 선물 #01 BLS 압구정점만의 프리미엄 시술로 2026년 새해에도 더 예뻐지세요! 450,000 원 부터 Detail 쿨소닉 #02 초음파에 쿨링을 더하다! 300,000 원 부터 Detail 티타늄 첫방문 49만원 EVENT! #03 오직 첫방문의 고객분들께만 드리는",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.25,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.95,
+      "decision": "violation",
+      "confidence": 0.95,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 781
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 823
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 890
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 964
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1265
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1304
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1349
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1402
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1473
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1535
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1565
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1609
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1659
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1717
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1793
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1860
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 1981
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 2037
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원 부터",
+            "position": 2080
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "이벤트"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "압구정비엘에스의원 BEST 쿨소닉 티타늄 써마지 FLX 울쎄라피 프라임 쿼드세이 엘라비에 리투오 시술안내 여드름 쿼드세이 비너스 비바 골드 PTT 아큐토닝 BLS 필링 (알라딘필링) 아크네필링 플라워테크닉 흉터치료(모자이크 ECO2+ACT2) 색소 라비앙레이저 루카스 레이저 머큐리(홍조,실핏줄) 레이저 토닝 플라워점빼기 쁘띠 턱 톡신 주름톡신 필러 바디톡신 다한증 톡신 조각주사 리프팅 울쎄라피 프라임 쿨소닉 써마지 FLX 티타늄 볼뉴머 올리지오 슈링크 유니버스 실리프팅 스킨부스터 엘라비에 리투오 레티젠 리쥬란 힐러 리쥬란 HB plus 스킨바이브 히라셀 쥬베룩 리쥬톡신 체형관리 울핏 걸그룹 주사 바디 조각주사 에스테틱 제네오X 항산화젤필 라라필 수소토닝 우주인토닝 아쿠아필 재생관리 여드름관리 미백관리 기타 여성제모 남성제모 다한증 주사 수액 이벤트 베스트 이벤트 리프팅 이벤트 쁘띠 이벤트 피부 이벤트 바디 이벤트 제모 이벤트 전후사진 BLS영상 BLS뷰티그룹 BLS클리닉 소개 의료진 소개 BLS활동내역 스타와 BLS 공지사항 지점소개/오시는길 칭찬/불만 접수 MY BLS 예약 확인/변경/취소 최근 본 시술 GLOBAL BLS 브랜드 BBG LAB BLS global Korean English Japanese Chinese Vietnamese Thai Indonesian EVENT PROGRAM BLS클리닉 압구정점의 이벤트 시술을 소개합니다. Detail [1-2월] 압구정점의 설레는 선물 #01 BLS 압구정점만의 프리미엄 시술로 2026년 새해에도 더 예뻐지세요!",
+        "matched": "000 원 부터",
+        "matchedSentence": "450,000 원 부터 Detail 쿨소닉 #02 초음파에 쿨링을 더하다!",
+        "matchedHighlight": {
+          "text": "000 원 부터",
+          "startInSentence": 4
+        },
+        "after": "300,000 원 부터 Detail 티타늄 첫방문 49만원 EVENT! #03 오직 첫방문의 고객분들께만 드리는 혜택!",
+        "full": "압구정비엘에스의원 BEST 쿨소닉 티타늄 써마지 FLX 울쎄라피 프라임 쿼드세이 엘라비에 리투오 시술안내 여드름 쿼드세이 비너스 비바 골드 PTT 아큐토닝 BLS 필링 (알라딘필링) 아크네필링 플라워테크닉 흉터치료(모자이크 ECO2+ACT2) 색소 라비앙레이저 루카스 레이저 머큐리(홍조,실핏줄) 레이저 토닝 플라워점빼기 쁘띠 턱 톡신 주름톡신 필러 바디톡신 다한증 톡신 조각주사 리프팅 울쎄라피 프라임 쿨소닉 써마지 FLX 티타늄 볼뉴머 올리지오 슈링크 유니버스 실리프팅 스킨부스터 엘라비에 리투오 레티젠 리쥬란 힐러 리쥬란 HB plus 스킨바이브 히라셀 쥬베룩 리쥬톡신 체형관리 울핏 걸그룹 주사 바디 조각주사 에스테틱 제네오X 항산화젤필 라라필 수소토닝 우주인토닝 아쿠아필 재생관리 여드름관리 미백관리 기타 여성제모 남성제모 다한증 주사 수액 이벤트 베스트 이벤트 리프팅 이벤트 쁘띠 이벤트 피부 이벤트 바디 이벤트 제모 이벤트 전후사진 BLS영상 BLS뷰티그룹 BLS클리닉 소개 의료진...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 44,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 41,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20240612174921_1.jpg",
+        "preview": "BLS Clinic\n\n49%\n할인\n\n화한 언헤인 리프팅\n\n티타늄 리프팅\n저방문 이벤트\n\n중요한 날을 위한, 즉각적인 효과\n3가지 파장으로 3가�� 효과를 한번에!!\n\nSoprano...",
+        "wordCount": 24
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20251229161536_1.jpg",
+        "preview": "1.1 - 2. 28\n\n설레는\n선물\n\nHAPPY NEW YEAR",
+        "wordCount": 9
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20260109172515_1.jpg",
+        "preview": "BLS Clinic\n\nBLS클리닉 압구정점\n\n클소닉\n\n10\n\n4\n\nASTERASYS",
+        "wordCount": 8
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 0,
+    "totalCost": 0,
+    "geminiCalls": 0,
+    "claudeCalls": 0
+  },
+  "ocrApiStats": {
+    "totalCalls": 12,
+    "successCalls": 12,
+    "failedCalls": 0,
+    "totalImagesProcessed": 12,
+    "totalTextExtracted": 749
+  },
+  "analysis": {
+    "success": true,
+    "url": "http://blsclinic3.com/",
+    "analyzedAt": "2026-01-23T18:11:02.127Z",
+    "processingTimeMs": 9,
+    "metadata": {
+      "title": "BLS클리닉 압구정점 | 압구정피부과·압구정역피부과 |",
+      "description": "압구정피부과, 압구정 BLS의원은 프리미엄 리프팅을 선도하는 클리닉으로, 1:1 개인 맞춤 커스텀 디자인을 통해 섬세하고 품격 있는 리프팅을 완성합니다. 압구정역 4번 출구 위치, 울쎄라, 울쎄라피프라인, 쿨소닉, 써마지FLX, 티타늄, 볼뉴머, 올리지오, 슈링크유니버스, 실리프팅, 턱톡신, 주름톡신, 바디톡신, 다한증톡신, 조각주사, 필러, 라비앙레이저, 루카스레이저, 홍조레이저, 레이저토닝, 리쥬란HB, 리쥬란힐러, 스킨부스터, 스킨바이브, 리투오, 히라셀, 쥬베룩, 리쥬톡신, 골드PTT, 물광주사, 토닝, 제모, 재생관리, 여드름관리, 미백관리, 울핏, 체형관리, 쁘띠, 에스테틱"
+    },
+    "targetUrl": "http://blsclinic3.com/",
+    "targetType": "website",
+    "totalScore": 65,
+    "riskLevel": "medium",
+    "violations": [
+      {
+        "ruleId": "MED-EFF-007",
+        "ruleName": "즉각적/빠른 효과 보장",
+        "category": "medical_ad",
+        "subcategory": "effect_guarantee",
+        "severity": "warning",
+        "riskScore": 65,
+        "legal": {
+          "basis": "의료법 제56조 제2항 제3호",
+          "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+        },
+        "recommendation": {
+          "action": "즉각적 효과 보장 표현을 삭제하고, \"개인차가 있을 수 있습니다\"를 추가하세요.",
+          "example": {
+            "bad": "단 1회 시술로 즉시 효과!",
+            "good": "시술 후 개선 효과가 나타나며, 개인에 따라 차이가 있을 수 있습니다."
+          }
+        },
+        "matched": true,
+        "matchedText": "한번에",
+        "contextWindow": " BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에! 900,000원 부터 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 1,300,000원 부터 울쎄라피 프라임 약 10년만의 업",
+        "contextScores": {
+          "triggerScore": 0.5,
+          "aggravatingScore": 0,
+          "mitigatingScore": 0,
+          "requiredScore": 0.2
+        },
+        "finalScore": 0.7,
+        "decision": "violation",
+        "confidence": 0.7,
+        "evidence": {
+          "triggerMatches": [
+            {
+              "type": "pattern",
+              "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+              "text": "한번에",
+              "position": 1295
+            },
+            {
+              "type": "pattern",
+              "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+              "text": "한번에",
+              "position": 1600
+            },
+            {
+              "type": "pattern",
+              "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+              "text": "한번에",
+              "position": 2071
+            },
+            {
+              "type": "pattern",
+              "pattern": "/(하루|1일|단\\s*1회|한\\s*번)\\s*(만에|로|에)/gi",
+              "text": "한번에",
+              "position": 3422
+            }
+          ],
+          "aggravatingMatches": [],
+          "mitigatingMatches": []
+        },
+        "aiVerification": {
+          "performed": false
+        },
+        "extendedContext": {
+          "before": "아이코닉 프리미엄 리프팅 7대 천왕 프리미엄 고주파 리프팅 아이코닉 써마지 콜라겐 활성화 리프팅 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다!",
+          "matched": "한번에",
+          "matchedSentence": "300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에!",
+          "matchedHighlight": {
+            "text": "한번에",
+            "startInSentence": 34
+          },
+          "after": "900,000원 부터 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 1,300,000원 부터 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 600,000원 부터 쿼드세이 하이브리드 열 전달 시스템으로 피부 진피층에 열에너지를 안정적으로 전달하는 차세대 고주파 레이저 690,000원 부터 엘라비에 리투오 리얼 휴먼 스킨 성분으로 피부 본연의 힘을 되살리는 프리미엄 스킨 부스터 600,000원 부터 쿨소닉 초음파에 쿨링을 더하다!",
+          "full": "아이코닉 프리미엄 리프팅 7대 천왕 프리미엄 고주파 리프팅 아이코닉 써마지 콜라겐 활성화 리프팅 아이코닉 올리지오 저자극 고주파 리프팅 아이코닉 볼뉴머 탄력 초음파 리프팅 아이코닉울쎄라피 프라임 탄력 및 주름개선 리프팅 아이코닉 티타늄 새로운 초음파 리프팅 아이코닉 쿨소닉 동안 페이스 리프팅 아이코닉 슈링크 BEST PROGRAM BLS클리닉 압구정점의 인기 시술을 소개합니다. 쿨소닉 초음파에 쿨링을 더하다! 300,000원 부터 티타늄 브라이트닝, 타이트닝, 슬림까지 한번에! 900,000원 부터 써마지 FLX 고주파 에너지로 탄력 UP [정품팁사용] 1,300,000원 부터 울쎄라피 프라임 약 10년만의 업그레이드, 더 깊은 피부층까지 정밀하게! 600,000원 부터 쿼드세이 하이브리드 열 전달 시스템으로 피부 진피층에 열에너지를 안정적으로 전달하는 차세대 고주파 레이저 690,000원 부터 엘라비에 리투오 리얼 휴먼 스킨 성분으로 피부 본연의 힘을 되살리는 프리미엄 스킨 부스터...",
+          "sentenceContext": true,
+          "sentenceCount": {
+            "before": 2,
+            "after": 2,
+            "total": 5
+          }
+        },
+        "type": "violation"
+      },
+      {
+        "ruleId": "MED-PR-002",
+        "ruleName": "미끼 가격 광고",
+        "category": "medical_ad",
+        "subcategory": "price_discount",
+        "severity": "warning",
+        "riskScore": 55,
+        "legal": {
+          "basis": "표시광고법 제3조 (기만적 광고)",
+          "penalty": "과태료 및 시정명령"
+        },
+        "recommendation": {
+          "action": "가격 표기 시 조건을 명확히 밝히세요.",
+          "example": {
+            "bad": "눈 성형 50만원부터~",
+            "good": "눈 성형 비용은 시술 범위에 따라 다르며, 상담 후 정확한 견적을 안내드립니다."
+          }
+        },
+        "matched": true,
+        "matchedText": "000 원 부터",
+        "contextWindow": "클리닉 압구정점의 이벤트 시술을 소개합니다. Detail [1-2월] 압구정점의 설레는 선물 #01 BLS 압구정점만의 프리미엄 시술로 2026년 새해에도 더 예뻐지세요! 450,000 원 부터 Detail 쿨소닉 #02 초음파에 쿨링을 더하다! 300,000 원 부터 Detail 티타늄 첫방문 49만원 EVENT! #03 오직 첫방문의 고객분들께만 드리는",
+        "contextScores": {
+          "triggerScore": 0.5,
+          "aggravatingScore": 0.25,
+          "mitigatingScore": 0,
+          "requiredScore": 0.2
+        },
+        "finalScore": 0.95,
+        "decision": "violation",
+        "confidence": 0.95,
+        "evidence": {
+          "triggerMatches": [
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000 원 부터",
+              "position": 781
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000 원 부터",
+              "position": 823
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000 원 부터",
+              "position": 890
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000 원 부터",
+              "position": 964
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1265
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1304
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1349
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1402
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1473
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1535
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1565
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1609
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1659
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1717
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1793
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1860
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 1981
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 2037
+            },
+            {
+              "type": "pattern",
+              "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+              "text": "000원 부터",
+              "position": 2080
+            }
+          ],
+          "aggravatingMatches": [
+            {
+              "type": "keyword",
+              "text": "이벤트"
+            }
+          ],
+          "mitigatingMatches": []
+        },
+        "aiVerification": {
+          "performed": false
+        },
+        "extendedContext": {
+          "before": "압구정비엘에스의원 BEST 쿨소닉 티타늄 써마지 FLX 울쎄라피 프라임 쿼드세이 엘라비에 리투오 시술안내 여드름 쿼드세이 비너스 비바 골드 PTT 아큐토닝 BLS 필링 (알라딘필링) 아크네필링 플라워테크닉 흉터치료(모자이크 ECO2+ACT2) 색소 라비앙레이저 루카스 레이저 머큐리(홍조,실핏줄) 레이저 토닝 플라워점빼기 쁘띠 턱 톡신 주름톡신 필러 바디톡신 다한증 톡신 조각주사 리프팅 울쎄라피 프라임 쿨소닉 써마지 FLX 티타늄 볼뉴머 올리지오 슈링크 유니버스 실리프팅 스킨부스터 엘라비에 리투오 레티젠 리쥬란 힐러 리쥬란 HB plus 스킨바이브 히라셀 쥬베룩 리쥬톡신 체형관리 울핏 걸그룹 주사 바디 조각주사 에스테틱 제네오X 항산화젤필 라라필 수소토닝 우주인토닝 아쿠아필 재생관리 여드름관리 미백관리 기타 여성제모 남성제모 다한증 주사 수액 이벤트 베스트 이벤트 리프팅 이벤트 쁘띠 이벤트 피부 이벤트 바디 이벤트 제모 이벤트 전후사진 BLS영상 BLS뷰티그룹 BLS클리닉 소개 의료진 소개 BLS활동내역 스타와 BLS 공지사항 지점소개/오시는길 칭찬/불만 접수 MY BLS 예약 확인/변경/취소 최근 본 시술 GLOBAL BLS 브랜드 BBG LAB BLS global Korean English Japanese Chinese Vietnamese Thai Indonesian EVENT PROGRAM BLS클리닉 압구정점의 이벤트 시술을 소개합니다. Detail [1-2월] 압구정점의 설레는 선물 #01 BLS 압구정점만의 프리미엄 시술로 2026년 새해에도 더 예뻐지세요!",
+          "matched": "000 원 부터",
+          "matchedSentence": "450,000 원 부터 Detail 쿨소닉 #02 초음파에 쿨링을 더하다!",
+          "matchedHighlight": {
+            "text": "000 원 부터",
+            "startInSentence": 4
+          },
+          "after": "300,000 원 부터 Detail 티타늄 첫방문 49만원 EVENT! #03 오직 첫방문의 고객분들께만 드리는 혜택!",
+          "full": "압구정비엘에스의원 BEST 쿨소닉 티타늄 써마지 FLX 울쎄라피 프라임 쿼드세이 엘라비에 리투오 시술안내 여드름 쿼드세이 비너스 비바 골드 PTT 아큐토닝 BLS 필링 (알라딘필링) 아크네필링 플라워테크닉 흉터치료(모자이크 ECO2+ACT2) 색소 라비앙레이저 루카스 레이저 머큐리(홍조,실핏줄) 레이저 토닝 플라워점빼기 쁘띠 턱 톡신 주름톡신 필러 바디톡신 다한증 톡신 조각주사 리프팅 울쎄라피 프라임 쿨소닉 써마지 FLX 티타늄 볼뉴머 올리지오 슈링크 유니버스 실리프팅 스킨부스터 엘라비에 리투오 레티젠 리쥬란 힐러 리쥬란 HB plus 스킨바이브 히라셀 쥬베룩 리쥬톡신 체형관리 울핏 걸그룹 주사 바디 조각주사 에스테틱 제네오X 항산화젤필 라라필 수소토닝 우주인토닝 아쿠아필 재생관리 여드름관리 미백관리 기타 여성제모 남성제모 다한증 주사 수액 이벤트 베스트 이벤트 리프팅 이벤트 쁘띠 이벤트 피부 이벤트 바디 이벤트 제모 이벤트 전후사진 BLS영상 BLS뷰티그룹 BLS클리닉 소개 의료진...",
+          "sentenceContext": true,
+          "sentenceCount": {
+            "before": 2,
+            "after": 2,
+            "total": 5
+          }
+        },
+        "type": "violation"
+      }
+    ],
+    "warnings": [],
+    "passed": [
+      {
+        "ruleId": "MED-UN-001",
+        "ruleName": "미승인/불법 시술 광고"
+      },
+      {
+        "ruleId": "MED-TM-002",
+        "ruleName": "가짜/조작 후기"
+      },
+      {
+        "ruleId": "MED-UN-002",
+        "ruleName": "오프라벨 사용 광고"
+      },
+      {
+        "ruleId": "MED-UN-003",
+        "ruleName": "해외 직구 의약품/기기 광고"
+      },
+      {
+        "ruleId": "MED-EFF-001",
+        "ruleName": "치료효과 100% 보장 표현"
+      },
+      {
+        "ruleId": "MED-EFF-002",
+        "ruleName": "완치/완벽 보장 표현"
+      },
+      {
+        "ruleId": "MED-BA-001",
+        "ruleName": "치료 전후 사진 게시"
+      },
+      {
+        "ruleId": "MED-EX-001",
+        "ruleName": "객관적 근거 없는 최상급 표현"
+      },
+      {
+        "ruleId": "MED-CL-001",
+        "ruleName": "유명인/연예인 추천 광고"
+      },
+      {
+        "ruleId": "MED-EFF-004",
+        "ruleName": "부작용 없음 보장"
+      },
+      {
+        "ruleId": "MED-EFF-006",
+        "ruleName": "재발 없음 보장"
+      },
+      {
+        "ruleId": "MED-BA-002",
+        "ruleName": "전후 동영상 게시"
+      },
+      {
+        "ruleId": "MED-BA-003",
+        "ruleName": "타인 전후사진 무단 사용"
+      },
+      {
+        "ruleId": "MED-EX-003",
+        "ruleName": "가짜 수상/인증 표시"
+      },
+      {
+        "ruleId": "MED-CL-002",
+        "ruleName": "의사/전문가 추천 가장"
+      },
+      {
+        "ruleId": "MED-UN-004",
+        "ruleName": "민간요법/대체의학 광고"
+      },
+      {
+        "ruleId": "MED-EFF-003",
+        "ruleName": "성공률/치료율 수치 표현"
+      },
+      {
+        "ruleId": "MED-EX-002",
+        "ruleName": "신기술/혁신 과장 표현"
+      },
+      {
+        "ruleId": "MED-TM-001",
+        "ruleName": "치료 효과 체험 후기"
+      },
+      {
+        "ruleId": "MED-CP-001",
+        "ruleName": "타 의료기관 비교/비방 광고"
+      },
+      {
+        "ruleId": "MED-EFF-005",
+        "ruleName": "무통증 보장"
+      },
+      {
+        "ruleId": "MED-TM-003",
+        "ruleName": "블로그/카페 체험단 후기"
+      },
+      {
+        "ruleId": "MED-CP-002",
+        "ruleName": "가격 비교 광고"
+      },
+      {
+        "ruleId": "MED-PR-003",
+        "ruleName": "긴급/마감 임박 유도"
+      },
+      {
+        "ruleId": "MED-SNS-001",
+        "ruleName": "SNS 의료광고 미심의"
+      },
+      {
+        "ruleId": "MED-SNS-002",
+        "ruleName": "인플루언서 협찬 미표기"
+      },
+      {
+        "ruleId": "MED-BS-001",
+        "ruleName": "의료인 아닌 자의 의료광고"
+      },
+      {
+        "ruleId": "MED-BS-002",
+        "ruleName": "수술 장면 공개"
+      },
+      {
+        "ruleId": "MED-BS-003",
+        "ruleName": "공포/불안 조장"
+      },
+      {
+        "ruleId": "MED-SP-002",
+        "ruleName": "다이어트 시술 과장"
+      },
+      {
+        "ruleId": "MED-SP-003",
+        "ruleName": "탈모 치료 과장"
+      },
+      {
+        "ruleId": "MED-PR-001",
+        "ruleName": "과도한 할인/가격 광고"
+      },
+      {
+        "ruleId": "MED-QU-001",
+        "ruleName": "의료인 자격/경력 과장"
+      },
+      {
+        "ruleId": "MED-EX-004",
+        "ruleName": "시설/장비 과장"
+      },
+      {
+        "ruleId": "MED-EX-005",
+        "ruleName": "경험/실적 과장"
+      },
+      {
+        "ruleId": "MED-CL-003",
+        "ruleName": "방송/언론 출연 과장"
+      },
+      {
+        "ruleId": "MED-CP-003",
+        "ruleName": "암묵적 비교 광고"
+      },
+      {
+        "ruleId": "MED-QU-003",
+        "ruleName": "가짜 자격증/인증 표시"
+      },
+      {
+        "ruleId": "MED-AD-001",
+        "ruleName": "광고 표기 누락 (협찬/체험단)"
+      },
+      {
+        "ruleId": "MED-EX-006",
+        "ruleName": "진료시간 과장"
+      },
+      {
+        "ruleId": "MED-PR-004",
+        "ruleName": "패키지/번들 과장"
+      },
+      {
+        "ruleId": "MED-QU-002",
+        "ruleName": "학력/경력 허위 표기"
+      },
+      {
+        "ruleId": "MED-INFO-001",
+        "ruleName": "일반적 홍보성 최상급 표현"
+      }
+    ],
+    "aiCalls": 0,
+    "aiCost": 0,
+    "filterStats": {
+      "violationsFiltered": 0,
+      "warningsFiltered": 0,
+      "filterReasons": []
+    },
+    "errorCollectorStats": {
+      "autoFiltered": 1,
+      "aiVerified": 0,
+      "falsePositivesFound": 1,
+      "falsePositives": [
+        {
+          "matchedText": "동안",
+          "ruleId": "MED-SP-001",
+          "reason": "global_exclusion",
+          "source": "pattern_db"
+        }
+      ]
+    },
+    "ocrStats": {
+      "totalImages": 44,
+      "processedImages": 5,
+      "successfulOcr": 5,
+      "totalWords": 70,
+      "extractedTexts": [
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20240612174921_1.jpg",
+          "preview": "BLS Clinic\n\n49%\n할인\n\n화한 언데미건 리프팅\n\n티타늄 리프팅\n저방문 이벤트\n\n중요한 날을 위한, 즉각적인 효과\n3가지 파장으로 3��지 효과를 한번에!!\n\nSopran...",
+          "wordCount": 24
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20251229161536_1.jpg",
+          "preview": "1.1 - 2. 28\n\n설레는\n선물\n\nHAPPY NEW YEAR",
+          "wordCount": 9
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20260109172515_1.jpg",
+          "preview": "BLS Clinic\n\nBLS클리닉 압구정점\n\n클소닉\n\n10\n\n4\n\nASTERASYS",
+          "wordCount": 8
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20251020150821_1.jpg",
+          "preview": "BLS Clinic\n\nBLS 암구정점\n신구단점\n\n엘라비에\n리투오\n\nREAL HUMAN SKIN,\nHIGH-END SKIN BOOSTER\n\nElravie Re2O",
+          "wordCount": 15
+        },
+        {
+          "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/C00001/eventImg/20230411115009_1.jpg",
+          "preview": "BLS Clinic\n\n티타늄\n리프팅\n\n피부 탄력 및 잔주름 개선 강력한 리프팅 효과!\n\nSoprano\nTITANIUM",
+          "wordCount": 14
+        }
+      ]
+    },
+    "aiStats": {
+      "totalCalls": 1,
+      "totalCost": 0.00801,
+      "geminiCalls": 0,
+      "claudeCalls": 1,
+      "geminiFallbacks": 0,
+      "geminiStatus": {
+        "available": true,
+        "disabled": false,
+        "disabledUntil": null,
+        "consecutiveFailures": 0
+      }
+    },
+    "ocrApiStats": {
+      "totalCalls": 5,
+      "successCalls": 5,
+      "failedCalls": 0,
+      "totalImagesProcessed": 5,
+      "totalTextExtracted": 354
+    }
+  },
+  "reanalyzedAt": "2026-01-23T18:11:11.052Z",
+  "previousViolations": 3
+}

@@ -1,0 +1,331 @@
+{
+  "hospitalId": "hosp-1769183928841-syv98376q",
+  "hospitalName": "로하스의원",
+  "url": "http://www.365lohas.co.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:15:42.143Z",
+  "processingTimeMs": 19430,
+  "metadata": {
+    "title": "영종도 하늘도시 로하스의원영종하늘도시 로하스의원",
+    "description": "영종도 하늘도시에 위치한 로하스의원입니다."
+  },
+  "targetUrl": "http://www.365lohas.co.kr",
+  "targetType": "website",
+  "totalScore": 50,
+  "riskLevel": "medium",
+  "violations": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고",
+      "category": "medical_ad",
+      "subcategory": "unapproved",
+      "severity": "critical",
+      "riskScore": 95,
+      "legal": {
+        "basis": "의료법 제27조, 약사법 제68조",
+        "article": "무면허 의료행위 및 미승인 의료기기 사용 금지",
+        "penalty": "5년 이하의 징역 또는 5천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "미승인 시술 광고를 즉시 삭제하세요. 식약처/FDA 승인 여부를 반드시 확인하세요.",
+        "example": {
+          "bad": "줄기세포 주사로 관절 완치!",
+          "good": "(미승인 시술 광고 불가 - 승인된 치료법만 안내)"
+        }
+      },
+      "matched": true,
+      "matchedText": "줄기세포주사",
+      "contextWindow": "종 독감/감기 정형외과 통증클리닉 각종진단서 외상치료센터 상처봉합술 사마귀 & 티눈 내향성 발톱 피지낭종 피부클리닉 기미,색소치료 아이너스 여드름치료 보톡스,필러 아쿠아필 프락셀,MTS V라인 윤곽주사 더블로리프팅 줄기세포주사 물광주사 피부이벤트 비만클리닉 레드주사 SHPL지방용해술 S슬림주사 카복시테라피 메조테라피 고주파지방분해 비만이벤트 소아청소년과 소아예방접종 비염,알레르기 아토피 커뮤니티 공지사항 대표적인 사례 이벤트안",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.8,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/(줄기|면역|NK)\\s*세포\\s*(시술|치료|주사|요법)/gi",
+            "text": "줄기세포주사",
+            "position": 218
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": true,
+        "provider": "claude",
+        "isViolation": true,
+        "confidence": 0.8,
+        "reasoning": "줄기세포주사가 의료기관 웹사이트의 피부클리닉 메뉴에 치료 항목으로 명시되어 있어 광고성 표현으로 판단됩니다. 현재 국내에서 줄기세포를 이용한 미용 시술은 식약처 승인을 받지 않은 미승인 시술에 해당하며, 이를 치료 메뉴로 제시하는 것은 의료광고 위반 소지가 있습니다.",
+        "mitigatingFactorsFound": [],
+        "aggravatingFactorsFound": [
+          "식약처 미승인 줄기세포 시술을 치료 메뉴로 광고",
+          "면책 표현이나 주의사항 없이 단순 메뉴 나열",
+          "미용 목적의 줄기세포 시술 광고"
+        ],
+        "cost": 0.008727
+      },
+      "extendedContext": {
+        "before": "팝업레이어 알림 24시간 동안 다시 열람하지 않습니다.",
+        "matched": "줄기세포주사",
+        "matchedSentence": "닫기 로그인 회원가입 즐겨찾기 로하스의원은 인사말 진료시간 및 오시는길 병원둘러보기 내과 만성질환 혈액종합검사 성인예방접종 독감/감기 정형외과 통증클리닉 각종진단서 외상치료센터 상처봉합술 사마귀 & 티눈 내향성 발톱 피지낭종 피부클리닉 기미,색소치료 아이너스 여드름치료 보톡스,필러 아쿠아필 프락셀,MTS V라인 윤곽주사 더블로리프팅 줄기세포주사 물광주사 피부이벤트 비만클리닉 레드주사 SHPL지방용해술 S슬림주사 카복시테라피 메조테라피 고주파지방분해 비만이벤트 소아청소년과 소아예방접종 비염,알레르기 아토피 커뮤니티 공지사항 대표적인 사례 이벤트안내 공지사항 오시는길 진료일정 @로하스의원 풍부한 임상경험의전문의 개개인의 맞춤진료가족같은 병원 맑고깨끗한 피부를위한 선택 비만도 질병입니다비만치료 LOHAS CLINI 로하스의원 로하스의원 주소 ㅣ 인천 중구 하늘달빛로 94 (중산동) 스타타워 5층 대표 ㅣ 최충옥 TEL ㅣ 032-715-6977 사업자등록번호 ㅣ 101-35-71756 COPYRIGHT ⓒ 로하스의원 ALL RIGHT RESERVED.",
+        "matchedHighlight": {
+          "text": "줄기세포주사",
+          "startInSentence": 187
+        },
+        "after": "[이미지 텍스트] 풍부한 임상경험의 전문의가 진료하는병원",
+        "full": "팝업레이어 알림 24시간 동안 다시 열람하지 않습니다. 닫기 로그인 회원가입 즐겨찾기 로하스의원은 인사말 진료시간 및 오시는길 병원둘러보기 내과 만성질환 혈액종합검사 성인예방접종 독감/감기 정형외과 통증클리닉 각종진단서 외상치료센터 상처봉합술 사마귀 & 티눈 내향성 발톱 피지낭종 피부클리닉 기미,색소치료 아이너스 여드름치료 보톡스,필러 아쿠아필 프락셀,MTS V라인 윤곽주사 더블로리프팅 줄기세포주사 물광주사 피부이벤트 비만클리닉 레드주사 SHPL지방용해술 S슬림주사 카복시테라피 메조테라피 고주파지방분해 비만이벤트 소아청소년과 소아예방접종 비염,알레르기 아토피 커뮤니티 공지사항 대표적인 사례 이벤트안내 공지사항 오시는길 진료일정 @로하스의원 풍부한 임상경험의전문의 개개인의 맞춤진료가족같은 병원 맑고깨끗한 피부를위한 선택 비만도 질병입니다비만치료 LOHAS CLINI 로하스의원 로하스의원 주소 ㅣ 인천 중구 하늘달빛로 94 (중산동) 스타타워 5층 대표 ㅣ 최충옥 TEL ㅣ 032-71...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 1,
+          "after": 2,
+          "total": 4
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.008727,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 13,
+    "processedImages": 3,
+    "successfulOcr": 2,
+    "totalWords": 17,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://www.365lohas.co.kr/theme/basic/img/slider02.jpg",
+        "preview": "풍부한 임상경험의 전문의가 진료하는병원\n\n로하스의원\n\n자세히 보기\n\n로하스의원",
+        "wordCount": 8
+      },
+      {
+        "imageUrl": "https://www.365lohas.co.kr/theme/basic/img/slider03.jpg",
+        "preview": "개개인의 맞춤진료로 가족같이 편안하고 신뢰있는 병원\n로하스의원\n\n자세히 보기",
+        "wordCount": 9
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 11,
+    "totalCost": 0.06332099999999999,
+    "geminiCalls": 0,
+    "claudeCalls": 11,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 36,
+    "successCalls": 36,
+    "failedCalls": 0,
+    "totalImagesProcessed": 36,
+    "totalTextExtracted": 2322
+  }
+}

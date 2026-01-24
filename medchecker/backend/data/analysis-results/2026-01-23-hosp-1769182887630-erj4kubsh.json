@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769182887630-erj4kubsh",
+  "hospitalName": "유앤아이의원 명동점",
+  "url": "https://www.mduni114.co.kr/",
+  "success": false,
+  "error": "Analysis timeout after 90s",
+  "isTimeout": true,
+  "analyzedAt": "2026-01-23T17:54:28.027Z",
+  "processingTimeMs": 307775
+}

@@ -1,0 +1,437 @@
+{
+  "hospitalId": "hosp-1769183903660-kzpjca6ya",
+  "hospitalName": "뷰티온피부과의원 양주옥정점",
+  "url": "https://yangju.beautyon.co.kr/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:39:25.676Z",
+  "processingTimeMs": 22148,
+  "metadata": {
+    "title": "뷰티온피부과의원 양주옥정점",
+    "description": "뷰티온피부과의원 양주옥정점, 진료과목: 피부과, 보톡스, 필러, 윤곽주사, 리프팅, 턱끝필러, 다이어트, 제모"
+  },
+  "targetUrl": "https://yangju.beautyon.co.kr/",
+  "targetType": "website",
+  "totalScore": 40,
+  "riskLevel": "high",
+  "violations": [
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의",
+      "category": "medical_ad",
+      "subcategory": "sns_advertising",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "의료법 제57조 (의료광고의 심의)",
+        "penalty": "300만원 이하의 과태료"
+      },
+      "recommendation": {
+        "action": "SNS 의료광고도 반드시 사전 심의를 받아야 합니다.",
+        "example": {
+          "bad": "(심의 없이 SNS에 의료광고 게시)",
+          "good": "[의료광고심의필] 심의번호: 제2023-XXXXXX호"
+        }
+      },
+      "matched": true,
+      "matchedText": "#깔끔하게",
+      "contextWindow": "최대 1개까지 시술 가능 ※VAT 10% 별도 오늘 하루동안 보지 않기 창 닫기 해피아워이벤트 오늘 하루동안 보지 않기 창 닫기 해피아워이벤트 오늘 하루동안 보지 않기 창 닫기 찾으시는 시술이 있나요? 원하는 시술, 궁금한 효과를 자유롭게 검색해보세요. ✨BEST PROMOTION✨ 다양한 혜택들을 뷰티온피부과 양주옥정점에서 경험해보세요. 이벤트 바로가기 #깔끔하게 #자신있게 #여름준비 25년 제모이벤트 두꺼운 털부터 가는 털까지 확실하게! 이벤트 바로가기 #스킨케어 #데일리관리 #피로제로 스킨케어 이벤트 거칠고 푸석한 피부를 촉촉하고 매끈하게! 이벤트 바로가기 #슬림 #바디라인 #당당하게 월컴 썸머 S라인 다가오는 여름 대비! 자신감 가득! 4계절 내내 BEST 시술 4계절 동안 뷰티온피부과 양주옥정점에서",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.5,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#깔끔하게",
+            "position": 1610
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#자신있게",
+            "position": 1616
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#여름준비",
+            "position": 1622
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#스킨케어",
+            "position": 1668
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#데일리관리",
+            "position": 1674
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#피로제로",
+            "position": 1681
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#슬림",
+            "position": 1728
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#바디라인",
+            "position": 1732
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#당당하게",
+            "position": 1738
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#V라인",
+            "position": 1881
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#라인개선",
+            "position": 1886
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#색소제거",
+            "position": 1947
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#레이저",
+            "position": 1953
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#주근깨제거",
+            "position": 2020
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#투명피부",
+            "position": 2027
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#고주파",
+            "position": 2092
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리프팅",
+            "position": 2097
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#탄력",
+            "position": 2152
+          },
+          {
+            "type": "pattern",
+            "pattern": "/#[가-힣a-zA-Z0-9_]+/gi",
+            "text": "#리프팅",
+            "position": 2156
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "시술"
+          },
+          {
+            "type": "keyword",
+            "text": "효과"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "원하는 시술, 궁금한 효과를 자유롭게 검색해보세요. ✨BEST PROMOTION✨ 다양한 혜택들을 뷰티온피부과 양주옥정점에서 경험해보세요.",
+        "matched": "#깔끔하게",
+        "matchedSentence": "이벤트 바로가기 #깔끔하게 #자신있게 #여름준비 25년 제모이벤트 두꺼운 털부터 가는 털까지 확실하게!",
+        "matchedHighlight": {
+          "text": "#깔끔하게",
+          "startInSentence": 9
+        },
+        "after": "이벤트 바로가기 #스킨케어 #데일리관리 #피로제로 스킨케어 이벤트 거칠고 푸석한 피부를 촉촉하고 매끈하게! 이벤트 바로가기 #슬림 #바디라인 #당당하게 월컴 썸머 S라인 다가오는 여름 대비!",
+        "full": "원하는 시술, 궁금한 효과를 자유롭게 검색해보세요. ✨BEST PROMOTION✨ 다양한 혜택들을 뷰티온피부과 양주옥정점에서 경험해보세요. 이벤트 바로가기 #깔끔하게 #자신있게 #여름준비 25년 제모이벤트 두꺼운 털부터 가는 털까지 확실하게! 이벤트 바로가기 #스킨케어 #데일리관리 #피로제로 스킨케어 이벤트 거칠고 푸석한 피부를 촉촉하고 매끈하게! 이벤트 바로가기 #슬림 #바디라인 #당당하게 월컴 썸머 S라인 다가오는 여름 대비!",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 0,
+    "falsePositivesFound": 0,
+    "falsePositives": []
+  },
+  "ocrStats": {
+    "totalImages": 24,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 146,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://beautyall.app/files/W000/CL030/popup/popup-5334bec1-c9a7-4b60-b059-7d63e4b6f1da.jpg",
+        "preview": "BEAUTYON\nDERMATOLOGY\n뷰티온피부과 잠수교점\n\n뷰티온 첫방문\nWelcome\n\n뻬디\n\n주름 톡스 1부위 (국산)\n※시술 가능 부위: 미간\n19,000\n9,900원\n\n브...",
+        "wordCount": 51
+      },
+      {
+        "imageUrl": "https://beautyall.app/files/W000/CL030/popup/popup-b2c6ed32-d2db-4ecf-a33d-d2e46a46a71e.jpg",
+        "preview": "BEAUTYON\nDERMATOLOGY\n뷰티온피부과 함수창점\n\n뷰티온 첫방문\nWelcome\n레이저\n\nCO2(점) 1부위 (0.2mm 이하)\n※점만 가능\n9900\n5,000원\n\n피��...",
+        "wordCount": 56
+      },
+      {
+        "imageUrl": "https://beautyall.app/files/W000/CL030/popup/popup-80c0a196-99d0-40f1-a09a-72b28013a1b3.jpg",
+        "preview": "BEAUTYON\nDERMATOLOGY\n뷰티온피부과 광주점진\n\n뷰티온 첫방문\nWelcome\n리프팅\n\n인모드FX 1부위\n49000\n25,000원\n\n인모드FX 풀페이스\n97000\n49,...",
+        "wordCount": 39
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 6,
+    "totalCost": 0.031571999999999996,
+    "geminiCalls": 0,
+    "claudeCalls": 6,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 38,
+    "successCalls": 32,
+    "failedCalls": 6,
+    "totalImagesProcessed": 32,
+    "totalTextExtracted": 5815
+  }
+}

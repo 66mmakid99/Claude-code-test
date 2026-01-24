@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769183843027-bqi1nxucp",
+  "hospitalName": "메디큐브의원 분당서현",
+  "url": "http://www.medicubesignature.com",
+  "success": false,
+  "error": "웹사이트 크롤링 실패",
+  "detail": "write EPROTO BCA40000:error:0A00018A:SSL routines:tls_process_ske_dhe:dh key too small:openssl\\ssl\\statem\\statem_clnt.c:2352:\n",
+  "processingTimeMs": 3158,
+  "analyzedAt": "2026-01-23T18:28:21.445Z"
+}

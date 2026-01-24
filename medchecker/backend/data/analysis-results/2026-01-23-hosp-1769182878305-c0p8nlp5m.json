@@ -1,0 +1,269 @@
+{
+  "hospitalId": "hosp-1769182878305-c0p8nlp5m",
+  "hospitalName": "세브란스병원",
+  "url": "https://sev.severance.healthcare/sev/index.do",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:45:39.560Z",
+  "processingTimeMs": 11913,
+  "metadata": {
+    "title": "세브란스병원",
+    "description": "연세대학교 의과대학 세브란스병원에서는 환자들이 진료과, 클리닉, 전문센터의 의료진 정보를 통해 진료 예약을 할 수 있으며, 예약현황, 검사결과, 약처방정보 등의 내역을 볼 수 있는 MY세브란스 서비스를 제공하고 있습니다."
+  },
+  "targetUrl": "https://sev.severance.healthcare/sev/index.do",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 3,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-EX-003",
+        "matchedText": "인증",
+        "reason": "menu_text_partial_match"
+      },
+      {
+        "ruleId": "MED-BS-002",
+        "matchedText": "수술실",
+        "reason": "menu_text_partial_match"
+      },
+      {
+        "ruleId": "MED-CL-003",
+        "matchedText": "언론보도",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 0,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "인스타",
+        "ruleId": "MED-SNS-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "위험",
+        "ruleId": "MED-BS-003",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 23,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 35,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://sev.severance.healthcare/_res/yuhs/cancer/img/home/main-banner01_B_240514%201.png",
+        "preview": "중입자치료센터\n\n중입자치료 상담\n체장암, 폐암, 간암, 전립선암\n(그 외 암종은 수술 공지)\n\n상담예약 02-2228-8000\n\n중입자치료센��\nHEAVY ION THERAPY C...",
+        "wordCount": 19
+      },
+      {
+        "imageUrl": "https://sev.severance.healthcare/_res/yuhs/_share/img/hospital/img_main_banner04_240314.png",
+        "preview": "세브란스병원\nJCI 6차 인증\n\nJOINT COMMISSION INTERNATIONAL\nQUALITY APPROVED",
+        "wordCount": 9
+      },
+      {
+        "imageUrl": "https://sev.severance.healthcare/_res/yuhs/_share/img/hospital/img_main_banner_ks-wei-19y-1st.png",
+        "preview": "소비자웰빙\n환경만족지수\n(KS-WEI)\n19년 연속 1위\n\nKS-WEI",
+        "wordCount": 7
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 4,
+    "totalCost": 0.023754,
+    "geminiCalls": 0,
+    "claudeCalls": 4,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 15,
+    "successCalls": 15,
+    "failedCalls": 0,
+    "totalImagesProcessed": 15,
+    "totalTextExtracted": 1214
+  }
+}

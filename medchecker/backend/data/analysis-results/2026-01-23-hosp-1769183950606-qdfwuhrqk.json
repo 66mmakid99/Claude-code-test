@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769183950606-qdfwuhrqk",
+  "hospitalName": "인천검단 리포유의원",
+  "url": "https://www.lfu.co.kr/",
+  "success": false,
+  "error": "Analysis timeout after 107s",
+  "isTimeout": true,
+  "analyzedAt": "2026-01-23T20:35:27.657Z",
+  "processingTimeMs": 286198
+}

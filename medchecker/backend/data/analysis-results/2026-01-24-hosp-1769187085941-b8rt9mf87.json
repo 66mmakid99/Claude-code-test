@@ -1,0 +1,360 @@
+{
+  "success": true,
+  "url": "http://www.idskin.co.kr/",
+  "analyzedAt": "2026-01-24T02:25:47.679Z",
+  "processingTimeMs": 11,
+  "metadata": {
+    "title": "아이디병원피부과",
+    "description": " 서울 강남구 신사역, 리프팅 전문 클리닉, 벨카이라, 울쎄라, 써마지, 브라이트닝, 스킨케어 시술후기 안내"
+  },
+  "targetUrl": "http://www.idskin.co.kr/",
+  "targetType": "website",
+  "totalScore": 80,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현",
+      "category": "medical_ad",
+      "subcategory": "soft_warning",
+      "severity": "info",
+      "riskScore": 40,
+      "legal": {
+        "basis": "의료법 제56조 제2항 (주의 권고)",
+        "article": "과장 광고에 해당할 수 있으나, 일반적 홍보 표현으로 인정될 여지 있음",
+        "penalty": "경미한 위반 시 시정 권고"
+      },
+      "recommendation": {
+        "action": "\"최상의/최고의\" 표현 사용 시 객관적 근거를 함께 명시하거나, 면책 문구를 추가하는 것이 안전합니다.",
+        "example": {
+          "bad": "11 MERZ 울쎄라 골든레코드 어워드 선정 기준 id YouTube 아이디뷰티 라이브 Premium De-aging, id 프리미엄 디에이징, id 전문의 시스템 아이디병원피부과의 노하우를바탕으로 피부탄력 및 부드러운얼굴 라인으로 개선 첨단 안티에이징 개개인에 적합한...",
+          "good": "11 MERZ 울쎄라 골든레코드 어워드 선정 기준 id YouTube 아이디뷰티 라이브 Premium De-aging, id 프리미엄 디에이징, id 전문의 시스템 아이디병원피부과의 노하우를바탕으로 피부탄력 및 부드러운얼굴 라인으로 개선 첨단 안티에이징 개개인에 적합한..."
+        },
+        "fixReason": "객관적 근거 없는 최상급 표현은 과장광고에 해당할 수 있습니다. 면책 문구를 추가하거나 완화된 표현으로 수정을 권장합니다.",
+        "disclaimer": "※ 본 수정안은 AI 기반 자동 생성으로, 최종 판단은 법률 전문가 검토를 권장합니다. 실제 적용 시 맥락에 맞게 조정이 필요할 수 있습니다."
+      },
+      "matched": true,
+      "matchedText": "최상의",
+      "contextWindow": " 변화 현재 피부 상태를 체계적으로파악하여 자연스러운 안티에이징 전문의 시스템 첨단 안티에이징 시술 건강하고 자연스러운 변화 About, id id병원피부과의 생각 고객이 바라는 최상의 아름다움의 완성, 피부 완성이 곧 美의 완성이라는 신념으로고객의 젊음을 간직한 아름다운 비전과 함께 프리미엄 디에이징을 추구합니다. 안전하고 효과적인프리미엄 디에이징아이디병",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "warning",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "최상의",
+            "text": "최상의",
+            "position": 1301
+          },
+          {
+            "type": "keyword",
+            "keyword": "최상위",
+            "text": "최상위",
+            "position": 749
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(최상|최고|최선)\\s*(의|인|위)\\s*(효과|결과|서비스|치료)?/gi",
+            "text": "최상위 ",
+            "position": 749
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(최상|최고|최선)\\s*(의|인|위)\\s*(효과|결과|서비스|치료)?/gi",
+            "text": "최상의 ",
+            "position": 1301
+          },
+          {
+            "type": "pattern",
+            "pattern": "/가장\\s*(좋은|뛰어난|우수한|최상위)/gi",
+            "text": "가장 최상위",
+            "position": 746
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "울쎄라 프라임 울쎄라2 국내선점 도입 & 최다 보유 피부가 원하는 내츄럴 물광 볼륨 부스터 힐로웨이브 웨이브만의 인젝션 테크닉으로 적은 통증, 짧은 다운타임, 즉각 개선 지금까지 나온 스킨부스터 중, 가장 최상위 즉각 효과에, 유지기간도 UP! 리바이브 멀츠社 수입 벨로테로 스킨부스터 히알루론산과 글리세롤이 만나 빠르게, 오래오래 국내 유일 안아픈 시술 전문idNP스킨부스터센터 아이디의 고유 브랜드 자산으로안아픈 시술을 지향합니다 쥬베룩 · 리쥬란 등 40여 종 맞춤 시술 연속분사 無바늘 큐어젯 도입 디에이징 10년 연구의 집약 세상에 없던 리프팅상표 출원 등록 id울써튠 VIEW + 울쎄라 본사 MERZ 선정대한민국&아시아 울쎄라 정품팁최다시술 병원 2024.",
+        "matched": "최상의",
+        "matchedSentence": "11 MERZ 울쎄라 골든레코드 어워드 선정 기준 id YouTube 아이디뷰티 라이브 Premium De-aging, id 프리미엄 디에이징, id 전문의 시스템 아이디병원피부과의 노하우를바탕으로 피부탄력 및 부드러운얼굴 라인으로 개선 첨단 안티에이징 개개인에 적합한 프로그램을정품 장비, 정량 사용을 원칙으로알맞은 시술 진행 건강하고자연스러운 변화 현재 피부 상태를 체계적으로파악하여 자연스러운 안티에이징 전문의 시스템 첨단 안티에이징 시술 건강하고 자연스러운 변화 About, id id병원피부과의 생각 고객이 바라는 최상의 아름다움의 완성, 피부 완성이 곧 美의 완성이라는 신념으로고객의 젊음을 간직한 아름다운 비전과 함께 프리미엄 디에이징을 추구합니다.",
+        "matchedHighlight": {
+          "text": "최상의",
+          "startInSentence": 293
+        },
+        "after": "안전하고 효과적인프리미엄 디에이징아이디병원피부과에서 경험하세요 VIEW + id Program 피부과학의 시작, id 프로그램 VIEW 디에이징 id병원피부과 숙련된 의료진의 노하우&스킬9년 통합 아시아 최다시술 병원 선정 VIEW MORE VIEW 커스터마이징id 근원 리프팅 VIEW MORE 써마지 FLX 강력한 피부 타이트닝 VIEW VIEW MORE 동안&필러 트렌디한 감각과 디자인 VIEW VIEW MORE 브라이트닝 피부 본연의 아름다움 VIEW VIEW MORE Real id 아이디 리얼 리뷰 best review 울쎄라오혜라(30대) 턱라인이 선명해졌어요! 두세달쯤 효과가 더 좋아진다던데.",
+        "full": "울쎄라 프라임 울쎄라2 국내선점 도입 & 최다 보유 피부가 원하는 내츄럴 물광 볼륨 부스터 힐로웨이브 웨이브만의 인젝션 테크닉으로 적은 통증, 짧은 다운타임, 즉각 개선 지금까지 나온 스킨부스터 중, 가장 최상위 즉각 효과에, 유지기간도 UP! 리바이브 멀츠社 수입 벨로테로 스킨부스터 히알루론산과 글리세롤이 만나 빠르게, 오래오래 국내 유일 안아픈 시술 전문idNP스킨부스터센터 아이디의 고유 브랜드 자산으로안아픈 시술을 지향합니다 쥬베룩 · 리쥬란 등 40여 종 맞춤 시술 연속분사 無바늘 큐어젯 도입 디에이징 10년 연구의 집약 세상에 없던 리프팅상표 출원 등록 id울써튠 VIEW + 울쎄라 본사 MERZ 선정대한민국&아시아 울쎄라 정품팁최다시술 병원 2024. 11 MERZ 울쎄라 골든레코드 어워드 선정 기준 id YouTube 아이디뷰티 라이브 Premium De-aging, id 프리미엄 디에이징, id 전문의 시스템 아이디병원피부과의 노하우를바탕으로 피부탄력 및 부드러운얼굴 ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "warning"
+    }
+  ],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-TM-001",
+        "matchedText": "시술후기",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 3,
+    "aiVerified": 1,
+    "falsePositivesFound": 4,
+    "falsePositives": [
+      {
+        "matchedText": "선정",
+        "ruleId": "MED-EX-003",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "동안",
+        "ruleId": "MED-SP-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "제공을",
+        "ruleId": "MED-AD-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "즉각 효과",
+        "ruleId": "MED-EFF-007",
+        "reason": "info_only",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 72,
+    "processedImages": 5,
+    "successfulOcr": 3,
+    "totalWords": 87,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://image.idskin.co.kr/www/main/renewal/main_event_prestige.jpg",
+        "preview": "Prestige Membership\n\nVIEW",
+        "wordCount": 3
+      },
+      {
+        "imageUrl": "http://image.idskin.co.kr/www/main/renewal/month_event_2601.jpg?v=1",
+        "preview": "id\n\n2026\n올\n\n새해, 피부가 달라지는 순간\n이달의 특가\n\n건조함은 물내고 윤기는 새로 채우세요~!\n\n#다시 잘게하는 얼굴 라인, ��.올.뤽\n뉴올뤽 400샷         ...",
+        "wordCount": 59
+      },
+      {
+        "imageUrl": "http://image.idskin.co.kr/www/main/renewal/main_visual_ulquoprime_250326.jpg",
+        "preview": "울쎄라2의 새로운 ID만의 혁신!\n'아이디만의 공식 기술' 이 되겠건\n\n뉴\nNEW\n울쎄라\n퀸트로프라임\nPrime\n\n2025\n복합형상담견\n직극\n\nUlthera\n의료 특허 1위\n\n즉각...",
+        "wordCount": 25
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 1,
+    "totalCost": 0.003669,
+    "geminiCalls": 0,
+    "claudeCalls": 1,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 5,
+    "successCalls": 5,
+    "failedCalls": 0,
+    "totalImagesProcessed": 5,
+    "totalTextExtracted": 491
+  },
+  "hospitalId": "hosp-1769187085941-b8rt9mf87",
+  "hospitalName": "아이디피부과의원"
+}

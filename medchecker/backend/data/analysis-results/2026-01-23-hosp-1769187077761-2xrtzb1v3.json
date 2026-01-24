@@ -1,0 +1,353 @@
+{
+  "hospitalId": "hosp-1769187077761-2xrtzb1v3",
+  "hospitalName": "압구정톡스앤필의원",
+  "url": "http://www.toxnfill2.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T20:38:13.138Z",
+  "processingTimeMs": 27208,
+  "metadata": {
+    "title": "톡스앤필 압구정점 | 압구정피부과 | 톡신·필러·리프팅",
+    "description": "압구정피부과, 압구정 톡스앤필, 정품·정량·정성 원칙으로 건강한 아름다움을 추구합니다. 압구정역 3번 출구 308m 위치, 톡신, 사각턱톡신, 특수부위톡신, 주름톡신, 바디톡신, 다한증톡신, 윤곽주사, 페이스필러, 입술필러, 입꼬리필러, 목주름필러, 스컬트라, 울쎄라, 울쎄라피프라임, LDM, 써마지FLX, 인모드, 슈링크, 슈링크유니버스, 실리프팅, 스킨부스터, 스킨바이브, 쥬베룩, 쥬베룩볼륨, 리쥬란, 리쥬하이, 아이리쥬란, 리쥬란HB, 엑소좀, 물광주사, 모공레이저, 레이저토닝, 색소, 홍조, 여드름, 모공, 아크네필링, 미백관리, 제모, 고트밀크필, 올리지오"
+  },
+  "targetUrl": "http://www.toxnfill2.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고",
+      "category": "medical_ad",
+      "subcategory": "price_discount",
+      "severity": "warning",
+      "riskScore": 55,
+      "legal": {
+        "basis": "표시광고법 제3조 (기만적 광고)",
+        "penalty": "과태료 및 시정명령"
+      },
+      "recommendation": {
+        "action": "가격 표기 시 조건을 명확히 밝히세요.",
+        "example": {
+          "bad": "눈 성형 50만원부터~",
+          "good": "눈 성형 비용은 시술 범위에 따라 다르며, 상담 후 정확한 견적을 안내드립니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "0원부터",
+      "contextWindow": "점 이벤트 보러가기 'NEW' 울쎄라피 프라임 [12월 19일부터 시술가능] 'NEW' 울쎄라피 프라임 도입! 1:1 커스텀 리프팅을 더 확실하게! 볼수록 강한 초음파 리프팅 0 0원부터 평일 오후1시-5시 / 피부 이벤트 [월,화,목,금 1-5시] 한정 피부 이벤트 75,000 39,000원부터 맞춤형 스킨부스터 피부관리 지친피부를 위한 피부 솔루션 [보",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.5,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "0원부터",
+            "position": 1273
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원부터",
+            "position": 1333
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000원부터",
+            "position": 1471
+          },
+          {
+            "type": "pattern",
+            "pattern": "/\\d+\\s*(만)?\\s*원\\s*(부터|~)/gi",
+            "text": "000 원 부터",
+            "position": 3097
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "한정"
+          },
+          {
+            "type": "keyword",
+            "text": "이벤트"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "Event 지점 이벤트 보러가기 'NEW' 울쎄라피 프라임 [12월 19일부터 시술가능] 'NEW' 울쎄라피 프라임 도입! 1:1 커스텀 리프팅을 더 확실하게!",
+        "matched": "0원부터",
+        "matchedSentence": "볼수록 강한 초음파 리프팅 0 0원부터 평일 오후1시-5시 / 피부 이벤트 [월,화,목,금 1-5시] 한정 피부 이벤트 75,000 39,000원부터 맞춤형 스킨부스터 피부관리 지친피부를 위한 피부 솔루션 [보습,미백,재생,염증완화] + 피부관리 190,000 120,000원부터 [부원장님단독] 타임 이벤트 평일 1시-4시 특별 혜택가로 만나보실 수 있는 기회!",
+        "matchedHighlight": {
+          "text": "0원부터",
+          "startInSentence": 17
+        },
+        "after": "160,000 90,000원부터 Signature 투명하게 빛나는 피부, 저통증 리쥬하이 적은 통증에 피부 재생, 피부 장벽 강화, 보습 효과까지! 리쥬란 아이 눈가처럼 얇은피부에는 눈가전용 리쥬란 아이 칙칙한 다크 서클 / 눈가 주름 개선 Popularity Ranking 01 모공 레이저 + 재생 앰플 150,000 80,000 원 예약 02 모공 레이저 + 미백 앰플 150,000 80,000 원 예약 03 대표원장 시술 · 올리지오 600샷 1,000,000 650,000 원 예약 04 올링크 (올리지오 300샷 + 슈링크 300샷) 900,000 600,000 원 예약 05 울쎄라 300샷 1,200,000 860,000 원 예약 06 울쎄라 300샷 + 인모드 FORMA 1회 1,500,000 1,000,000 원 예약 07 아쿠아필 1회 75,000 39,000 원 예약 08 고트밀크필 1회 80,000 59,000 원 예약 09 BIG3 1년 패키지 (상세 페이지 참고) 3,830,000 2,390,000 원 예약 10 리쥬란 2cc 400,000 270,000 원 예약 APGUJEONG CONTENTS 톡스앤필 압구정점의 뷰티 꿀팁 YOUTUBE INSTAGRAM CONTACT US 간략위치 3호선 압구정역 3번출구 주차안내 - 발렛비 4,000원/1시간 30분 무료주차/이후 30분당 3,000원 (병원 내에 계실 경우만) - 발렛파킹 서비스 : 방문하신 차량은 건물 앞에서 비상등 켜고 계시면 발렛직원이 항시 대기하여 파킹서비스를 하고 있습니다.",
+        "full": "Event 지점 이벤트 보러가기 'NEW' 울쎄라피 프라임 [12월 19일부터 시술가능] 'NEW' 울쎄라피 프라임 도입! 1:1 커스텀 리프팅을 더 확실하게! 볼수록 강한 초음파 리프팅 0 0원부터 평일 오후1시-5시 / 피부 이벤트 [월,화,목,금 1-5시] 한정 피부 이벤트 75,000 39,000원부터 맞춤형 스킨부스터 피부관리 지친피부를 위한 피부 솔루션 [보습,미백,재생,염증완화] + 피부관리 190,000 120,000원부터 [부원장님단독] 타임 이벤트 평일 1시-4시 특별 혜택가로 만나보실 수 있는 기회! 160,000 90,000원부터 Signature 투명하게 빛나는 피부, 저통증 리쥬하이 적은 통증에 피부 재생, 피부 장벽 강화, 보습 효과까지! 리쥬란 아이 눈가처럼 얇은피부에는 눈가전용 리쥬란 아이 칙칙한 다크 서클 / 눈가 주름 개선 Popularity Ranking 01 모공 레이저 + 재생 앰플 150,000 80,000 원 예약 02 모공 레이저 + 미백...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "무료",
+        "ruleId": "MED-PR-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 16,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 26,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/T00004/eventImg/20250527091534.png",
+        "preview": "3-STEP\nCOLLAGEN\nLIFTING\n\nUltherapy\nPRIME\n\nMERZ AESTHETICS",
+        "wordCount": 7
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/T00004/eventImg/20251119143519.png",
+        "preview": "BRIGHT &\nSHINING\nGIFT\n\nPICK!\nYOUR BEAUTY",
+        "wordCount": 7
+      },
+      {
+        "imageUrl": "https://intranet.bbgnetworks.com/uploadFiles/T00004/eventImg/20251118123632.png",
+        "preview": "BE THE PRETTIEST\nTHIS HOLIDAY\nCHEERS TO YOU\n\nWITH TOXNFILL\nLET'S SHINE",
+        "wordCount": 12
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 16,
+    "totalCost": 0.084078,
+    "geminiCalls": 0,
+    "claudeCalls": 16,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 57,
+    "successCalls": 53,
+    "failedCalls": 4,
+    "totalImagesProcessed": 53,
+    "totalTextExtracted": 5262
+  }
+}

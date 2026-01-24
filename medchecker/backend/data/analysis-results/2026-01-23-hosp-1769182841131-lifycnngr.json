@@ -1,0 +1,693 @@
+{
+  "hospitalId": "hosp-1769182841131-lifycnngr",
+  "hospitalName": "어린공주성형외과의원",
+  "url": "http://www.lpps.co.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T15:47:55.744Z",
+  "processingTimeMs": 10732,
+  "metadata": {
+    "title": "어린공주성형외과",
+    "description": ""
+  },
+  "targetUrl": "http://www.lpps.co.kr",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기",
+      "category": "medical_ad",
+      "subcategory": "testimonial",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "article": "신문, 방송, 잡지 등을 이용하여 기사나 전문가의 의견 형태로 광고하는 경우",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "환자 후기 게시 시 \"광고\" 표시와 함께 \"개인차가 있을 수 있습니다\" 면책 문구를 반드시 포함하세요.",
+        "example": {
+          "bad": "실제 환자 생생 후기! 완전 나았어요~",
+          "good": "[광고] 환자 인터뷰 (본 내용은 개인의 경험이며, 치료 결과는 개인에 따라 다를 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "수술 후기",
+      "contextWindow": "고! 등록된 게시물이 없습니다. 어린공주성형외과 COMMUNICATION 최신 온라인 상담글 입술＆입꼬리필러 입술필러, 윤곽주사 2026-01-22 입술＆입꼬리필러 윗입술필러 2026-01-12 쁘띠성형 자갈턱 승모근보톡스 2026-01-12 최신 온라인 상담글 최신 수술 후기 쁘띠성형 앞턱 필러,사각턱 … 2025-05-07 입술＆입꼬리필러 입술필러후기 2025-05-06 입술＆입꼬리필러 입술필러와 입꼬리 … 2025-05-06 최신 수술 후기 입술필러 이벤트 대기시간 안내사항 1월 진료 안내 신분증 확인 의무화 안내 프리미엄 입",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "수술 후기",
+            "text": "수술 후기",
+            "position": 1100
+          },
+          {
+            "type": "keyword",
+            "keyword": "수술 후기",
+            "text": "수술 후기",
+            "position": 1196
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(환자|치료|시술|수술)\\s*후기/gi",
+            "text": "시술후기",
+            "position": 316
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(환자|치료|시술|수술)\\s*후기/gi",
+            "text": "수술후기",
+            "position": 560
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "[쉐딩컷주사 5만원] more + BEFORE & AFTER 실제 고객들의 100% 만족후기 “고객들이 인정하는 어린공주 실제후기” 중요한 것은 마음으로 보는 어린공주성형외과 의료진 ㅣ 인터뷰 ㅣ 학술활동 어린공주 TV 성형정보도 얻고 궁금증도 해결하고! 등록된 게시물이 없습니다.",
+        "matched": "수술 후기",
+        "matchedSentence": "어린공주성형외과 COMMUNICATION 최신 온라인 상담글 입술＆입꼬리필러 입술필러, 윤곽주사 2026-01-22 입술＆입꼬리필러 윗입술필러 2026-01-12 쁘띠성형 자갈턱 승모근보톡스 2026-01-12 최신 온라인 상담글 최신 수술 후기 쁘띠성형 앞턱 필러,사각턱 … 2025-05-07 입술＆입꼬리필러 입술필러후기 2025-05-06 입술＆입꼬리필러 입술필러와 입꼬리 … 2025-05-06 최신 수술 후기 입술필러 이벤트 대기시간 안내사항 1월 진료 안내 신분증 확인 의무화 안내 프리미엄 입술 패키지 윤곽주사_1회 체험가 이벤트 24시간 동안 다시 열람하지 않습니다.",
+        "matchedHighlight": {
+          "text": "수술 후기",
+          "startInSentence": 132
+        },
+        "after": "닫기 Follow us 병원명 : 어린공주성형외과의원 대표자명:심승현 사업자등록번호:413-01-49074 주소:강남구 도산대로110 kbl빌딩 4층 TEL:02-542-1102 FAX:02-542-1101 Copyright ⓒ Little Princess Plastic Surgery. All Rights Reserved.",
+        "full": "[쉐딩컷주사 5만원] more + BEFORE & AFTER 실제 고객들의 100% 만족후기 “고객들이 인정하는 어린공주 실제후기” 중요한 것은 마음으로 보는 어린공주성형외과 의료진 ㅣ 인터뷰 ㅣ 학술활동 어린공주 TV 성형정보도 얻고 궁금증도 해결하고! 등록된 게시물이 없습니다. 어린공주성형외과 COMMUNICATION 최신 온라인 상담글 입술＆입꼬리필러 입술필러, 윤곽주사 2026-01-22 입술＆입꼬리필러 윗입술필러 2026-01-12 쁘띠성형 자갈턱 승모근보톡스 2026-01-12 최신 온라인 상담글 최신 수술 후기 쁘띠성형 앞턱 필러,사각턱 … 2025-05-07 입술＆입꼬리필러 입술필러후기 2025-05-06 입술＆입꼬리필러 입술필러와 입꼬리 … 2025-05-06 최신 수술 후기 입술필러 이벤트 대기시간 안내사항 1월 진료 안내 신분증 확인 의무화 안내 프리미엄 입술 패키지 윤곽주사_1회 체험가 이벤트 24시간 동안 다시 열람하지 않습니다. 닫기 Follow us 병원명...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기",
+      "category": "medical_ad",
+      "subcategory": "sns_advertising",
+      "severity": "warning",
+      "riskScore": 60,
+      "legal": {
+        "basis": "표시광고법 제3조",
+        "penalty": "과태료 500만원 이하"
+      },
+      "recommendation": {
+        "action": "인플루언서 협찬 콘텐츠에는 반드시 \"#광고\" 표기를 해야 합니다.",
+        "example": {
+          "bad": "(광고 표기 없이 인플루언서가 병원 홍보)",
+          "good": "#광고 #협찬 OO병원에서 시술 협찬을 받았습니다."
+        }
+      },
+      "matched": true,
+      "matchedText": "인플루언서",
+      "contextWindow": "팅 절개리프팅 쁘띠성형 필러 보톡스 윤곽주사 체형성형 지방이식 지방흡입 전후사진/후기 수술/시술전후 수술/시술후기 안전시스템 안전마취 안전시스템 수술케어 상담/예약 온라인상담 온라인예약 커뮤니티 공지사항 어린공주 TV 이벤트 리얼셀카 리얼스토리 성형모델지원 어린공주의 고객리뷰수 입술필러 ㅣ 트임성형 ㅣ 눈성형 ㅣ 코성형 ㅣ 눈재수술 ㅣ 코재수술 어린공주의 인플루언서 Little Princess Influencer “인기 셀럽들도 추천하는 어린공주성형외과” 어린공주성형외과 최신인스타그램 @littleprincess_ps 바로가기 어린공주 수술후기 어린공주의 최신이벤트 GO! ★ 프리미엄 입술 Package ★ *본 이벤트는 내국인 여성 대상으로 진행되는 이벤트입니… more + 입술맛집! 어린공주 입술필러 패",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.5,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 1,
+      "decision": "violation",
+      "confidence": 1,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "인플루언서",
+            "text": "인플루언서",
+            "position": 457
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "추천"
+          },
+          {
+            "type": "keyword",
+            "text": "후기"
+          },
+          {
+            "type": "keyword",
+            "text": "리뷰"
+          }
+        ],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "",
+        "matched": "인플루언서",
+        "matchedSentence": "어린공주성형외과 본문 바로가기 회원가입 로그인 Language Korea English Japan China 메인페이지로 가기 메인메뉴 병원소개 의료진소개 진료철학 인터뷰 학술활동 진료시간/오시는길 둘러보기 입술/입꼬리 필러 눈성형 쌍커풀 매몰법 쌍커풀 절개법 쌍커풀 트임 쌍커풀 눈매교정 눈밑 지방재배치 눈썹거상술 중년눈성형술 눈재수술 코성형 긴코 낮은코 매부리코 복코 짧은코 코끝성형 콧볼축소 휜코 코재수술 남자성형 남자눈성형 남자코성형 동안/리프팅 실리프팅 절개리프팅 쁘띠성형 필러 보톡스 윤곽주사 체형성형 지방이식 지방흡입 전후사진/후기 수술/시술전후 수술/시술후기 안전시스템 안전마취 안전시스템 수술케어 상담/예약 온라인상담 온라인예약 커뮤니티 공지사항 어린공주 TV 이벤트 리얼셀카 리얼스토리 성형모델지원 어린공주의 고객리뷰수 입술필러 ㅣ 트임성형 ㅣ 눈성형 ㅣ 코성형 ㅣ 눈재수술 ㅣ 코재수술 어린공주의 인플루언서 Little Princess Influencer “인기 셀럽들도 추천하는 어린공주성형외과” 어린공주성형외과 최신인스타그램 @littleprincess_ps 바로가기 어린공주 수술후기 어린공주의 최신이벤트 GO!",
+        "matchedHighlight": {
+          "text": "인플루언서",
+          "startInSentence": 457
+        },
+        "after": "★ 프리미엄 입술 Package ★ *본 이벤트는 내국인 여성 대상으로 진행되는 이벤트입니… more + 입술맛집! 어린공주 입술필러 패키지!",
+        "full": "어린공주성형외과 본문 바로가기 회원가입 로그인 Language Korea English Japan China 메인페이지로 가기 메인메뉴 병원소개 의료진소개 진료철학 인터뷰 학술활동 진료시간/오시는길 둘러보기 입술/입꼬리 필러 눈성형 쌍커풀 매몰법 쌍커풀 절개법 쌍커풀 트임 쌍커풀 눈매교정 눈밑 지방재배치 눈썹거상술 중년눈성형술 눈재수술 코성형 긴코 낮은코 매부리코 복코 짧은코 코끝성형 콧볼축소 휜코 코재수술 남자성형 남자눈성형 남자코성형 동안/리프팅 실리프팅 절개리프팅 쁘띠성형 필러 보톡스 윤곽주사 체형성형 지방이식 지방흡입 전후사진/후기 수술/시술전후 수술/시술후기 안전시스템 안전마취 안전시스템 수술케어 상담/예약 온라인상담 온라인예약 커뮤니티 공지사항 어린공주 TV 이벤트 리얼셀카 리얼스토리 성형모델지원 어린공주의 고객리뷰수 입술필러 ㅣ 트임성형 ㅣ 눈성형 ㅣ 코성형 ㅣ 눈재수술 ㅣ 코재수술 어린공주의 인플루언서 Little Princess Influencer “인기 셀럽들도 추...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 0,
+          "after": 2,
+          "total": 3
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 2,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "전후사진",
+        "reason": "menu_text_partial_match"
+      },
+      {
+        "ruleId": "MED-SP-001",
+        "matchedText": "동안",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 0,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "인스타",
+        "ruleId": "MED-SNS-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 72,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 42,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner1.png",
+        "preview": "LITTLE PRINCESS PLASTIC SURGERY\n\n입술 &\n입꼬리 필러\n\n입술맛집에는 이유가 있다!\n입술을 도톰하게, 올라간 입꼬리로 더 예쁘게!\n\n자세��보기",
+        "wordCount": 18
+      },
+      {
+        "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner2.png",
+        "preview": "LITTLE PRINCESS PLASTIC SURGERY\n\n트입성형\n\n답답했던 내 눈매를 예쁘고 시원하게!\n어린공주 트입성형\n\n자세히보기",
+        "wordCount": 13
+      },
+      {
+        "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner3.png",
+        "preview": "LITTLE PRINCESS\n\n눈성형\n\n나만이 가진 예쁘고 사랑스러운 눈!\n어린공주 눈성형\n\n자세히보기",
+        "wordCount": 11
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 0,
+    "totalCost": 0,
+    "geminiCalls": 0,
+    "claudeCalls": 0
+  },
+  "ocrApiStats": {
+    "totalCalls": 3,
+    "successCalls": 3,
+    "failedCalls": 0,
+    "totalImagesProcessed": 3,
+    "totalTextExtracted": 227
+  },
+  "analysis": {
+    "success": true,
+    "url": "http://www.lpps.co.kr",
+    "analyzedAt": "2026-01-23T18:12:56.502Z",
+    "processingTimeMs": 11712,
+    "metadata": {
+      "title": "어린공주성형외과",
+      "description": ""
+    },
+    "targetUrl": "http://www.lpps.co.kr",
+    "targetType": "website",
+    "totalScore": 100,
+    "riskLevel": "low",
+    "violations": [],
+    "warnings": [],
+    "passed": [
+      {
+        "ruleId": "MED-UN-001",
+        "ruleName": "미승인/불법 시술 광고"
+      },
+      {
+        "ruleId": "MED-TM-002",
+        "ruleName": "가짜/조작 후기"
+      },
+      {
+        "ruleId": "MED-UN-002",
+        "ruleName": "오프라벨 사용 광고"
+      },
+      {
+        "ruleId": "MED-UN-003",
+        "ruleName": "해외 직구 의약품/기기 광고"
+      },
+      {
+        "ruleId": "MED-EFF-001",
+        "ruleName": "치료효과 100% 보장 표현"
+      },
+      {
+        "ruleId": "MED-EFF-002",
+        "ruleName": "완치/완벽 보장 표현"
+      },
+      {
+        "ruleId": "MED-BA-001",
+        "ruleName": "치료 전후 사진 게시"
+      },
+      {
+        "ruleId": "MED-EX-001",
+        "ruleName": "객관적 근거 없는 최상급 표현"
+      },
+      {
+        "ruleId": "MED-CL-001",
+        "ruleName": "유명인/연예인 추천 광고"
+      },
+      {
+        "ruleId": "MED-EFF-004",
+        "ruleName": "부작용 없음 보장"
+      },
+      {
+        "ruleId": "MED-EFF-006",
+        "ruleName": "재발 없음 보장"
+      },
+      {
+        "ruleId": "MED-BA-002",
+        "ruleName": "전후 동영상 게시"
+      },
+      {
+        "ruleId": "MED-BA-003",
+        "ruleName": "타인 전후사진 무단 사용"
+      },
+      {
+        "ruleId": "MED-EX-003",
+        "ruleName": "가짜 수상/인증 표시"
+      },
+      {
+        "ruleId": "MED-CL-002",
+        "ruleName": "의사/전문가 추천 가장"
+      },
+      {
+        "ruleId": "MED-UN-004",
+        "ruleName": "민간요법/대체의학 광고"
+      },
+      {
+        "ruleId": "MED-EFF-003",
+        "ruleName": "성공률/치료율 수치 표현"
+      },
+      {
+        "ruleId": "MED-EX-002",
+        "ruleName": "신기술/혁신 과장 표현"
+      },
+      {
+        "ruleId": "MED-CP-001",
+        "ruleName": "타 의료기관 비교/비방 광고"
+      },
+      {
+        "ruleId": "MED-EFF-005",
+        "ruleName": "무통증 보장"
+      },
+      {
+        "ruleId": "MED-EFF-007",
+        "ruleName": "즉각적/빠른 효과 보장"
+      },
+      {
+        "ruleId": "MED-TM-003",
+        "ruleName": "블로그/카페 체험단 후기"
+      },
+      {
+        "ruleId": "MED-CP-002",
+        "ruleName": "가격 비교 광고"
+      },
+      {
+        "ruleId": "MED-PR-003",
+        "ruleName": "긴급/마감 임박 유도"
+      },
+      {
+        "ruleId": "MED-BS-001",
+        "ruleName": "의료인 아닌 자의 의료광고"
+      },
+      {
+        "ruleId": "MED-BS-002",
+        "ruleName": "수술 장면 공개"
+      },
+      {
+        "ruleId": "MED-BS-003",
+        "ruleName": "공포/불안 조장"
+      },
+      {
+        "ruleId": "MED-SP-001",
+        "ruleName": "성형수술 과장 광고"
+      },
+      {
+        "ruleId": "MED-SP-002",
+        "ruleName": "다이어트 시술 과장"
+      },
+      {
+        "ruleId": "MED-SP-003",
+        "ruleName": "탈모 치료 과장"
+      },
+      {
+        "ruleId": "MED-PR-001",
+        "ruleName": "과도한 할인/가격 광고"
+      },
+      {
+        "ruleId": "MED-QU-001",
+        "ruleName": "의료인 자격/경력 과장"
+      },
+      {
+        "ruleId": "MED-EX-004",
+        "ruleName": "시설/장비 과장"
+      },
+      {
+        "ruleId": "MED-EX-005",
+        "ruleName": "경험/실적 과장"
+      },
+      {
+        "ruleId": "MED-CL-003",
+        "ruleName": "방송/언론 출연 과장"
+      },
+      {
+        "ruleId": "MED-CP-003",
+        "ruleName": "암묵적 비교 광고"
+      },
+      {
+        "ruleId": "MED-PR-002",
+        "ruleName": "미끼 가격 광고"
+      },
+      {
+        "ruleId": "MED-QU-003",
+        "ruleName": "가짜 자격증/인증 표시"
+      },
+      {
+        "ruleId": "MED-AD-001",
+        "ruleName": "광고 표기 누락 (협찬/체험단)"
+      },
+      {
+        "ruleId": "MED-PR-004",
+        "ruleName": "패키지/번들 과장"
+      },
+      {
+        "ruleId": "MED-QU-002",
+        "ruleName": "학력/경력 허위 표기"
+      },
+      {
+        "ruleId": "MED-INFO-001",
+        "ruleName": "일반적 홍보성 최상급 표현"
+      }
+    ],
+    "aiCalls": 2,
+    "aiCost": 0.012816,
+    "filterStats": {
+      "violationsFiltered": 0,
+      "warningsFiltered": 0,
+      "filterReasons": []
+    },
+    "errorCollectorStats": {
+      "autoFiltered": 3,
+      "aiVerified": 1,
+      "falsePositivesFound": 4,
+      "falsePositives": [
+        {
+          "matchedText": "인스타",
+          "ruleId": "MED-SNS-001",
+          "reason": "global_exclusion",
+          "source": "pattern_db"
+        },
+        {
+          "matchedText": "인플루언서",
+          "ruleId": "MED-SNS-002",
+          "reason": "global_exclusion",
+          "source": "pattern_db"
+        },
+        {
+          "matchedText": "24시간",
+          "ruleId": "MED-EX-006",
+          "reason": "global_exclusion",
+          "source": "pattern_db"
+        },
+        {
+          "matchedText": "수술 후기",
+          "ruleId": "MED-TM-001",
+          "reason": "menu_text",
+          "source": "ai_verification"
+        }
+      ]
+    },
+    "ocrStats": {
+      "totalImages": 72,
+      "processedImages": 5,
+      "successfulOcr": 5,
+      "totalWords": 68,
+      "extractedTexts": [
+        {
+          "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner1.png",
+          "preview": "LITTLE PRINCESS PLASTIC SURGERY\n\n입술 &\n입꼬리 필러\n\n입술맛집에는 이유가 있다!\n입술을 도톰하게, 올라간 입꼬리로 더 예뻐게!\n\n자세��보기",
+          "wordCount": 18
+        },
+        {
+          "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner2.png",
+          "preview": "LITTLE PRINCESS PLASTIC SURGERY\n\n트임성형\n\n답답했던 내 눈매를 예쁘고 시원하게!\n어린공주 트임성형\n\n자세히보기",
+          "wordCount": 13
+        },
+        {
+          "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner3.png",
+          "preview": "LITTLE PRINCESS\n\n눈성형\n\n나만이 가진 예쁘고 사랑스러운 눈!\n어린공주 눈성형\n\n자세히보기",
+          "wordCount": 11
+        },
+        {
+          "imageUrl": "https://www.lpps.co.kr/theme/basic/img/main_banner4.png",
+          "preview": "LITTLE PRINCESS PLASTIC SURGERY\n\n코성형\n\n높아진 코만큼 올라간 내 자신감!\n어린공주 코성형\n\n자세히보기",
+          "wordCount": 13
+        },
+        {
+          "imageUrl": "https://www.lpps.co.kr/data/file/main03/thumb-31831602_i6elcwox_13f1e547b249e39aad69aa6d5b32c626dd73c44d_509x915.png",
+          "preview": "Instagram\n\nLPPS\n\n어린궁주성형외과 #바비톡 6500건\n\n♥ 9610,000원이 아닙니다.\n\n#LPPS #어린궁주성형외과 #어린궁주 #성형 #윤너",
+          "wordCount": 13
+        }
+      ]
+    },
+    "aiStats": {
+      "totalCalls": 6,
+      "totalCost": 0.03753599999999999,
+      "geminiCalls": 0,
+      "claudeCalls": 6,
+      "geminiFallbacks": 0,
+      "geminiStatus": {
+        "available": true,
+        "disabled": false,
+        "disabledUntil": null,
+        "consecutiveFailures": 0
+      }
+    },
+    "ocrApiStats": {
+      "totalCalls": 15,
+      "successCalls": 15,
+      "failedCalls": 0,
+      "totalImagesProcessed": 15,
+      "totalTextExtracted": 920
+    }
+  },
+  "reanalyzedAt": "2026-01-23T18:13:11.591Z",
+  "previousViolations": 2
+}

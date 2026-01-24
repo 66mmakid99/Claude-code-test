@@ -1,0 +1,339 @@
+{
+  "hospitalId": "hosp-1769183871350-sd7qj5ya0",
+  "hospitalName": "굿모닝미항외과의원",
+  "url": "http://www.goodmihang.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:26:37.283Z",
+  "processingTimeMs": 12381,
+  "metadata": {
+    "title": "굿모닝미항외과",
+    "description": "굿모닝미항외과 시흥시 정왕동 이마트 옆 제일프라자 3층, 치질, 치핵, 치루, 치열, 수면대장내시경, 대장용종제거, 과민성증후군, 변비, 변실금"
+  },
+  "targetUrl": "http://www.goodmihang.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고",
+      "category": "medical_ad",
+      "subcategory": "comparison",
+      "severity": "warning",
+      "riskScore": 70,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제5호",
+        "article": "다른 의료기관의 기능이나 시설 등을 비방하는 내용의 광고 금지",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "타 의료기관과의 비교/비방 표현을 삭제하고, 자사의 장점만 안내하세요.",
+        "example": {
+          "bad": "타병원보다 더 저렴합니다",
+          "good": "합리적인 가격으로 양질의 의료서비스를 제공합니다"
+        }
+      },
+      "matched": true,
+      "matchedText": "타클리닉",
+      "contextWindow": " 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소동/표피낭종 수면위내시경 예방접종 영양수액 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/(타|다른|경쟁)\\s*(병원|의원|클리닉)/gi",
+            "text": "타클리닉",
+            "position": 209
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(타|다른|경쟁)\\s*(병원|의원|클리닉)/gi",
+            "text": "타클리닉",
+            "position": 373
+          },
+          {
+            "type": "pattern",
+            "pattern": "/(타|다른|경쟁)\\s*(병원|의원|클리닉)/gi",
+            "text": "타클리닉",
+            "position": 551
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "닫기 031. 505.",
+        "matched": "타클리닉",
+        "matchedSentence": "7272 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소동/표피낭종 수면위내시경 예방접종 영양수액 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소동/표피낭종 수면위내시경 예방접종 영양수액 닫기 LOGIN JOIN 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소동/표피낭종 수면위내시경 예방접종 영양수액 굿모닝미항외과의 자신감, 결과로 말합니다.",
+        "matchedHighlight": {
+          "text": "타클리닉",
+          "startInSentence": 134
+        },
+        "after": "풍부한 경험t과 노하우의 치질 클리닉 바로가기 ▶ 필요할 때만 하는 수면대장내시경 바로가기 ▶ 답답한 속, 이제 그만 변비 클리닉 바로가기 ▶ 시흥에서만 16년 이상 의료진 소개 바로가기 ▶ 환자를 기다리게 하지 않게 하겠다는굿모닝미항외과의 약속 진료안내 월·화·목·금09:30~18:30 수·토09:30~13:00 점심시간13:00~14:00 *수·토 점심시간 없음*일/공휴일 휴진 상담문의 031. 505.",
+        "full": "닫기 031. 505. 7272 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소동/표피낭종 수면위내시경 예방접종 영양수액 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소동/표피낭종 수면위내시경 예방접종 영양수액 닫기 LOGIN JOIN 병원소개 의료진 소개 진료안내 / 오시는 길 내부시설 안내 공지사항 비급여항목 항문클리닉 치질 치열 치루 항문주위농양 항문소양증 대장클리닉 수면대장내시경 대장용종제거 과민성 대장증후군 직장탈 변비클리닉 변비 변실금 항문거근증후군 기타클리닉 지방종/모소...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 0,
+    "warningsFiltered": 0,
+    "filterReasons": []
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 0,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "무료",
+        "ruleId": "MED-PR-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 7,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 67,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://kdb4257.cafe24.com/data/editor/2306/a60c1964f6bd34b3a02703a409a22d7d_1685684074_8853.jpg",
+        "preview": "굿모닝미학의과는\n1인 대표원장의 직접진료 원칙으로\n별도로 진료예약을 받지 않습니다.\n\n모든 진료는\n내원하시는 순서대로\n진료합니다.\n\n단, 응급환자가 발생한 경우\n우선 진료 및 수술...",
+        "wordCount": 30
+      },
+      {
+        "imageUrl": "http://www.goodmihang.com/img/mmv_img1.jpg",
+        "preview": "01\n\n풍부하고 숙련된 경험의 의료진이\n편안한 건강을 약속드립니다.\n\n약 18,000건 이상의 풍부한 치질 치료·수술 경험으로\n안정적��� 치료를 제공하기 위해 항상 노력하겠습니다...",
+        "wordCount": 21
+      },
+      {
+        "imageUrl": "http://www.goodmihang.com/img/mmv_img2.jpg",
+        "preview": "02\n\n처음부터 끝까지 내 가족을\n진료하는 마음으로\n\n상남부터 저료, 사후 관리까지\n전 공의가 1:1 책임진료 합니다.",
+        "wordCount": 16
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 27,
+    "totalCost": 0.163002,
+    "geminiCalls": 0,
+    "claudeCalls": 27,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 134,
+    "successCalls": 128,
+    "failedCalls": 6,
+    "totalImagesProcessed": 128,
+    "totalTextExtracted": 8794
+  }
+}

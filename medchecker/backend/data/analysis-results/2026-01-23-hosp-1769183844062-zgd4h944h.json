@@ -1,0 +1,329 @@
+{
+  "hospitalId": "hosp-1769183844062-zgd4h944h",
+  "hospitalName": "서울예스병원",
+  "url": "http://www.hospitalyes.co.kr/",
+  "success": true,
+  "analyzedAt": "2026-01-23T18:28:51.479Z",
+  "processingTimeMs": 27010,
+  "metadata": {
+    "title": "서울예스병원",
+    "description": "구)죽전 예스병원, 척추, 관절, 특화치료, 비수술통증치료, 척추내시경, 인공관절, 죽전역 1번출구"
+  },
+  "targetUrl": "http://www.hospitalyes.co.kr/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장",
+      "category": "medical_ad",
+      "subcategory": "effect_guarantee",
+      "severity": "warning",
+      "riskScore": 70,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "\"무통\" 표현을 \"통증 최소화\" 또는 \"마취를 통한 통증 관리\"로 수정하세요.",
+        "example": {
+          "bad": "무통 시술로 전혀 안 아파요!",
+          "good": "국소마취를 통해 통증을 최소화합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "통증없",
+      "contextWindow": "공지사항 예스소식 언론보도 자필치료후기 생생치료후기 영상 속 YES 칭찬카드 채용공고 Iteration 예스, 긍정의 힘을 믿습니다. 수술없이 통증없이 예스 진료안내일요일/공휴일 휴진 1811-7575 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/통증\\s*(이|이\\s*)?(없|전혀|제로|zero)/gi",
+            "text": "통증없",
+            "position": 1554
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "하루동안 보지않기 닫기 하루동안 보지않기 닫기 24시간 동안 다시 열람하지 않습니다. 닫기 서울예스병원 본문 바로가기 빠른예약 빠른예약신청 개인정보수집동의 상담신청하기 진료예약 오시는 길 의료진소개 진료시간표 채용공고 카카오톡상담@서울예스병원 맨 위로 예스병원 로그인 1811-7575 진료안내 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 진료안내 진료절차 진료시간표 제증명서발급 주차안내 예약·상담 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 예약·상담 빠른예약 진료예약 1:1상담 자주하는 질문 병원소개 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 병원소개 인사말 병원이념 의료진소개 진단·검사장비 둘러보기 오시는 길 질환정보 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 질환정보 관절질환 척추질환 척추센터 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 척추센터 YES 척추내시경 치료 미세현미경 신경감압술 경막외 신경성형술 인공디스크 치환술 경피적 척추체 성형술 최소침습 척추체 유합술 관절센터 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 관절센터 자가골수 흡인 농축물 관절강내 주사치료(BMAC) DNA주사 및 PROLO주사치료 관절경 수술 근위경골 절골술 무릎 인공관절 치환술 줄기세포 연골재생술(카티스템) 십자인대 재건술 발목관절 인대 재건술 무지외반증 교정술 인공관절 치환술 비수술통증센터 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 비수술통증센터 신경성형술 영상장치하 근육내 자극요법 인대강화요법 복합신경근육치료 도수치료 체외충격파 치료(ESWT) 무중력 감압치료 지속적 수동운동기 내과 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 내과 순환기 내과 내분비 내과 비만 내과 만성피로 클리닉 예방 접종 고객센터 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 고객센터 공지사항 예스소식 언론보도 자필치료후기 생생치료후기 영상 속 YES 칭찬카드 채용공고 Iteration 예스, 긍정의 힘을 믿습니다.",
+        "matched": "통증없",
+        "matchedSentence": "수술없이 통증없이 예스 진료안내일요일/공휴일 휴진 1811-7575 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 오시는 길 진료예약 의료진소개 진료시간표 치료후기 끊임없이 진화하는 서울예스병원 정형외과 전문의김인권 병원장 정형외과 전문의도현우 원장 정형외과 전문의김형구 원장 정형외과 전문의정현수 원장 정형외과 전문의양재우 원장 정형외과 전문의김동현 원장 신경외과 전문의이길용 원장 신경외과 전문의전재균 원장 신경외과 전문의김종호 원장 신경외과 전문의권종규 원장 신경외과 전문의송세진 원장 재활의학과 전문의강어진 원장 HOT NEWS 영상 속 YES더보기 ◆ 서울예스병원 공식 채널◆ [월간 닥터 도] 좋은 의사 고르는 법?",
+        "matchedHighlight": {
+          "text": "통증없",
+          "startInSentence": 5
+        },
+        "after": "5가지만 기억하세요! ◆ 서울예스병원 공식 채널◆ [오십견 Q&A] 환자들이 가장 많이 묻는 5가지 질문 | 자연 치유, 수술, MRI YES 치료후기더보기 전재균 원장 수술 후기 전재균 원장 수술 후기 COMMUNICATION 공지사항 더보기 2026년 2월 의료진 진료 시간 변경 안내2026-01-21 16:14:45 [진료 시간 변경] 2026년 척추 · 관절센터 진료 시간 변경 안내2026-01-19 09:52:59 2026년 1월 휴진 안내2025-12-23 16:28:12 [진료 시간 변경] 2025년 척추 · 관절센터 진료 시간 변경 안내2025-12-17 17:20:36 언론보도 더보기 [헬스조선] 두툼하게 입고 나갔다가 ‘아이고’ 곡소리… 겨울 패션의 함정 출처2025-12-08 11:37:13 [스포츠경향] 허리 건강에 도움되는 파크골프, 그래도 조심해야 할 질환은?",
+        "full": "하루동안 보지않기 닫기 하루동안 보지않기 닫기 24시간 동안 다시 열람하지 않습니다. 닫기 서울예스병원 본문 바로가기 빠른예약 빠른예약신청 개인정보수집동의 상담신청하기 진료예약 오시는 길 의료진소개 진료시간표 채용공고 카카오톡상담@서울예스병원 맨 위로 예스병원 로그인 1811-7575 진료안내 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 진료안내 진료절차 진료시간표 제증명서발급 주차안내 예약·상담 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00 예약·상담 빠른예약 진료예약 1:1상담 자주하는 질문 병원소개 대표전화 1811-7575 진료시간 월~금요일 AM 9:30 ~ PM 6:00 토요일 AM 9:00 ~ PM 1:00 점심시간 PM 1:00 ~ PM 2:00...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 2,
+  "aiCost": 0.011256,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-TM-001",
+        "matchedText": "치료후기",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-CL-003",
+        "matchedText": "언론보도",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 0,
+    "falsePositivesFound": 2,
+    "falsePositives": [
+      {
+        "matchedText": "인스타",
+        "ruleId": "MED-SNS-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 47,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 31,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.hospitalyes.co.kr/data/editor/2601/7d88a1694b8265269daa58136b3c6568_1768784007_2043.jpg",
+        "preview": "2026년 집중·관점 센터\n진료 시간 변경\nClick! 자세히 보기",
+        "wordCount": 9
+      },
+      {
+        "imageUrl": "http://www.hospitalyes.co.kr/data/editor/2601/b62d70dc33be0d31a8038a43132026d6_1768979870_2044.jpg",
+        "preview": "2월 진로시간안내\nClick! 자세히 보기",
+        "wordCount": 5
+      },
+      {
+        "imageUrl": "http://www.hospitalyes.co.kr/data/editor/2601/e6b5fd47fab47d9cd3bcc58ef69d673c_1768782274_9614.jpg",
+        "preview": "1월 19일\n진료개시\n\n신경외과 전문의\n송세진 원장\n\n퇴행성 척추질환  최소침습 척추 치료\n\n경추, 요추 디스크  척추협착증\n\n서��예스병원",
+        "wordCount": 17
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 21,
+    "totalCost": 0.125379,
+    "geminiCalls": 0,
+    "claudeCalls": 21,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 56,
+    "successCalls": 53,
+    "failedCalls": 3,
+    "totalImagesProcessed": 53,
+    "totalTextExtracted": 2516
+  }
+}

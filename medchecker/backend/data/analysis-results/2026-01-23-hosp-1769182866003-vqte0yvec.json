@@ -1,0 +1,355 @@
+{
+  "hospitalId": "hosp-1769182866003-vqte0yvec",
+  "hospitalName": "이화사랑피부과의원",
+  "url": "http://www.ewhaskin.co.kr",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:39:55.479Z",
+  "processingTimeMs": 46053,
+  "metadata": {
+    "title": "이화사랑피부과의원",
+    "description": "피부과, 이화피부과, 이화사랑피부과, 상도동피부과, 피부과시술, 피부과레이저시술, 여드름, 유명한피부과, 피부관리실, 피부관리"
+  },
+  "targetUrl": "http://www.ewhaskin.co.kr",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장",
+      "category": "medical_ad",
+      "subcategory": "effect_guarantee",
+      "severity": "warning",
+      "riskScore": 70,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "\"무통\" 표현을 \"통증 최소화\" 또는 \"마취를 통한 통증 관리\"로 수정하세요.",
+        "example": {
+          "bad": "무통 시술로 전혀 안 아파요!",
+          "good": "국소마취를 통해 통증을 최소화합니다. (개인차가 있을 수 있습니다)"
+        }
+      },
+      "matched": true,
+      "matchedText": "통증없",
+      "contextWindow": " 흉터 종류별맞춤 치료로 매끈하고 건강한 피부 백반증 부위, 증상에 따라 안전하고효과적인 레이저 치료 발톱무좀 눈에 보이지 않는 균까지레이저로 통증없이 완전하게 치료 사마귀 재발, 전염이 쉬운 사마귀를맞춤 레이저로 통증없이 빠르게 치료 건선 면역관리, 맞춤 레이저 복합치료로충분히 나아질",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0.25,
+        "mitigatingScore": -0.4,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.5499999999999999,
+      "decision": "violation",
+      "confidence": 0.9,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "pattern",
+            "pattern": "/통증\\s*(이|이\\s*)?(없|전혀|제로|zero)/gi",
+            "text": "통증없",
+            "position": 930
+          },
+          {
+            "type": "pattern",
+            "pattern": "/통증\\s*(이|이\\s*)?(없|전혀|제로|zero)/gi",
+            "text": "통증없",
+            "position": 970
+          }
+        ],
+        "aggravatingMatches": [
+          {
+            "type": "keyword",
+            "text": "완전"
+          }
+        ],
+        "mitigatingMatches": [
+          {
+            "type": "keyword",
+            "text": "최소화"
+          }
+        ]
+      },
+      "aiVerification": {
+        "performed": true,
+        "provider": "gemini",
+        "isViolation": true,
+        "confidence": 0.9,
+        "reasoning": "텍스트에서 '통증없이 완전하게 치료', '통증없이 빠르게 치료'라는 표현이 발톱무좀과 사마귀 치료에 대해 통증이 전혀 없을 것이라고 단정적으로 보장하고 있습니다. 이는 개인차나 예외 상황에 대한 면책 표현 없이 무통증을 절대적으로 보장하는 의료광고 위반에 해당합니다.",
+        "mitigatingFactorsFound": [],
+        "aggravatingFactorsFound": [
+          "통증없이 완전하게 치료",
+          "통증없이 빠르게 치료",
+          "개인차에 대한 면책 표현 부재",
+          "단정적 보장 표현"
+        ],
+        "cost": 0.008049
+      },
+      "extendedContext": {
+        "before": "신뢰와 전통의 피부 맞춤 치료 이화사랑피부과 풍부한 치료 경험을 바탕 구성원간 연구와 노력 피부과 평생 주치의 난치성 피부 질환 1:1 상담과 현재 상태에 맞게개인별 맞춤 치료 계획 시술 장비의 효과 극대화풍부한 치료 경험과연구가 기본 무분별한 시술 지양피부 자극 최소화 맞춤 진단개인별 패턴을 고려한 치료 지속적인 연구와 노력 풍부한 치료경험 수많은 치료 사례! 이화사랑피부과 주요 피부질환 진료 8명의 의료진 20년 이상 풍부한임상 경험 우리 가족 피부과주치의와 상의하세요.",
+        "matched": "통증없",
+        "matchedSentence": "여드름흉터 피부상태, 흉터 종류별맞춤 치료로 매끈하고 건강한 피부 백반증 부위, 증상에 따라 안전하고효과적인 레이저 치료 발톱무좀 눈에 보이지 않는 균까지레이저로 통증없이 완전하게 치료 사마귀 재발, 전염이 쉬운 사마귀를맞춤 레이저로 통증없이 빠르게 치료 건선 면역관리, 맞춤 레이저 복합치료로충분히 나아질 수 있어요!",
+        "matchedHighlight": {
+          "text": "통증없",
+          "startInSentence": 91
+        },
+        "after": "점/검버섯/주근깨/잡티 피부, 색소에 맞는 레이저와에너지 선택으로 흔적없이 깨끗하게! 표피낭종 피부에 생긴 볼록한 주머니!",
+        "full": "신뢰와 전통의 피부 맞춤 치료 이화사랑피부과 풍부한 치료 경험을 바탕 구성원간 연구와 노력 피부과 평생 주치의 난치성 피부 질환 1:1 상담과 현재 상태에 맞게개인별 맞춤 치료 계획 시술 장비의 효과 극대화풍부한 치료 경험과연구가 기본 무분별한 시술 지양피부 자극 최소화 맞춤 진단개인별 패턴을 고려한 치료 지속적인 연구와 노력 풍부한 치료경험 수많은 치료 사례! 이화사랑피부과 주요 피부질환 진료 8명의 의료진 20년 이상 풍부한임상 경험 우리 가족 피부과주치의와 상의하세요. 여드름흉터 피부상태, 흉터 종류별맞춤 치료로 매끈하고 건강한 피부 백반증 부위, 증상에 따라 안전하고효과적인 레이저 치료 발톱무좀 눈에 보이지 않는 균까지레이저로 통증없이 완전하게 치료 사마귀 재발, 전염이 쉬운 사마귀를맞춤 레이저로 통증없이 빠르게 치료 건선 면역관리, 맞춤 레이저 복합치료로충분히 나아질 수 있어요! 점/검버섯/주근깨/잡티 피부, 색소에 맞는 레이저와에너지 선택으로 흔적없이 깨끗하게! 표피낭종 ...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 2,
+  "aiCost": 0.015390000000000001,
+  "filterStats": {
+    "violationsFiltered": 2,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "시술전후",
+        "reason": "menu_text_exact_match"
+      },
+      {
+        "ruleId": "MED-EX-003",
+        "matchedText": "대상",
+        "reason": "menu_text_partial_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "치료 경험",
+        "ruleId": "MED-TM-001",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 47,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 14,
+    "extractedTexts": [
+      {
+        "imageUrl": "http://www.ewhaskin.co.kr/img/main/btn_scroll.png",
+        "preview": "이미지가 표시되지 않습니다. 이미지를 다시 업로드해 주시면 모든 텍스트를 추출해 드리겠습니다.",
+        "wordCount": 11
+      },
+      {
+        "imageUrl": "http://www.ewhaskin.co.kr/img/main/main_quick.png",
+        "preview": "Quick Menu",
+        "wordCount": 2
+      },
+      {
+        "imageUrl": "http://www.ewhaskin.co.kr/img/main/main_quick_01.png",
+        "preview": "의료진소개",
+        "wordCount": 1
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 17,
+    "totalCost": 0.110586,
+    "geminiCalls": 0,
+    "claudeCalls": 17,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 41,
+    "successCalls": 41,
+    "failedCalls": 0,
+    "totalImagesProcessed": 41,
+    "totalTextExtracted": 4544
+  }
+}

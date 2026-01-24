@@ -1,0 +1,265 @@
+{
+  "hospitalId": "hosp-1769182856899-gh73uzuid",
+  "hospitalName": "닥터에버스의원 목동",
+  "url": "https://evers10.co.kr/",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:35:22.376Z",
+  "processingTimeMs": 37730,
+  "metadata": {
+    "title": "양천 목동 피부과 닥터에버스의원 목동점",
+    "description": "목동피부과 목동역피부과 오목교피부과 신정동피부과 목동피부과잘하는곳 목동피부과추천 목동잡티제거 목동레이저제모 목동미백 목동보톡스 목동필러 목동리프팅 목동인모드 목동슈링크 목동울쎄라 목동텐써마 목동덴서티 오목교덴서티 목동리니어지 목동스킨부스터 목동리쥬란 목동에버클 목동엑소좀 목동아쿠아필 목동피코토닝 목동바디지방분해주사 목동트리플바디 목동걸그룹주사 목동스킨부스터 목동스컬트라 목동올리지오 목동LDM 목동윤곽주사 목동GPC 목동온다"
+  },
+  "targetUrl": "https://evers10.co.kr/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 0,
+  "aiCost": 0,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "시술전후",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 0,
+    "aiVerified": 1,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "팔로우",
+        "ruleId": "MED-SNS-001",
+        "reason": "menu_text",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 131,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 86,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://cdn.imweb.me/thumbnail/20251231/50c77677adc33.jpg",
+        "preview": "WELCOME 2026\n\n새해맞이\nBIG SALE\n준비했단🐂말이야\n\n인모드FX\n1부위 1회\n58,000원\n\n아쿠아필(1,2,3단계)\n+LED재생레이저\n+모델링 1회\n25,000원...",
+        "wordCount": 30
+      },
+      {
+        "imageUrl": "https://cdn.imweb.me/thumbnail/20251231/14215e329b675.jpg",
+        "preview": "WELCOME 2026\n\n새해맞이\n\nBIGSALE 준비했단♭이야\n\n인모드FX\n1부위 1회\n6.8만원\n58,000원\n\n아쿠아필(1.2.3단계)\n+LED재생레이저\n+모델링 1회\n2.9...",
+        "wordCount": 32
+      },
+      {
+        "imageUrl": "https://cdn.imweb.me/thumbnail/20250925/ebc4b412c2af4.png",
+        "preview": "이미지가 표시되지 않거나 매우 흐릿하게 보입니다. 텍스트를 정확히 읽을 수 없는 상태입니다. \n\n이미지를 다시 업로드해 주시거��, 더 선명한 이미지로 제공해 주시면 텍스트 추출을...",
+        "wordCount": 24
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 4,
+    "totalCost": 0.023874,
+    "geminiCalls": 0,
+    "claudeCalls": 4,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 12,
+    "successCalls": 12,
+    "failedCalls": 0,
+    "totalImagesProcessed": 12,
+    "totalTextExtracted": 1785
+  }
+}

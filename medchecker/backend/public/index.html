@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDCHECKER - 의료광고 위반 분석 데모</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 1.8rem;
+      color: #00d4ff;
+      margin-bottom: 5px;
+    }
+
+    .stat-card p {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    /* Input Section */
+    .input-section {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    .input-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #e2e8f0;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: #00d4ff;
+      color: #00d4ff;
+    }
+
+    .tab-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Input Fields */
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .url-input {
+      width: 100%;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .url-input:focus {
+      outline: none;
+      border-color: #00d4ff;
+    }
+
+    .url-input::placeholder {
+      color: #64748b;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 15px;
+      color: #fff;
+      font-size: 0.95rem;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #00d4ff;
+    }
+
+    .sample-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .sample-btn {
+      padding: 8px 16px;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.5);
+      border-radius: 20px;
+      color: #c4b5fd;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .sample-btn:hover {
+      background: rgba(124, 58, 237, 0.4);
+    }
+
+    .analyze-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .analyze-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    }
+
+    .analyze-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* AI Badge */
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.5);
+      border-radius: 20px;
+      color: #c4b5fd;
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+    }
+
+    .ai-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Result Section */
+    .result-section {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .result-header h2 {
+      font-size: 1.3rem;
+      color: #e2e8f0;
+    }
+
+    .source-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 8px;
+      color: #00d4ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .source-link:hover {
+      background: rgba(0, 212, 255, 0.2);
+    }
+
+    /* 위반 영역 보기 버튼 */
+    .view-violations-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #7c3aed, #a855f7);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+
+    .view-violations-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+    }
+
+    .view-violations-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .result-placeholder {
+      text-align: center;
+      padding: 60px 20px;
+      color: #64748b;
+    }
+
+    .result-placeholder svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      opacity: 0.3;
+    }
+
+    /* Result Summary */
+    .result-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .result-summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .summary-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .summary-card.high-risk {
+      border-left: 4px solid #ef4444;
+    }
+
+    .summary-card.medium-risk {
+      border-left: 4px solid #f59e0b;
+    }
+
+    .summary-card.low-risk {
+      border-left: 4px solid #22c55e;
+    }
+
+    .summary-card h4 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .summary-card p {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    /* Violation Cards - Accordion Style */
+    .violations-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .violation-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 12px;
+      overflow: hidden;
+      border-left: 4px solid #ef4444;
+    }
+
+    .violation-card.warning {
+      border-left-color: #f59e0b;
+    }
+
+    .violation-card.info {
+      border-left-color: #3b82f6;
+    }
+
+    .violation-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .violation-card-header:hover {
+      background: rgba(0,0,0,0.3);
+    }
+
+    .violation-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .expand-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s;
+    }
+
+    .violation-card.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    .violation-title {
+      font-weight: 600;
+      color: #f1f5f9;
+      font-size: 1rem;
+    }
+
+    .severity-badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .severity-badge.critical {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+
+    .severity-badge.warning {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+    }
+
+    .severity-badge.info {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+    }
+
+    .violation-card-body {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    .violation-card.expanded .violation-card-body {
+      padding: 20px;
+      max-height: 2000px;
+    }
+
+    /* Source URL Box */
+    .source-url-box {
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .source-url-box .label {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .source-url-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #00d4ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      word-break: break-all;
+      transition: all 0.2s;
+    }
+
+    .source-url-link:hover {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+
+    .source-url-link svg {
+      flex-shrink: 0;
+    }
+
+    /* Violation Text Highlight */
+    .violation-text-highlight {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .violation-text-highlight .label {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .violation-text-highlight .matched-text {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.4), rgba(239, 68, 68, 0.2));
+      border-bottom: 2px solid #ef4444;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #fca5a5;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .violation-text-highlight .matched-text.warning {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.4), rgba(245, 158, 11, 0.2));
+      border-bottom-color: #f59e0b;
+      color: #fcd34d;
+    }
+
+    /* Extended Context Block */
+    .extended-context {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #94a3b8;
+    }
+
+    .extended-context::before {
+      content: '주변 문맥';
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background: #1a1a2e;
+      padding: 0 8px;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .extended-context .context-text {
+      color: #94a3b8;
+    }
+
+    .extended-context .context-text.no-context {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .extended-context .highlight-mark {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.3), rgba(239, 68, 68, 0.15));
+      border-bottom: 2px solid #ef4444;
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: #fca5a5;
+      font-weight: 600;
+    }
+
+    .extended-context .highlight-mark.warning {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.15));
+      border-bottom-color: #f59e0b;
+      color: #fcd34d;
+    }
+
+    /* Violation Sections */
+    .violation-section {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .violation-section:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #00d4ff;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .section-title svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .section-title .legal-link {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-decoration: none;
+      padding: 4px 8px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .section-title .legal-link:hover {
+      color: #00d4ff;
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    /* Legal Info Grid */
+    .legal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .legal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .legal-item {
+      background: rgba(0,0,0,0.2);
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .legal-item h5 {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .legal-item p {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    /* Fix Guide Section */
+    .fix-guide {
+      background: rgba(34, 197, 94, 0.05);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .fix-steps {
+      margin-bottom: 15px;
+    }
+
+    .fix-step {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+
+    .fix-step-number {
+      background: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .examples-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .example-box {
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .example-box.bad {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .example-box.good {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .example-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .example-box.bad .example-label {
+      color: #fca5a5;
+    }
+
+    .example-box.good .example-label {
+      color: #86efac;
+    }
+
+    .example-text {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* Related Cases Section */
+    .case-card {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .case-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .case-title {
+      font-size: 0.9rem;
+      color: #f1f5f9;
+      font-weight: 500;
+    }
+
+    .case-penalty {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .case-meta {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .case-summary {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    /* Screenshot Section */
+    .screenshot-container {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .screenshot-image {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .screenshot-placeholder {
+      padding: 30px;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* Tips List */
+    .tips-list {
+      list-style: none;
+    }
+
+    .tips-list li {
+      display: flex;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    .tips-list li::before {
+      content: '💡';
+      flex-shrink: 0;
+    }
+
+    /* Success Message */
+    .success-message {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .success-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(34, 197, 94, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .success-icon svg {
+      width: 50px;
+      height: 50px;
+      color: #22c55e;
+    }
+
+    .success-message h3 {
+      color: #22c55e;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .success-message p {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top-color: #00d4ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-steps {
+      margin-top: 20px;
+      text-align: left;
+      display: inline-block;
+    }
+
+    .loading-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .loading-step.active {
+      color: #00d4ff;
+    }
+
+    .loading-step.done {
+      color: #22c55e;
+    }
+
+    .loading-step-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Metadata Box */
+    .metadata-box {
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .metadata-box h4 {
+      font-size: 0.85rem;
+      color: #00d4ff;
+      margin-bottom: 10px;
+    }
+
+    .metadata-item {
+      display: flex;
+      margin-bottom: 5px;
+    }
+
+    .metadata-item span:first-child {
+      color: #64748b;
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .metadata-item span:last-child {
+      color: #e2e8f0;
+      word-break: break-all;
+    }
+
+    /* Confidence Meter */
+    .confidence-meter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .confidence-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    .confidence-fill.high {
+      background: #ef4444;
+    }
+
+    .confidence-fill.medium {
+      background: #f59e0b;
+    }
+
+    .confidence-fill.low {
+      background: #22c55e;
+    }
+
+    .confidence-text {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      min-width: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>MEDCHECKER</h1>
+      <p>의료광고 위반 탐지 시스템 - 문맥 기반 AI 분석</p>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-grid" id="stats">
+      <div class="stat-card">
+        <h3 id="totalRules">-</h3>
+        <p>총 규칙 수</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="medicalRules">-</h3>
+        <p>의료광고 규칙</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="viralRules">-</h3>
+        <p>바이럴 모니터링</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="aiProviders">-</h3>
+        <p>AI Providers</p>
+      </div>
+    </div>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <h2>분석 대상 입력</h2>
+      
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('url')">URL 분석</button>
+        <button class="tab-btn" onclick="switchTab('text')">텍스트 분석</button>
+      </div>
+
+      <!-- URL Input -->
+      <div id="urlTab" class="tab-content active">
+        <div class="input-group">
+          <label>병원 웹사이트 URL</label>
+          <input type="url" class="url-input" id="urlInput" placeholder="https://example-hospital.com">
+        </div>
+      </div>
+
+      <!-- Text Input -->
+      <div id="textTab" class="tab-content">
+        <div class="sample-buttons" id="sampleButtons">
+          <!-- 샘플 버튼 -->
+        </div>
+        <textarea id="textInput" placeholder="분석할 의료광고 텍스트를 입력하세요..."></textarea>
+      </div>
+
+      <!-- AI Always On Badge -->
+      <div class="ai-badge">
+        AI 분석 활성화됨 (Gemini + Claude)
+      </div>
+
+      <button class="analyze-btn" id="analyzeBtn" onclick="analyze()">
+        분석 시작
+      </button>
+    </div>
+
+    <!-- Result Section -->
+    <div class="result-section">
+      <div class="result-header">
+        <h2>분석 결과</h2>
+        <a href="#" class="source-link" id="sourceLink" style="display: none;" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          원본 페이지 열기
+        </a>
+      </div>
+      <div id="resultContent">
+        <div class="result-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+          <p>URL을 입력하거나 텍스트를 입력한 후<br>"분석 시작" 버튼을 클릭하세요</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>MEDCHECKER v0.2.0 - 의료광고 위반 탐지 시스템</p>
+      <p>의료법 제56조 기반 / 문맥 인식 규칙 엔진 + AI 검증</p>
+    </footer>
+  </div>
+
+  <script>
+    let currentTab = 'url';
+    let currentSourceUrl = null;
+
+    // 페이지 로드 시 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      loadStats();
+      loadSamples();
+    });
+
+    // 탭 전환
+    function switchTab(tab) {
+      currentTab = tab;
+      
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(tab + 'Tab').classList.add('active');
+    }
+
+    // 통계 로드
+    async function loadStats() {
+      try {
+        const response = await fetch('/api/stats');
+        const data = await response.json();
+        
+        if (data.success) {
+          document.getElementById('totalRules').textContent = data.stats.totalRules;
+          document.getElementById('medicalRules').textContent = data.stats.medicalAdRules;
+          document.getElementById('viralRules').textContent = data.stats.viralMonitoringRules;
+          document.getElementById('aiProviders').textContent = data.aiProviders.length;
+        }
+      } catch (error) {
+        console.error('Failed to load stats:', error);
+      }
+    }
+
+    // 샘플 데이터 로드
+    async function loadSamples() {
+      try {
+        const response = await fetch('/api/samples');
+        const data = await response.json();
+        
+        if (data.success) {
+          const container = document.getElementById('sampleButtons');
+          container.innerHTML = data.samples.map((sample, i) => 
+            `<button class="sample-btn" onclick="loadSample(${i})">${sample.name}</button>`
+          ).join('');
+          
+          window.sampleData = data.samples;
+        }
+      } catch (error) {
+        console.error('Failed to load samples:', error);
+      }
+    }
+
+    // 샘플 텍스트 로드
+    function loadSample(index) {
+      if (window.sampleData && window.sampleData[index]) {
+        document.getElementById('textInput').value = window.sampleData[index].text;
+        switchTab('text');
+        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+        document.querySelector('.tab-btn:nth-child(1)').classList.remove('active');
+        document.getElementById('urlTab').classList.remove('active');
+        document.getElementById('textTab').classList.add('active');
+      }
+    }
+
+    // URL 정규화 (http:// 자동 추가)
+    function normalizeUrl(url) {
+      if (!url) return '';
+      url = url.trim();
+      
+      // 이미 프로토콜이 있으면 그대로 반환
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+      }
+      
+      // 프로토콜이 없으면 https:// 추가 (더 안전)
+      return 'https://' + url;
+    }
+
+    // 분석 실행 (AI 항상 활성화)
+    async function analyze() {
+      const enableAI = true; // 항상 활성화
+      const btn = document.getElementById('analyzeBtn');
+      const resultContent = document.getElementById('resultContent');
+      const sourceLink = document.getElementById('sourceLink');
+
+      let endpoint, body;
+
+      if (currentTab === 'url') {
+        let url = document.getElementById('urlInput').value.trim();
+        if (!url) {
+          alert('URL을 입력해주세요.');
+          return;
+        }
+        
+        // URL 정규화 (http:// 자동 추가)
+        url = normalizeUrl(url);
+        
+        // 입력 필드에 정규화된 URL 표시
+        document.getElementById('urlInput').value = url;
+        
+        endpoint = '/api/analyze-url';
+        body = { url, enableAI };
+        currentSourceUrl = url;
+      } else {
+        const text = document.getElementById('textInput').value.trim();
+        if (!text) {
+          alert('분석할 텍스트를 입력해주세요.');
+          return;
+        }
+        endpoint = '/api/analyze';
+        body = { text, enableAI };
+        currentSourceUrl = null;
+      }
+
+      // 로딩 상태
+      btn.disabled = true;
+      btn.textContent = '분석 중...';
+      sourceLink.style.display = 'none';
+      resultContent.innerHTML = `
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>${currentTab === 'url' ? '웹사이트 분석 중...' : '텍스트 분석 중...'}</p>
+          <div class="loading-steps">
+            <div class="loading-step active" id="step1">
+              <span class="loading-step-icon">⏳</span>
+              ${currentTab === 'url' ? '웹사이트 크롤링' : '텍스트 전처리'}
+            </div>
+            <div class="loading-step" id="step2">
+              <span class="loading-step-icon">⏳</span>
+              규칙 기반 분석
+            </div>
+            <div class="loading-step" id="step3">
+              <span class="loading-step-icon">⏳</span>
+              AI 문맥 검증
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 로딩 단계 시뮬레이션
+      setTimeout(() => {
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        if (step1) {
+          step1.classList.remove('active');
+          step1.classList.add('done');
+          const icon1 = step1.querySelector('.loading-step-icon');
+          if (icon1) icon1.textContent = '✓';
+        }
+        if (step2) step2.classList.add('active');
+      }, 1000);
+      setTimeout(() => {
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        if (step2) {
+          step2.classList.remove('active');
+          step2.classList.add('done');
+          const icon2 = step2.querySelector('.loading-step-icon');
+          if (icon2) icon2.textContent = '✓';
+        }
+        if (step3) step3.classList.add('active');
+      }, 2000);
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          renderResult(data);
+          
+          // 원본 링크 표시
+          if (currentSourceUrl) {
+            sourceLink.href = currentSourceUrl;
+            sourceLink.style.display = 'flex';
+          }
+        } else {
+          resultContent.innerHTML = `
+            <div class="result-placeholder">
+              <p style="color: #ef4444;">오류: ${data.error}</p>
+              ${data.detail ? `<p style="color: #94a3b8; font-size: 0.85rem; margin-top: 10px;">${data.detail}</p>` : ''}
+            </div>
+          `;
+        }
+      } catch (error) {
+        resultContent.innerHTML = `
+          <div class="result-placeholder">
+            <p style="color: #ef4444;">분석 중 오류가 발생했습니다</p>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 10px;">${error.message}</p>
+          </div>
+        `;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '분석 시작';
+      }
+    }
+
+    // 결과 렌더링
+    function renderResult(data) {
+      const resultContent = document.getElementById('resultContent');
+      const result = data.result;
+      const raw = data.raw;
+
+      // 위반이 없는 경우
+      if (result.summary.violationsCount === 0 && result.summary.warningsCount === 0) {
+        resultContent.innerHTML = `
+          ${data.metadata ? renderMetadata(data) : ''}
+          <div class="success-message">
+            <div class="success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3>위반 사항 없음</h3>
+            <p>분석 결과 의료광고법 위반으로 의심되는 표현이 발견되지 않았습니다.</p>
+            <p style="margin-top: 15px; color: #22c55e; font-size: 1.2rem;">점수: ${result.summary.score}점</p>
+          </div>
+        `;
+        return;
+      }
+
+      // 결과 요약
+      const riskClass = result.summary.riskLevel === 'high' ? 'high-risk' : 
+                       result.summary.riskLevel === 'medium' ? 'medium-risk' : 'low-risk';
+      
+      let html = '';
+
+      // 메타데이터 (URL 분석의 경우)
+      if (data.metadata) {
+        html += renderMetadata(data);
+      }
+
+      // 요약 카드
+      html += `
+        <div class="result-summary">
+          <div class="summary-card ${riskClass}">
+            <h4 style="color: ${result.summary.riskLevel === 'high' ? '#ef4444' : result.summary.riskLevel === 'medium' ? '#f59e0b' : '#22c55e'}">${result.summary.score}</h4>
+            <p>점수</p>
+          </div>
+          <div class="summary-card high-risk">
+            <h4 style="color: #ef4444">${result.summary.violationsCount}</h4>
+            <p>위반</p>
+          </div>
+          <div class="summary-card medium-risk">
+            <h4 style="color: #f59e0b">${result.summary.warningsCount}</h4>
+            <p>경고</p>
+          </div>
+          <div class="summary-card">
+            <h4 style="color: #94a3b8">${data.processingTimeMs || 0}ms</h4>
+            <p>처리 시간</p>
+          </div>
+        </div>
+
+        <p style="margin-bottom: 15px; padding: 10px 15px; background: rgba(0,0,0,0.3); border-radius: 8px; color: #f1f5f9;">
+          <strong>위험도:</strong> <span style="color: ${result.summary.riskLevel === 'high' ? '#ef4444' : result.summary.riskLevel === 'medium' ? '#f59e0b' : '#22c55e'}">${result.summary.riskLabel}</span>
+        </p>
+
+        ${currentSourceUrl && (result.summary.violationsCount > 0 || result.summary.warningsCount > 0) ? `
+          <a href="${getViewerUrl(data)}" target="_blank" class="view-violations-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            실제 페이지에서 위반 영역 보기
+          </a>
+        ` : ''}
+
+        <div class="violations-list">
+      `;
+
+      // 위반 목록
+      const violations = raw?.violations || result?.violations || [];
+      for (let i = 0; i < violations.length; i++) {
+        html += renderViolationCard(violations[i], i, false);
+      }
+
+      // 경고 목록
+      const warnings = raw?.warnings || result?.warnings || [];
+      if (warnings.length > 0) {
+        html += `<h3 style="margin: 30px 0 15px; color: #f59e0b; font-size: 1.1rem;">경고 사항</h3>`;
+        for (let i = 0; i < Math.min(warnings.length, 5); i++) {
+          html += renderViolationCard(warnings[i], violations.length + i, true);
+        }
+        if (warnings.length > 5) {
+          html += `<p style="color: #64748b; text-align: center; padding: 15px;">외 ${warnings.length - 5}건의 경고가 더 있습니다.</p>`;
+        }
+      }
+
+      html += '</div>';
+      resultContent.innerHTML = html;
+
+      // 아코디언 이벤트 바인딩
+      document.querySelectorAll('.violation-card-header').forEach(header => {
+        header.addEventListener('click', () => {
+          header.parentElement.classList.toggle('expanded');
+        });
+      });
+    }
+
+    // 메타데이터 렌더링
+    function renderMetadata(data) {
+      return `
+        <div class="metadata-box">
+          <h4>페이지 정보</h4>
+          <div class="metadata-item">
+            <span>URL</span>
+            <span>${data.url || '-'}</span>
+          </div>
+          <div class="metadata-item">
+            <span>제목</span>
+            <span>${data.metadata?.title || '-'}</span>
+          </div>
+          <div class="metadata-item">
+            <span>설명</span>
+            <span>${data.metadata?.description?.substring(0, 100) || '-'}${data.metadata?.description?.length > 100 ? '...' : ''}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 위반 카드 렌더링 (확장 가능한 아코디언)
+    function renderViolationCard(violation, index, isWarning = false) {
+      const severityClass = violation.severity === 'critical' ? 'critical' : 
+                           violation.severity === 'warning' ? 'warning' : 'info';
+      
+      const severityLabel = violation.severityLabel || 
+                           (violation.severity === 'critical' ? '심각' : 
+                           violation.severity === 'warning' ? '주의' : '참고');
+
+      // 확장된 문맥 정보 처리
+      const extendedContext = violation.extendedContext || {};
+      const contextBefore = extendedContext.before || '';
+      const contextMatched = extendedContext.matched || violation.matchedText || violation.evidence || '';
+      const contextAfter = extendedContext.after || '';
+      const hasExtendedContext = contextBefore || contextAfter;
+
+      // 기존 문맥 (확장 문맥이 없는 경우 사용)
+      const contextWindow = violation.contextWindow || violation.context || '';
+
+      // 법적 정보
+      const legalBasis = violation.legal?.basis || violation.legalBasis || '-';
+      const legalPenalty = violation.legal?.penalty || '-';
+
+      // 수정 가이드
+      const howToFix = violation.howToFix || violation.recommendation || {};
+      const fixSteps = howToFix.steps || [];
+      const badExamples = howToFix.badExamples || (howToFix.example?.bad ? [howToFix.example.bad] : []);
+      const goodExamples = howToFix.goodExamples || (howToFix.example?.good ? [howToFix.example.good] : []);
+      const tips = howToFix.tips || [];
+
+      // 관련 판례
+      const relatedCases = violation.relatedCases || [];
+
+      // 신뢰도
+      const confidence = Math.round((violation.confidence || 0.7) * 100);
+      const confidenceClass = confidence >= 80 ? 'high' : confidence >= 60 ? 'medium' : 'low';
+
+      // 위반 텍스트 (matchedText가 우선)
+      const violationText = violation.matchedText || violation.evidence || '';
+
+      // 소스 URL (위반이 발견된 페이지)
+      const sourceUrl = violation.sourceUrl || currentSourceUrl || '';
+
+      // 스크린샷 데이터
+      const screenshotData = violation.screenshot?.data || violation.screenshot || null;
+      
+      return `
+        <div class="violation-card ${isWarning ? 'warning' : ''} expanded" data-index="${index}">
+          <div class="violation-card-header">
+            <div class="violation-header-left">
+              <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+              <span class="violation-title">${escapeHtml(violation.ruleName || violation.ruleId)}</span>
+            </div>
+            <span class="severity-badge ${severityClass}">${severityLabel}</span>
+          </div>
+          <div class="violation-card-body">
+            
+            <!-- 소스 URL (위반 영역 링크) -->
+            ${sourceUrl ? `
+              <div class="source-url-box">
+                <span class="label">위반 발견 위치:</span>
+                <a href="${escapeHtml(sourceUrl)}" target="_blank" class="source-url-link">
+                  ${escapeHtml(sourceUrl.length > 60 ? sourceUrl.substring(0, 60) + '...' : sourceUrl)}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            ` : ''}
+
+            <!-- 위반 텍스트 (하이라이트) -->
+            <div class="violation-text-highlight">
+              <span class="label">위반 표현:</span>
+              <span class="matched-text ${isWarning ? 'warning' : ''}">${escapeHtml(violationText)}</span>
+            </div>
+
+            <!-- 앞뒤 문맥 (일반 텍스트) -->
+            <div class="extended-context">
+              ${hasExtendedContext ? `
+                <span class="context-text">${escapeHtml(contextBefore)}</span>
+                <mark class="highlight-mark ${isWarning ? 'warning' : ''}">${escapeHtml(violationText)}</mark>
+                <span class="context-text">${escapeHtml(contextAfter)}</span>
+              ` : (contextWindow ? `
+                <span class="context-text">${highlightInContext(contextWindow, violationText, isWarning)}</span>
+              ` : `
+                <span class="context-text no-context">문맥 정보 없음</span>
+              `)}
+            </div>
+
+            <!-- 법적 근거 -->
+            <div class="violation-section">
+              <div class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+                법적 근거
+                <a href="https://www.law.go.kr/법령/의료법" target="_blank" class="legal-link">의료법 전문 보기 ↗</a>
+              </div>
+              <div class="legal-grid">
+                <div class="legal-item">
+                  <h5>근거 법령</h5>
+                  <p>${escapeHtml(legalBasis)}</p>
+                </div>
+                <div class="legal-item">
+                  <h5>처벌 규정</h5>
+                  <p>${escapeHtml(legalPenalty)}</p>
+                </div>
+                <div class="legal-item">
+                  <h5>신뢰도</h5>
+                  <div class="confidence-meter">
+                    <div class="confidence-bar">
+                      <div class="confidence-fill ${confidenceClass}" style="width: ${confidence}%"></div>
+                    </div>
+                    <span class="confidence-text">${confidence}%</span>
+                  </div>
+                </div>
+                <div class="legal-item">
+                  <h5>카테고리</h5>
+                  <p>${escapeHtml(violation.category || violation.subcategory || '-')}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 수정 가이드 -->
+            ${(fixSteps.length > 0 || badExamples.length > 0 || goodExamples.length > 0) ? `
+              <div class="violation-section">
+                <div class="section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  수정 가이드
+                </div>
+                <div class="fix-guide">
+                  ${howToFix.action ? `<p style="margin-bottom: 12px; color: #e2e8f0;">${escapeHtml(howToFix.action)}</p>` : ''}
+                  
+                  ${fixSteps.length > 0 ? `
+                    <div class="fix-steps">
+                      ${fixSteps.map((step, i) => `
+                        <div class="fix-step">
+                          <span class="fix-step-number">${i + 1}</span>
+                          <span>${escapeHtml(step.replace(/^\d+\.\s*/, ''))}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  ` : ''}
+
+                  ${(badExamples.length > 0 || goodExamples.length > 0) ? `
+                    <div class="examples-grid">
+                      ${badExamples.length > 0 ? `
+                        <div class="example-box bad">
+                          <div class="example-label">잘못된 예시</div>
+                          ${badExamples.slice(0, 2).map(ex => `
+                            <div class="example-text">• ${escapeHtml(ex)}</div>
+                          `).join('')}
+                        </div>
+                      ` : ''}
+                      ${goodExamples.length > 0 ? `
+                        <div class="example-box good">
+                          <div class="example-label">올바른 예시</div>
+                          ${goodExamples.slice(0, 2).map(ex => `
+                            <div class="example-text">• ${escapeHtml(ex)}</div>
+                          `).join('')}
+                        </div>
+                      ` : ''}
+                    </div>
+                  ` : ''}
+
+                  ${tips.length > 0 ? `
+                    <ul class="tips-list" style="margin-top: 12px;">
+                      ${tips.slice(0, 3).map(tip => `<li>${escapeHtml(tip)}</li>`).join('')}
+                    </ul>
+                  ` : ''}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- 관련 판례 -->
+            ${relatedCases.length > 0 ? `
+              <div class="violation-section">
+                <div class="section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                  </svg>
+                  관련 판례/사례
+                </div>
+                ${relatedCases.slice(0, 2).map(c => `
+                  <div class="case-card">
+                    <div class="case-header">
+                      <span class="case-title">${escapeHtml(c.title || c.id)}</span>
+                      ${c.penalty ? `<span class="case-penalty">${escapeHtml(c.penalty)}</span>` : ''}
+                    </div>
+                    ${(c.court || c.date) ? `
+                      <div class="case-meta">${escapeHtml(c.court || '')} ${c.date ? `(${c.date})` : ''}</div>
+                    ` : ''}
+                    ${c.summary ? `<div class="case-summary">${escapeHtml(c.summary)}</div>` : ''}
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            <!-- 스크린샷 (있는 경우) -->
+            ${screenshotData ? `
+              <div class="violation-section">
+                <div class="section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  위반 영역 스크린샷
+                </div>
+                <div class="screenshot-container">
+                  <img src="${screenshotData.startsWith('data:') ? screenshotData : 'data:image/png;base64,' + screenshotData}" class="screenshot-image" alt="위반 영역 스크린샷">
+                </div>
+              </div>
+            ` : ''}
+
+          </div>
+        </div>
+      `;
+    }
+
+    // 문맥 내에서 위반 텍스트만 하이라이트 (mark 태그 사용)
+    function highlightInContext(context, matchedText, isWarning = false) {
+      if (!context) return '';
+      if (!matchedText) return escapeHtml(context);
+
+      const escapedContext = escapeHtml(context);
+      const escapedMatch = escapeHtml(matchedText);
+      
+      const markClass = isWarning ? 'highlight-mark warning' : 'highlight-mark';
+      
+      // 대소문자 무시하고 매칭, 원본 텍스트 유지
+      const regex = new RegExp(`(${escapeRegExp(escapedMatch)})`, 'gi');
+      return escapedContext.replace(regex, `<mark class="${markClass}">$1</mark>`);
+    }
+
+    // 정규식 특수문자 이스케이프
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // HTML 이스케이프
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // 뷰어 URL 생성
+    function getViewerUrl(data) {
+      if (!currentSourceUrl) return '#';
+      
+      const violations = data.raw?.violations || [];
+      const warnings = data.raw?.warnings || [];
+      const allViolations = [...violations, ...warnings];
+      
+      // 뷰어에 전달할 데이터 (필수 필드만)
+      const violationsData = allViolations.map(v => ({
+        matchedText: v.matchedText || v.evidence?.matchedText || '',
+        severity: v.severity || 'warning',
+        ruleId: v.ruleId || '',
+        ruleName: v.ruleName || '',
+      }));
+
+      const violationsParam = encodeURIComponent(JSON.stringify(violationsData));
+      return `/viewer?url=${encodeURIComponent(currentSourceUrl)}&violations=${violationsParam}`;
+    }
+  </script>
+</body>
+</html>

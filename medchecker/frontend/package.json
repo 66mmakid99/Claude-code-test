@@ -1,0 +1,17 @@
+{
+  "name": "medchecker-frontend",
+  "version": "1.0.0",
+  "description": "MEDCHECKER Dashboard - Static Site for Cloudflare Pages",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx serve public -l 3000"
+  },
+  "keywords": [
+    "medical",
+    "advertising",
+    "compliance",
+    "dashboard"
+  ],
+  "author": "",
+  "license": "MIT"
+}

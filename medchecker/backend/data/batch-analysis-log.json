@@ -1,0 +1,66 @@
+{
+  "totalAnalyzed": 281,
+  "dailyStats": {
+    "2026-01-23": {
+      "analyzed": 281,
+      "success": 271,
+      "failed": 10,
+      "totalScore": 25745,
+      "violations": 91,
+      "warnings": 28
+    }
+  },
+  "lastRun": "2026-01-23T21:00:20.484Z",
+  "errors": [
+    {
+      "hospitalId": "hosp-1769182853780-2z94a0y9u",
+      "error": "웹사이트 크롤링 실패",
+      "time": "2026-01-23T17:02:07.942Z"
+    },
+    {
+      "hospitalId": "hosp-1769182887630-erj4kubsh",
+      "error": "Analysis timeout after 90s",
+      "time": "2026-01-23T17:54:28.027Z"
+    },
+    {
+      "hospitalId": "hosp-1769182887630-ot5mpgl2v",
+      "error": "Analysis timeout after 90s",
+      "time": "2026-01-23T17:56:38.840Z"
+    },
+    {
+      "hospitalId": "hosp-1769182896725-t8tg84i3x",
+      "error": "Analysis timeout after 90s",
+      "time": "2026-01-23T18:02:10.249Z"
+    },
+    {
+      "hospitalId": "hosp-1769182906085-0rl6trfqm",
+      "error": "웹사이트 크롤링 실패",
+      "time": "2026-01-23T18:20:26.918Z"
+    },
+    {
+      "hospitalId": "hosp-1769183843027-bqi1nxucp",
+      "error": "웹사이트 크롤링 실패",
+      "time": "2026-01-23T18:28:21.445Z"
+    },
+    {
+      "hospitalId": "hosp-1769183847193-qk9jp8n3r",
+      "error": "Analysis timeout after 90s",
+      "time": "2026-01-23T19:05:25.534Z"
+    },
+    {
+      "hospitalId": "hosp-1769183881800-nc1j7xx65",
+      "error": "Analysis timeout after 90s",
+      "time": "2026-01-23T19:32:59.721Z"
+    },
+    {
+      "hospitalId": "hosp-1769183941276-r03we2y93",
+      "error": "웹사이트 크롤링 실패",
+      "time": "2026-01-23T20:20:31.188Z"
+    },
+    {
+      "hospitalId": "hosp-1769183950606-qdfwuhrqk",
+      "error": "Analysis timeout after 107s",
+      "time": "2026-01-23T20:35:27.657Z"
+    }
+  ]
+}

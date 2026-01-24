@@ -1,0 +1,332 @@
+{
+  "hospitalId": "hosp-1769182868082-qfljqnw4j",
+  "hospitalName": "라마르의원 이수역",
+  "url": "http://www.isu-lamarskin.com/",
+  "success": true,
+  "analyzedAt": "2026-01-23T17:41:09.026Z",
+  "processingTimeMs": 49397,
+  "metadata": {
+    "title": "라마르의원 이수역 | 이수역피부과",
+    "description": "이수역 위치, 피부과, 리프팅, 울쎄라, 피코토닝, 보톡스, 필러, 슈링크, 피부관리, 쁘띠, 제모, 합리적인 비용, 김봉철원장 직접시술, 피부과진료"
+  },
+  "targetUrl": "http://www.isu-lamarskin.com/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개",
+      "category": "medical_ad",
+      "subcategory": "basic_violation",
+      "severity": "warning",
+      "riskScore": 65,
+      "legal": {
+        "basis": "의료광고 심의기준",
+        "penalty": "심의 부적합, 시정명령"
+      },
+      "recommendation": {
+        "action": "수술/시술 장면은 광고에 사용할 수 없습니다.",
+        "example": {
+          "bad": "실시간 수술 장면 공개!",
+          "good": "(수술 장면 대신 시술 설명 일러스트 사용)"
+        }
+      },
+      "matched": true,
+      "matchedText": "시술 영상",
+      "contextWindow": "시아 의료진분들이 라마르 이수점을 방문해주셨습니다. 바로 슈링크 키닥터이신 김봉철 원장님의 슈링크리프팅 올바르고 효과적인 시술법 등의 교육을 받기 위해서죠. 수분 촉촉~ 아쿠아필 시술 영상 #수분 촉촉 #깨끗하게 맑게 자신있게 #투명한 피부 피지는 기름종이만으로 해결할 수 없다는거 아시나요?! 이제는 지우고 싶은 문신.. 피코레이저로 깨끗하게~ 할때는 예뻐",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": 0,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.7,
+      "decision": "violation",
+      "confidence": 0.7,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "시술 영상",
+            "text": "시술 영상",
+            "position": 2656
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": []
+      },
+      "aiVerification": {
+        "performed": false
+      },
+      "extendedContext": {
+        "before": "해외 의료진 슈링크 강의 후 인터뷰 영상 2019년3월27일에는 우크라이나와 러시아 의료진분들이 라마르 이수점을 방문해주셨습니다. 바로 슈링크 키닥터이신 김봉철 원장님의 슈링크리프팅 올바르고 효과적인 시술법 등의 교육을 받기 위해서죠.",
+        "matched": "시술 영상",
+        "matchedSentence": "수분 촉촉~ 아쿠아필 시술 영상 #수분 촉촉 #깨끗하게 맑게 자신있게 #투명한 피부 피지는 기름종이만으로 해결할 수 없다는거 아시나요?",
+        "matchedHighlight": {
+          "text": "시술 영상",
+          "startInSentence": 12
+        },
+        "after": "! 이제는 지우고 싶은 문신.",
+        "full": "해외 의료진 슈링크 강의 후 인터뷰 영상 2019년3월27일에는 우크라이나와 러시아 의료진분들이 라마르 이수점을 방문해주셨습니다. 바로 슈링크 키닥터이신 김봉철 원장님의 슈링크리프팅 올바르고 효과적인 시술법 등의 교육을 받기 위해서죠. 수분 촉촉~ 아쿠아필 시술 영상 #수분 촉촉 #깨끗하게 맑게 자신있게 #투명한 피부 피지는 기름종이만으로 해결할 수 없다는거 아시나요? ! 이제는 지우고 싶은 문신.",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-BA-001",
+      "ruleName": "치료 전후 사진 게시"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-001",
+      "ruleName": "성형수술 과장 광고"
+    },
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 2,
+  "aiCost": 0.012807,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-TM-001",
+        "matchedText": "시술후기",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 2,
+    "aiVerified": 2,
+    "falsePositivesFound": 4,
+    "falsePositives": [
+      {
+        "matchedText": "유튜브",
+        "ruleId": "MED-SNS-001",
+        "reason": "known_menu_text",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "24시간",
+        "ruleId": "MED-EX-006",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      },
+      {
+        "matchedText": "시술 영상",
+        "ruleId": "MED-BA-002",
+        "reason": "menu_text",
+        "source": "ai_verification"
+      },
+      {
+        "matchedText": "다르게",
+        "ruleId": "MED-CP-001",
+        "reason": "info_only",
+        "source": "ai_verification"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 98,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 71,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://www.isu-lamarskin.com/theme/sekti/img/main/slider2.jpg",
+        "preview": "라마르 이수젭은\n\n수술 없이 안전한 안티에이징을 추구하는 비수술 리프팅,\n뷰티성형 전문 클리닉입니다.\n\n안티에이징에\n특화된 연구와 진료\n\n합리적인 비용과\n정직한 시술\n\n첨단 장비 ...",
+        "wordCount": 35
+      },
+      {
+        "imageUrl": "https://www.isu-lamarskin.com/theme/sekti/img/main/slider4.jpg",
+        "preview": "실리프팅은 하루\n두분만 시술 합니다.\n\n라마로 이수점은 보다 꼼꼼하고 정확한 시술과\n만족스러운 결과를 위해 오후와 저녁으로 ���누어\n하루 두 분만 실리프팅 시술을 합니다.",
+        "wordCount": 23
+      },
+      {
+        "imageUrl": "https://www.isu-lamarskin.com/theme/sekti/img/main/slider1.jpg",
+        "preview": "MERZ\nUlthera\n건강한 살을 탄탄하게\n울쎄라 vs 슈링크\n1.60㎜QT\n\nSHURINK\n집중된 시술으로 안전하게!",
+        "wordCount": 13
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 20,
+    "totalCost": 0.128952,
+    "geminiCalls": 0,
+    "claudeCalls": 20,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 47,
+    "successCalls": 47,
+    "failedCalls": 0,
+    "totalImagesProcessed": 47,
+    "totalTextExtracted": 4966
+  }
+}

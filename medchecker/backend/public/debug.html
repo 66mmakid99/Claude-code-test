@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDCHECKER - 오탐 수집 대시보드</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0f;
+      min-height: 100vh;
+      color: #e2e8f0;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 20px 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 1.4rem;
+      color: #00d4ff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 20px;
+    }
+
+    .header-stat {
+      text-align: center;
+    }
+
+    .header-stat .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00d4ff;
+    }
+
+    .header-stat .label {
+      font-size: 0.7rem;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      background: #0f0f1a;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .tab {
+      padding: 15px 25px;
+      cursor: pointer;
+      color: #64748b;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .tab:hover {
+      color: #e2e8f0;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .tab.active {
+      color: #00d4ff;
+      border-bottom-color: #00d4ff;
+    }
+
+    /* Main Content */
+    .main {
+      display: flex;
+      height: calc(100vh - 120px);
+    }
+
+    .sidebar {
+      width: 350px;
+      background: #0f0f1a;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      overflow-y: auto;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    /* Panel */
+    .panel {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #00d4ff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-title::before {
+      content: '';
+      width: 4px;
+      height: 16px;
+      background: #00d4ff;
+      border-radius: 2px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .stat-card .value {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .stat-card .label {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 5px;
+    }
+
+    .stat-card.blue .value { color: #00d4ff; }
+    .stat-card.green .value { color: #22c55e; }
+    .stat-card.red .value { color: #ef4444; }
+    .stat-card.yellow .value { color: #f59e0b; }
+    .stat-card.purple .value { color: #a855f7; }
+
+    /* Log List */
+    .log-list {
+      list-style: none;
+    }
+
+    .log-item {
+      padding: 12px 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .log-item:hover {
+      background: rgba(0,212,255,0.1);
+    }
+
+    .log-item.new {
+      animation: flash 1s ease;
+    }
+
+    @keyframes flash {
+      0%, 100% { background: transparent; }
+      50% { background: rgba(0,212,255,0.2); }
+    }
+
+    .log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .log-url {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
+    .log-time {
+      font-size: 0.7rem;
+      color: #64748b;
+    }
+
+    .log-stats {
+      display: flex;
+      gap: 10px;
+      font-size: 0.75rem;
+    }
+
+    .log-stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .log-stat.score { color: #00d4ff; }
+    .log-stat.violation { color: #ef4444; }
+    .log-stat.filtered { color: #22c55e; }
+
+    /* Pattern List */
+    .pattern-list {
+      list-style: none;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .pattern-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 6px;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+    }
+
+    .pattern-text {
+      color: #f59e0b;
+      font-family: monospace;
+    }
+
+    .pattern-count {
+      font-size: 0.7rem;
+      color: #64748b;
+      background: rgba(255,255,255,0.1);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* Recommendations */
+    .recommendation {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border-left: 3px solid;
+    }
+
+    .recommendation.high {
+      border-left-color: #ef4444;
+    }
+
+    .recommendation.medium {
+      border-left-color: #f59e0b;
+    }
+
+    .recommendation-type {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 5px;
+    }
+
+    .recommendation-message {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #00d4ff);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    /* Chart placeholder */
+    .chart-container {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 20px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+    }
+
+    /* Live Indicator */
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #22c55e;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Input Section */
+    .input-section {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="url"] {
+      flex: 1;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    input[type="url"]:focus {
+      outline: none;
+      border-color: #00d4ff;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 20px rgba(0,212,255,0.3);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #64748b;
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .badge.green {
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+    }
+
+    .badge.red {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .badge.yellow {
+      background: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+    }
+
+    /* Top Items */
+    .top-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .top-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+    }
+
+    .top-item-label {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    .top-item-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #00d4ff;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Grid Layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1200px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* Feedback Form */
+    .feedback-form {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .feedback-form h4 {
+      font-size: 0.9rem;
+      color: #f59e0b;
+      margin-bottom: 10px;
+    }
+
+    .feedback-input {
+      width: 100%;
+      padding: 10px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+
+    .feedback-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .feedback-buttons button {
+      flex: 1;
+      padding: 8px;
+      font-size: 0.8rem;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>
+      <span>🔬</span>
+      MEDCHECKER 오탐 수집 대시보드
+    </h1>
+    <div class="header-stats">
+      <div class="header-stat">
+        <div class="value" id="totalAnalyzed">0</div>
+        <div class="label">총 분석</div>
+      </div>
+      <div class="header-stat">
+        <div class="value" id="totalFP">0</div>
+        <div class="label">오탐 수집</div>
+      </div>
+      <div class="header-stat">
+        <div class="value" id="fpRate">0%</div>
+        <div class="label">오탐율</div>
+      </div>
+      <div class="live-indicator">
+        <span class="live-dot"></span>
+        실시간
+      </div>
+    </div>
+  </header>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-tab="dashboard">📊 대시보드</div>
+    <div class="tab" data-tab="patterns">🧠 학습된 패턴</div>
+    <div class="tab" data-tab="fp-history">📝 오탐 히스토리</div>
+    <div class="tab" data-tab="logs">📋 분석 로그</div>
+    <div class="tab" data-tab="debug">🔍 상세 분석</div>
+  </div>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- Sidebar: 실시간 로그 -->
+    <aside class="sidebar">
+      <div class="input-section">
+        <div class="input-row">
+          <input type="url" id="urlInput" placeholder="URL 분석...">
+          <button id="analyzeBtn" onclick="analyzeUrl()">분석</button>
+        </div>
+      </div>
+      <div style="padding: 10px 15px; color: #64748b; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        최근 분석 로그
+      </div>
+      <ul class="log-list" id="logList">
+        <li class="empty-state">
+          <div class="empty-state-icon">📭</div>
+          <p>아직 분석 기록이 없습니다</p>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <section class="content">
+      <!-- Dashboard Tab -->
+      <div class="tab-content active" id="tab-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="value" id="statMenuTexts">0</div>
+            <div class="label">메뉴 텍스트 패턴</div>
+          </div>
+          <div class="stat-card green">
+            <div class="value" id="statGlobalExcl">0</div>
+            <div class="label">전역 제외 패턴</div>
+          </div>
+          <div class="stat-card purple">
+            <div class="value" id="statDomains">0</div>
+            <div class="label">도메인별 패턴</div>
+          </div>
+          <div class="stat-card yellow">
+            <div class="value" id="statRuleAdj">0</div>
+            <div class="label">규칙 조정</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- 오탐 유형별 통계 -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">오탐 유형별 분포</h3>
+            </div>
+            <div class="top-items" id="fpByType">
+              <div class="empty-state">데이터 수집 중...</div>
+            </div>
+          </div>
+
+          <!-- 문제 규칙 TOP -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">오탐 빈발 규칙 TOP 5</h3>
+            </div>
+            <div class="top-items" id="fpByRule">
+              <div class="empty-state">데이터 수집 중...</div>
+            </div>
+          </div>
+
+          <!-- 개선 권장사항 -->
+          <div class="panel" style="grid-column: 1 / -1;">
+            <div class="panel-header">
+              <h3 class="panel-title">개선 권장사항</h3>
+            </div>
+            <div id="recommendations">
+              <div class="empty-state">분석 데이터가 쌓이면 자동으로 권장사항이 생성됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patterns Tab -->
+      <div class="tab-content" id="tab-patterns">
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">메뉴 텍스트 패턴</h3>
+              <span class="badge green" id="menuCount">0개</span>
+            </div>
+            <ul class="pattern-list" id="menuPatterns">
+              <li class="empty-state">아직 수집된 패턴이 없습니다</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">전역 제외 패턴</h3>
+              <span class="badge yellow" id="globalCount">0개</span>
+            </div>
+            <ul class="pattern-list" id="globalPatterns">
+              <li class="empty-state">아직 수집된 패턴이 없습니다</li>
+            </ul>
+          </div>
+
+          <div class="panel" style="grid-column: 1 / -1;">
+            <div class="panel-header">
+              <h3 class="panel-title">수동 오탐 등록</h3>
+            </div>
+            <div class="feedback-form">
+              <h4>⚠️ 오탐으로 판단된 항목을 직접 등록하세요</h4>
+              <input type="text" class="feedback-input" id="fpText" placeholder="오탐 텍스트 (예: 시술후기)">
+              <input type="text" class="feedback-input" id="fpRuleId" placeholder="규칙 ID (예: MED-BA-001)">
+              <select class="feedback-input" id="fpReason">
+                <option value="menu_text">메뉴/네비게이션 텍스트</option>
+                <option value="login_protected">로그인 보호 콘텐츠</option>
+                <option value="footer">푸터/회사 정보</option>
+                <option value="context_mismatch">문맥상 광고 아님</option>
+                <option value="false_pattern">패턴 자체 오류</option>
+              </select>
+              <div class="feedback-buttons">
+                <button onclick="submitFeedback()">오탐 등록</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FP History Tab -->
+      <div class="tab-content" id="tab-fp-history">
+        <div class="panel">
+          <div class="panel-header">
+            <h3 class="panel-title">오탐 사례 히스토리</h3>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="exportFPHistory()" style="padding: 5px 15px; font-size: 0.8rem; background: rgba(34,197,94,0.2); color: #22c55e;">내보내기</button>
+              <button onclick="refreshFPHistory()" style="padding: 5px 15px; font-size: 0.8rem;">새로고침</button>
+            </div>
+          </div>
+          <div id="fpHistoryList">
+            <div class="empty-state">오탐 히스토리를 불러오는 중...</div>
+          </div>
+        </div>
+
+        <!-- 상세 통계 패널 -->
+        <div class="grid-2" style="margin-top: 20px;">
+          <div class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">도메인별 오탐 통계</h3>
+            </div>
+            <div class="top-items" id="fpByDomain">
+              <div class="empty-state">데이터 수집 중...</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">규칙별 오탐 통계</h3>
+            </div>
+            <div class="top-items" id="fpByRuleDetail">
+              <div class="empty-state">데이터 수집 중...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logs Tab -->
+      <div class="tab-content" id="tab-logs">
+        <div class="panel">
+          <div class="panel-header">
+            <h3 class="panel-title">전체 분석 로그</h3>
+            <button onclick="refreshLogs()" style="padding: 5px 15px; font-size: 0.8rem;">새로고침</button>
+          </div>
+          <div id="fullLogs">
+            <div class="empty-state">로그를 불러오는 중...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debug Tab -->
+      <div class="tab-content" id="tab-debug">
+        <div class="panel">
+          <div class="panel-header">
+            <h3 class="panel-title">상세 분석 결과</h3>
+          </div>
+          <div id="debugResult">
+            <div class="empty-state">
+              <div class="empty-state-icon">🔍</div>
+              <p>URL을 분석하면 상세 결과가 여기에 표시됩니다</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // State
+    let report = null;
+    let patterns = null;
+    let logs = [];
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // SSE Connection
+    function connectSSE() {
+      const eventSource = new EventSource('/api/error-collector/stream');
+      
+      eventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        
+        if (data.type === 'init') {
+          report = data.report;
+          updateDashboard();
+        } else if (data.type === 'analysis') {
+          addLogEntry(data.data);
+          refreshReport();
+        }
+      };
+      
+      eventSource.onerror = () => {
+        console.log('SSE connection lost, reconnecting...');
+        setTimeout(connectSSE, 3000);
+      };
+    }
+
+    // Initial load
+    async function init() {
+      connectSSE();
+      await Promise.all([
+        refreshReport(),
+        refreshPatterns(),
+        refreshLogs(),
+        refreshFPHistory()
+      ]);
+    }
+
+    // Refresh report
+    async function refreshReport() {
+      try {
+        const res = await fetch('/api/error-collector/report');
+        const data = await res.json();
+        if (data.success) {
+          report = data.report;
+          updateDashboard();
+        }
+      } catch (e) {
+        console.error('Report fetch error:', e);
+      }
+    }
+
+    // Refresh patterns
+    async function refreshPatterns() {
+      try {
+        const res = await fetch('/api/error-collector/patterns');
+        const data = await res.json();
+        if (data.success) {
+          patterns = data.patterns;
+          updatePatterns();
+        }
+      } catch (e) {
+        console.error('Patterns fetch error:', e);
+      }
+    }
+
+    // Refresh logs
+    async function refreshLogs() {
+      try {
+        const res = await fetch('/api/error-collector/logs');
+        const data = await res.json();
+        if (data.success) {
+          logs = data.logs;
+          updateLogs();
+        }
+      } catch (e) {
+        console.error('Logs fetch error:', e);
+      }
+    }
+
+    // Update dashboard
+    function updateDashboard() {
+      if (!report) return;
+
+      // Header stats
+      document.getElementById('totalAnalyzed').textContent = report.summary?.totalAnalyzed || 0;
+      document.getElementById('totalFP').textContent = report.summary?.totalFalsePositives || 0;
+      document.getElementById('fpRate').textContent = report.summary?.falsePositiveRate || '0%';
+
+      // Pattern DB size
+      document.getElementById('statMenuTexts').textContent = report.patternDbSize?.menuTexts || 0;
+      document.getElementById('statGlobalExcl').textContent = report.patternDbSize?.globalExclusions || 0;
+      document.getElementById('statDomains').textContent = report.patternDbSize?.domains || 0;
+      document.getElementById('statRuleAdj').textContent = report.patternDbSize?.ruleAdjustments || 0;
+
+      // Top FP reasons
+      const fpByType = document.getElementById('fpByType');
+      if (report.topFalsePositiveReasons?.length > 0) {
+        fpByType.innerHTML = report.topFalsePositiveReasons.map(item => `
+          <div class="top-item">
+            <span class="top-item-label">${formatReason(item.key)}</span>
+            <span class="top-item-value">${item.count}건</span>
+          </div>
+        `).join('');
+      }
+
+      // Top problematic rules
+      const fpByRule = document.getElementById('fpByRule');
+      if (report.topProblematicRules?.length > 0) {
+        fpByRule.innerHTML = report.topProblematicRules.map(item => `
+          <div class="top-item">
+            <span class="top-item-label">${item.key}</span>
+            <span class="top-item-value">${item.count}건</span>
+          </div>
+        `).join('');
+      }
+
+      // Recommendations
+      const recsDiv = document.getElementById('recommendations');
+      if (report.recommendations?.length > 0) {
+        recsDiv.innerHTML = report.recommendations.map(rec => `
+          <div class="recommendation ${rec.priority}">
+            <div class="recommendation-type">${rec.type} · ${rec.priority}</div>
+            <div class="recommendation-message">${rec.message}</div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Update patterns
+    function updatePatterns() {
+      if (!patterns) return;
+
+      // Menu patterns
+      const menuList = document.getElementById('menuPatterns');
+      const menuTexts = patterns.menuTexts || [];
+      document.getElementById('menuCount').textContent = menuTexts.length + '개';
+      
+      if (menuTexts.length > 0) {
+        menuList.innerHTML = menuTexts.slice(0, 50).map(text => `
+          <li class="pattern-item">
+            <span class="pattern-text">"${escapeHtml(text)}"</span>
+          </li>
+        `).join('');
+      }
+
+      // Global patterns
+      const globalList = document.getElementById('globalPatterns');
+      const globalExcl = patterns.globalExclusions || [];
+      document.getElementById('globalCount').textContent = globalExcl.length + '개';
+      
+      if (globalExcl.length > 0) {
+        globalList.innerHTML = globalExcl.slice(0, 50).map(text => `
+          <li class="pattern-item">
+            <span class="pattern-text">"${escapeHtml(text)}"</span>
+          </li>
+        `).join('');
+      }
+    }
+
+    // Update logs
+    function updateLogs() {
+      const sidebar = document.getElementById('logList');
+      const fullLogs = document.getElementById('fullLogs');
+
+      if (logs.length === 0) {
+        sidebar.innerHTML = `
+          <li class="empty-state">
+            <div class="empty-state-icon">📭</div>
+            <p>아직 분석 기록이 없습니다</p>
+          </li>
+        `;
+        return;
+      }
+
+      // Sidebar logs
+      sidebar.innerHTML = logs.slice(0, 20).map(log => `
+        <li class="log-item" onclick="showLogDetail('${log.url}')">
+          <div class="log-header">
+            <span class="log-url" title="${log.url}">${new URL(log.url).hostname}</span>
+            <span class="log-time">${formatTime(log.timestamp)}</span>
+          </div>
+          <div class="log-stats">
+            <span class="log-stat score">점수: ${log.totalScore}</span>
+            <span class="log-stat violation">위반: ${log.violationsCount}</span>
+            ${log.errorCollectorStats?.falsePositivesFound > 0 ? 
+              `<span class="log-stat filtered">필터: ${log.errorCollectorStats.falsePositivesFound}</span>` : ''}
+          </div>
+        </li>
+      `).join('');
+
+      // Full logs
+      fullLogs.innerHTML = `
+        <table style="width: 100%; font-size: 0.85rem;">
+          <thead>
+            <tr style="text-align: left; color: #64748b; border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <th style="padding: 10px;">시간</th>
+              <th style="padding: 10px;">URL</th>
+              <th style="padding: 10px;">점수</th>
+              <th style="padding: 10px;">위반</th>
+              <th style="padding: 10px;">경고</th>
+              <th style="padding: 10px;">필터링</th>
+              <th style="padding: 10px;">처리시간</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${logs.map(log => `
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px; color: #64748b;">${formatTime(log.timestamp)}</td>
+                <td style="padding: 10px;"><a href="${log.url}" target="_blank" style="color: #00d4ff;">${new URL(log.url).hostname}</a></td>
+                <td style="padding: 10px;"><span class="badge ${log.totalScore >= 70 ? 'green' : log.totalScore >= 50 ? 'yellow' : 'red'}">${log.totalScore}</span></td>
+                <td style="padding: 10px; color: #ef4444;">${log.violationsCount}</td>
+                <td style="padding: 10px; color: #f59e0b;">${log.warningsCount}</td>
+                <td style="padding: 10px; color: #22c55e;">${log.errorCollectorStats?.falsePositivesFound || 0}</td>
+                <td style="padding: 10px; color: #64748b;">${log.processingTimeMs}ms</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // Add log entry (from SSE)
+    function addLogEntry(log) {
+      logs.unshift(log);
+      if (logs.length > 100) logs.pop();
+      updateLogs();
+    }
+
+    // Analyze URL
+    async function analyzeUrl() {
+      const url = document.getElementById('urlInput').value.trim();
+      if (!url) return alert('URL을 입력하세요');
+
+      const btn = document.getElementById('analyzeBtn');
+      btn.disabled = true;
+      btn.textContent = '분석중...';
+
+      try {
+        const res = await fetch('/api/analyze-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, enableAI: false })
+        });
+        
+        const data = await res.json();
+        
+        // Show debug tab
+        document.querySelector('[data-tab="debug"]').click();
+        showDebugResult(data);
+        
+        // Refresh all
+        await Promise.all([refreshReport(), refreshPatterns(), refreshLogs()]);
+        
+      } catch (e) {
+        alert('분석 실패: ' + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '분석';
+      }
+    }
+
+    // Show debug result
+    function showDebugResult(data) {
+      const container = document.getElementById('debugResult');
+      
+      if (!data.success) {
+        container.innerHTML = `<div class="empty-state" style="color: #ef4444;">오류: ${data.error}</div>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="value">${data.raw.totalScore}</div>
+            <div class="label">점수</div>
+          </div>
+          <div class="stat-card red">
+            <div class="value">${data.raw.violations?.length || 0}</div>
+            <div class="label">위반</div>
+          </div>
+          <div class="stat-card yellow">
+            <div class="value">${data.raw.warnings?.length || 0}</div>
+            <div class="label">경고</div>
+          </div>
+          <div class="stat-card green">
+            <div class="value">${data.errorCollectorStats?.falsePositivesFound || 0}</div>
+            <div class="label">자동 필터링</div>
+          </div>
+        </div>
+
+        ${data.errorCollectorStats?.falsePositives?.length > 0 ? `
+          <div class="panel" style="margin-top: 20px; border-color: #22c55e;">
+            <h3 class="panel-title" style="color: #22c55e;">✅ 자동 필터링된 오탐 (${data.errorCollectorStats.falsePositives.length}건)</h3>
+            <ul class="pattern-list" style="margin-top: 10px;">
+              ${data.errorCollectorStats.falsePositives.map(fp => `
+                <li class="pattern-item">
+                  <span class="pattern-text">"${escapeHtml(fp.matchedText)}"</span>
+                  <span class="badge green">${fp.reason}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${data.raw.violations?.length > 0 ? `
+          <div class="panel" style="margin-top: 20px; border-color: #ef4444;">
+            <h3 class="panel-title" style="color: #ef4444;">🚫 위반 사항</h3>
+            <ul class="pattern-list" style="margin-top: 10px;">
+              ${data.raw.violations.map(v => `
+                <li class="pattern-item" style="flex-direction: column; align-items: flex-start; gap: 5px;">
+                  <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <span class="pattern-text">"${escapeHtml(v.matchedText)}"</span>
+                    <span class="badge red">${v.severity}</span>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #64748b;">${v.ruleName} (${v.ruleId})</div>
+                  <button onclick="markAsFP('${escapeHtml(v.matchedText)}', '${v.ruleId}', '${data.url}')" style="font-size: 0.7rem; padding: 4px 10px; background: rgba(245,158,11,0.2); color: #f59e0b;">
+                    ⚠️ 오탐 신고
+                  </button>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${data.raw.warnings?.length > 0 ? `
+          <div class="panel" style="margin-top: 20px; border-color: #f59e0b;">
+            <h3 class="panel-title" style="color: #f59e0b;">⚠️ 경고 사항</h3>
+            <ul class="pattern-list" style="margin-top: 10px;">
+              ${data.raw.warnings.map(w => `
+                <li class="pattern-item" style="flex-direction: column; align-items: flex-start; gap: 5px;">
+                  <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <span class="pattern-text">"${escapeHtml(w.matchedText)}"</span>
+                    <span class="badge yellow">${w.severity}</span>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #64748b;">${w.ruleName} (${w.ruleId})</div>
+                  <button onclick="markAsFP('${escapeHtml(w.matchedText)}', '${w.ruleId}', '${data.url}')" style="font-size: 0.7rem; padding: 4px 10px; background: rgba(245,158,11,0.2); color: #f59e0b;">
+                    ⚠️ 오탐 신고
+                  </button>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    // Mark as false positive
+    async function markAsFP(text, ruleId, url) {
+      const reason = prompt('오탐 유형을 선택하세요:\n1. menu_text (메뉴명)\n2. login_protected (로그인 보호)\n3. context_mismatch (문맥 불일치)\n\n숫자 또는 유형을 입력:', 'menu_text');
+      
+      if (!reason) return;
+      
+      const reasonMap = { '1': 'menu_text', '2': 'login_protected', '3': 'context_mismatch' };
+      const finalReason = reasonMap[reason] || reason;
+
+      try {
+        const res = await fetch('/api/error-collector/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ matchedText: text, ruleId, reason: finalReason, url })
+        });
+        
+        const data = await res.json();
+        if (data.success) {
+          alert('오탐이 등록되었습니다. 다음 분석부터 자동 필터링됩니다.');
+          refreshPatterns();
+          refreshReport();
+        }
+      } catch (e) {
+        alert('등록 실패: ' + e.message);
+      }
+    }
+
+    // Submit feedback form
+    async function submitFeedback() {
+      const text = document.getElementById('fpText').value.trim();
+      const ruleId = document.getElementById('fpRuleId').value.trim();
+      const reason = document.getElementById('fpReason').value;
+
+      if (!text) return alert('오탐 텍스트를 입력하세요');
+
+      try {
+        const res = await fetch('/api/error-collector/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ matchedText: text, ruleId: ruleId || 'MANUAL', reason })
+        });
+        
+        const data = await res.json();
+        if (data.success) {
+          alert('오탐이 등록되었습니다!');
+          document.getElementById('fpText').value = '';
+          document.getElementById('fpRuleId').value = '';
+          refreshPatterns();
+          refreshReport();
+          refreshFPHistory();
+        }
+      } catch (e) {
+        alert('등록 실패: ' + e.message);
+      }
+    }
+
+    // FP History
+    let fpHistoryData = { history: [], stats: {} };
+
+    async function refreshFPHistory() {
+      try {
+        const res = await fetch('/api/error-collector/history?limit=200');
+        const data = await res.json();
+        if (data.success) {
+          fpHistoryData = data;
+          updateFPHistory();
+        }
+      } catch (e) {
+        console.error('FP History fetch error:', e);
+      }
+    }
+
+    function updateFPHistory() {
+      const container = document.getElementById('fpHistoryList');
+      const { history, stats } = fpHistoryData;
+
+      if (!history || history.length === 0) {
+        container.innerHTML = '<div class="empty-state">아직 기록된 오탐 사례가 없습니다</div>';
+        return;
+      }
+
+      container.innerHTML = `
+        <table style="width: 100%; font-size: 0.85rem;">
+          <thead>
+            <tr style="text-align: left; color: #64748b; border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <th style="padding: 10px;">시간</th>
+              <th style="padding: 10px;">텍스트</th>
+              <th style="padding: 10px;">규칙</th>
+              <th style="padding: 10px;">사유</th>
+              <th style="padding: 10px;">도메인</th>
+              <th style="padding: 10px;">컨텍스트</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${history.map(h => `
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px; color: #64748b; white-space: nowrap;">${formatDateTime(h.timestamp)}</td>
+                <td style="padding: 10px;"><span class="pattern-text">"${escapeHtml(h.matchedText)}"</span></td>
+                <td style="padding: 10px;"><span class="badge yellow">${h.ruleId || '-'}</span></td>
+                <td style="padding: 10px;"><span class="badge green">${formatReason(h.reason)}</span></td>
+                <td style="padding: 10px; color: #00d4ff;">${h.domain || '-'}</td>
+                <td style="padding: 10px; color: #64748b; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(h.context)}">${escapeHtml(h.context?.substring(0, 50) || '-')}${h.context?.length > 50 ? '...' : ''}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+
+      // 도메인별 통계
+      const byDomain = document.getElementById('fpByDomain');
+      const domainEntries = Object.entries(stats.byDomain || {}).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      if (domainEntries.length > 0) {
+        byDomain.innerHTML = domainEntries.map(([domain, count]) => `
+          <div class="top-item">
+            <span class="top-item-label">${domain}</span>
+            <span class="top-item-value">${count}건</span>
+          </div>
+        `).join('');
+      }
+
+      // 규칙별 통계
+      const byRule = document.getElementById('fpByRuleDetail');
+      const ruleEntries = Object.entries(stats.byRule || {}).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      if (ruleEntries.length > 0) {
+        byRule.innerHTML = ruleEntries.map(([ruleId, count]) => `
+          <div class="top-item">
+            <span class="top-item-label">${ruleId}</span>
+            <span class="top-item-value">${count}건</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    function formatDateTime(timestamp) {
+      if (!timestamp) return '';
+      const d = new Date(timestamp);
+      return d.toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' }) + ' ' + 
+             d.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function exportFPHistory() {
+      const dataStr = JSON.stringify(fpHistoryData, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `medchecker-fp-history-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Helpers
+    function formatReason(reason) {
+      const map = {
+        'menu_text': '메뉴 텍스트',
+        'known_menu_text': '메뉴 텍스트',
+        'common_menu_pattern': '공통 메뉴 패턴',
+        'login_protected': '로그인 보호',
+        'footer': '푸터/회사정보',
+        'context_mismatch': '문맥 불일치',
+        'domain_specific': '도메인 특화',
+        'global_exclusion': '전역 제외',
+        'rule_exclusion': '규칙 제외',
+        'user_feedback': '사용자 피드백'
+      };
+      return map[reason] || reason;
+    }
+
+    function formatTime(timestamp) {
+      if (!timestamp) return '';
+      const d = new Date(timestamp);
+      return d.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Init
+    init();
+  </script>
+</body>
+</html>

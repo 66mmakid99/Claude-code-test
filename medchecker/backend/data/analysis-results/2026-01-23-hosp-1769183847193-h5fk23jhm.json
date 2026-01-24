@@ -1,0 +1,344 @@
+{
+  "hospitalId": "hosp-1769183847193-h5fk23jhm",
+  "hospitalName": "샤인유의원 수원",
+  "url": "http://shineyou-sw.co.kr/",
+  "success": true,
+  "analyzedAt": "2026-01-23T19:08:31.344Z",
+  "processingTimeMs": 25043,
+  "metadata": {
+    "title": "샤인유의원 수원점",
+    "description": ""
+  },
+  "targetUrl": "http://shineyou-sw.co.kr/",
+  "targetType": "website",
+  "totalScore": 100,
+  "riskLevel": "low",
+  "violations": [
+    {
+      "ruleId": "MED-SP-002",
+      "ruleName": "다이어트 시술 과장",
+      "category": "medical_ad",
+      "subcategory": "specialty",
+      "severity": "warning",
+      "riskScore": 70,
+      "legal": {
+        "basis": "의료법 제56조 제2항 제3호",
+        "penalty": "1년 이하의 징역 또는 1천만원 이하의 벌금"
+      },
+      "recommendation": {
+        "action": "다이어트 시술 광고 시 개인차와 생활습관 관리의 중요성을 명시하세요.",
+        "example": {
+          "bad": "2주 만에 10kg 감량 보장!",
+          "good": "의료진과의 상담을 통한 건강한 체중 관리 (개인차가 있으며, 식이/운동 병행 필요)"
+        }
+      },
+      "matched": true,
+      "matchedText": "날씬",
+      "contextWindow": "바디 펀치웨이브 카복시 지방분해주사 다이어트약 🎁이벤트 커뮤니티 온라인상담 시술전후 언론홍보 공지사항 로그인 회원가입 신년 리투오론칭 첫방문 카톡친추 리프팅 깨끗해지기 예뻐지기 날씬해지기 1일 동안 안보기 닫기 HOME 문의전화 온라인상담 온라인예약\n\n[이미지 텍스트]\nINVASIX\n\n화면에 표시된 이미지에서 일부 텍스트를 확인할 수 있지만, 해상도와 각",
+      "contextScores": {
+        "triggerScore": 0.5,
+        "aggravatingScore": 0,
+        "mitigatingScore": -0.4,
+        "requiredScore": 0.2
+      },
+      "finalScore": 0.29999999999999993,
+      "decision": "violation",
+      "confidence": 0.8,
+      "evidence": {
+        "triggerMatches": [
+          {
+            "type": "keyword",
+            "keyword": "날씬",
+            "text": "날씬",
+            "position": 1523
+          }
+        ],
+        "aggravatingMatches": [],
+        "mitigatingMatches": [
+          {
+            "type": "pattern",
+            "text": "개인마다 차이"
+          }
+        ]
+      },
+      "aiVerification": {
+        "performed": true,
+        "provider": "gemini",
+        "isViolation": true,
+        "confidence": 0.8,
+        "reasoning": "웹사이트 메뉴에서 '날씬해지기'라는 표현이 다이어트 시술과 함께 사용되어 체중 감량 효과를 암시하고 있습니다. 비록 확장 문맥에서 개인차에 대한 언급이 있지만, 메뉴명 자체가 시술 결과를 단정적으로 제시하는 과장 광고에 해당할 가능성이 높습니다.",
+        "mitigatingFactorsFound": [
+          "사람의 신체조건은 개개인마다 차이가 있어 단순비교를 통하여 시술을 결정하는 것은 큰 무리가 있습니다"
+        ],
+        "aggravatingFactorsFound": [
+          "메뉴명에서 '날씬해지기'로 결과를 단정적으로 표현",
+          "다이어트 시술과 직접 연관된 문맥에서 사용",
+          "이벤트 및 상업적 홍보와 함께 배치"
+        ],
+        "cost": 0.009075
+      },
+      "extendedContext": {
+        "before": "사람의 신체조건은 개개인마다 차이가 있어 단순비교를 통하여 시술을 결정하는 것은 큰 무리가 있습니다. 샤인유 수원점은 환자의 신체적인 상태와 가지고 있는 질환, 일상생활 등을 고려한 전문의의 정확한 진단을 통해 개인의 증상에 맞는 다양한 맞춤형 시술을 진행합니다 샤인유의원 수원점 개인정보처리방침 이용약관 미성년자시술동의서 다운로드 샤인유의원 건대점 대표 : 최병근 서울 광진구 아차산로 205 2층 02-572-1033 사업자등록번호 : 596-19-00634 샤인유의원 분당점 대표 : 김민규 경기 성남시 분당구 황새울로312번길 5 세광빌딩 3층 031-698-2555 사업자등록번호 : 247-34-00486 샤인유의원 수원점 대표 : 김우진 경기 수원시 팔달구 권광로 199 6층 031-898-8441 사업자등록번호 : 153-28-00569 샤인유의원 천안점 대표 : 양정윤 충남 천안시 서북구 불당21로 65 304, 305호 041-417-2165 사업자등록번호 : 343-05-01954 샤인유의원 강남점 대표 : 나윤미 서울시 강남구 논현로 611 2층 02-541-4151 사업자등록번호 : 422-23-01891 Copyright(c)2019 by 샤인유의원 All right Reserved.",
+        "matched": "날씬",
+        "matchedSentence": "Close Menu 샤인유의원 수원점 리프팅 올타이트 티타늄 리프팅 볼뉴머 인모드 슈링크 유니버스 3Deep 실리프팅 피부 기미/색소/잡티 여드름 모공/흉터 홍조/혈관 제모 스킨케어 스킨부스터 쁘띠 보톡스 필러 스컬트라 베이비콜 엘렌쎄 쥬베룩 샤인V라인주사 비만 바디인모드픽스 3Deep 바디 펀치웨이브 카복시 지방분해주사 다이어트약 🎁이벤트 커뮤니티 온라인상담 시술전후 언론홍보 공지사항 로그인 회원가입 신년 리투오론칭 첫방문 카톡친추 리프팅 깨끗해지기 예뻐지기 날씬해지기 1일 동안 안보기 닫기 HOME 문의전화 온라인상담 온라인예약",
+        "matchedHighlight": {
+          "text": "날씬",
+          "startInSentence": 261
+        },
+        "after": "[이미지 텍스트] INVASIX",
+        "full": "사람의 신체조건은 개개인마다 차이가 있어 단순비교를 통하여 시술을 결정하는 것은 큰 무리가 있습니다. 샤인유 수원점은 환자의 신체적인 상태와 가지고 있는 질환, 일상생활 등을 고려한 전문의의 정확한 진단을 통해 개인의 증상에 맞는 다양한 맞춤형 시술을 진행합니다 샤인유의원 수원점 개인정보처리방침 이용약관 미성년자시술동의서 다운로드 샤인유의원 건대점 대표 : 최병근 서울 광진구 아차산로 205 2층 02-572-1033 사업자등록번호 : 596-19-00634 샤인유의원 분당점 대표 : 김민규 경기 성남시 분당구 황새울로312번길 5 세광빌딩 3층 031-698-2555 사업자등록번호 : 247-34-00486 샤인유의원 수원점 대표 : 김우진 경기 수원시 팔달구 권광로 199 6층 031-898-8441 사업자등록번호 : 153-28-00569 샤인유의원 천안점 대표 : 양정윤 충남 천안시 서북구 불당21로 65 304, 305호 041-417-2165 사업자등록번호 : 343-05...",
+        "sentenceContext": true,
+        "sentenceCount": {
+          "before": 2,
+          "after": 2,
+          "total": 5
+        }
+      },
+      "type": "violation"
+    }
+  ],
+  "warnings": [],
+  "passed": [
+    {
+      "ruleId": "MED-UN-001",
+      "ruleName": "미승인/불법 시술 광고"
+    },
+    {
+      "ruleId": "MED-TM-002",
+      "ruleName": "가짜/조작 후기"
+    },
+    {
+      "ruleId": "MED-UN-002",
+      "ruleName": "오프라벨 사용 광고"
+    },
+    {
+      "ruleId": "MED-UN-003",
+      "ruleName": "해외 직구 의약품/기기 광고"
+    },
+    {
+      "ruleId": "MED-EFF-001",
+      "ruleName": "치료효과 100% 보장 표현"
+    },
+    {
+      "ruleId": "MED-EFF-002",
+      "ruleName": "완치/완벽 보장 표현"
+    },
+    {
+      "ruleId": "MED-EX-001",
+      "ruleName": "객관적 근거 없는 최상급 표현"
+    },
+    {
+      "ruleId": "MED-CL-001",
+      "ruleName": "유명인/연예인 추천 광고"
+    },
+    {
+      "ruleId": "MED-EFF-004",
+      "ruleName": "부작용 없음 보장"
+    },
+    {
+      "ruleId": "MED-EFF-006",
+      "ruleName": "재발 없음 보장"
+    },
+    {
+      "ruleId": "MED-BA-002",
+      "ruleName": "전후 동영상 게시"
+    },
+    {
+      "ruleId": "MED-BA-003",
+      "ruleName": "타인 전후사진 무단 사용"
+    },
+    {
+      "ruleId": "MED-EX-003",
+      "ruleName": "가짜 수상/인증 표시"
+    },
+    {
+      "ruleId": "MED-CL-002",
+      "ruleName": "의사/전문가 추천 가장"
+    },
+    {
+      "ruleId": "MED-UN-004",
+      "ruleName": "민간요법/대체의학 광고"
+    },
+    {
+      "ruleId": "MED-EFF-003",
+      "ruleName": "성공률/치료율 수치 표현"
+    },
+    {
+      "ruleId": "MED-EX-002",
+      "ruleName": "신기술/혁신 과장 표현"
+    },
+    {
+      "ruleId": "MED-TM-001",
+      "ruleName": "치료 효과 체험 후기"
+    },
+    {
+      "ruleId": "MED-CP-001",
+      "ruleName": "타 의료기관 비교/비방 광고"
+    },
+    {
+      "ruleId": "MED-EFF-005",
+      "ruleName": "무통증 보장"
+    },
+    {
+      "ruleId": "MED-EFF-007",
+      "ruleName": "즉각적/빠른 효과 보장"
+    },
+    {
+      "ruleId": "MED-TM-003",
+      "ruleName": "블로그/카페 체험단 후기"
+    },
+    {
+      "ruleId": "MED-CP-002",
+      "ruleName": "가격 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-003",
+      "ruleName": "긴급/마감 임박 유도"
+    },
+    {
+      "ruleId": "MED-SNS-001",
+      "ruleName": "SNS 의료광고 미심의"
+    },
+    {
+      "ruleId": "MED-SNS-002",
+      "ruleName": "인플루언서 협찬 미표기"
+    },
+    {
+      "ruleId": "MED-BS-001",
+      "ruleName": "의료인 아닌 자의 의료광고"
+    },
+    {
+      "ruleId": "MED-BS-002",
+      "ruleName": "수술 장면 공개"
+    },
+    {
+      "ruleId": "MED-BS-003",
+      "ruleName": "공포/불안 조장"
+    },
+    {
+      "ruleId": "MED-SP-003",
+      "ruleName": "탈모 치료 과장"
+    },
+    {
+      "ruleId": "MED-PR-001",
+      "ruleName": "과도한 할인/가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-001",
+      "ruleName": "의료인 자격/경력 과장"
+    },
+    {
+      "ruleId": "MED-EX-004",
+      "ruleName": "시설/장비 과장"
+    },
+    {
+      "ruleId": "MED-EX-005",
+      "ruleName": "경험/실적 과장"
+    },
+    {
+      "ruleId": "MED-CL-003",
+      "ruleName": "방송/언론 출연 과장"
+    },
+    {
+      "ruleId": "MED-CP-003",
+      "ruleName": "암묵적 비교 광고"
+    },
+    {
+      "ruleId": "MED-PR-002",
+      "ruleName": "미끼 가격 광고"
+    },
+    {
+      "ruleId": "MED-QU-003",
+      "ruleName": "가짜 자격증/인증 표시"
+    },
+    {
+      "ruleId": "MED-AD-001",
+      "ruleName": "광고 표기 누락 (협찬/체험단)"
+    },
+    {
+      "ruleId": "MED-EX-006",
+      "ruleName": "진료시간 과장"
+    },
+    {
+      "ruleId": "MED-PR-004",
+      "ruleName": "패키지/번들 과장"
+    },
+    {
+      "ruleId": "MED-QU-002",
+      "ruleName": "학력/경력 허위 표기"
+    },
+    {
+      "ruleId": "MED-INFO-001",
+      "ruleName": "일반적 홍보성 최상급 표현"
+    }
+  ],
+  "aiCalls": 1,
+  "aiCost": 0.009075,
+  "filterStats": {
+    "violationsFiltered": 1,
+    "warningsFiltered": 0,
+    "filterReasons": [
+      {
+        "ruleId": "MED-BA-001",
+        "matchedText": "시술전후",
+        "reason": "menu_text_exact_match"
+      }
+    ]
+  },
+  "errorCollectorStats": {
+    "autoFiltered": 1,
+    "aiVerified": 0,
+    "falsePositivesFound": 1,
+    "falsePositives": [
+      {
+        "matchedText": "동안",
+        "ruleId": "MED-SP-001",
+        "reason": "global_exclusion",
+        "source": "pattern_db"
+      }
+    ]
+  },
+  "ocrStats": {
+    "totalImages": 15,
+    "processedImages": 3,
+    "successfulOcr": 3,
+    "totalWords": 36,
+    "extractedTexts": [
+      {
+        "imageUrl": "https://shineyou-sw.co.kr/wp-content/uploads/sites/3/2025/12/Group-34.png",
+        "preview": "INVASIX",
+        "wordCount": 1
+      },
+      {
+        "imageUrl": "https://shineyou-sw.co.kr/wp-content/uploads/sites/3/2025/12/Group-44.png",
+        "preview": "화면에 표시된 이미지에서 일부 텍스트를 확인할 수 있지만, 해상도와 각도 때문에 모든 텍스트를 명확하게 읽기 어렵습니다.\n\n확�� 가능한 텍스트:\n- Soprano (기기 상단 브...",
+        "wordCount": 33
+      },
+      {
+        "imageUrl": "https://shineyou-sw.co.kr/wp-content/uploads/sites/3/2025/12/리팟_리사이징.jpg",
+        "preview": "REGEN\n\nREGEN",
+        "wordCount": 2
+      }
+    ]
+  },
+  "aiStats": {
+    "totalCalls": 4,
+    "totalCost": 0.026382,
+    "geminiCalls": 0,
+    "claudeCalls": 4,
+    "geminiFallbacks": 0,
+    "geminiStatus": {
+      "available": true,
+      "disabled": false,
+      "disabledUntil": null,
+      "consecutiveFailures": 0
+    }
+  },
+  "ocrApiStats": {
+    "totalCalls": 6,
+    "successCalls": 6,
+    "failedCalls": 0,
+    "totalImagesProcessed": 6,
+    "totalTextExtracted": 616
+  }
+}

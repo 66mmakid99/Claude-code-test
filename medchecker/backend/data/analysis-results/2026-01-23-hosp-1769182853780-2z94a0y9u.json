@@ -1,0 +1,10 @@
+{
+  "hospitalId": "hosp-1769182853780-2z94a0y9u",
+  "hospitalName": "차앤유의원",
+  "url": "http://www.cnuclinic.co.kr/",
+  "success": false,
+  "error": "웹사이트 크롤링 실패",
+  "detail": "write EPROTO 20A90000:error:0A00018A:SSL routines:tls_process_ske_dhe:dh key too small:openssl\\ssl\\statem\\statem_clnt.c:2352:\n",
+  "processingTimeMs": 61,
+  "analyzedAt": "2026-01-23T17:02:07.942Z"
+}
