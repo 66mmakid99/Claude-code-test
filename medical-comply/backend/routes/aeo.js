@@ -1,9 +1,170 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { authMiddleware } = require('../middlewares/auth');
 
 const router = express.Router();
+
+// Gemini AI 초기화 (2.5 Flash: 품질/비용 최적 밸런스)
+// Flash-Lite는 HumanEval 21%로 품질 부족, Flash는 39%로 분석 작업에 적합
+let geminiModel = null;
+const GEMINI_MODEL = 'gemini-2.5-flash';
+if (process.env.GEMINI_API_KEY) {
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  geminiModel = genAI.getGenerativeModel({ model: GEMINI_MODEL });
+  console.log(`✅ Gemini API 초기화 완료 (${GEMINI_MODEL})`);
+}
+
+/**
+ * Claude API 호출 함수
+ * @param {string} prompt - 분석 프롬프트
+ * @param {object} data - 크롤링 데이터
+ * @returns {object} 분석 결과
+ */
+async function callClaudeAPI(prompt, data) {
+  const startTime = Date.now();
+
+  const response = await axios.post('https://api.anthropic.com/v1/messages', {
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 4000,
+    messages: [{ role: 'user', content: prompt + '\n\n[크롤링 데이터]\n' + JSON.stringify(data, null, 2) }]
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    }
+  });
+
+  const text = response.data.content
+    .filter(i => i.type === 'text')
+    .map(i => i.text)
+    .join('');
+
+  const result = parseJSONFromText(text);
+  const responseTime = Date.now() - startTime;
+
+  // 토큰 사용량 추정 (Claude 응답에서 가져오기)
+  const inputTokens = response.data.usage?.input_tokens || 0;
+  const outputTokens = response.data.usage?.output_tokens || 0;
+
+  return {
+    result,
+    metadata: {
+      provider: 'claude',
+      model: 'claude-sonnet-4-20250514',
+      responseTime,
+      inputTokens,
+      outputTokens,
+      estimatedCost: calculateClaudeCost(inputTokens, outputTokens)
+    }
+  };
+}
+
+/**
+ * Gemini API 호출 함수
+ * @param {string} prompt - 분석 프롬프트
+ * @param {object} data - 크롤링 데이터
+ * @returns {object} 분석 결과
+ */
+async function callGeminiAPI(prompt, data) {
+  if (!geminiModel) {
+    throw new Error('Gemini API가 설정되지 않았습니다.');
+  }
+
+  const startTime = Date.now();
+  const fullPrompt = prompt + '\n\n[크롤링 데이터]\n' + JSON.stringify(data, null, 2);
+
+  const response = await geminiModel.generateContent(fullPrompt);
+  const text = response.response.text();
+
+  const result = parseJSONFromText(text);
+  const responseTime = Date.now() - startTime;
+
+  // 토큰 사용량 (Gemini는 usageMetadata에서 제공)
+  const usageMetadata = response.response.usageMetadata || {};
+  const inputTokens = usageMetadata.promptTokenCount || 0;
+  const outputTokens = usageMetadata.candidatesTokenCount || 0;
+
+  return {
+    result,
+    metadata: {
+      provider: 'gemini',
+      model: GEMINI_MODEL,
+      responseTime,
+      inputTokens,
+      outputTokens,
+      estimatedCost: calculateGeminiCost(inputTokens, outputTokens)
+    }
+  };
+}
+
+/**
+ * 텍스트에서 JSON 파싱
+ */
+function parseJSONFromText(text) {
+  let jsonStr = text;
+  const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+  if (match) {
+    jsonStr = match[1];
+  } else {
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start !== -1 && end !== -1) jsonStr = text.substring(start, end + 1);
+  }
+  return JSON.parse(jsonStr);
+}
+
+/**
+ * Claude 비용 계산 (USD)
+ * Claude 3.5 Sonnet: $3/1M input, $15/1M output
+ */
+function calculateClaudeCost(inputTokens, outputTokens) {
+  const inputCost = (inputTokens / 1000000) * 3;
+  const outputCost = (outputTokens / 1000000) * 15;
+  return {
+    inputCost: inputCost.toFixed(6),
+    outputCost: outputCost.toFixed(6),
+    totalCost: (inputCost + outputCost).toFixed(6),
+    currency: 'USD'
+  };
+}
+
+/**
+ * Gemini 비용 계산 (USD)
+ * Gemini 2.5 Flash: $0.30/1M input, $2.50/1M output
+ */
+function calculateGeminiCost(inputTokens, outputTokens) {
+  const inputCost = (inputTokens / 1000000) * 0.30;
+  const outputCost = (outputTokens / 1000000) * 2.50;
+  return {
+    inputCost: inputCost.toFixed(6),
+    outputCost: outputCost.toFixed(6),
+    totalCost: (inputCost + outputCost).toFixed(6),
+    currency: 'USD'
+  };
+}
+
+/**
+ * AI 제공자 선택 함수
+ * @param {string} provider - 'claude', 'gemini', 또는 'auto'
+ * @returns {string} 실제 사용할 provider
+ */
+function selectProvider(provider = 'auto') {
+  if (provider === 'gemini' && geminiModel) return 'gemini';
+  if (provider === 'claude' && process.env.ANTHROPIC_API_KEY) return 'claude';
+
+  // auto: 환경변수 AI_PROVIDER 확인, 없으면 Claude 우선
+  if (provider === 'auto') {
+    const envProvider = process.env.AI_PROVIDER?.toLowerCase();
+    if (envProvider === 'gemini' && geminiModel) return 'gemini';
+    if (process.env.ANTHROPIC_API_KEY) return 'claude';
+    if (geminiModel) return 'gemini';
+  }
+
+  return null; // API 키가 없음
+}
 
 // AEO/GEO 분석 API
 router.post('/analyze', authMiddleware, async (req, res) => {
@@ -919,6 +1080,588 @@ function analyzeSEOWithRules(url, data) {
   };
 }
 
+// ==========================================
+// 이미지 기반 사이트 분석 API
+// ==========================================
+
+// 이미지 기반 사이트 분석
+router.post('/analyze-image-site', authMiddleware, async (req, res) => {
+  try {
+    const { url, manualContent } = req.body;
+
+    if (!url) {
+      return res.status(400).json({ error: 'URL을 입력해주세요.' });
+    }
+
+    // URL 정규화
+    let targetUrl = url.trim();
+    if (!targetUrl.startsWith('http')) {
+      targetUrl = 'https://' + targetUrl;
+    }
+
+    // 웹사이트 크롤링
+    let crawlData = {};
+    let responseTime = 0;
+
+    try {
+      const startTime = Date.now();
+      const response = await axios.get(targetUrl, {
+        timeout: 15000,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; MedicalComplyBot/1.0; +https://medicalcomply.com)'
+        }
+      });
+      responseTime = Date.now() - startTime;
+
+      const $ = cheerio.load(response.data);
+      const html = response.data;
+
+      // 이미지 분석
+      const images = [];
+      $('img').each((i, el) => {
+        const src = $(el).attr('src') || '';
+        const alt = $(el).attr('alt') || '';
+        const width = $(el).attr('width') || '';
+        const height = $(el).attr('height') || '';
+
+        images.push({
+          src: src.substring(0, 200),
+          alt: alt.trim(),
+          hasAlt: alt.trim().length > 0,
+          isDecorativeAlt: alt.trim().length > 0 && alt.trim().length < 3,
+          dimensions: width && height ? `${width}x${height}` : 'unknown'
+        });
+      });
+
+      // 텍스트 콘텐츠 추출
+      $('script, style, noscript, iframe').remove();
+      const bodyText = $('body').text().replace(/\s+/g, ' ').trim();
+
+      // 의미있는 텍스트 vs 네비게이션/버튼 텍스트 구분
+      const meaningfulSelectors = 'p, h1, h2, h3, h4, h5, h6, article, section, main, .content, .description';
+      const meaningfulText = $(meaningfulSelectors).text().replace(/\s+/g, ' ').trim();
+
+      // 네비게이션/메뉴 텍스트
+      const navText = $('nav, .nav, .menu, .header, footer').text().replace(/\s+/g, ' ').trim();
+
+      // 배경 이미지 탐지 (style 속성에서)
+      const bgImages = [];
+      $('[style*="background"]').each((i, el) => {
+        const style = $(el).attr('style') || '';
+        const match = style.match(/url\(['"]?([^'")\s]+)['"]?\)/);
+        if (match) {
+          bgImages.push(match[1]);
+        }
+      });
+
+      // CSS에서 배경 이미지
+      $('style').each((i, el) => {
+        const css = $(el).html() || '';
+        const matches = css.matchAll(/url\(['"]?([^'")\s]+)['"]?\)/g);
+        for (const match of matches) {
+          if (match[1] && !match[1].startsWith('data:')) {
+            bgImages.push(match[1]);
+          }
+        }
+      });
+
+      crawlData = {
+        // 기본 메타
+        title: $('title').text().trim(),
+        description: $('meta[name="description"]').attr('content') || '',
+
+        // 텍스트 분석
+        totalTextLength: bodyText.length,
+        meaningfulTextLength: meaningfulText.length,
+        navTextLength: navText.length,
+
+        // 이미지 분석
+        totalImages: images.length,
+        imagesWithAlt: images.filter(i => i.hasAlt).length,
+        imagesWithoutAlt: images.filter(i => !i.hasAlt).length,
+        decorativeAltCount: images.filter(i => i.isDecorativeAlt).length,
+        backgroundImages: bgImages.length,
+        images: images.slice(0, 50), // 최대 50개만
+
+        // 구조 분석
+        h1Count: $('h1').length,
+        h2Count: $('h2').length,
+        h1Text: $('h1').first().text().trim(),
+        hasSchema: $('script[type="application/ld+json"]').length > 0,
+        hasOG: $('meta[property^="og:"]').length > 0,
+
+        // HTML 분석
+        htmlSize: html.length,
+        responseTime
+      };
+
+    } catch (crawlError) {
+      console.log('크롤링 실패:', crawlError.message);
+      crawlData.crawlError = crawlError.message;
+    }
+
+    // 이미지 기반 사이트 진단
+    const diagnosis = analyzeImageBasedSite(targetUrl, crawlData, manualContent);
+
+    res.json({
+      success: true,
+      diagnosis,
+      crawlData: {
+        title: crawlData.title,
+        description: crawlData.description,
+        totalImages: crawlData.totalImages,
+        totalTextLength: crawlData.totalTextLength,
+        meaningfulTextLength: crawlData.meaningfulTextLength
+      }
+    });
+
+  } catch (error) {
+    console.error('이미지 사이트 분석 오류:', error);
+    res.status(500).json({ error: '분석 중 오류가 발생했습니다.', detail: error.message });
+  }
+});
+
+// 이미지 기반 사이트 진단 함수
+function analyzeImageBasedSite(url, data, manualContent = null) {
+  const hostname = new URL(url).hostname;
+
+  // 이미지 vs 텍스트 비율 계산
+  const imageScore = data.totalImages || 0;
+  const textScore = Math.floor((data.meaningfulTextLength || 0) / 100); // 100자당 1점
+  const totalScore = imageScore + textScore;
+
+  const imageRatio = totalScore > 0 ? Math.round((imageScore / totalScore) * 100) : 50;
+  const textRatio = 100 - imageRatio;
+
+  // 사이트 유형 판정
+  let siteType = 'balanced';
+  let siteTypeLabel = '균형잡힌 사이트';
+  let siteTypeDesc = '이미지와 텍스트가 적절히 혼합되어 있습니다.';
+
+  if (imageRatio >= 70) {
+    siteType = 'image-heavy';
+    siteTypeLabel = '이미지 중심 사이트';
+    siteTypeDesc = '콘텐츠 대부분이 이미지로 구성되어 있어 검색엔진이 내용을 파악하기 어렵습니다.';
+  } else if (imageRatio >= 50) {
+    siteType = 'image-dominant';
+    siteTypeLabel = '이미지 우세 사이트';
+    siteTypeDesc = '이미지 비중이 높아 SEO 최적화가 필요합니다.';
+  } else if (textRatio >= 70) {
+    siteType = 'text-heavy';
+    siteTypeLabel = '텍스트 중심 사이트';
+    siteTypeDesc = '텍스트가 풍부하여 검색엔진 최적화에 유리합니다.';
+  }
+
+  // SEO 점수 계산 (100점 만점)
+  let seoScore = 0;
+  const scoreDetails = [];
+
+  // 1. 텍스트 콘텐츠 (30점)
+  const textPoints = Math.min(30, Math.floor((data.meaningfulTextLength || 0) / 50));
+  seoScore += textPoints;
+  scoreDetails.push({
+    category: 'text',
+    name: '텍스트 콘텐츠',
+    points: textPoints,
+    maxPoints: 30,
+    status: textPoints >= 20 ? 'pass' : textPoints >= 10 ? 'warning' : 'fail',
+    detail: `${data.meaningfulTextLength || 0}자의 의미있는 텍스트 발견`,
+    recommendation: textPoints < 20 ? '이미지 내 텍스트를 HTML 텍스트로 전환하세요' : null
+  });
+
+  // 2. 이미지 Alt 속성 (20점)
+  const altRatio = data.totalImages > 0 ? (data.imagesWithAlt / data.totalImages) : 1;
+  const altPoints = Math.round(altRatio * 20);
+  seoScore += altPoints;
+  scoreDetails.push({
+    category: 'alt',
+    name: '이미지 Alt 속성',
+    points: altPoints,
+    maxPoints: 20,
+    status: altRatio >= 0.9 ? 'pass' : altRatio >= 0.5 ? 'warning' : 'fail',
+    detail: `${data.imagesWithAlt || 0}/${data.totalImages || 0} 이미지에 alt 속성 있음`,
+    recommendation: altRatio < 0.9 ? '모든 이미지에 설명적인 alt 텍스트를 추가하세요' : null
+  });
+
+  // 3. 헤딩 구조 (15점)
+  const hasH1 = (data.h1Count || 0) === 1;
+  const hasH2 = (data.h2Count || 0) >= 2;
+  const headingPoints = (hasH1 ? 10 : 0) + (hasH2 ? 5 : 0);
+  seoScore += headingPoints;
+  scoreDetails.push({
+    category: 'heading',
+    name: '헤딩 태그 구조',
+    points: headingPoints,
+    maxPoints: 15,
+    status: headingPoints >= 12 ? 'pass' : headingPoints >= 5 ? 'warning' : 'fail',
+    detail: `H1: ${data.h1Count || 0}개, H2: ${data.h2Count || 0}개`,
+    recommendation: !hasH1 ? 'H1 태그를 추가하세요 (페이지당 1개)' : !hasH2 ? 'H2 태그로 섹션을 구분하세요' : null
+  });
+
+  // 4. 메타 태그 (15점)
+  const hasTitle = (data.title || '').length > 10;
+  const hasDesc = (data.description || '').length > 50;
+  const metaPoints = (hasTitle ? 8 : 0) + (hasDesc ? 7 : 0);
+  seoScore += metaPoints;
+  scoreDetails.push({
+    category: 'meta',
+    name: '메타 태그',
+    points: metaPoints,
+    maxPoints: 15,
+    status: metaPoints >= 12 ? 'pass' : metaPoints >= 5 ? 'warning' : 'fail',
+    detail: `Title: ${hasTitle ? '있음' : '없음'}, Description: ${hasDesc ? '있음' : '없음'}`,
+    recommendation: !hasTitle ? 'Title 태그를 추가하세요' : !hasDesc ? 'Meta Description을 추가하세요' : null
+  });
+
+  // 5. 구조화 데이터 (10점)
+  const schemaPoints = data.hasSchema ? 10 : 0;
+  seoScore += schemaPoints;
+  scoreDetails.push({
+    category: 'schema',
+    name: '구조화 데이터',
+    points: schemaPoints,
+    maxPoints: 10,
+    status: schemaPoints > 0 ? 'pass' : 'fail',
+    detail: data.hasSchema ? 'JSON-LD 구조화 데이터 발견' : '구조화 데이터 없음',
+    recommendation: !data.hasSchema ? 'LocalBusiness 또는 MedicalBusiness 스키마를 추가하세요' : null
+  });
+
+  // 6. Open Graph (10점)
+  const ogPoints = data.hasOG ? 10 : 0;
+  seoScore += ogPoints;
+  scoreDetails.push({
+    category: 'og',
+    name: 'Open Graph 태그',
+    points: ogPoints,
+    maxPoints: 10,
+    status: ogPoints > 0 ? 'pass' : 'fail',
+    detail: data.hasOG ? 'OG 태그 발견' : 'OG 태그 없음',
+    recommendation: !data.hasOG ? 'og:title, og:description, og:image 태그를 추가하세요' : null
+  });
+
+  // 이미지 → 텍스트 전환 권고
+  const conversionRecommendations = [];
+
+  if (siteType === 'image-heavy' || siteType === 'image-dominant') {
+    conversionRecommendations.push({
+      priority: 'critical',
+      title: '메인 시술/서비스 소개',
+      current: '이미지 배너로 표시됨',
+      recommended: 'HTML 텍스트 + 이미지 조합으로 변경',
+      impact: '검색엔진이 서비스 내용을 인식하여 관련 검색어 노출 가능',
+      effort: '중간',
+      example: `
+<section>
+  <h2>레이저 토닝</h2>
+  <p>멜라닌 색소를 선택적으로 파괴하여 피부 톤을 균일하게 만드는 시술입니다.</p>
+  <ul>
+    <li>시술 시간: 약 20분</li>
+    <li>회복 기간: 즉시 일상 복귀</li>
+  </ul>
+  <img src="laser-toning.jpg" alt="레이저 토닝 시술 전후 비교">
+</section>`
+    });
+
+    conversionRecommendations.push({
+      priority: 'high',
+      title: '가격표/메뉴판',
+      current: '이미지 파일로 제공',
+      recommended: 'HTML 테이블 또는 리스트로 변경',
+      impact: '가격 관련 검색어 노출, 구조화 데이터 적용 가능',
+      effort: '낮음',
+      example: `
+<table>
+  <tr><th>시술명</th><th>가격</th></tr>
+  <tr><td>레이저 토닝</td><td>50,000원</td></tr>
+  <tr><td>피코 토닝</td><td>80,000원</td></tr>
+</table>`
+    });
+
+    conversionRecommendations.push({
+      priority: 'high',
+      title: 'FAQ/자주 묻는 질문',
+      current: '이미지 또는 없음',
+      recommended: 'FAQPage 스키마 적용된 HTML',
+      impact: 'Google 검색 결과에 FAQ 리치 스니펫 표시, AI 답변 인용',
+      effort: '낮음',
+      example: `
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "레이저 토닝 시술 후 세안은 언제 가능한가요?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "시술 당일부터 가벼운 세안이 가능합니다."
+    }
+  }]
+}
+</script>`
+    });
+
+    conversionRecommendations.push({
+      priority: 'medium',
+      title: '의료진 소개',
+      current: '이미지 프로필',
+      recommended: 'HTML 텍스트 + Person 스키마',
+      impact: '의료진 이름 검색 시 병원 노출, 신뢰도 향상',
+      effort: '중간'
+    });
+
+    conversionRecommendations.push({
+      priority: 'medium',
+      title: '이벤트/프로모션',
+      current: '배너 이미지',
+      recommended: 'HTML + Event 스키마',
+      impact: '이벤트 검색 노출, 소셜 미디어 공유 최적화',
+      effort: '낮음'
+    });
+  }
+
+  // AEO/GEO 준비도
+  let aeoReadiness = 'low';
+  let aeoReadinessLabel = 'AI 검색 대응 미흡';
+  let aeoScore = 0;
+
+  // AEO 점수 계산
+  if (data.meaningfulTextLength >= 1000) aeoScore += 25;
+  else if (data.meaningfulTextLength >= 500) aeoScore += 15;
+
+  if (data.hasSchema) aeoScore += 25;
+  if (data.h1Count === 1 && data.h2Count >= 2) aeoScore += 20;
+  if (altRatio >= 0.8) aeoScore += 15;
+  if (data.hasOG) aeoScore += 15;
+
+  if (aeoScore >= 70) {
+    aeoReadiness = 'high';
+    aeoReadinessLabel = 'AI 검색 대응 우수';
+  } else if (aeoScore >= 40) {
+    aeoReadiness = 'medium';
+    aeoReadinessLabel = 'AI 검색 대응 보통';
+  }
+
+  // 수동 입력 콘텐츠가 있는 경우 분석
+  let manualContentAnalysis = null;
+  if (manualContent && Object.keys(manualContent).length > 0) {
+    manualContentAnalysis = analyzeManualContent(manualContent);
+  }
+
+  return {
+    url,
+    hostname,
+    analyzedAt: new Date().toISOString(),
+
+    // 이미지/텍스트 비율
+    ratio: {
+      imageRatio,
+      textRatio,
+      imageCount: data.totalImages || 0,
+      textLength: data.meaningfulTextLength || 0,
+      backgroundImageCount: data.backgroundImages || 0
+    },
+
+    // 사이트 유형
+    siteType: {
+      type: siteType,
+      label: siteTypeLabel,
+      description: siteTypeDesc
+    },
+
+    // SEO 점수
+    seoScore,
+    seoGrade: seoScore >= 80 ? 'A' : seoScore >= 60 ? 'B' : seoScore >= 40 ? 'C' : 'D',
+    scoreDetails,
+
+    // AEO 준비도
+    aeoReadiness: {
+      level: aeoReadiness,
+      label: aeoReadinessLabel,
+      score: aeoScore
+    },
+
+    // 이미지 상세
+    imageAnalysis: {
+      total: data.totalImages || 0,
+      withAlt: data.imagesWithAlt || 0,
+      withoutAlt: data.imagesWithoutAlt || 0,
+      decorativeAlt: data.decorativeAltCount || 0,
+      altCoverage: Math.round(altRatio * 100)
+    },
+
+    // 전환 권고
+    conversionRecommendations,
+
+    // 수동 콘텐츠 분석
+    manualContentAnalysis,
+
+    // 개선 우선순위
+    priorities: generatePriorities(scoreDetails, siteType)
+  };
+}
+
+// 수동 입력 콘텐츠 분석
+function analyzeManualContent(content) {
+  const analysis = {
+    services: [],
+    keywords: [],
+    schemaRecommendations: [],
+    contentSuggestions: []
+  };
+
+  // 서비스/시술 분석
+  if (content.services && Array.isArray(content.services)) {
+    analysis.services = content.services.map(service => ({
+      name: service.name,
+      hasDescription: service.description && service.description.length > 50,
+      hasPrice: !!service.price,
+      keywords: extractKeywords(service.name + ' ' + (service.description || '')),
+      schemaType: 'Service',
+      htmlSuggestion: generateServiceHTML(service)
+    }));
+
+    // 키워드 추출
+    const allKeywords = analysis.services.flatMap(s => s.keywords);
+    analysis.keywords = [...new Set(allKeywords)].slice(0, 20);
+
+    // 스키마 권고
+    analysis.schemaRecommendations.push({
+      type: 'Service',
+      reason: '시술/서비스 정보가 있어 Service 스키마를 적용하면 검색 노출에 유리합니다',
+      example: generateServiceSchema(content.services[0])
+    });
+  }
+
+  // FAQ 분석
+  if (content.faqs && Array.isArray(content.faqs)) {
+    analysis.schemaRecommendations.push({
+      type: 'FAQPage',
+      reason: 'FAQ가 있어 FAQPage 스키마를 적용하면 검색 결과에 FAQ가 표시됩니다',
+      example: generateFAQSchema(content.faqs)
+    });
+  }
+
+  // 의료진 분석
+  if (content.doctors && Array.isArray(content.doctors)) {
+    analysis.schemaRecommendations.push({
+      type: 'Person + MedicalBusiness',
+      reason: '의료진 정보가 있어 Person 스키마를 적용하면 신뢰도가 향상됩니다',
+      example: generateDoctorSchema(content.doctors[0])
+    });
+  }
+
+  return analysis;
+}
+
+// 키워드 추출
+function extractKeywords(text) {
+  const medicalKeywords = [
+    '레이저', '토닝', '필링', '보톡스', '필러', '리프팅', '슈링크', '울쎄라',
+    '피부', '여드름', '주름', '탄력', '미백', '흉터', '튼살', '제모',
+    '피부과', '성형', '시술', '치료', '관리', '효과', '전문'
+  ];
+
+  return medicalKeywords.filter(keyword =>
+    text.toLowerCase().includes(keyword.toLowerCase())
+  );
+}
+
+// 서비스 HTML 생성
+function generateServiceHTML(service) {
+  return `<article itemscope itemtype="https://schema.org/Service">
+  <h2 itemprop="name">${service.name}</h2>
+  <p itemprop="description">${service.description || '서비스 설명을 추가하세요'}</p>
+  ${service.price ? `<p>가격: <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <span itemprop="price">${service.price}</span>원
+  </span></p>` : ''}
+</article>`;
+}
+
+// 서비스 스키마 생성
+function generateServiceSchema(service) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service?.name || "서비스명",
+    "description": service?.description || "서비스 설명",
+    "provider": {
+      "@type": "MedicalBusiness",
+      "name": "병원명"
+    },
+    "offers": service?.price ? {
+      "@type": "Offer",
+      "price": service.price,
+      "priceCurrency": "KRW"
+    } : undefined
+  };
+}
+
+// FAQ 스키마 생성
+function generateFAQSchema(faqs) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": (faqs || []).slice(0, 3).map(faq => ({
+      "@type": "Question",
+      "name": faq.question || "질문",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer || "답변"
+      }
+    }))
+  };
+}
+
+// 의료진 스키마 생성
+function generateDoctorSchema(doctor) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": doctor?.name || "의료진명",
+    "jobTitle": doctor?.title || "전문의",
+    "worksFor": {
+      "@type": "MedicalBusiness",
+      "name": "병원명"
+    }
+  };
+}
+
+// 개선 우선순위 생성
+function generatePriorities(scoreDetails, siteType) {
+  const priorities = [];
+
+  // 점수가 낮은 항목부터 우선순위
+  const sortedDetails = [...scoreDetails]
+    .filter(d => d.recommendation)
+    .sort((a, b) => (a.points / a.maxPoints) - (b.points / b.maxPoints));
+
+  sortedDetails.forEach((detail, idx) => {
+    priorities.push({
+      rank: idx + 1,
+      category: detail.category,
+      name: detail.name,
+      currentScore: `${detail.points}/${detail.maxPoints}`,
+      recommendation: detail.recommendation,
+      impact: idx < 2 ? 'high' : idx < 4 ? 'medium' : 'low'
+    });
+  });
+
+  // 이미지 중심 사이트의 경우 추가 우선순위
+  if (siteType === 'image-heavy' || siteType === 'image-dominant') {
+    priorities.unshift({
+      rank: 0,
+      category: 'critical',
+      name: '이미지 텍스트화',
+      currentScore: 'N/A',
+      recommendation: '이미지 내 텍스트를 HTML로 전환하세요. 검색엔진은 이미지 내 텍스트를 읽을 수 없습니다.',
+      impact: 'critical'
+    });
+  }
+
+  return priorities;
+}
+
 // 이메일 발송 API
 router.post('/send-email', authMiddleware, async (req, res) => {
   try {
@@ -1039,5 +1782,256 @@ router.post('/send-email', authMiddleware, async (req, res) => {
     res.status(500).json({ error: '이메일 발송 중 오류가 발생했습니다.', detail: error.message });
   }
 });
+
+// ============================================================
+// AI 품질 비교 테스트 API
+// ============================================================
+
+/**
+ * Claude vs Gemini 비교 테스트 엔드포인트
+ * 동일한 프롬프트로 두 API를 호출하여 결과 비교
+ */
+router.post('/compare-ai', authMiddleware, async (req, res) => {
+  try {
+    const { url, testType = 'aeo' } = req.body;
+
+    if (!url) {
+      return res.status(400).json({ error: 'URL을 입력해주세요.' });
+    }
+
+    // API 키 확인
+    const hasClaudeKey = !!process.env.ANTHROPIC_API_KEY;
+    const hasGeminiKey = !!geminiModel;
+
+    if (!hasClaudeKey && !hasGeminiKey) {
+      return res.status(400).json({ error: 'Claude 또는 Gemini API 키가 필요합니다.' });
+    }
+
+    // URL 정규화
+    let targetUrl = url.trim();
+    if (!targetUrl.startsWith('http')) {
+      targetUrl = 'https://' + targetUrl;
+    }
+
+    // 웹사이트 크롤링
+    let crawlData = {};
+    try {
+      const startTime = Date.now();
+      const response = await axios.get(targetUrl, {
+        timeout: 15000,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; MedicalComplyBot/1.0; +https://medicalcomply.com)'
+        }
+      });
+      const responseTime = Date.now() - startTime;
+
+      const $ = cheerio.load(response.data);
+
+      crawlData = {
+        title: $('title').text().trim(),
+        description: $('meta[name="description"]').attr('content') || '',
+        keywords: $('meta[name="keywords"]').attr('content') || '',
+        h1: $('h1').first().text().trim(),
+        h1Count: $('h1').length,
+        h2Count: $('h2').length,
+        hasSchema: $('script[type="application/ld+json"]').length > 0,
+        hasOG: $('meta[property^="og:"]').length > 0,
+        ogTitle: $('meta[property="og:title"]').attr('content') || '',
+        ogDescription: $('meta[property="og:description"]').attr('content') || '',
+        totalImages: $('img').length,
+        imagesWithAlt: $('img[alt]').filter((i, el) => $(el).attr('alt').trim() !== '').length,
+        responseTime,
+        bodyText: $('body').text().slice(0, 3000)
+      };
+    } catch (crawlError) {
+      return res.status(400).json({ error: '웹사이트 크롤링 실패', detail: crawlError.message });
+    }
+
+    // 테스트 프롬프트 생성
+    const prompt = generateCompareTestPrompt(testType, targetUrl);
+
+    const results = {
+      url: targetUrl,
+      testType,
+      crawlData: {
+        title: crawlData.title,
+        hasSchema: crawlData.hasSchema,
+        hasOG: crawlData.hasOG,
+        totalImages: crawlData.totalImages,
+        imagesWithAlt: crawlData.imagesWithAlt
+      },
+      claude: null,
+      gemini: null,
+      comparison: null,
+      testedAt: new Date().toISOString()
+    };
+
+    // Claude API 테스트
+    if (hasClaudeKey) {
+      try {
+        console.log('🔵 Claude API 테스트 시작...');
+        results.claude = await callClaudeAPI(prompt, crawlData);
+        console.log(`✅ Claude 완료 (${results.claude.metadata.responseTime}ms)`);
+      } catch (claudeError) {
+        results.claude = {
+          error: claudeError.message,
+          metadata: { provider: 'claude', model: 'claude-sonnet-4-20250514' }
+        };
+        console.log('❌ Claude 오류:', claudeError.message);
+      }
+    }
+
+    // Gemini API 테스트
+    if (hasGeminiKey) {
+      try {
+        console.log('🟡 Gemini API 테스트 시작...');
+        results.gemini = await callGeminiAPI(prompt, crawlData);
+        console.log(`✅ Gemini 완료 (${results.gemini.metadata.responseTime}ms)`);
+      } catch (geminiError) {
+        results.gemini = {
+          error: geminiError.message,
+          metadata: { provider: 'gemini', model: GEMINI_MODEL }
+        };
+        console.log('❌ Gemini 오류:', geminiError.message);
+      }
+    }
+
+    // 비교 분석
+    if (results.claude?.result && results.gemini?.result) {
+      results.comparison = compareResults(results.claude, results.gemini);
+    }
+
+    res.json(results);
+
+  } catch (error) {
+    console.error('AI 비교 테스트 오류:', error);
+    res.status(500).json({ error: 'AI 비교 테스트 중 오류가 발생했습니다.', detail: error.message });
+  }
+});
+
+/**
+ * AI 제공자 상태 확인 API
+ */
+router.get('/ai-status', authMiddleware, (req, res) => {
+  const status = {
+    claude: {
+      available: !!process.env.ANTHROPIC_API_KEY,
+      model: 'claude-sonnet-4-20250514',
+      pricing: {
+        input: '$3.00 / 1M tokens',
+        output: '$15.00 / 1M tokens'
+      }
+    },
+    gemini: {
+      available: !!geminiModel,
+      model: GEMINI_MODEL,
+      pricing: {
+        input: '$0.30 / 1M tokens',
+        output: '$2.50 / 1M tokens'
+      }
+    },
+    currentProvider: selectProvider('auto'),
+    envProvider: process.env.AI_PROVIDER || 'auto'
+  };
+
+  res.json(status);
+});
+
+/**
+ * 비교 테스트용 프롬프트 생성
+ */
+function generateCompareTestPrompt(testType, url) {
+  if (testType === 'seo') {
+    return `다음 웹사이트의 SEO 상태를 분석하고 JSON 형식으로 결과를 반환하세요.
+
+분석 대상: ${url}
+
+다음 형식으로 응답하세요:
+{
+  "overallScore": 0-100,
+  "categories": {
+    "technical": { "score": 0-100, "issues": ["이슈1", "이슈2"] },
+    "content": { "score": 0-100, "issues": [] },
+    "meta": { "score": 0-100, "issues": [] }
+  },
+  "topPriorities": ["우선 개선 사항 1", "2", "3"],
+  "summary": "한줄 요약"
+}`;
+  }
+
+  // AEO 기본 분석
+  return `다음 웹사이트의 AEO(Answer Engine Optimization) 상태를 분석하고 JSON 형식으로 결과를 반환하세요.
+
+분석 대상: ${url}
+
+AI 검색엔진(ChatGPT, Perplexity, Google AI Overview 등)에서 답변으로 인용되기 적합한지 평가하세요.
+
+다음 형식으로 응답하세요:
+{
+  "overallScore": 0-100,
+  "categories": {
+    "structure": { "score": 0-100, "items": [{"name": "항목", "status": "pass/fail/warning", "detail": "설명"}] },
+    "content": { "score": 0-100, "items": [] },
+    "authority": { "score": 0-100, "items": [] }
+  },
+  "recommendations": ["개선 권장사항 1", "2", "3"],
+  "summary": "한줄 요약"
+}`;
+}
+
+/**
+ * Claude와 Gemini 결과 비교
+ */
+function compareResults(claudeResult, geminiResult) {
+  const claudeScore = claudeResult.result?.overallScore || 0;
+  const geminiScore = geminiResult.result?.overallScore || 0;
+
+  return {
+    scoreDifference: Math.abs(claudeScore - geminiScore),
+    claudeScore,
+    geminiScore,
+    responseTime: {
+      claude: claudeResult.metadata.responseTime,
+      gemini: geminiResult.metadata.responseTime,
+      faster: claudeResult.metadata.responseTime < geminiResult.metadata.responseTime ? 'claude' : 'gemini',
+      difference: Math.abs(claudeResult.metadata.responseTime - geminiResult.metadata.responseTime)
+    },
+    cost: {
+      claude: claudeResult.metadata.estimatedCost,
+      gemini: geminiResult.metadata.estimatedCost,
+      cheaper: 'gemini', // Gemini is always cheaper
+      savingsPercent: ((parseFloat(claudeResult.metadata.estimatedCost.totalCost) - parseFloat(geminiResult.metadata.estimatedCost.totalCost)) / parseFloat(claudeResult.metadata.estimatedCost.totalCost) * 100).toFixed(1)
+    },
+    tokens: {
+      claude: { input: claudeResult.metadata.inputTokens, output: claudeResult.metadata.outputTokens },
+      gemini: { input: geminiResult.metadata.inputTokens, output: geminiResult.metadata.outputTokens }
+    },
+    qualityNotes: generateQualityNotes(claudeResult.result, geminiResult.result)
+  };
+}
+
+/**
+ * 품질 비교 노트 생성
+ */
+function generateQualityNotes(claudeResult, geminiResult) {
+  const notes = [];
+
+  // 점수 차이 평가
+  const scoreDiff = Math.abs((claudeResult?.overallScore || 0) - (geminiResult?.overallScore || 0));
+  if (scoreDiff <= 5) {
+    notes.push('✅ 점수 차이가 5점 이내로 유사한 평가');
+  } else if (scoreDiff <= 15) {
+    notes.push('⚠️ 점수 차이가 ' + scoreDiff + '점으로 약간의 차이 있음');
+  } else {
+    notes.push('❌ 점수 차이가 ' + scoreDiff + '점으로 상당한 차이');
+  }
+
+  // 권장사항 개수 비교
+  const claudeRecs = claudeResult?.recommendations?.length || 0;
+  const geminiRecs = geminiResult?.recommendations?.length || 0;
+  notes.push(`📋 권장사항: Claude ${claudeRecs}개 vs Gemini ${geminiRecs}개`);
+
+  return notes;
+}
 
 module.exports = router;

@@ -127,11 +127,77 @@ function ViralMonitoring({ user }) {
   const ActionModal = ({ item, onClose }) => {
     const [actionType, setActionType] = useState('')
     const [memo, setMemo] = useState('')
+    const [submitting, setSubmitting] = useState(false)
+    const [submitted, setSubmitted] = useState(false)
 
-    const handleSubmit = () => {
-      // TODO: 실제 조치 요청 API 연동
-      alert(`조치 요청이 접수되었습니다.\n\n유형: ${actionType}\n콘텐츠: ${item.title}`)
-      onClose()
+    const handleSubmit = async () => {
+      if (!actionType) return
+
+      setSubmitting(true)
+      try {
+        const token = localStorage.getItem('token')
+        const response = await fetch('/api/monitoring/action-request', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            contentUrl: item.url,
+            contentTitle: item.title,
+            actionType,
+            violations: item.violations?.map(v => ({
+              code: v.code,
+              name: v.name,
+              level: v.level
+            })),
+            memo
+          })
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+          setSubmitted(true)
+        } else {
+          alert(data.error || '요청 처리 중 오류가 발생했습니다.')
+        }
+      } catch (err) {
+        alert('서버 연결에 실패했습니다.')
+      } finally {
+        setSubmitting(false)
+      }
+    }
+
+    // 성공 화면
+    if (submitted) {
+      return (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            background: 'white', borderRadius: '16px', padding: '2rem', maxWidth: '400px', width: '90%',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+            <h3 style={{ marginBottom: '0.5rem', color: '#059669' }}>조치 요청 완료</h3>
+            <p style={{ color: '#6b7280', marginBottom: '1.5rem', fontSize: '0.875rem' }}>
+              요청이 접수되었습니다.<br/>처리 현황은 검색 기록에서 확인하실 수 있습니다.
+            </p>
+            <button
+              onClick={onClose}
+              style={{
+                padding: '0.75rem 2rem', borderRadius: '8px', border: 'none',
+                background: '#059669', color: 'white', cursor: 'pointer', fontWeight: '600'
+              }}
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      )
     }
 
     return (
@@ -280,6 +346,35 @@ function ViralMonitoring({ user }) {
             </div>
           )}
         </div>
+
+        {/* 추천 수정안 */}
+        {violation.suggestions?.length > 0 && (
+          <div style={{
+            marginTop: '0.75rem',
+            paddingTop: '0.75rem',
+            borderTop: '1px dashed #d1d5db'
+          }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#059669', marginBottom: '0.5rem' }}>
+              💡 추천 수정안
+            </div>
+            {violation.suggestions.map((s, i) => (
+              <div key={i} style={{
+                background: '#ecfdf5',
+                borderRadius: '6px',
+                padding: '0.5rem 0.75rem',
+                marginBottom: '0.25rem',
+                fontSize: '0.75rem'
+              }}>
+                <div style={{ color: '#dc2626', textDecoration: 'line-through', marginBottom: '0.25rem' }}>
+                  ❌ {s.wrong}
+                </div>
+                <div style={{ color: '#059669', fontWeight: '500' }}>
+                  ✅ {s.safe}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     )
   }
