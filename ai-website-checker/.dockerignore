@@ -1,0 +1,22 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.DS_Store
+*.sqlite
+*.sqlite-journal
+reports/*.pdf
+
+# Frontend
+frontend/node_modules
+frontend/build
+frontend/.env
+
+# Backend
+backend/node_modules
+backend/.env
+backend/reports
+backend/*.sqlite
+backend/*.sqlite-journal
